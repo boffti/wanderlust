@@ -54,6 +54,10 @@ a {
   color: var(--secondary-color);
 }
 
+a:hover {
+  color: var(--accent-color);
+}
+
 h1,
 h2 {
   font-weight: bold;
@@ -79,7 +83,8 @@ img {
 }
 
 .navbar ul li a[active] {
-  border-bottom: 2px var(--accent-color) solid;;
+  border-bottom: 2px var(--accent-color) solid;
+  ;
 }
 
 .navbar a {
@@ -211,7 +216,7 @@ img {
   font-size: 16px;
 }
 
-.hero-form select:focus { 
+.hero-form select:focus {
   outline: none;
   border-bottom: 2px var(--accent-color) solid;
 }
@@ -252,7 +257,7 @@ img {
 }
 
 .category-card {
-  background-color: #243953;
+  background-color: var(--other-color-1);
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 4px;
@@ -264,22 +269,14 @@ img {
   width: 350px;
 }
 
-.category-card::after {
-  background-image: linear-gradient(to right, #81b2af, #81b29a);
-  border-radius: 4px;
-  content: "";
-  height: 100%;
-  left: 0;
-  opacity: 0.75;
-  position: absolute;
-  top: 0;
-  transition: opacity 0.2s ease-in-out;
-  width: 100%;
-  z-index: 0;
+.category-card:hover {
+  background-color: var(--other-color-2);
 }
+
 .category-card:hover::after {
   opacity: 0.95;
 }
+
 .category-card:hover .content p {
   max-height: 75px;
 }
@@ -294,15 +291,18 @@ img {
   width: 100%;
   z-index: 2;
 }
+
 .category-card .content {
   margin-top: auto;
   z-index: 1;
 }
+
 .category-card .content h2 {
   color: #fff;
   font-size: 32px;
   margin-bottom: 0;
 }
+
 .category-card .content p {
   color: #fff;
   font-size: 18px;
@@ -313,10 +313,182 @@ img {
   transition: height 0.2s, max-height 0.2s ease-in-out;
 }
 
+.category-card i {
+  position: relative;
+  align-self: center;
+  top: calc(50% - 55px);
+  /* 50% - 3/4 of icon height */
+  color: #fff;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  justify-content:space-between;
-  align-items:center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-footer {
+  background-color: var(--secondary-color);
+  padding: 45px 0 20px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #fff;
+}
+
+.site-footer hr {
+  border-top-color: #bbb;
+  opacity: 0.5
+}
+
+.site-footer hr.small {
+  margin: 20px 0
+}
+
+.site-footer h6 {
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 2px
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+.footer-links {
+  padding-left: 0;
+  list-style: none
+}
+
+.footer-links li {
+  display: block
+}
+
+.footer-links a {
+  color: #fff
+}
+
+.footer-links a:active,
+.footer-links a:focus,
+.footer-links a:hover {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.footer-links.inline li {
+  display: inline-block
+}
+
+.site-footer .social-icons {
+  text-align: right
+}
+
+.site-footer .social-icons a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 6px;
+  margin-right: 0;
+  border-radius: 100%;
+}
+
+.site-footer .social-icons a:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.copyright-text {
+  margin: 0
+}
+
+.social-icons {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-bottom: 4px
+}
+
+.social-icons li.title {
+  margin-right: 15px;
+  text-transform: uppercase;
+  color: #96a2b2;
+  font-weight: 700;
+  font-size: 13px
+}
+
+.social-icons a {
+  background-color: #eceeef;
+  color: #818a91;
+  font-size: 16px;
+  display: inline-block;
+  line-height: 44px;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  margin-right: 8px;
+  border-radius: 100%;
+  -webkit-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear
+}
+
+.browse-card {
+  background: #fff;
+  width: 350px;
+  height: 300px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-body h1 {
+  font-size: 1.2rem;
+  line-height: 1.1rem;
+  margin-bottom: 4px;
+  color: var(--secondary-color);
+}
+
+.card-body h1 a {
+  color: var(--secondary-color);
+}
+
+.card-header {
+  height: 50%;
+}
+
+.card-img {
+  height: 100%;
+  background-size: contain;
+  position: relative;
+}
+
+.card-body {
+  padding: 24px;
+  font-size: 0.9rem;
+}
+
+.rating ul {
+  padding: 10px;
+}
+
+.rating li {
+  display: inline;
+  color: #EFA127;
+}
+
+.rating li:hover {
+  color: #FFA517;
+  cursor: pointer;
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
 }

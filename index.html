@@ -22,6 +22,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+    <!-- Navbar -->
     <div class="navbar">
         <div class="container flex">
             <h1>Wanderlust</h1>
@@ -48,6 +49,7 @@
         </div>
     </div>
 
+    <!-- hero -->
     <section class="hero flex">
         <div class="container">
             <div class="hero-text flex-vertical">
@@ -72,10 +74,12 @@
                     <input type="text" name="search-term" id="search-term" placeholder="Keywords ex: food, pubs etc">
                 </div>
                 <div class="form-control"> <select name="categories" id="categories">
-                        <option value="volvo" disabled selected>Choose a Category</option>
-                        <option value="saab">Restaurants</option>
-                        <option value="mercedes">Bars</option>
-                        <option value="audi">Places of Worship</option>
+                        <option value="choose" disabled selected>Choose a Category</option>
+                        <option value="restaurants">Restaurants</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="worship">Places of Worship</option>
+                        <option value="services">Public Services</option>
+                        <option value="health">Health & Medical</option>
                     </select></div>
 
                 <button type="submit" href="#" class="btn" style="margin-left: 25px;">Search</button>
@@ -85,61 +89,182 @@
 
     <div class="container">
         <div class="content">
-            <h2>Categories</h2>
 
-            <div class="grid">
-                <div class="category-card">
-                    <a href="#" class="card-link">Link to What's New</a>
-                    <div class="content">
-                        <h2>Restaurant</h2>
-                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
+            <!-- Explore Nearby -->
+            <section style="height: 420px;">
+                <h2>Explore nearby</h2>
+                <div class="grid">
+                    <div class="browse-card">
+                        <div class="card-header">
+                            <img class="card-img" src="https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/150605079_4199887670040734_6183778369989458211_n.jpg?_nc_cat=102&ccb=3&_nc_sid=8bfeb9&_nc_ohc=vnCwvru6eyEAX92zPAL&_nc_ht=scontent-dfw5-2.xx&oh=950fdeba8f4ea2b0346e7f53ca73ef38&oe=60592731" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h1><a href="#">Old School Pizza Tavern</a></h1>
+                            <p>Arlington, TX</p>
+                            <div class="rating">
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-    
-                <div class="category-card">
-                    <a href="#" class="card-link">Link to What's New</a>
-                    <div class="content">
-                        <h2>Shopping</h2>
-                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
-                    </div>
-                </div>
-    
-                <div class="category-card">
-                    <a href="#" class="card-link">Link to What's New</a>
-                    <div class="content">
-                        <h2>Nightlife</h2>
-                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
-                    </div>
-                </div>
-    
-                <div class="category-card">
-                    <a href="#" class="card-link">Link to What's New</a>
-                    <div class="content">
-                        <h2>Beauty</h2>
-                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
-                    </div>
-                </div>
-    
-                <div class="category-card">
-                    <a href="#" class="card-link">Link to What's New</a>
-                    <div class="content">
-                        <h2>Entertainment</h2>
-                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
-                    </div>
-                </div>
-    
-                <div class="category-card">
-                    <a href="#" class="card-link">Link to What's New</a>
-                    <div class="content">
-                        <h2>Health & Medical</h2>
-                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
-                    </div>
-                </div>
-            </div>
 
+                    <div class="browse-card">
+                        <div class="card-header">
+                            <img class="card-img" src="https://d2s94cyhu2tzlj.cloudfront.net/assets/photos/2020/home-depot-announces-changes/_articlePhotoFull/df.jpg?mtime=20200401142201" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h1><a href="#">The Home Depot</a></h1>
+                            <p>Fort Worth, TX</p>
+                            <div class="rating">
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="browse-card">
+                        <div class="card-header">
+                            <img class="card-img" src="https://media.timeout.com/images/102766174/750/422/image.jpg" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h1><a href="#">Epic Waters Indoor Waterpark</a></h1>
+                            <p>Grand Prairie, TX</p>
+                            <div class="rating">
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <a href="#" class="">Show more</a>
+            </section>
+
+            <!-- Categories -->
+            <section class="">
+                <h2>Browse by Category</h2>
+                <div class="grid">
+                    <div class="category-card">
+                        <a href="#" class="card-link">Link to What's New</a>
+                        <i class="fas fa-hamburger fa-5x"></i>
+                        <div class="content">
+                            <h2>Restaurant</h2>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <a href="#" class="card-link">Link to What's New</a>
+                        <i class="fas fa-shopping-cart fa-5x"></i>
+                        <div class="content">
+                            <h2>Shopping</h2>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <a href="#" class="card-link">Link to What's New</a>
+                        <i class="fas fa-cocktail fa-5x"></i>
+                        <div class="content">
+                            <h2>Nightlife</h2>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <a href="#" class="card-link">Link to What's New</a>
+                        <i class="fas fa-praying-hands fa-5x"></i>
+                        <div class="content">
+                            <h2>Religion & Worship</h2>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <a href="#" class="card-link">Link to What's New</a>
+                        <i class="fas fa-ticket-alt fa-5x"></i>
+                        <div class="content">
+                            <h2>Entertainment</h2>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <a href="#" class="card-link">Link to What's New</a>
+                        <i class="fas fa-syringe fa-5x"></i>
+                        <div class="content">
+                            <h2>Health & Medical</h2>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <a href="#" class="flex">Show all</a>
+            </section>
         </div>
     </div>
+
+    <br>
+
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="grid">
+                <div class="">
+                    <h6>About</h6>
+                    <p class="text-justify"><i>WANDERLUST</i>is a portal for immigrants who have just moved to a new
+                        location. They can use the provided services to find places of interest around them. They can
+                        rate and review businesses and upload photos and videos to their profile.</p>
+                </div>
+
+                <div class="">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">Nightlife</a></li>
+                        <li><a href="#">Beauty</a></li>
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Health & Medical</a></li>
+                    </ul>
+                </div>
+
+                <div class="">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="grid">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Wanderlust &copy; 2021. All Rights Reserved.
+                    </p>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="./static/js/typed.js"></script>
     <script>

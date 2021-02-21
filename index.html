@@ -4,19 +4,157 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wanderlust | Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link href="./static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
+
+    <div class="navbar">
+        <div class="container flex">
+            <h1>Wanderlust</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- <div class="signup">
+                <button class="btn btn-outline-secondary">Login / Signup</button>
+            </div> -->
+            <div class="account">
+                <p class="navbar-location">Arlington, TX</p>
+                <div class="profile flex">
+                    <img src="./static/img/aneesh.jpg" alt="profile">
+                    <p>Aneesh Melkot</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero flex">
+        <div class="container">
+            <div class="hero-text flex-vertical">
+                <div id="typed">
+                    <p>Welcome to your new home</p>
+                    <p>欢迎来到你的新家</p>
+                    <p>Bienvenue dans votre nouvelle maison</p>
+                    <p>Willkommen in Ihrem neuen Zuhause</p>
+                    <p>आपके नए घर में आपका स्वागत है</p>
+                    <p>새 집에 오신 것을 환영합니다</p>
+                    <p>നിങ്ങളുടെ പുതിയ വീട്ടിലേക്ക് സ്വാഗതം</p>
+                    <p>ನಿಮ್ಮ ಹೊಸ ಮನೆಗೆ ಸುಸ್ವಾಗತ</p>
+                    <p>Bienvenido a tu nuevo hogar</p>
+                    <p>உங்கள் புதிய வீட்டிற்கு வருக</p>
+                    <p>Laipni lūdzam jūsu jaunajās mājās</p>
+                </div>
+                <h1 id="welcome-string"></h1><span style="visibility:hidden;">|</span>
+            </div>
+            <p class="flex-vertical">Find nearby attractions. Join a chatroom and meet new people.</p>
+            <div class="hero-form card flex">
+                <div class="form-control">
+                    <input type="text" name="search-term" id="search-term" placeholder="Keywords ex: food, pubs etc">
+                </div>
+                <div class="form-control"> <select name="categories" id="categories">
+                        <option value="volvo" disabled selected>Choose a Category</option>
+                        <option value="saab">Restaurants</option>
+                        <option value="mercedes">Bars</option>
+                        <option value="audi">Places of Worship</option>
+                    </select></div>
+
+                <button type="submit" href="#" class="btn" style="margin-left: 25px;">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="content">
+            <h2>Categories</h2>
+
+            <div class="grid">
+                <div class="category-card">
+                    <a href="#" class="card-link">Link to What's New</a>
+                    <div class="content">
+                        <h2>Restaurant</h2>
+                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
+                    </div>
+                </div>
+    
+                <div class="category-card">
+                    <a href="#" class="card-link">Link to What's New</a>
+                    <div class="content">
+                        <h2>Shopping</h2>
+                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
+                    </div>
+                </div>
+    
+                <div class="category-card">
+                    <a href="#" class="card-link">Link to What's New</a>
+                    <div class="content">
+                        <h2>Nightlife</h2>
+                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
+                    </div>
+                </div>
+    
+                <div class="category-card">
+                    <a href="#" class="card-link">Link to What's New</a>
+                    <div class="content">
+                        <h2>Beauty</h2>
+                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
+                    </div>
+                </div>
+    
+                <div class="category-card">
+                    <a href="#" class="card-link">Link to What's New</a>
+                    <div class="content">
+                        <h2>Entertainment</h2>
+                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
+                    </div>
+                </div>
+    
+                <div class="category-card">
+                    <a href="#" class="card-link">Link to What's New</a>
+                    <div class="content">
+                        <h2>Health & Medical</h2>
+                        <p>Short category description — Rutrum adipiscing quam dolor nisi.</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="./static/js/typed.js"></script>
+    <script>
+        var typed = new Typed('#welcome-string', {
+            stringsElement: '#typed',
+            showCursor: false,
+            cursorChar: '|',
+            typeSpeed: 70,
+            backSpeed: 70,
+            backDelay: 5000,
+            loop: true,
+            loopCount: Infinity,
+            shuffle: true,
+        });
+    </script>
+</body>
+
 </html>

@@ -76,6 +76,7 @@ img {
 .navbar {
   background-color: var(--primary-color);
   height: 70px;
+  overflow: visible;
 }
 
 .navbar ul {
@@ -456,6 +457,10 @@ img {
   color: var(--secondary-color);
 }
 
+.card-body p {
+  color: var(--other-color-1);
+}
+
 .card-body h1 a {
   color: var(--secondary-color);
 }
@@ -491,4 +496,20 @@ img {
 
 .bg-primary {
   background-color: var(--primary-color);
+}
+
+.navbar ul li ul {
+  display: none;
+}
+
+.navbar ul li:hover ul {
+  display: block;
+  margin-top: 15px;
+  width: 200px;
+  left: 0;
+  position: absolute;
+}
+.navbar ul li:hover ul li {
+  display: block;
+  background-color: #e7e7e7;
 }

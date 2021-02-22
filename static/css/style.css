@@ -74,9 +74,18 @@ img {
 }
 
 .navbar {
+    position: relative;
+    box-sizing: border-box;
     background-color: var(--primary-color);
     height: 70px;
     overflow: visible;
+    z-index: 9999;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .navbar ul {
@@ -580,4 +589,8 @@ img {
 
 .text-accent {
     color: var(--accent-color)
+}
+
+.sticky + .hero {
+    margin-top: 70px;
 }

@@ -30,7 +30,8 @@
                 <ul>
                     <li><a href="#" active>Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li class="nav-item"><a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i></a>
+                    <li class="nav-item"><a href="#" class="">Services <i class="fas fa-angle-down"
+                                style="margin-left: 5px;"></i></a>
                         <ul class="" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="#">Action</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -46,12 +47,12 @@
             </div> -->
             <ul class="">
                 <li>
-                    <a href="#" class="navbar-location flex"><i class="fas fa-map-marker-alt loc-icon"></i> Arlington, TX</a>
+                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
                 </li>
                 <li>
                     <a href="#" class="profile flex dropdown-toggle">
-                        <img src="./static/img/aneesh.jpg" alt="profile">
-                        <p>Aneesh Melkot</p>
+                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                        <p id="profileName" class="profileName"></p>
                         <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
                     </a>
                     <!-- <ul class="dropdown-menu">
@@ -96,19 +97,22 @@
                 <h1 id="welcome-string"></h1><span style="visibility:hidden;">|</span>
             </div>
             <p class="flex-vertical">Find nearby attractions. Join a chatroom and meet new people.</p>
-            <div class="hero-form card flex">
-                <div class="form-control">
-                    <input type="text" name="search-term" id="search-term" placeholder="Keywords eg: food, salons, shopping etc">
-                </div>
-                <div class="form-control"> <select name="categories" id="categories">
-                        <option value="choose" disabled selected>Choose a Category</option>
-                        <option value="restaurants">Restaurants</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="worship">Places of Worship</option>
-                        <option value="services">Public Services</option>
-                        <option value="health">Health & Medical</option>
-                    </select></div>
-                <button type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH NOW</button>
+            <div class="">
+                <form class="hero-form card flex" action="./pages/user/search_page.html">
+                    <div class="form-control">
+                        <input type="text" name="search-term" id="search-term"
+                            placeholder="Keywords eg: food, salons, shopping etc">
+                    </div>
+                    <div class="form-control"> <select name="categories" id="categories">
+                            <option value="choose" disabled selected>Choose a Category</option>
+                            <option value="restaurants">Restaurants</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="worship">Places of Worship</option>
+                            <option value="services">Public Services</option>
+                            <option value="health">Health & Medical</option>
+                        </select></div>
+                    <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH NOW</button>
+                </form>
             </div>
         </div>
     </section>
@@ -298,21 +302,11 @@
     </footer>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
+        integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+        crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="./static/js/typed.js"></script>
-    <script>
-        var typed = new Typed('#welcome-string', {
-            stringsElement: '#typed',
-            showCursor: false,
-            cursorChar: '|',
-            typeSpeed: 70,
-            backSpeed: 70,
-            backDelay: 5000,
-            loop: true,
-            loopCount: Infinity,
-            shuffle: true,
-        });
-    </script>
     <script src="./static/js/app.js"></script>
 </body>
 

@@ -23,7 +23,7 @@
         <![endif]-->
 
     <!-- Navbar -->
-    <div id="navbar" class="navbar">
+    <div id="navbar" class="navbar navbar-primary">
         <div class="container flex">
             <h1>Wanderlust</h1>
             <nav>
@@ -50,7 +50,7 @@
                     <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
                 </li>
                 <li>
-                    <a href="#" class="profile flex dropdown-toggle">
+                    <a href="./pages/user/profile.html" class="profile flex dropdown-toggle">
                         <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
                         <p id="profileName" class="profileName"></p>
                         <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
@@ -307,6 +307,19 @@
         crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="./static/js/typed.js"></script>
+    <script>
+        var typed = new Typed('#welcome-string', {
+            stringsElement: '#typed',
+            showCursor: false,
+            cursorChar: '|',
+            typeSpeed: 70,
+            backSpeed: 70,
+            backDelay: 5000,
+            loop: true,
+            loopCount: Infinity,
+            shuffle: true,
+        });
+    </script>
     <script src="./static/js/app.js"></script>
 </body>
 

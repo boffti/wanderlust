@@ -1,15 +1,3 @@
-var typed = new Typed('#welcome-string', {
-    stringsElement: '#typed',
-    showCursor: false,
-    cursorChar: '|',
-    typeSpeed: 70,
-    backSpeed: 70,
-    backDelay: 5000,
-    loop: true,
-    loopCount: Infinity,
-    shuffle: true,
-});
-
 // When the user scrolls the page, execute myFunction
 window.onscroll = function () {
     myFunction()

@@ -8,13 +8,43 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Wanderlust | Search Results</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-    <link href="./static/css/style.css" rel="stylesheet">
+    <link href="../../static/css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            const uluru = {
+                lat: 32.729212,
+                lng: -97.115197
+            };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -23,22 +53,30 @@
         <![endif]-->
 
     <!-- Navbar -->
-    <div class="navbar">
-        <div class="container flex">
-            <h1>Wanderlust</h1>
+    <div id="navbar" class="navbar" style="overflow: visible;">
+        <div class="container-fluid flex">
+            <a href="../../index.html">
+                <h1>Wanderlust</h1>
+            </a>
             <nav>
-                <ul>
-                    <li><a href="#" active>Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link dropdown-toggle">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i></a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
+                <section class="flex" style="margin-top: 50px;">
+                    <form class="hero-form card flex" action="#">
+                        <div class="form-control">
+                            <input type="text" name="search-term" id="search-term"
+                                placeholder="Keywords eg: food, salons, shopping etc">
+                        </div>
+                        <div class="form-control"> <select name="categories" id="categories">
+                                <option value="choose" disabled selected>Choose a Category</option>
+                                <option value="restaurants">Restaurants</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="worship">Places of Worship</option>
+                                <option value="services">Public Services</option>
+                                <option value="health">Health & Medical</option>
+                            </select></div>
+                        <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH
+                            NOW</button>
+                    </form>
+                </section>
             </nav>
 
             <!-- <div class="signup">
@@ -46,12 +84,12 @@
             </div> -->
             <ul class="">
                 <li>
-                    <a href="#" class="navbar-location flex"><i class="fas fa-map-marker-alt loc-icon"></i> Arlington, TX</a>
+                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
                 </li>
                 <li>
-                    <a href="#" class="profile flex dropdown-toggle">
-                        <img src="./static/img/aneesh.jpg" alt="profile">
-                        <p>Aneesh Melkot</p>
+                    <a href="./pages/user/profile.html" class="profile flex dropdown-toggle">
+                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                        <p id="profileName" class="profileName"></p>
                         <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
                     </a>
                     <!-- <ul class="dropdown-menu">
@@ -75,14 +113,353 @@
             </ul>
         </div>
     </div>
+    <br>
+
+    <!-- hero -->
+
+    <br>
+
+    <div class="" style="margin-top: 70px;">
+        <div class="container-fluid-left">
+
+            <div class="grid grid-2">
+                <section id="left-section">
+                    <section>
+                        <h2 class="">You might like</h2>
+                        <div class="flex-left">
+                            <div class="browse-card w-sm">
+                                <div class="card-header">
+                                    <img class="card-img"
+                                        src="https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/150605079_4199887670040734_6183778369989458211_n.jpg?_nc_cat=102&ccb=3&_nc_sid=8bfeb9&_nc_ohc=vnCwvru6eyEAX92zPAL&_nc_ht=scontent-dfw5-2.xx&oh=950fdeba8f4ea2b0346e7f53ca73ef38&oe=60592731"
+                                        alt="">
+                                </div>
+                                <div class="card-body">
+                                    <h1><a href="#">Old School Pizza Tavern</a></h1>
+                                    <p>Arlington, TX</p>
+                                    <div class="rating">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="browse-card">
+                                <div class="card-header">
+                                    <img class="card-img"
+                                        src="https://d2s94cyhu2tzlj.cloudfront.net/assets/photos/2020/home-depot-announces-changes/_articlePhotoFull/df.jpg?mtime=20200401142201"
+                                        alt="">
+                                </div>
+                                <div class="card-body">
+                                    <h1><a href="#">The Home Depot</a></h1>
+                                    <p>Fort Worth, TX</p>
+                                    <div class="rating">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="browse-card">
+                                <div class="card-header">
+                                    <img class="card-img"
+                                        src="https://media.timeout.com/images/102766174/750/422/image.jpg" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <h1><a href="#">Epic Waters Indoor Waterpark</a></h1>
+                                    <p>Grand Prairie, TX</p>
+                                    <div class="rating">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>All Results</h2>
+
+                        <a href="#">
+                            <div class="card-listing">
+                                <div class="flex">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbeau3yMqAJXWZU2BuOMdSmtYIrOX46lNLg&usqp=CAU"
+                                        alt="" class="card-listing-img">
+                                    <div class="flex-column">
+                                        <h2>University of Texas</h2>
+                                        <span class="flex wander-green">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <p>Arlington, TX</p>
+                                        </span>
+                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos rerum ea odit
+                                            totam enim corrupti vero nisi.?</p>
+                                    </div>
+                                    <div class="flex-column">
+                                        <div class="rating">
+                                            <ul class="flex">
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="far fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="review-count">
+                                            <span class="flex">
+                                                <i class="fas fa-pen"></i>
+                                                <p>205</p>
+                                            </span>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="card-listing">
+                            <div class="flex">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQokk-wXzy_5GMGxfJDq9Y-sFaSCAacKASBkg&usqp=CAU"
+                                    alt="" class="card-listing-img">
+                                <div class="flex-column">
+                                    <h2>IKEA</h2>
+                                    <span class="flex wander-green">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <p>Grand Praire, TX</p>
+                                    </span>
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos rerum ea odit
+                                        totam enim corrupti vero nisi.?</p>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="rating">
+                                        <ul class="flex">
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="review-count">
+                                        <span class="flex">
+                                            <i class="fas fa-pen"></i>
+                                            <p>52</p>
+                                        </span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                        <a href="#">
+                            <div class="card-listing">
+                                <div class="flex">
+                                    <img src="https://www.supermarketnews.com/sites/supermarketnews.com/files/styles/article_featured_retina/public/Walmart_Canada_supercenter_exterior.png?itok=lVSg6uOM"
+                                        alt="" class="card-listing-img">
+                                    <div class="flex-column">
+                                        <h2>Walmart</h2>
+                                        <span class="flex wander-green">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <p>Arlington, TX</p>
+                                        </span>
+                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos rerum ea odit
+                                            totam enim corrupti vero nisi.?</p>
+                                    </div>
+                                    <div class="flex-column">
+                                        <div class="rating">
+                                            <ul class="flex">
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="far fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="review-count">
+                                            <span class="flex">
+                                                <i class="fas fa-pen"></i>
+                                                <p>147</p>
+                                            </span>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="card-listing">
+                                <div class="flex">
+                                    <img src="https://dmn-dallas-news-prod.cdn.arcpublishing.com/resizer/2M4jVXzYBrN3G--IooAWxD3EFYk=/1660x934/smart/filters:no_upscale()/cloudfront-us-east-1.images.arcpublishing.com/dmn/VPXX7VD6PFEUS6EUA6PZURXGNY.jpg"
+                                        alt="" class="card-listing-img">
+                                    <div class="flex-column">
+                                        <h2>AT&T Stadium</h2>
+                                        <span class="flex wander-green">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <p>Arlington, TX</p>
+                                        </span>
+                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos rerum ea odit
+                                            totam enim corrupti vero nisi.?</p>
+                                    </div>
+                                    <div class="flex-column">
+                                        <div class="rating">
+                                            <ul class="flex">
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="far fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="review-count">
+                                            <span class="flex">
+                                                <i class="fas fa-pen"></i>
+                                                <p>83</p>
+                                            </span>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="card-listing">
+                                <div class="flex">
+                                    <img src="https://www.dailyherald.com/storyimage/DA/20171019/BUSINESS/171018601/AR/0/AR-171018601.jpg&updated=201710191246&MaxW=900&maxH=900&noborder&Q=80"
+                                        alt="" class="card-listing-img">
+                                    <div class="flex-column">
+                                        <h2>ALDI</h2>
+                                        <span class="flex wander-green">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <p>Pantego, TX</p>
+                                        </span>
+                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos rerum ea odit
+                                            totam enim corrupti vero nisi.?</p>
+                                    </div>
+                                    <div class="flex-column">
+                                        <div class="rating">
+                                            <ul class="flex">
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="far fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="review-count">
+                                            <span class="flex">
+                                                <i class="fas fa-pen"></i>
+                                                <p>189</p>
+                                            </span>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                    </section>
+                </section>
+
+                <section id="right-section">
+                    <!-- MAP -->
+                    <div class="card" style=" height: 100vh">
+                        <div class="" style="height: 100vh"><iframe frameborder="0"
+                                style="border:0; width:100%; height:100%;"
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:EntLYW5ha2FwdXJhIFJkLCBKUCBOYWdhciA2dGggUGhhc2UsIEtyaXNobmEgRGV2YXJheWEgTmFnYXIsIFllbGFjaGVuYWhhbGxsaSwgS3VtYXJhc3dhbXkgTGF5b3V0LCBCZW5nYWx1cnUsIEthcm5hdGFrYSwgSW5kaWEiLiosChQKEglTQD7jdxWuOxHVyhgiZUBnDxIUChIJuczhjGcVrjsR8l2WW9YHnZw&key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU"
+                                allowfullscreen=""></iframe></div>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container-fluid-left">
+
+    </div>
+
+    <br>
+
+    <!-- Site footer -->
+    <footer class="site-footer" style="">
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="">
+                    <h6>About</h6>
+                    <p class="text-justify"><i>WANDERLUST</i>is a portal for immigrants who have just moved to a new
+                        location. They can use the provided services to find places of interest around them. They can
+                        rate and review businesses and upload photos and videos to their profile.</p>
+                </div>
+
+                <div class="">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">Nightlife</a></li>
+                        <li><a href="#">Beauty</a></li>
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Health & Medical</a></li>
+                    </ul>
+                </div>
+
+                <div class="">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="./pages/login/login.html">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="">
+                    <p class="copyright-text">Wanderlust &copy; 2021. All Rights Reserved.
+                    </p>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
-    <!-- Business List -->
-
-
-    <!-- Geo Map -->
-
-    <script src="" async defer></script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0_dAAs1OTudl40Hb_CZZYqqSl-01V2fs&callback=initMap">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
+        integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+        crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../../static/js/app.js"></script>
 </body>
 
 </html>

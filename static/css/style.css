@@ -76,10 +76,14 @@ img {
 .navbar {
     position: relative;
     box-sizing: border-box;
-    background-color: var(--primary-color);
+
     height: 70px;
     overflow: visible;
     z-index: 9999;
+}
+
+.navbar-primary {
+    background-color: var(--primary-color);
 }
 
 .sticky {
@@ -137,11 +141,32 @@ img {
     padding: 0 40px;
 }
 
+.container-fluid {
+    margin: 0 50px;
+}
+
+.container-fluid-left {
+    margin-right: auto;
+    margin-left: 50px;
+}
+
 .flex {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+.flex-left {
+    display: flex;
+    gap: 16px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    justify-content: center;
 }
 
 .hero {
@@ -591,6 +616,44 @@ img {
     color: var(--accent-color)
 }
 
-.sticky + .hero {
+.sticky+.hero {
     margin-top: 70px;
+}
+
+.w-sm {
+    width: 200px im !important;
+}
+
+.card-listing {
+    background: #fff;
+    height: 150px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    margin: 12px 0;
+}
+
+.card-listing-img {
+    position: relative;
+    object-fit: contain;
+    margin: 0 auto;
+    min-width: 150px;
+    max-width: 100%;
+    min-height: 100%;
+}
+
+.card-listing h2 {
+    margin: 10px;
+}
+
+.card-listing p {
+    text-align: justify;
+    margin: 10px;
+}
+
+.wander-green {
+    color: var(--other-color-1);
 }

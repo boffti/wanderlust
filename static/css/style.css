@@ -781,3 +781,43 @@ img {
     width: 100%;
     height: 100%;
 }
+
+.quotes {
+    font-size:32px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 1;
+    margin: 0 8px;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-left {
+    justify-content: flex-start;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-items-left {
+    align-items: flex-start;
+}
+
+.ml-auto {
+    margin-left:auto;
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.text-accent {
+    color: var(--accent-color);
+}

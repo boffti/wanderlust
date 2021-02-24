@@ -17,36 +17,6 @@
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
     <link href="../../static/css/style.css" rel="stylesheet">
-
-    <style type="text/css">
-        /* Set the size of the div element that contains the map */
-        #map {
-            height: 400px;
-            /* The height is 400 pixels */
-            width: 100%;
-            /* The width is the width of the web page */
-        }
-    </style>
-    <script>
-        // Initialize and add the map
-        function initMap() {
-            // The location of Uluru
-            const uluru = {
-                lat: 32.729212,
-                lng: -97.115197
-            };
-            // The map, centered at Uluru
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 4,
-                center: uluru,
-            });
-            // The marker, positioned at Uluru
-            const marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-            });
-        }
-    </script>
 </head>
 
 <body>
@@ -368,8 +338,8 @@
                                 </div>
                             </div>
                         </a>
-
                     </section>
+                    <a href="#">See All</a>
                 </section>
 
                 <section id="right-section">
@@ -385,12 +355,6 @@
             </div>
 
         </div>
-    </div>
-
-    <br>
-
-    <div class="container-fluid-left">
-
     </div>
 
     <br>

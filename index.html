@@ -84,14 +84,14 @@
             <div class="hero-text flex-vertical">
                 <div id="typed">
                     <p>Welcome to your new home</p>
+                    <p>Willkommen in Ihrem neuen Zuhause</p>
+                    <p>Bienvenido a tu nuevo hogar</p>
+                    <p>आपके नए घर में आपका स्वागत है</p>
                     <p>欢迎来到你的新家</p>
                     <p>Bienvenue dans votre nouvelle maison</p>
-                    <p>Willkommen in Ihrem neuen Zuhause</p>
-                    <p>आपके नए घर में आपका स्वागत है</p>
                     <p>새 집에 오신 것을 환영합니다</p>
                     <p>നിങ്ങളുടെ പുതിയ വീട്ടിലേക്ക് സ്വാഗതം</p>
                     <p>ನಿಮ್ಮ ಹೊಸ ಮನೆಗೆ ಸುಸ್ವಾಗತ</p>
-                    <p>Bienvenido a tu nuevo hogar</p>
                     <p>உங்கள் புதிய வீட்டிற்கு வருக</p>
                     <p>Laipni lūdzam jūsu jaunajās mājās</p>
                 </div>
@@ -99,21 +99,23 @@
             </div>
             <p class="flex-vertical">Find nearby attractions. Join a chatroom and meet new people.</p>
             <div class="">
-                <form class="hero-form card flex" action="./pages/user/search_page.html">
-                    <div class="form-control">
-                        <input type="text" name="search-term" id="search-term"
-                            placeholder="Keywords eg: food, salons, shopping etc">
+                <form class="hero-form card" action="./pages/user/search_page.html">
+                    <div class="flex-left">
+                        <div class="form-control">
+                            <input type="text" name="search-term" id="search-term"
+                                placeholder="Keywords eg: food, salons, shopping etc">
+                        </div>
+                        <div class="form-control"> <select name="categories" id="categories">
+                                <option value="choose" disabled selected>Choose a Category</option>
+                                <option value="restaurants">Restaurants</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="worship">Places of Worship</option>
+                                <option value="services">Public Services</option>
+                                <option value="health">Health & Medical</option>
+                            </select></div>
+                        <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH
+                            NOW</button>
                     </div>
-                    <div class="form-control"> <select name="categories" id="categories">
-                            <option value="choose" disabled selected>Choose a Category</option>
-                            <option value="restaurants">Restaurants</option>
-                            <option value="entertainment">Entertainment</option>
-                            <option value="worship">Places of Worship</option>
-                            <option value="services">Public Services</option>
-                            <option value="health">Health & Medical</option>
-                        </select></div>
-                    <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH
-                        NOW</button>
                 </form>
             </div>
         </div>
@@ -126,27 +128,27 @@
             <section>
                 <h2>Explore nearby</h2>
                 <div>
-                    <div class="grid grid-3">
-                        <div class="browse-card">
-                            <div class="card-header">
-                                <img class="card-img"
-                                    src="https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/150605079_4199887670040734_6183778369989458211_n.jpg?_nc_cat=102&ccb=3&_nc_sid=8bfeb9&_nc_ohc=vnCwvru6eyEAX92zPAL&_nc_ht=scontent-dfw5-2.xx&oh=950fdeba8f4ea2b0346e7f53ca73ef38&oe=60592731"
-                                    alt="">
-                            </div>
-                            <div class="card-body">
-                                <h1><a href="#">Old School Pizza Tavern</a></h1>
-                                <p>Arlington, TX</p>
-                                <div class="rating">
-                                    <ul>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="far fa-star"></i></li>
-                                    </ul>
+                    <div class="flex" style="gap:12px">
+                            <div class="browse-card">
+                                <div class="card-header">
+                                    <img class="card-img"
+                                        src="https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/150605079_4199887670040734_6183778369989458211_n.jpg?_nc_cat=102&ccb=3&_nc_sid=8bfeb9&_nc_ohc=vnCwvru6eyEAX92zPAL&_nc_ht=scontent-dfw5-2.xx&oh=950fdeba8f4ea2b0346e7f53ca73ef38&oe=60592731"
+                                        alt="">
+                                </div>
+                                <div class="card-body">
+                                    <h1><a href="#">Old School Pizza Tavern</a></h1>
+                                    <p>Arlington, TX</p>
+                                    <div class="rating">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
                         <div class="browse-card">
                             <div class="card-header">
@@ -262,7 +264,7 @@
             <!-- Categories -->
             <section class="">
                 <h2>Browse by Category</h2>
-                <div class="grid grid-3">
+                <div class="flex" style="gap: 12px;">
                     <div class="category-card">
                         <a href="#" class="card-link">Link to What's New</a>
                         <i class="fas fa-hamburger fa-5x"></i>
@@ -284,6 +286,8 @@
                             <h2>Education</h2>
                         </div>
                     </div>
+                </div>
+                <div class="flex" style="gap: 12px; margin-top:12px">
                     <div class="category-card">
                         <a href="#" class="card-link">Link to What's New</a>
                         <i class="fas fa-praying-hands fa-5x"></i>
@@ -385,7 +389,6 @@
             backDelay: 5000,
             loop: true,
             loopCount: Infinity,
-            shuffle: true,
         });
     </script>
     <script src="./static/js/app.js"></script>

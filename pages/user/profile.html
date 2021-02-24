@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wanderlust | Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!-- Navbar -->
+    <div id="navbar" class="navbar" style="overflow: visible; background-color: white;">
+        <div class="container flex">
+            <a href="../../index.html">
+                <h1 style="margin: 0; padding:0;">Wanderlust</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li class="nav-item"><a href="#" class="">Services <i class="fas fa-angle-down"
+                                style="margin-left: 5px;"></i></a>
+                        <ul class="" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- <div class="signup">
+                <button class="btn btn-outline-secondary">Login / Signup</button>
+            </div> -->
+            <ul class="">
+                <li>
+                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
+                </li>
+                <li>
+                    <a href="#" class="profile flex dropdown-toggle" style="border-bottom: 3px var(--accent-color) solid; color: var(--accent-color)">
+                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                        <p id="profileName" class="profileName"></p>
+                        <!-- <i class="fas fa-angle-down" style="margin-left: 8px;"></i> -->
+                    </a>
+                    <!-- <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">
+                                Drop Item 1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Drop Item 2
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Drop Item 3
+                            </a>
+                        </li>
+                    </ul> -->
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <!-- hero -->
+    <section class="flex" style="margin-top: 70px;">
+        <div class="container">
+            <div class="hero-text flex-vertical">
+                <h1 id="" style="font-size: 35px;">This is YOU.</h1>
+                <p class="">What have you been up to lately? Use this page to upload your latest photos and videos.</p>
+            </div>
+            <!-- <div class="card"> -->
+            <div class="flex-left">
+                <div class="card" style="height: fit-content;">
+                    <div class="flex-center">
+                        <img id="profileIMG" src="" alt="profile" class="profileIMG"
+                            style="width: 200px; border-radius: 100px;">
+                        <h2 id="profileName" class="profileName"></h2>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <ul class="tabs">
+                        <li class="active">PHOTOS</li>
+                        <li>VIDEOS</li>
+                        <li>REVIEWS</li>
+                        <li>TIPS</li>
+                    </ul>
+
+                    <ul class="tab-content">
+                        <li class="active">
+                            <div class="tab-content-container">
+                                <div class="flex">
+                                    <h2 class="">Your photos - <span>10</span></h2>
+                                    <button class="btn">ADD</button>
+                                </div>
+                                <div class="gallery-container">
+                                    <!-- Define all of the tiles: -->
+                                    <div class="box zoom">
+                                        <div class="img-box">
+                                            <img
+                                                src="https://images.unsplash.com/photo-1614038276039-667c23bc32fa?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="img-box">
+                                            <img
+                                                src="https://images.unsplash.com/photo-1614059632169-522876ce04c8?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="img-box">
+                                            <img
+                                                src="https://images.unsplash.com/photo-1613977257421-010b50211cd3?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="img-box">
+                                            <img
+                                                src="https://images.unsplash.com/photo-1614036102254-b5a105bc3537?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="img-box">
+                                            <img
+                                                src="https://images.unsplash.com/photo-1614022995184-0347cdc53871?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="img-box">
+                                            <img
+                                                src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2l0eXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="img-box">
+                                            <img
+                                                src="https://images.unsplash.com/photo-1543872084-c7bd3822856f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8N3x8Y2l0eXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="img-box">
+                                            <img
+                                                src="https://images.unsplash.com/photo-1512864733469-8c0d7cc3ccf5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjR8fGNpdHl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="img-box">
+                                            <img
+                                                src="https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8cmVzdGF1cmFudHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <div class="img-box">
+                                            <img
+                                                src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTd8fHJlc3RhdXJhbnR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tab-content-container">
+                                <div class="flex">
+                                    <h2 class="">Your Videos - <span>4</span></h2>
+                                    <button class="btn">ADD</button>
+                                </div>
+
+                                <div class="video-gallery">
+                                    <div class="video-container">
+                                        <div class="responsive-video">
+                                            <iframe width="560" height="315"
+                                                src="https://www.youtube.com/embed/h_73QmnwHaQ" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="video-container">
+                                        <div class="responsive-video">
+                                            <iframe width="560" height="315"
+                                                src="https://www.youtube.com/embed/EAP2zOYtE1M" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="video-container">
+                                        <div class="responsive-video">
+                                            <iframe width="560" height="315"
+                                                src="https://www.youtube.com/embed/a1aCwrR_DNU" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="video-container">
+                                        <div class="responsive-video">
+                                            <iframe width="560" height="315"
+                                                src="https://www.youtube.com/embed/H9NTn9B_fBg" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tab-content-container">
+                                <h2 class="">Your Reviews</h2>
+                            </div>
+                        </li>
+                        <!-- Hide for a "visitor" -->
+                        <li>
+                            <div class="tab-content-container">
+                                <h2 class="">Your Tips</h2>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="content">
+
+
+
+
+        </div>
+    </div>
+
+    <br>
+
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="">
+                    <h6>About</h6>
+                    <p class="text-justify"><i>WANDERLUST</i>is a portal for immigrants who have just moved to a new
+                        location. They can use the provided services to find places of interest around them. They can
+                        rate and review businesses and upload photos and videos to their profile.</p>
+                </div>
+
+                <div class="">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">Nightlife</a></li>
+                        <li><a href="#">Beauty</a></li>
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Health & Medical</a></li>
+                    </ul>
+                </div>
+
+                <div class="">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="./pages/login/login.html">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="">
+                    <p class="copyright-text">Wanderlust &copy; 2021. All Rights Reserved.
+                    </p>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
+        integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+        crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../../static/js/typed.js"></script>
+    <script src="../../static/js/app.js"></script>
+</body>
+
+</html>

@@ -1,26 +1,22 @@
-// When the user scrolls the page, execute myFunction
-window.onscroll = function () {
-    myFunction()
-};
-
-// Get the navbar
-var navbar = document.getElementById("navbar");
-
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-    if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
-    } else {
-        navbar.classList.remove("sticky");
-    }
-}
-
 $.noConflict();
 jQuery(document).ready(function ($) {
 
+    // Sticky Navbar
+    window.onscroll = function () {
+        stickNav()
+    };
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function stickNav() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+
+    // Fake Placeholder names and Images
     let firstName = faker.name.firstName();
     let lastName = faker.name.lastName();
 
@@ -35,12 +31,41 @@ jQuery(document).ready(function ($) {
         dataType: 'json',
         success: function (data) {
             var avatarURL = data.results[0].picture.thumbnail;
-            console.log(avatarURL)
+            var profileIMGURL = data.results[0].picture.large;
             $(".avatarIMG").attr('src', avatarURL);
+            $(".profileIMG").attr('src', profileIMGURL);
         }
     });
 
+    // TODO
     $("#btnSearchNow").on('click', function() {
-
     });
+
+    // Profile Page Tabs
+	var clickedTab = $(".tabs > .active");
+	var tabWrapper = $(".tab-content");
+	var activeTab = tabWrapper.find(".active");
+	var activeTabHeight = activeTab.outerHeight();
+	
+	activeTab.show();
+	tabWrapper.height(activeTabHeight);
+	
+	$(".tabs > li").on("click", function() {
+		$(".tabs > li").removeClass("active");
+		$(this).addClass("active");
+		clickedTab = $(".tabs .active");
+		activeTab.fadeOut(250, function() {
+			$(".tab-content > li").removeClass("active");
+			var clickedTabIndex = clickedTab.index();
+			$(".tab-content > li").eq(clickedTabIndex).addClass("active");
+			activeTab = $(".tab-content > .active");
+			activeTabHeight = activeTab.outerHeight();	
+			tabWrapper.stop().delay(50).animate({
+				height: activeTabHeight
+			}, 500, function() {
+				activeTab.delay(50).fadeIn(250);
+			});
+		});
+	});
+	
 });

@@ -646,6 +646,7 @@ img {
     position: relative;
     object-fit: contain;
     margin: 0 auto;
+    width: 50%;
     min-width: 150px;
     max-width: 100%;
     min-height: 100%;

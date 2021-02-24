@@ -200,7 +200,7 @@ img {
 }
 
 @media (max-width: 1200px) {
-    .flex-left {
+    .flex-wrap {
         flex-wrap: wrap;
     }
 }

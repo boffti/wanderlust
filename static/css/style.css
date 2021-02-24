@@ -822,3 +822,7 @@ img {
 .text-accent {
     color: var(--accent-color);
 }
+
+.border-l-yellow {
+    border-left: 4px var(--other-color-2) solid;
+}

@@ -1,60 +1,67 @@
-
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,900');
-
-*{
-  margin-top: 0;
-  margin: 0;
-  padding: 0;
+* {
+    margin-top: 0;
+    margin: 0;
+    padding: 0;
 }
-.layout-center{
-  margin: 0;
-  max-width: 1024px;
+
+.layout-center {
+    margin: 0;
+    max-width: 1024px;
 }
-.wrapper{
-  font: 300 20px/32px 'Roboto', sans-serif;
+
+.wrapper {
+    font: 300 20px/32px 'Roboto', sans-serif;
 }
 
 .clearfix:after {
-  clear: both;
-  content: ".";
-  display: block;
-  height: 400;
-  visibility: hidden;
-  font-size: 0;
+    clear: both;
+    content: ".";
+    display: block;
+    height: 400;
+    visibility: hidden;
+    font-size: 0;
 }
-   
-  .box{
+
+.box {
     background: url("https://image.ibb.co/nJHGgk/about_us1.jpg");
     color: rgb(245, 243, 243);
-    text-align:center;
-    z-index:1;
-  }
-  .text{
-      padding: 100px 0;
-  }
-  .box p{
-    font-size:18px;
-  }
-  .red{
-    color:orangered;
-  }
-  .redline{
-    width:1280px;
-    height:3px;
-    background-color:red;
-    border:none;
-  }
-  .touch h2{
+    text-align: center;
+    z-index: 1;
+}
+
+.text {
+    padding: 100px 0;
+}
+
+.box p {
+    font-size: 18px;
+}
+
+.red {
+    color: orangered;
+}
+
+.redline {
+    width: 1280px;
+    height: 3px;
+    background-color: red;
+    border: none;
+}
+
+.touch h2 {
     padding-top: 20px;
     text-align: center;
-  }
-  .form-margin{
+}
+
+.form-margin {
     margin-top: 40px;
-  }
-  .left{
-    text-align:left;
-  }
-  .site-footer {
+}
+
+.left {
+    text-align: left;
+}
+
+.site-footer {
     background-color: var(--secondary-color);
     padding: 45px 0 20px;
     font-size: 15px;
@@ -485,4 +492,4 @@
 
 .border-l-yellow {
     border-left: 4px var(--other-color-2) solid;
-} 
+}

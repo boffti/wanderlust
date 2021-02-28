@@ -109,11 +109,12 @@ img {
 .navbar a {
     padding: 10px;
     margin: 0 5px;
+    font-weight: bold;;
 }
 
-.navbar a:hover {
+/* .navbar a:hover {
     border-bottom: 3px var(--accent-color) solid;
-}
+} */
 
 .navbar .flex {
     justify-content: space-between;
@@ -552,14 +553,6 @@ img {
     margin-bottom: 4px
 }
 
-.social-icons li.title {
-    margin-right: 15px;
-    text-transform: uppercase;
-    color: #96a2b2;
-    font-weight: 700;
-    font-size: 13px
-}
-
 .social-icons a {
     background-color: #eceeef;
     color: #818a91;
@@ -949,6 +942,10 @@ textarea:focus {
 
 table {
     border-spacing: 20px 0;
+}
+
+#btnSearchNow {
+    
 }
 
 /* 

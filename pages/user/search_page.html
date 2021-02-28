@@ -8,8 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="../../static/favicon.ico"/>
-    <link rel="icon" href="./static/favicon.ico"/>
+    <link rel="icon" href="../../static/favicon.ico" />
     <title>Wanderlust | Search Results</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,22 +30,25 @@
                 <h1>Wanderlust</h1>
             </a>
             <nav>
-                <section class="flex" style="margin-top: 50px;">
+                <section style="margin-top: 50px;">
                     <form class="hero-form card flex" action="#">
-                        <div class="form-control">
-                            <input type="text" name="search-term" id="search-term"
-                                placeholder="Keywords eg: food, salons, shopping etc">
+                        <div class="flex-left flex-wrap" style="justify-content: space-between;">
+                            <div class="form-control">
+                                <input type="text" name="search-term" id="search-term"
+                                    placeholder="Keywords eg: food, salons, shopping etc">
+                            </div>
+                            <div class="form-control"> <select name="categories" id="categories">
+                                    <option value="choose" disabled selected>Choose a Category</option>
+                                    <option value="restaurants">Restaurants</option>
+                                    <option value="entertainment">Entertainment</option>
+                                    <option value="worship">Places of Worship</option>
+                                    <option value="services">Public Services</option>
+                                    <option value="health">Health & Medical</option>
+                                </select></div>
+                            <button id="btnSearchNow" type="submit" href="#" class="btn"
+                                style="margin-left: 25px;">SEARCH
+                                NOW</button>
                         </div>
-                        <div class="form-control"> <select name="categories" id="categories">
-                                <option value="choose" disabled selected>Choose a Category</option>
-                                <option value="restaurants">Restaurants</option>
-                                <option value="entertainment">Entertainment</option>
-                                <option value="worship">Places of Worship</option>
-                                <option value="services">Public Services</option>
-                                <option value="health">Health & Medical</option>
-                            </select></div>
-                        <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH
-                            NOW</button>
                     </form>
                 </section>
             </nav>
@@ -194,7 +196,7 @@
                                             <span class="flex">
                                                 <i class="fas fa-pen"></i>
                                                 <p>205</p>
-                                            </span>       
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -202,37 +204,37 @@
                         </a>
                         <a href="#">
                             <div class="card-listing">
-                            <div class="flex">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQokk-wXzy_5GMGxfJDq9Y-sFaSCAacKASBkg&usqp=CAU"
-                                    alt="" class="card-listing-img">
-                                <div class="flex-column" style="padding: 0 25px;">
-                                    <h2>IKEA</h2>
-                                    <span class="flex wander-green">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <p>Grand Praire, TX</p>
-                                    </span>
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos rerum ea odit
-                                        totam enim corrupti vero nisi.?</p>
-                                </div>
-                                <div class="flex-column">
-                                    <div class="rating">
-                                        <ul class="flex">
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="far fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                    <div class="review-count">
-                                        <span class="flex">
-                                            <i class="fas fa-pen"></i>
-                                            <p>52</p>
+                                <div class="flex">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQokk-wXzy_5GMGxfJDq9Y-sFaSCAacKASBkg&usqp=CAU"
+                                        alt="" class="card-listing-img">
+                                    <div class="flex-column" style="padding: 0 25px;">
+                                        <h2>IKEA</h2>
+                                        <span class="flex wander-green">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <p>Grand Praire, TX</p>
                                         </span>
+                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos rerum ea odit
+                                            totam enim corrupti vero nisi.?</p>
+                                    </div>
+                                    <div class="flex-column">
+                                        <div class="rating">
+                                            <ul class="flex">
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="far fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="review-count">
+                                            <span class="flex">
+                                                <i class="fas fa-pen"></i>
+                                                <p>52</p>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </a>
                         <a href="#">
                             <div class="card-listing">
@@ -297,7 +299,7 @@
                                                 <i class="fas fa-pen"></i>
                                                 <p>83</p>
                                             </span>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -332,7 +334,7 @@
                                                 <i class="fas fa-pen"></i>
                                                 <p>189</p>
                                             </span>
-                                            
+
                                         </div>
                                     </div>
                                 </div>

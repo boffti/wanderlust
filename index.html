@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="./static/favicon.ico"/>
+    <link rel="icon" href="./static/favicon.ico" />
     <title>Wanderlust | Home</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,9 +31,10 @@
                 <ul>
                     <li><a href="#" active>Home</a></li>
                     <li><a href="./pages/main_site/about.html">About</a></li>
-                    <li class="nav-item"><a href="#" class="">Services <i class="fas fa-angle-down"
-                                style="margin-left: 5px;"></i></a>
-                        <ul class="" aria-labelledby="navbarDropdownMenuLink">
+                    <li class="dropdown">
+                        <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
+                        </a>
+                        <ul class="dropdown-content">
                             <li><a class="dropdown-item" href="#">Immigrant Services</a></li>
                             <li><a class="dropdown-item" href="#">Visitor Services</a></li>
                         </ul>
@@ -97,10 +98,10 @@
                 </div>
                 <h1 id="welcome-string"></h1><span style="visibility:hidden;">|</span>
             </div>
-            <p class="flex-vertical">Find nearby attractions. Join a chatroom and meet new people.</p>
+            <p class="flex-vertical">Find nearby attractions. Bringing you closer to home.</p>
             <div class="">
-                <form class="hero-form card" action="./pages/user/search_page.html">
-                    <div class="flex-left flex-wrap">
+                <form class="hero-form card" action="./pages/user/search_page.html" style="overflow: hidden;">
+                    <div class="flex-left flex-wrap" style="justify-content: space-between;">
                         <div class="form-control">
                             <input type="text" name="search-term" id="search-term"
                                 placeholder="Keywords eg: food, salons, shopping etc">
@@ -113,7 +114,7 @@
                                 <option value="services">Public Services</option>
                                 <option value="health">Health & Medical</option>
                             </select></div>
-                        <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH
+                        <button id="btnSearchNow" type="submit" href="#" class="btn">SEARCH
                             NOW</button>
                     </div>
                 </form>
@@ -129,26 +130,26 @@
                 <h2>Explore nearby</h2>
                 <div>
                     <div class="flex" style="gap:12px">
-                            <div class="browse-card">
-                                <div class="card-header">
-                                    <img class="card-img"
-                                        src="https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/150605079_4199887670040734_6183778369989458211_n.jpg?_nc_cat=102&ccb=3&_nc_sid=8bfeb9&_nc_ohc=vnCwvru6eyEAX92zPAL&_nc_ht=scontent-dfw5-2.xx&oh=950fdeba8f4ea2b0346e7f53ca73ef38&oe=60592731"
-                                        alt="">
-                                </div>
-                                <div class="card-body">
-                                    <h1><a href="./pages/business/business_detail.html">Old School Pizza Tavern</a></h1>
-                                    <p>Arlington, TX</p>
-                                    <div class="rating">
-                                        <ul>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                        </ul>
-                                    </div>
+                        <div class="browse-card">
+                            <div class="card-header">
+                                <img class="card-img"
+                                    src="https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/150605079_4199887670040734_6183778369989458211_n.jpg?_nc_cat=102&ccb=3&_nc_sid=8bfeb9&_nc_ohc=vnCwvru6eyEAX92zPAL&_nc_ht=scontent-dfw5-2.xx&oh=950fdeba8f4ea2b0346e7f53ca73ef38&oe=60592731"
+                                    alt="">
+                            </div>
+                            <div class="card-body">
+                                <h1><a href="./pages/business/business_detail.html">Old School Pizza Tavern</a></h1>
+                                <p>Arlington, TX</p>
+                                <div class="rating">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                    </ul>
                                 </div>
                             </div>
+                        </div>
 
                         <div class="browse-card">
                             <div class="card-header">

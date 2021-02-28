@@ -1,3 +1,8 @@
+/* 
+Name - Melkot, Aaneesh Naagaraj
+Student ID - 1001750503
+*/
+
 @font-face {
     font-family: "Panton";
     font-weight: normal;
@@ -7,7 +12,7 @@
 :root {
     --primary-color: #f4f1de;
     --secondary-color: #3D405B;
-    --accent-color: #E07A5F;
+    --accent-color: #ee6c4d;
     --other-color-1: #81B29A;
     --other-color-2: #F2CC8F;
 }
@@ -266,7 +271,6 @@ img {
 
 .hero h1 {
     font-size: 35px;
-    display: inline;
 }
 
 .hero p {
@@ -295,7 +299,7 @@ img {
 .card {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     padding: 20px;
     margin: 10px;
 }
@@ -324,6 +328,10 @@ img {
 .btn-outline-secondary {
     background-color: transparent;
     border: 1px var(--secondary-color) solid;
+}
+
+.text-secondary {
+    color: var(--secondary-color);
 }
 
 .btn-outline-secondary:hover {
@@ -574,14 +582,12 @@ img {
     height: 300px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     overflow: hidden;
 }
 
 .card-body h1 {
     font-size: 1.2rem;
-    line-height: 1.1rem;
-    margin-bottom: 4px;
     color: var(--secondary-color);
 }
 
@@ -614,11 +620,11 @@ img {
 
 .rating li {
     display: inline;
-    color: #EFA127;
+    color: var(--accent-color);
 }
 
 .rating li:hover {
-    color: #FFA517;
+    color: var(--other-color-2);
     cursor: pointer;
 }
 
@@ -739,7 +745,7 @@ img {
 }
 
 .tabs>li {
-    transition-duration: 0.25s;
+    /* transition-duration: 0.25s; */
     display: table-cell;
     list-style: none;
     text-align: center;
@@ -749,10 +755,10 @@ img {
     cursor: pointer;
 }
 
-.tabs>li:hover:before {
+/* .tabs>li:hover:before {
     -webkit-transform: translateY(70%);
     transform: translateY(70%);
-}
+} */
 
 .tabs>li.active {
     color: var(--accent-color);
@@ -779,7 +785,6 @@ img {
 .tab-content>li .tab-content-container {
     width: 100%;
     padding-top: 20px;
-    background-color: white;
     overflow: visible;
 
 }
@@ -890,3 +895,70 @@ img {
 .border-l-yellow {
     border-left: 4px var(--other-color-2) solid;
 }
+
+@media (-webkit-device-pixel-ratio: 1.5) {}
+
+@media (-webkit-device-pixel-ratio: 1.25) {}
+
+.rating-count {
+    font-size: 1.1rem;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    padding-top: 0.6em;
+}
+
+hr {
+    height: 1.5px;
+    background-color: #ccc;
+    border: none;
+}
+
+.review-card-header .review-card-user-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+}
+
+.review-card-header p {
+    margin: 0;
+}
+
+.review-form-star {
+    color: #ced4da;
+    ;
+}
+
+.review-form-star:hover {
+    color: var(--accent-color)
+}
+
+textarea {
+    border-radius: 10px;
+    padding: 6px;
+    resize: none;
+    overflow: auto;
+    border: 1px var(--accent-color) solid;
+}
+
+textarea:focus {
+    border: 3px var(--accent-color) solid;
+    outline: none;
+}
+
+table {
+    border-spacing: 20px 0;
+}
+
+/* 
+Design inspired by Yelp and Zomato 
+
+The following references were used while designing the styles
+1. MDN - https://developer.mozilla.org/en-US/
+2. Stackoverflow - https://stackoverflow.com/questions/tagged/css
+3. CSS Tricks - https://css-tricks.com/
+4. Flexbox - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+5. Pinterest - https://www.pinterest.se/fromupnorth/web-design/
+6. Coolors - https://coolors.co/
+*/

@@ -25,6 +25,8 @@ jQuery(document).ready(function ($) {
 
     $(".profileName").text(`${firstName} ${lastName}`);
     $(".currentLocation").html(`<i class="fas fa-map-marker-alt loc-icon"></i> ${cityName}, ${stateAbbr}`)
+    $(".business-name").text(`${faker.company.companyName()}`);
+    $(".business-category").text(`${faker.company.catchPhrase()}`);
 
     $.ajax({
         url: 'https://randomuser.me/api/',

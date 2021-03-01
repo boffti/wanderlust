@@ -4,222 +4,185 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="icon" href="./static/favicon.ico"/>
-        <title>Wanderlust | Home</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-            integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-            crossorigin="anonymous" />
-        <link href="../../static/css/style.css" rel="stylesheet">
-        <link href="../../static/css/karthik.css" rel="stylesheet">
-        
-    </head>
-    
-    <body>
-        <!--[if lt IE 7]>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../../static/favicon.ico" />
+    <title>Wanderlust | Contact Us</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+    <link href="../../static/css/karthik.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
                 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
             <![endif]-->
-    
-        <!-- Navbar -->
-        <div id="navbar" class="navbar navbar-primary">
-            <div class="container flex">
-                <h1>Wanderlust</h1>
-                <nav>
-                    <ul>
-                        <li><a href="#" active>Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li class="nav-item"><a href="#" class="">Services <i class="fas fa-angle-down"
-                                    style="margin-left: 5px;"></i></a>
-                            <ul class="" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-    
-                <!-- <div class="signup">
-                    <button class="btn btn-outline-secondary">Login / Signup</button>
-                </div> -->
-                <ul class="">
-                    <li>
-                        <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
-                    </li>
-                    <li>
-                        <a href="./pages/user/profile.html" class="profile flex dropdown-toggle">
-                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
-                            <p id="profileName" class="profileName"></p>
-                            <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+
+    <!-- Navbar -->
+    <div id="navbar" class="navbar navbar-primary">
+        <div class="container flex">
+            <h1>Wanderlust</h1>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
-                        <!-- <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">
-                                    Drop Item 1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Drop Item 2
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Drop Item 3
-                                </a>
-                            </li>
-                        </ul> -->
+                        <ul class="dropdown-content">
+                            <li><a class="dropdown-item" href="./immigrant_services.html">Immigrant Services</a></li>
+                            <li><a class="dropdown-item" href="./visitor_service.html">Visitor Services</a></li>
+                        </ul>
                     </li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="./contact.html" active>Contact</a></li>
                 </ul>
+            </nav>
+
+            <!-- <div class="signup">
+                <button class="btn btn-outline-secondary">Login / Signup</button>
+            </div> -->
+            <ul class="">
+                <li>
+                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
+                </li>
+                <li>
+                    <a href="./pages/user/profile.html" class="profile flex dropdown-toggle">
+                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                        <p id="profileName" class="profileName"></p>
+                        <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                    </a>
+                    <!-- <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">
+                                Drop Item 1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Drop Item 2
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Drop Item 3
+                            </a>
+                        </li>
+                    </ul> -->
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <section style="background-color: var(--primary-color); padding:60px 0;">
+        <div class="container" style="margin-top: 70px;">
+            <div class="flex-center" style="justify-content: space-between; align-items:center;">
+                <h2 class="display-4">We'd love to hear from you. Please reach out to us with any queries.</h2>
             </div>
-        </div>                  
-           
-        <html>
-            <head>
-            <title>Contact Us</title>
-              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
-            </head>
-             <body ng-app="">
-                <div class="content-wrap">
-                    <div class="map-wrap">
-                        <iframe frameborder="0" height="300" src="https://maps.google.com/maps?q=w%20mitchell%20st&t=&z=13&ie=UTF8&iwloc=&output=embed" style="border:0" width=100%"></iframe>
-                    </div>
-                  </div>
-              <div class="touch">
-                <h2>Contact Us, Get in touch</h2>
-                <hr class="redline">
-              </div>
-              
-              <action action="" method="POST" name="contact-form">
-              <div class="container form-margin">
-                <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>     <div class="col-lg-4 col-md-4 col-sm-4">
-                  <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name" ng-model="firstname" name="firstname" required>    
-                  </div>
-                <div class="form-group">
-                <input type="text" class="form-control" placeholder="Country of origin" ng-model="company" name="company" required>    
-                  </div>
-                <div class="form-group">
-                <input type="text" class="form-control" placeholder="Phone" ng-model="phone" name="firstname" required>    
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                  <div class="form-group">
-                <input type="text" class="form-control" placeholder="Last Name" ng-model="lastname" name="lastname" required>    
-                  </div>
-                  <div class="form-group">
-                <input type="email" class="form-control" placeholder="E-mail" ng-model="email" name="email" required>    
-                  </div>
-                  <div class="form-group">
-                <input type="text" class="form-control" placeholder="Visitor or Immigrant" ng-model="course" name="course" required>    
-                  </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
-                </div>
-              </div>
-              
-              <div class="container">
-                <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
-                <div class="col-lg-8 col-md-8 col-sm-8">
-                  <div class="form-group">
-                <textarea class="form-control" rows="6" placeholder="Message" ng-model="message" name="message" required></textarea>
-              </div>  
-                  <div class="pager">
-                  <button type="submit" class="btn btn-success">SEND MESSAGE</button>
-                  </div>
-                  </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
-              
-              </div>
-              </action>
-              </div>
+        </div>
+    </section>
+    <br>
 
-              
-               </body>
-             <!-- Site footer -->
-             <footer class="site-footer">
-             <div class="container">
-             <div class="grid grid-3">
-              <div class="">
-                  <h6>About</h6>
-                  <p class="text-justify"><i>WANDERLUST</i> is a portal for immigrants who have just moved to a new
-                      location. They can use the provided services to find places of interest around them. They can
-                      rate and review businesses and upload photos and videos to their profile.</p>
-              </div>
-
-              <div class="">
-                  <h6>Categories</h6>
-                  <ul class="footer-links">
-                      <li><a href="#">Restaurants</a></li>
-                      <li><a href="#">Shopping</a></li>
-                      <li><a href="#">Education</a></li>
-                      <li><a href="#">Beauty</a></li>
-                      <li><a href="#">Entertainment</a></li>
-                      <li><a href="#">Health & Medical</a></li>
-                  </ul>
-              </div>
-
-              <div class="">
-                  <h6>Quick Links</h6>
-                  <ul class="footer-links">
-                      <li><a href="#">About</a></li>
-                      <li><a href="#">Services</a></li>
-                      <li><a href="#">Blog</a></li>
-                      <li><a href="#">Contact</a></li>
-                      <li><a href="./pages/login/login.html">Login</a></li>
-                  </ul>
-              </div>
-           </div>
-           <hr>
+    <!-- Contact Form -->
+    <div class="container">
+        <div class="card">
+            <h3>Contact us</h3>
+            <div class="flex-left" style="justify-content: space-around;">
+                <div style="width: 100%;">
+                    <input type="text" name="firstName" id="" placeholder="First name">
+                    <input type="text" name="country" id="" placeholder="Country">
+                    <input type="text" name="phone" id="" placeholder="Phone">
+                </div>
+                <div style="width: 100%;">
+                    <input type="text" name="lastName" id="" placeholder="Last name">
+                    <input type="text" name="email" id="" placeholder="Email">
+                    <input type="text" name="userType" id="" placeholder="Immigrant/Visitor">
+                </div>
             </div>
-      <div class="container">
-          <div class="grid grid-3">
-              <div class="">
-                  <p class="copyright-text">Wanderlust &copy; 2021. All Rights Reserved.
-                  </p>
-              </div>
+            <textarea placeholder="Query" id="" name="query" rows="6" cols="30"></textarea>
+            <button class="btn">SUBMIT</button>
+        </div>
+    </div>
 
-              <div style="margin-top: 10px;">
-                  <ul class="social-icons">
-                      <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                      <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                      <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-                      <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
-                  </ul>
-              </div>
-          </div>
-      </div>
-  </footer>
+    <br>
 
+    <div class="content-wrap">
+        <div class="map-wrap">
+            <iframe frameborder="0" height="300"
+                src="https://maps.google.com/maps?q=w%20mitchell%20st&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                style="border:0" width="100%"></iframe>
+        </div>
+    </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
-      integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
-      crossorigin="anonymous"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="./static/js/typed.js"></script>
-  <script>
-      var typed = new Typed('#welcome-string', {
-          stringsElement: '#typed',
-          showCursor: false,
-          cursorChar: '|',
-          typeSpeed: 70,
-          backSpeed: 70,
-          backDelay: 5000,
-          loop: true,
-          loopCount: Infinity,
-      });
-  </script>
-  <script src="./static/js/app.js"></script>
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="">
+                    <h6>About</h6>
+                    <p class="text-justify"><i>WANDERLUST</i> is a portal for immigrants who have just moved to a new
+                        location. They can use the provided services to find places of interest around them. They can
+                        rate and review businesses and upload photos and videos to their profile.</p>
+                </div>
+
+                <div class="">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">Beauty</a></li>
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Health & Medical</a></li>
+                    </ul>
+                </div>
+
+                <div class="">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="./pages/main_site/about.html">About</a></li>
+                        <li><a href="./pages/main_site/immigrant_services.html">Immigrant Services</a></li>
+                        <li><a href="./pages/main_site/visitor_service.html">Visitor Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="./pages/main_site/contact.html">Contact</a></li>
+                        <li><a href="./pages/login/login.html">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="">
+                    <p class="copyright-text">Wanderlust &copy; 2021. All Rights Reserved.
+                    </p>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
+        integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+        crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../../static/js/app.js"></script>
+
 </body>
-
-</html>
 
 </html>

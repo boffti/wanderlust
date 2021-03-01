@@ -1,33 +1,7 @@
-* {
-    margin-top: 0;
-    margin: 0;
-    padding: 0;
-}
-
-.layout-center {
-    margin: 0;
-    max-width: 1024px;
-}
-
 .wrapper {
     font: 300 20px/32px 'Roboto', sans-serif;
 }
 
-.clearfix:after {
-    clear: both;
-    content: ".";
-    display: block;
-    height: 400;
-    visibility: hidden;
-    font-size: 0;
-}
-
-.box {
-    background: url("https://image.ibb.co/nJHGgk/about_us1.jpg");
-    color: rgb(245, 243, 243);
-    text-align: center;
-    z-index: 1;
-}
 
 .text {
     padding: 100px 0;
@@ -246,11 +220,7 @@
     background-color: #e7e7e7;
 }
 
-.signup-page .card {
-    width: 40rem;
-}
-
-.signup-form input {
+input {
     font-family: inherit;
     border: 2px #e7e7e7 solid;
     border-radius: 50px;
@@ -262,13 +232,24 @@
     width: 100%;
 }
 
-.signup-form input:focus {
+input:focus {
     outline: none;
     border: 3px #E07A5F solid;
     border-radius: 50px;
 }
 
-.signup-form .btn {
+textarea {
+    width: 100%;
+    border: 2px #e7e7e7 solid;
+    border-radius: 20px;
+}
+
+textarea:focus {
+    outline: none;
+    border: 3px #E07A5F solid;
+}
+
+.btn {
     display: block;
     width: 100%;
     border-radius: 50px;

@@ -1,8 +1,10 @@
+/* Author : Melkot, Aaneesh Naagaraj
+ID : 1001750503 */
 $.noConflict();
 jQuery(document).ready(function ($) {
 
     // Sticky Navbar
-    window.onscroll = function () {
+/*     window.onscroll = function () {
         stickNav()
     };
     var navbar = document.getElementById("navbar");
@@ -14,7 +16,7 @@ jQuery(document).ready(function ($) {
         } else {
             navbar.classList.remove("sticky");
         }
-    }
+    } */
 
     // Fake Placeholder names and Images
     let firstName = faker.name.firstName();

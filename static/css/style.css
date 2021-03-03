@@ -1,7 +1,5 @@
 /* 
-Author
-
-Name - Melkot, Aaneesh Naagaraj
+Author - Melkot, Aaneesh Naagaraj
 Student ID - 1001750503
 
 References listed at the end of file
@@ -132,6 +130,17 @@ img {
     padding: 0 40px;
 }
 
+@media (max-width: 1200px) {
+    .navbar ul {
+        display: none;
+    }
+
+    .navbar .menu-icon {
+        float: right;
+        display: block !important;
+    }
+}
+
 @media (max-width: 540px) {
     .container {
         width: 100%;
@@ -173,6 +182,10 @@ img {
 
     #right-section {
         display: none;
+    }
+    .navbar .menu-icon {
+        float: right;
+        display: block !important;
     }
 }
 
@@ -714,7 +727,7 @@ img {
 }
 
 .w-sm {
-    width: 200px im !important;
+    width: 200px !important;
 }
 
 .card-listing {
@@ -1047,6 +1060,9 @@ table {
     justify-content: space-between;
 }
 
+.navbar .menu-icon {
+    display: none;
+}
 
 
 /* 
@@ -1060,5 +1076,5 @@ The following references were used while designing the styles
 5. Pinterest - https://www.pinterest.se/fromupnorth/web-design/
 6. Coolors - https://coolors.co/
 
-! Nothing has been copied. Styles were written from scratch.
+Nothing has been copied. Styles were written from scratch.
 */

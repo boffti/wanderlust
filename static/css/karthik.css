@@ -203,23 +203,6 @@
     background-color: var(--primary-color);
 }
 
-.navbar ul li ul {
-    display: none;
-}
-
-.navbar ul li:hover ul {
-    display: block;
-    margin-top: 15px;
-    width: 200px;
-    left: 0;
-    position: absolute;
-}
-
-.navbar ul li:hover ul li {
-    display: block;
-    background-color: #e7e7e7;
-}
-
 input {
     font-family: inherit;
     border: 2px #e7e7e7 solid;

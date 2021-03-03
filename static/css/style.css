@@ -1,6 +1,10 @@
 /* 
+Author
+
 Name - Melkot, Aaneesh Naagaraj
 Student ID - 1001750503
+
+References listed at the end of file
 */
 
 @font-face {
@@ -17,26 +21,6 @@ Student ID - 1001750503
     --other-color-2: #F2CC8F;
 }
 
-/* @font-face {
-  font-family: "Panton";
-  font-weight: lighter;
-  src: url("../font/Panton\ Light.woff");
-}
-@font-face {
-  font-family: "Panton";
-  font-style: italic;
-  src: url("../font/Panton\ Italic.woff");
-}
-@font-face {
-  font-family: "Panton";
-  font-weight: bold;
-  src: url("../font/Panton\ Bold.woff");
-}
-@font-face {
-  font-family: "Panton";
-  font-weight: bolder;
-  src: url("../font/Panton\ Black.woff");
-} */
 
 * {
     box-sizing: border-box;
@@ -652,21 +636,34 @@ img {
     background-color: var(--primary-color);
 }
 
-.navbar ul li ul {
+.of-v {
+    overflow: visible;
+}
+
+.navbar .dropdown {
+    overflow: visible;
+    position:initial;
+}
+
+.navbar .dropdown-content {
     display: none;
 }
 
-.navbar ul li:hover ul {
+.navbar .dropdown:hover .dropdown-content {
     display: block;
-    margin-top: 15px;
+    float: right;
+    margin-top: 5px;
     width: 200px;
-    left: 0;
-    position: absolute;
+    position:absolute;
+    overflow: visible;
+    z-index: 99999;
+    background-color: #e7e7e7;
+    border-radius: 10px;
 }
 
-.navbar ul li:hover ul li {
+.navbar .dropdown:hover ul li {
     display: block;
-    background-color: #e7e7e7;
+    padding: 12px;
 }
 
 .signup-page .card {

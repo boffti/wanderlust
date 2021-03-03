@@ -109,7 +109,8 @@ img {
 .navbar a {
     padding: 10px;
     margin: 0 5px;
-    font-weight: bold;;
+    font-weight: bold;
+    ;
 }
 
 /* .navbar a:hover {
@@ -176,6 +177,19 @@ img {
     .hero {
         height: 100% !important;
     }
+
+    .flex-left {
+        flex-direction: column;
+    }
+
+    .container-fluid-left {
+        margin-left: 0px !important;
+        margin: 0 12px !important;
+    }
+
+    #right-section {
+        display: none;
+    }
 }
 
 
@@ -202,6 +216,19 @@ img {
 
     .hero {
         height: 100% !important;
+    }
+
+    .flex-left {
+        flex-direction: column;
+    }
+
+    .container-fluid-left {
+        margin-left: 0px !important;
+        margin: 0 12px !important;
+    }
+
+    #right-section {
+        display: none;
     }
 }
 
@@ -234,7 +261,7 @@ img {
 }
 
 .container-fluid-left {
-    margin-right: auto;
+    /* margin-right: auto; */
     margin-left: 50px;
 }
 
@@ -944,9 +971,86 @@ table {
     border-spacing: 20px 0;
 }
 
-#btnSearchNow {
-    
+.location-select-modal {
+    display: none;
+    top: 0;
+    min-width: 250px;
+    width: 600px;
+    height: 400px;
+    margin: auto;
+    position: fixed;
+    z-index: 50000;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
+
+
+    animation-name: fadeIn_Modal;
+    animation-duration: 0.5s;
+
 }
+
+.modal-container {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    opacity: 0.9;
+    background: #222;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+
+    animation-name: fadeIn_Container;
+    animation-duration: 1s;
+
+}
+
+.modal-header {
+    width: 100%;
+    height: 70px;
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 2px var(--secondary-color) solid;
+}
+
+.modal-header a{
+    text-decoration: none;
+    float: right;
+    line-height: 70px;
+    margin-right: 20px;
+    color: var(--secondary-color);
+    }
+
+.modal-content {
+    padding: 20px;
+}
+
+@keyframes fadeIn_Modal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn_Container {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.9;
+    }
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+
 
 /* 
 Design inspired by Yelp and Zomato 
@@ -958,4 +1062,6 @@ The following references were used while designing the styles
 4. Flexbox - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 5. Pinterest - https://www.pinterest.se/fromupnorth/web-design/
 6. Coolors - https://coolors.co/
+
+! Nothing has been copied. Styles were written from scratch.
 */

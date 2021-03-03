@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="../../static/favicon.ico"/>
+    <link rel="icon" href="../../static/favicon.ico" />
     <title>Wanderlust | My Profile</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +32,7 @@
             <nav>
                 <ul>
                     <li><a href="../../index.html">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="../main_site/about.html">About</a></li>
                     <li class="nav-item"><a href="#" class="">Services <i class="fas fa-angle-down"
                                 style="margin-left: 5px;"></i></a>
                         <ul class="" aria-labelledby="navbarDropdownMenuLink">
@@ -41,7 +41,7 @@
                         </ul>
                     </li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="../main_site/contact.html">Contact</a></li>
                 </ul>
             </nav>
 
@@ -53,7 +53,8 @@
                     <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
                 </li>
                 <li>
-                    <a href="#" class="profile flex dropdown-toggle" style="border-bottom: 3px var(--accent-color) solid; color: var(--accent-color)">
+                    <a href="#" class="profile flex dropdown-toggle"
+                        style="border-bottom: 3px var(--accent-color) solid; color: var(--accent-color)">
                         <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
                         <p id="profileName" class="profileName"></p>
                         <!-- <i class="fas fa-angle-down" style="margin-left: 8px;"></i> -->
@@ -89,11 +90,37 @@
             </div>
             <!-- <div class="card"> -->
             <div class="flex-left">
-                <div class="card" style="height: fit-content;">
-                    <div class="flex-center">
-                        <img id="profileIMG" src="" alt="profile" class="profileIMG"
-                            style="width: 200px; border-radius: 100px;">
-                        <h2 id="profileName" class="profileName"></h2>
+                <div class="flex-center">
+                    <div class="card" style="height: fit-content; width:100%;">
+                        <div class="flex-center">
+                            <img id="profileIMG" src="" alt="profile" class="profileIMG"
+                                style="width: 200px; border-radius: 100px;">
+                            <h2 id="profileName" class="profileName"></h2>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 100%;">
+                        <div class="flex-left space-between">
+                            <h3>Your Details</h3>
+                            <a href="#"><i class="fas fa-edit"></i></a>
+                        </div>
+                        <br>
+                        <div class="flex-column" style="align-items: flex-start;">
+                            <span class="flex"><i class="fas fa-user" style="margin-right: 12px;"></i>
+                                <p class="profileName strong"></p>
+                            </span>
+                            <span class="flex"><i class="fas fa-birthday-cake" style="margin-right: 12px;"></i>
+                                <p class="strong">12/17/1992</p>
+                            </span>
+                            <span class="flex"><i class="fas fa-suitcase" style="margin-right: 12px;"></i>
+                                <p class="strong">Professional Moonwalker</p>
+                            </span>
+                            <span class="flex"><i class="fas fa-globe-americas" style="margin-right: 12px;"></i>
+                                <p class="strong">Martian</p>
+                            </span>
+                            <span class="flex"><i class="fas fa-phone-alt" style="margin-right: 12px;"></i>
+                                <p class="strong">217 904 2873</p>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -238,17 +265,7 @@
         </div>
     </section>
 
-    <div class="container">
-        <div class="content">
-
-
-
-
-        </div>
-    </div>
-
     <br>
-
 
     <!-- Site footer -->
     <footer class="site-footer">
@@ -276,12 +293,12 @@
                 <div class="">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
-                        <li><a href="./pages/main_site/about.html">About</a></li>
-                        <li><a href="./pages/main_site/immigrant_services.html">Immigrant Services</a></li>
-                        <li><a href="./pages/main_site/visitor_service.html">Visitor Services</a></li>
+                        <li><a href="../main_site/about.html">About</a></li>
+                        <li><a href="../main_site/immigrant_services.html">Immigrant Services</a></li>
+                        <li><a href="../main_site/visitor_service.html">Visitor Services</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="./pages/main_site/contact.html">Contact</a></li>
-                        <li><a href="./pages/login/login.html">Login</a></li>
+                        <li><a href="../main_site/contact.html">Contact</a></li>
+                        <li><a href="../login/login.html">Login</a></li>
                     </ul>
                 </div>
             </div>

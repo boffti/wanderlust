@@ -40,34 +40,43 @@ jQuery(document).ready(function ($) {
     });
 
     // TODO
-    $("#btnSearchNow").on('click', function() {
-    });
+    $("#btnSearchNow").on('click', function () {});
 
     // Profile Page Tabs
-	var clickedTab = $(".tabs > .active");
-	var tabWrapper = $(".tab-content");
-	var activeTab = tabWrapper.find(".active");
-	var activeTabHeight = activeTab.outerHeight();
-	
-	activeTab.show();
-	tabWrapper.height(activeTabHeight);
-	
-	$(".tabs > li").on("click", function() {
-		$(".tabs > li").removeClass("active");
-		$(this).addClass("active");
-		clickedTab = $(".tabs .active");
-		activeTab.fadeOut(250, function() {
-			$(".tab-content > li").removeClass("active");
-			var clickedTabIndex = clickedTab.index();
-			$(".tab-content > li").eq(clickedTabIndex).addClass("active");
-			activeTab = $(".tab-content > .active");
-			activeTabHeight = activeTab.outerHeight();	
-			tabWrapper.stop().delay(50).animate({
-				height: activeTabHeight
-			}, 500, function() {
-				activeTab.delay(50).fadeIn(250);
-			});
-		});
-	});
-	
+    var clickedTab = $(".tabs > .active");
+    var tabWrapper = $(".tab-content");
+    var activeTab = tabWrapper.find(".active");
+    var activeTabHeight = activeTab.outerHeight();
+
+    activeTab.show();
+    tabWrapper.height(activeTabHeight);
+
+    $(".tabs > li").on("click", function () {
+        $(".tabs > li").removeClass("active");
+        $(this).addClass("active");
+        clickedTab = $(".tabs .active");
+        activeTab.fadeOut(250, function () {
+            $(".tab-content > li").removeClass("active");
+            var clickedTabIndex = clickedTab.index();
+            $(".tab-content > li").eq(clickedTabIndex).addClass("active");
+            activeTab = $(".tab-content > .active");
+            activeTabHeight = activeTab.outerHeight();
+            tabWrapper.stop().delay(50).animate({
+                height: activeTabHeight
+            }, 500, function () {
+                activeTab.delay(50).fadeIn(250);
+            });
+        });
+    });
+
+    $("#currentLocation").on('click', function () {
+        $(".modal-container").css("display", "block");
+        $("#location-select-modal").css("display", "block");
+    });
+
+    $(".cancel").click(function () {
+        $(".modal-container").fadeOut();
+        $("#location-select-modal").fadeOut();
+    });
+
 });

@@ -35,8 +35,8 @@
                         <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="#">Immigrant Services</a></li>
-                            <li><a class="dropdown-item" href="#">Visitor Services</a></li>
+                            <li><a class="dropdown-item" href="./pages/main_site/immigrant_services.html">Immigrant Services</a></li>
+                            <li><a class="dropdown-item" href="./pages/main_site/visitor_service.html">Visitor Services</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Blog</a></li>
@@ -374,6 +374,23 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal-container"></div>
+
+    <div class="location-select-modal" id="location-select-modal">
+        <div class="modal-header">
+            <a href="#" class="cancel" style="float: right;">x</a>
+        </div>
+        <div class="modal-content">
+            <form>
+                <input type="text" id="first_label" placeholder="City Name">
+            </form>
+        </div>
+        <div class="footer">
+            <button id="login">Close</button>
+            <button class="cancel">Okay</button>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
         integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="

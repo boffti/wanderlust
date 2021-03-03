@@ -38,9 +38,7 @@ To run the server, execute:
   
 
 ```bash
-  
 Coming Soon
-
 ```
 
  

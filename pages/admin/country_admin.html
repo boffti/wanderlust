@@ -4,19 +4,103 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="sidenav">
+        <h2 class="wander-green">WL ADMIN</h2>
+        <ul class="sidenav-list">
+            <li class="sidenav-list-item">Item One</li>
+            <li class="sidenav-list-item">Item Two</li>
+            <li class="sidenav-list-item">Item Three</li>
+            <li class="sidenav-list-item">Item Four</li>
+            <li class="sidenav-list-item">Item Five</li>
+        </ul>
+    </nav>
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
+
+    <div id="navbar" class="navbar navbar-primary">
+        <div class="container flex">
+            <h1>Wanderlust</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="./pages/main_site/about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
+                        </a>
+                        <ul class="dropdown-content">
+                            <li><a class="dropdown-item" href="./pages/main_site/immigrant_services.html">Immigrant
+                                    Services</a></li>
+                            <li><a class="dropdown-item" href="./pages/main_site/visitor_service.html">Visitor
+                                    Services</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="./pages/main_site/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- ! If user not in session -->
+            <!-- <div class="signup">
+                    <button class="btn btn-outline-secondary">Login / Signup</button>
+                </div> -->
+
+            <!-- ! If user in session -->
+            <ul>
+                <li>
+                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
+                </li>
+                <li class="dropdown">
+                    <a href="./pages/user/profile.html" class="profile flex">
+                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                        <p id="profileName" class="profileName"></p>
+                        <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                    </a>
+                    <ul class="dropdown-content">
+                        <!-- ! If Role == Admin -->
+                        <li class="dropdown-item">
+                            <a href="./pages/admin/country_admin.html">
+                                Admin Console
+                            </a>
+                        </li>
+                        <!-- ! Endif -->
+                        <li class="dropdown-item">
+                            <a href="#">
+                                Profile
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="#">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
+        integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+        crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../../static/js/typed.js"></script>
+    <script src="../../static/js/app.js"></script>
+</body>
+
 </html>

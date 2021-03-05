@@ -114,7 +114,7 @@ img {
 
 .navbar img {
     width: 25px;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-right: 10px;
 }
 
@@ -183,6 +183,7 @@ img {
     #right-section {
         display: none;
     }
+
     .navbar .menu-icon {
         float: right;
         display: block !important;
@@ -655,7 +656,7 @@ img {
 
 .navbar .dropdown {
     overflow: visible;
-    position:initial;
+    position: initial;
 }
 
 .navbar .dropdown-content {
@@ -667,7 +668,7 @@ img {
     float: right;
     margin-top: 5px;
     width: 200px;
-    position:absolute;
+    position: absolute;
     overflow: visible;
     z-index: 99999;
     background-color: #e7e7e7;
@@ -969,7 +970,8 @@ textarea {
     padding: 6px;
     resize: none;
     overflow: auto;
-    border: 1px var(--accent-color) solid;
+    border: 1px #ddd solid;
+    font-size: 1.3rem;
 }
 
 textarea:focus {
@@ -983,17 +985,17 @@ table {
 
 .location-select-modal {
     display: none;
-    top: 0;
+    top: 100px;
+    left: 30%;
     min-width: 250px;
     width: 600px;
     height: 400px;
     margin: auto;
-    position: fixed;
+    position: absolute;
     z-index: 50000;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 10px #000;
-
 
     animation-name: fadeIn_Modal;
     animation-duration: 0.5s;
@@ -1019,18 +1021,18 @@ table {
 
 .modal-header {
     width: 100%;
-    height: 70px;
+    height: 50px;
     border-radius: 10px 10px 0px 0px;
     border-bottom: 2px var(--secondary-color) solid;
 }
 
-.modal-header a{
+.modal-header a {
     text-decoration: none;
     float: right;
-    line-height: 70px;
+    line-height: 50px;
     margin-right: 20px;
     color: var(--secondary-color);
-    }
+}
 
 .modal-content {
     padding: 20px;
@@ -1062,6 +1064,95 @@ table {
 
 .navbar .menu-icon {
     display: none;
+}
+
+#location-select {
+    width: 400px;
+    padding: 14px;
+    border-radius: 10px;
+}
+
+#location-select:focus {
+    border: 3px var(--accent-color) solid;
+    outline: none;
+}
+
+.sidenav {
+    /* grid-area: sidenav; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 240px;
+    position: fixed;
+    overflow-y: auto;
+    z-index: 99999;
+    background-color:var(--secondary-color);
+}
+
+.sidenav h2 {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidenav-list {
+    padding: 0;
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+.sidenav-list-item {
+    padding: 20px 20px 20px 40px;
+    color:#ddd;
+}
+
+.sidenav-list-item:hover {
+    background-color: var(--other-color-1);
+    cursor: pointer;
+}
+
+textarea::placeholder {
+    font-size: 1.1em;
+}
+
+.posts {
+    margin: 16px 0;
+}
+
+.post {
+    line-height: 1.2rem;
+    border-left: 4px var(--other-color-1) solid;
+}
+
+.post p {
+    margin: 4px 0;
+}
+
+.post .post-date {
+    font-size: 0.8rem;
+    color: #adb5bd;
+}
+
+.post img {
+    width: 50px; 
+    height:100%;
+    border-radius:50px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.tips .tip-footer {
+    color: #adb5bd;
+}
+
+.tips .tip-author {
+    color: #adb5bd;
+}
+
+.tips .tip-author:hover {
+    color: var(--accent-color);
 }
 
 

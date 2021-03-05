@@ -29,6 +29,7 @@ jQuery(document).ready(function ($) {
     $(".currentLocation").html(`<i class="fas fa-map-marker-alt loc-icon"></i> ${cityName}, ${stateAbbr}`)
     $(".business-name").text(`${faker.company.companyName()}`);
     $(".business-category").text(`${faker.company.catchPhrase()}`);
+    $(".profileAddress").text(`${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()}, ${faker.address.zipCode().slice(0,5)}`);
 
     $.ajax({
         url: 'https://randomuser.me/api/',
@@ -39,6 +40,19 @@ jQuery(document).ready(function ($) {
             $(".avatarIMG").attr('src', avatarURL);
             $(".profileIMG").attr('src', profileIMGURL);
         }
+    });
+
+    // Fake Post Names
+    $('.post .profileName').each(function(){
+        $(this).text(`${faker.name.firstName()} ${faker.name.lastName()}`);
+    });
+
+    $('.post .post-content').each(function(){
+        $(this).text(`${faker.lorem.sentences()}`);
+    });
+
+    $('.tips .tip-author').each(function(){
+        $(this).text(`${faker.name.firstName()} ${faker.name.lastName()}`);
     });
 
     // TODO

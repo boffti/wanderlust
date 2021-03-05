@@ -39,8 +39,10 @@
                         <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="./pages/main_site/immigrant_services.html">Immigrant Services</a></li>
-                            <li><a class="dropdown-item" href="./pages/main_site/visitor_service.html">Visitor Services</a></li>
+                            <li><a class="dropdown-item" href="./pages/main_site/immigrant_services.html">Immigrant
+                                    Services</a></li>
+                            <li><a class="dropdown-item" href="./pages/main_site/visitor_service.html">Visitor
+                                    Services</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Blog</a></li>
@@ -48,33 +50,38 @@
                 </ul>
             </nav>
 
+            <!-- ! If user not in session -->
             <!-- <div class="signup">
                 <button class="btn btn-outline-secondary">Login / Signup</button>
             </div> -->
-            <ul class="of-v">
+
+            <!-- ! If user in session -->
+            <ul>
                 <li>
                     <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
                 </li>
-                <li class="of-v">
-                    <a href="./pages/user/profile.html" class="profile flex dropdown">
+                <li class="dropdown">
+                    <a href="./pages/user/profile.html" class="profile flex">
                         <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
                         <p id="profileName" class="profileName"></p>
                         <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
                     </a>
                     <ul class="dropdown-content">
+                        <!-- ! If Role == Admin -->
+                        <li class="dropdown-item">
+                            <a href="./pages/admin/country_admin.html">
+                                Admin Console
+                            </a>
+                        </li>
+                        <!-- ! Endif -->
                         <li class="dropdown-item">
                             <a href="#">
-                                Drop Item 1
+                                Profile
                             </a>
                         </li>
                         <li class="dropdown-item">
                             <a href="#">
-                                Drop Item 2
-                            </a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="#">
-                                Drop Item 3
+                                Logout
                             </a>
                         </li>
                     </ul>
@@ -103,7 +110,7 @@
                 </div>
                 <h1 id="welcome-string"></h1><span style="visibility:hidden;">|</span>
             </div>
-            <p class="flex-vertical">Find nearby attractions. Bringing you closer to home.</p>
+            <p class="flex-vertical">Find nearby attractions. Connect with people. Contribute to your neighborhood.</p>
             <div class="">
                 <form class="hero-form card" action="./pages/user/search_page.html" style="overflow: hidden;">
                     <div class="flex-left flex-wrap" style="justify-content: space-between;">
@@ -200,16 +207,107 @@
                     </div>
                 </div>
                 <div class="" style="margin-top: 10px;">
-                    <a href="#" class="">Show more</a>
+                    <a href="#" class="">See more</a>
                 </div>
             </section>
 
             <br>
 
+            <!-- Bulletin Board Section -->
+            <section>
+                <h2>Bulletin Board</h2>
+                <!-- ! IF User.role != visitor -->
+                <form>
+                    <div class="flex-left">
+                        <textarea placeholder="Whats on your mind?" name="post" id="bulletin_post" cols="30" rows="3"
+                        style="width: 100%; padding:12px; margin: 12px" class="card"></textarea>
+                        <div class="card">
+                            <p>See the latest buzz around you. Create your own buzz.</p>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" style="margin:0 12px;">POST</button>
+                </form>
+                <!-- ! ENDIF -->
+                <div class="posts">
+                    <div class="card post">
+                        <div class="flex-left">
+                            <img class="avatarIMG" src="" alt="">
+                            <div class="full-width">
+                                <div class="flex-left space-between align-items-center">
+                                    <a href="#">
+                                        <h4 class="profileName"></h4>
+                                    </a>
+                                    <p class="post-date">12/12/2020</p>
+                                </div>
+                                <p class="post-content"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card post">
+                        <div class="flex-left">
+                            <img class="avatarIMG" src="" alt="">
+                            <div class="full-width">
+                                <div class="flex-left space-between align-items-center">
+                                    <a href="#">
+                                        <h4 class="profileName"></h4>
+                                    </a>
+                                    <p class="post-date">12/12/2020</p>
+                                </div>
+                                <p class="post-content"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card post">
+                        <div class="flex-left">
+                            <img class="avatarIMG" src="" alt="">
+                            <div class="full-width">
+                                <div class="flex-left space-between align-items-center">
+                                    <a href="#">
+                                        <h4 class="profileName"></h4>
+                                    </a>
+                                    <p class="post-date">12/12/2020</p>
+                                </div>
+                                <p class="post-content"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card post">
+                        <div class="flex-left">
+                            <img class="avatarIMG" src="" alt="">
+                            <div class="full-width">
+                                <div class="flex-left space-between align-items-center">
+                                    <a href="#">
+                                        <h4 class="profileName"></h4>
+                                    </a>
+                                    <p class="post-date">12/12/2020</p>
+                                </div>
+                                <p class="post-content"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card post">
+                        <div class="flex-left">
+                            <img class="avatarIMG" src="" alt="">
+                            <div class="full-width">
+                                <div class="flex-left space-between align-items-center">
+                                    <a href="#">
+                                        <h4 class="profileName"></h4>
+                                    </a>
+                                    <p class="post-date">12/12/2020</p>
+                                </div>
+                                <p class="post-content"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">See all</a>
+            </section>
+
+            <br>
             <!-- Tips -->
             <section>
                 <h2>Word to the Wise</h2>
-                <div>
+                <div class="tips">
                     <div class="card border-l-yellow">
                         <div class="flex flex-column align-items-left">
                             <div>
@@ -219,8 +317,8 @@
                                     tenetur magnam sit, perferendis illo, quidem quis. Facere, nostrum sit.
                                 </strong><span class="quotes">"</span>
                             </div>
-                            <div class="flex ml-auto" style="gap: 10px; ">
-                                <a href="#" style="margin: 0;">Jagan Das</a>
+                            <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                                <a class="tip-author" href="#" style="margin: 0;">Jagan Das</a>
                                 <i class="fas fa-user"></i>
                             </div>
                         </div>
@@ -236,8 +334,8 @@
                                     repudiandae.
                                 </strong><span class="quotes">"</span>
                             </div>
-                            <div class="flex ml-auto" style="gap: 10px; ">
-                                <a href="#" style="margin: 0;">Mark Appleseed</a>
+                            <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                                <a class="tip-author" href="#" style="margin: 0;">Mark Appleseed</a>
                                 <i class="fas fa-user"></i>
                             </div>
                         </div>
@@ -252,8 +350,8 @@
                                     tenetur deserunt ipsam, cumque officia itaque. Temporibus, laborum.
                                 </strong><span class="quotes">"</span>
                             </div>
-                            <div class="flex ml-auto" style="gap: 10px; ">
-                                <a href="#" style="margin: 0;">Aima Ho</a>
+                            <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                                <a class="tip-author" href="#" style="margin: 0;">Aima Ho</a>
                                 <i class="fas fa-user"></i>
                             </div>
                         </div>
@@ -261,7 +359,7 @@
 
                 </div>
                 <div class="flex" style="justify-content: space-between; padding: 0 15px">
-                    <a href="#" class="">Show more tips</a>
+                    <a href="#" class="">See more tips</a>
                     <a href="#" class="strong">+ ADD TIP</a>
                 </div>
             </section>
@@ -318,7 +416,7 @@
                     </div>
                 </div>
                 <br>
-                <a href="#" class="flex">Show all</a>
+                <a href="#" class="flex">See all</a>
             </section>
         </div>
     </div>
@@ -381,20 +479,30 @@
         </div>
     </footer>
 
-    <div class="modal-container"></div>
-
-    <div class="location-select-modal" id="location-select-modal">
-        <div class="modal-header">
-            <a href="#" class="cancel" style="float: right;">x</a>
-        </div>
-        <div class="modal-content">
-            <form>
-                <input type="text" id="first_label" placeholder="City Name">
-            </form>
-        </div>
-        <div class="footer">
-            <button id="login">Close</button>
-            <button class="cancel">Okay</button>
+    <!-- ! If user in session -->
+    <div class="modal-container">
+        <div class="location-select-modal" id="location-select-modal">
+            <div class="modal-header flex-left space-between" style="align-items: center;">
+                <p style="margin-left: 12px;">Select Location</p>
+                <a href="#" class="cancel" style="float: right;">x</a>
+            </div>
+            <div class="modal-content" style="align-items:center;">
+                <form class="flex-center" style="gap: 12px;">
+                    <div class="form-control"> <select id="location-select" name="location" id="location">
+                            <option value="choose" disabled selected>Change your location</option>
+                            <option value="arlington">Arlington</option>
+                            <option value="newyork">New York</option>
+                            <option value="hongkong">Hong Kong</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="london">London</option>
+                            <option value="dubai">Dubai</option>
+                        </select></div>
+                    <div>
+                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
+                        <button class="btn" type="submit">Change</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

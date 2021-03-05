@@ -972,6 +972,7 @@ textarea {
     overflow: auto;
     border: 1px #ddd solid;
     font-size: 1.3rem;
+    font-family: 'Panton';
 }
 
 textarea:focus {
@@ -1112,7 +1113,8 @@ table {
 }
 
 textarea::placeholder {
-    font-size: 1.1em;
+    font-size: 1em;
+    font-family: 'Panton';
 }
 
 .posts {

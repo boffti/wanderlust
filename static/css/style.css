@@ -1078,40 +1078,6 @@ table {
     outline: none;
 }
 
-.sidenav {
-    /* grid-area: sidenav; */
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 240px;
-    position: fixed;
-    overflow-y: auto;
-    z-index: 99999;
-    background-color:var(--secondary-color);
-}
-
-.sidenav h2 {
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.sidenav-list {
-    padding: 0;
-    margin-top: 20px;
-    list-style-type: none;
-}
-
-.sidenav-list-item {
-    padding: 20px 20px 20px 40px;
-    color:#ddd;
-}
-
-.sidenav-list-item:hover {
-    background-color: var(--other-color-1);
-    cursor: pointer;
-}
-
 textarea::placeholder {
     font-size: 1em;
     font-family: 'Panton';

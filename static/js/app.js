@@ -55,6 +55,18 @@ jQuery(document).ready(function ($) {
         $(this).text(`${faker.name.firstName()} ${faker.name.lastName()}`);
     });
 
+    $('.post .postIMG').each(function() {
+        var $img = $(this);
+        $.ajax({
+            url: 'https://randomuser.me/api/',
+            dataType: 'json',
+            success: function (data) {
+                var avatarURL = data.results[0].picture.thumbnail;
+                $img.attr('src', avatarURL);
+            }
+        });
+    })
+
     // TODO
     $("#btnSearchNow").on('click', function () {});
 
@@ -95,4 +107,5 @@ jQuery(document).ready(function ($) {
         $("#location-select-modal").fadeOut();
     });
 
+    
 });

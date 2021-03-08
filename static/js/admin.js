@@ -1,4 +1,7 @@
-var ctx = document.getElementById('myChart').getContext('2d');
+$.noConflict();
+jQuery(document).ready(function ($) {
+
+    var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -34,4 +37,21 @@ var myChart = new Chart(ctx, {
             }]
         }
     }
+});
+
+$("#btnAddCity").on('click', function() {
+    $(".modal-container").css("display", "block");
+    $("#add-city-modal").css("display", "block");
+});
+
+$(".cancel").click(function () {
+    $(".modal-container").fadeOut();
+    $(".modal").fadeOut();
+});
+
+$('#btnAddPlaceOfInterest').on('click', function() {
+    $(".modal-container").css("display", "block");
+    $("#add-poi-modal").css("display", "block");
+});
+
 });

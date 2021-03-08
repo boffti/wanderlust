@@ -984,7 +984,7 @@ table {
     border-spacing: 20px 0;
 }
 
-.location-select-modal {
+.modal {
     display: none;
     top: 100px;
     left: 30%;

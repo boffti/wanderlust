@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-    <link href="../../static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/style.css">
     <link rel="stylesheet" href="../../static/css/gabriel.css">
 </head>
 
@@ -125,7 +125,50 @@
                 </div>
                 <div>
                     <div class="card" style="width: 500px; height:50%">
-                        <h3>Statistic 1</h3>
+                        <div class="flex-left space-between">
+                            <h3>Cities</h3>
+                            <button id="btnAddCity" class="btn">+ ADD</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>New York</td>
+                                    <td>
+                                        <i class="fas fa-trash-alt"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Arlington</td>
+                                    <td>
+                                        <i class="fas fa-trash-alt"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>San Fransico</td>
+                                    <td>
+                                        <i class="fas fa-trash-alt"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Miami</td>
+                                    <td>
+                                        <i class="fas fa-trash-alt"></i>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
                     </div>
                     <div class="flex-left space-between">
                         <div class="card" style="height: 50%;">
@@ -142,15 +185,14 @@
             <div class="card">
                 <table>
                     <caption>Manage Places of Interest
-                        <button class="btn" style="float: right;">ADD PLACE</button>
+                        <button id="btnAddPlaceOfInterest" class="btn" style="float: right;">+ ADD</button>
                     </caption>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>City</th>
-                            <th>User Name</th>
-                            <th>Post Content</th>
-                            <th>Timestamp</th>
+                            <th>Place Name</th>
+                            <th>Place Description</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -158,9 +200,10 @@
                         <tr>
                             <td>1</td>
                             <td>Arlington</td>
-                            <td>Aneesh Melkot</td>
-                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur voluptas, perspiciatis illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
-                            <td>12:16 12/43/4342</td>
+                            <td>Old School Pizza Tavern</td>
+                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur voluptas, perspiciatis
+                                illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae
+                                recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
                             <td>
                                 <button class="btn btn-outline-secondary text-secondary">
                                     <i class="fas fa-trash-alt"></i>
@@ -171,8 +214,9 @@
                             <td>2</td>
                             <td>New York</td>
                             <td>Angad Manjunath</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cum odit quam iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos placeat, ad expedita reiciendis voluptatibus.</td>
-                            <td>12:16 12/43/4342</td>
+                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cum odit quam
+                                iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos
+                                placeat, ad expedita reiciendis voluptatibus.</td>
                             <td>
                                 <button class="btn btn-outline-secondary text-secondary">
                                     <i class="fas fa-trash-alt"></i>
@@ -201,7 +245,9 @@
                             <td>1</td>
                             <td>Arlington</td>
                             <td>Aneesh Melkot</td>
-                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur voluptas, perspiciatis illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
+                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur voluptas, perspiciatis
+                                illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae
+                                recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
                             <td>12:16 12/43/4342</td>
                             <td>
                                 <button class="btn btn-outline-secondary text-secondary">
@@ -213,7 +259,9 @@
                             <td>2</td>
                             <td>New York</td>
                             <td>Angad Manjunath</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cum odit quam iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos placeat, ad expedita reiciendis voluptatibus.</td>
+                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cum odit quam
+                                iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos
+                                placeat, ad expedita reiciendis voluptatibus.</td>
                             <td>12:16 12/43/4342</td>
                             <td>
                                 <button class="btn btn-outline-secondary text-secondary">
@@ -243,7 +291,9 @@
                             <td>1</td>
                             <td>Arlington</td>
                             <td>Aneesh Melkot</td>
-                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur voluptas, perspiciatis illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
+                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur voluptas, perspiciatis
+                                illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae
+                                recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
                             <td>12:16 12/43/4342</td>
                             <td>
                                 <button class="btn btn-outline-secondary text-secondary">
@@ -255,7 +305,9 @@
                             <td>2</td>
                             <td>New York</td>
                             <td>Angad Manjunath</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cum odit quam iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos placeat, ad expedita reiciendis voluptatibus.</td>
+                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cum odit quam
+                                iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos
+                                placeat, ad expedita reiciendis voluptatibus.</td>
                             <td>12:16 12/43/4342</td>
                             <td>
                                 <button class="btn btn-outline-secondary text-secondary">
@@ -269,14 +321,71 @@
         </div>
     </div>
 
+    <!-- Add City Modal -->
+    <div class="modal-container">
+        <div class="modal" id="add-city-modal">
+            <div class="modal-header flex-left space-between" style="align-items: center;">
+                <p style="margin-left: 12px;">Add City</p>
+                <a href="#" class="cancel" style="float: right;">x</a>
+            </div>
+            <div class="modal-content" style="align-items:center;">
+                <form class="flex-center" style="gap: 12px;">
+                    <input type="text" name="city" id="add-city-text" placeholder="City Name">
+                    <div>
+                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
+                        <button class="btn" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add POI Modal -->
+    <div class="modal-container">
+        <div class="modal" id="add-poi-modal">
+            <div class="modal-header flex-left space-between" style="align-items: center;">
+                <p style="margin-left: 12px;">Add Place of Interest</p>
+                <a href="#" class="cancel" style="float: right;">x</a>
+            </div>
+            <div class="modal-content" style="align-items:center;">
+                <form class="flex-center" style="gap: 12px;">
+                    <div class="form-control"> <select id="location-select" name="location" id="location">
+                        <option value="choose" disabled selected>Select City</option>
+                        <option value="arlington">Arlington</option>
+                        <option value="newyork">New York</option>
+                        <option value="hongkong">Hong Kong</option>
+                        <option value="bangalore">Bangalore</option>
+                        <option value="london">London</option>
+                        <option value="dubai">Dubai</option>
+                    </select></div>
+                    <input type="text" name="businessName" id="businessName" placeholder="Place Name">
+                    <textarea name="businessDesc" id="businessDesc" cols="30" rows="3" placeholder="Place Descriuption" style="width: 400px;"></textarea>
+                    <div class="form-control"> <select id="location-select" name="location" id="location">
+                        <option value="choose" disabled selected>Choose a Category</option>
+                        <option value="restaurants">Restaurants</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="education">Education</option>
+                        <option value="worship">Religion & Worship</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="health">Health & Medical</option>
+                    </select></div>
+                    <div>
+                    <div>
+                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
+                        <button class="btn" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
         integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
         crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="../../static/js/typed.js"></script>
-    <script src="../../static/js/app.js"></script>
     <script src="../../static/js/admin.js"></script>
+    <script src="../../static/js/app.js"></script>
 </body>
 
 </html>

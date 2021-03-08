@@ -4,19 +4,424 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../../static/favicon.ico" />
+    <title>WL | Reviews</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="navbar" class="navbar">
+        <div class="container flex">
+            <h1>Wanderlust</h1>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../main_site/about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
+                        </a>
+                        <ul class="dropdown-content">
+                            <li><a class="dropdown-item" href="../main_site/immigrant_services.html">Immigrant
+                                    Services</a></li>
+                            <li><a class="dropdown-item" href="../main_site/visitor_service.html">Visitor
+                                    Services</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="../main_site/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- ! If user not in session -->
+            <!-- <div class="signup">
+                    <button class="btn btn-outline-secondary">Login / Signup</button>
+                </div> -->
+
+            <!-- ! If user in session -->
+            <ul>
+                <li>
+                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
+                </li>
+                <li class="dropdown">
+                    <a href="../user/profile.html" class="profile flex">
+                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                        <p id="profileName" class="profileName"></p>
+                        <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                    </a>
+                    <ul class="dropdown-content">
+                        <!-- ! If Role == Admin -->
+                        <li class="dropdown-item">
+                            <a href="../admin/country_admin.html">
+                                Admin Console
+                            </a>
+                        </li>
+                        <!-- ! Endif -->
+                        <li class="dropdown-item">
+                            <a href="#">
+                                Profile
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="#">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <!-- Search Bar -->
+        <section class="flex">
+            <form class="hero-form card flex" action="#">
+                <div class="form-control">
+                    <input type="text" name="search-term" id="search-term"
+                        placeholder="Keywords eg: food, salons, shopping etc">
+                </div>
+                <div class="form-control"> <select name="categories" id="categories">
+                        <option value="choose" disabled selected>Choose a Category</option>
+                        <option value="restaurants">Restaurants</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="education">Education</option>
+                        <option value="worship">Religion & Worship</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="health">Health & Medical</option>
+                    </select>
+                </div>
+                <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH
+                    NOW</button>
+            </form>
+        </section>
+        <br>
+
+        <!-- Busness Header -->
+        <section>
+            <div class="flex-left" style="justify-content: space-between;">
+                <div>
+                    <h1 class="strong business-name" style="font-size: 45px; margin-bottom:0;"></h1>
+                    <div class="rating flex-left" style="font-size: 40px; align-items:center;">
+                        <ul style="padding-left:0;">
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="far fa-star"></i></li>
+                        </ul>
+                        <span class="rating-count">24 reviews</span>
+                    </div>
+                    <p class="business-category"></p>
+                    <div class="business-timings">
+                        <span style="color: var(--other-color-1); font-weight:bold; margin-right:10px;">Open</span> Open
+                        24
+                        hours
+                    </div>
+                    <br>
+                    <div>
+                        <button class="btn" style="font-size: large;"><i class="far fa-star"
+                                style="margin-right: 10px;"></i> Write a Review</button>
+                        <button class="btn btn-outline-secondary text-secondary" style="font-size: large;"><i
+                                class="fas fa-camera" style="margin-right: 10px;"></i> Add Photo</button>
+                        <button class="btn btn-outline-secondary text-secondary" style="font-size: large;"><i
+                                class="fas fa-star" style="margin-right: 10px;"></i> Share</button>
+                    </div>
+                </div>
+
+                <div style="margin-top:1.2em;">
+                    <span><i class="fas fa-external-link-alt" style="margin-right:8px;"></i><a href="#"
+                            class="text-accent" style="margin-bottom:12px;">www.businessname.com</a></span>
+                    <p><i class="fas fa-phone-alt" style="margin-right:8px;"></i> (217) 904-2873</p>
+                </div>
+            </div>
+        </section>
+        <br>
+        <hr>
+        <br>
+
+        <!-- Tips Section -->
+        <section>
+            <div class="flex-left" style="justify-content: space-between;">
+                <h2>Word to the Wise</h2>
+            </div>
+            <form>
+                <div class="flex-left">
+                    <textarea placeholder="Write a tip. Type here..." name="post" id="bulletin_post" cols="30" rows="3"
+                        style="width: 100%; padding:12px; margin: 12px" class="card"></textarea>
+                    <div class="card">
+                        <p>Write a tip to help other people. It can be about anything you've seen or heard.</p>
+                    </div>
+                </div>
+                <button type="submit" class="btn" style="margin:0 12px;">SUBMIT</button>
+            </form>
+            <br>
+            <div class="tips">
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci quibusdam
+                                accusantium, fugiat debitis dolorem iure soluta cum consequuntur dignissimos animi
+                                tenetur magnam sit, perferendis illo, quidem quis. Facere, nostrum sit.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Jagan Das</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Facilis harum eius optio. Delectus repellat sunt eveniet neque nesciunt assumenda
+                                debitis, ullam impedit molestiae tempore deleniti corporis officiis ipsa expedita
+                                repudiandae.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Mark Appleseed</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis at blanditiis
+                                quasi minima eveniet maiores enim praesentium qui dolorum, est perferendis, delectus
+                                tenetur deserunt ipsam, cumque officia itaque. Temporibus, laborum.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Aima Ho</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci quibusdam
+                                accusantium, fugiat debitis dolorem iure soluta cum consequuntur dignissimos animi
+                                tenetur magnam sit, perferendis illo, quidem quis. Facere, nostrum sit.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Jagan Das</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Facilis harum eius optio. Delectus repellat sunt eveniet neque nesciunt assumenda
+                                debitis, ullam impedit molestiae tempore deleniti corporis officiis ipsa expedita
+                                repudiandae.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Mark Appleseed</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis at blanditiis
+                                quasi minima eveniet maiores enim praesentium qui dolorum, est perferendis, delectus
+                                tenetur deserunt ipsam, cumque officia itaque. Temporibus, laborum.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Aima Ho</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci quibusdam
+                                accusantium, fugiat debitis dolorem iure soluta cum consequuntur dignissimos animi
+                                tenetur magnam sit, perferendis illo, quidem quis. Facere, nostrum sit.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Jagan Das</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Facilis harum eius optio. Delectus repellat sunt eveniet neque nesciunt assumenda
+                                debitis, ullam impedit molestiae tempore deleniti corporis officiis ipsa expedita
+                                repudiandae.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Mark Appleseed</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis at blanditiis
+                                quasi minima eveniet maiores enim praesentium qui dolorum, est perferendis, delectus
+                                tenetur deserunt ipsam, cumque officia itaque. Temporibus, laborum.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Aima Ho</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci quibusdam
+                                accusantium, fugiat debitis dolorem iure soluta cum consequuntur dignissimos animi
+                                tenetur magnam sit, perferendis illo, quidem quis. Facere, nostrum sit.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Jagan Das</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Facilis harum eius optio. Delectus repellat sunt eveniet neque nesciunt assumenda
+                                debitis, ullam impedit molestiae tempore deleniti corporis officiis ipsa expedita
+                                repudiandae.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Mark Appleseed</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-l-yellow">
+                    <div class="flex flex-column align-items-left">
+                        <div>
+                            <span class="quotes">"</span><strong>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis at blanditiis
+                                quasi minima eveniet maiores enim praesentium qui dolorum, est perferendis, delectus
+                                tenetur deserunt ipsam, cumque officia itaque. Temporibus, laborum.
+                            </strong><span class="quotes">"</span>
+                        </div>
+                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                            <a class="tip-author" href="#" style="margin: 0;">Aima Ho</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <br>
+
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="">
+                    <h6>About</h6>
+                    <p class="text-justify"><i>WANDERLUST</i> is a portal for immigrants who have just moved to a new
+                        location. They can use the provided services to find places of interest around them. They can
+                        rate and review businesses and upload photos and videos to their profile.</p>
+                </div>
+
+                <div class="">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">Beauty</a></li>
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Health & Medical</a></li>
+                    </ul>
+                </div>
+
+                <div class="">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="./pages/main_site/about.html">About</a></li>
+                        <li><a href="./pages/main_site/immigrant_services.html">Immigrant Services</a></li>
+                        <li><a href="./pages/main_site/visitor_service.html">Visitor Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="./pages/main_site/contact.html">Contact</a></li>
+                        <li><a href="./pages/login/login.html">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="">
+                    <p class="copyright-text">Wanderlust &copy; 2021. All Rights Reserved.
+                    </p>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
+        integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+        crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../../static/js/app.js"></script>
+</body>
+
 </html>

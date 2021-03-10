@@ -594,6 +594,10 @@ img {
     overflow: hidden;
 }
 
+.browse-card a:hover {
+    color: var(--accent-color);
+}
+
 .card-body h1 {
     font-size: 1.2rem;
     color: var(--secondary-color);
@@ -1103,6 +1107,10 @@ textarea::placeholder {
 }
 
 .tips .tip-author:hover {
+    color: var(--accent-color);
+}
+
+.accent-color {
     color: var(--accent-color);
 }
 

@@ -184,6 +184,18 @@ img {
         float: right;
         display: block !important;
     }
+
+    .grid-2 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 
@@ -223,6 +235,22 @@ img {
 
     #right-section {
         display: none;
+    }
+
+    .grid-2 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .rating ul {
+        flex-direction: row;
     }
 }
 
@@ -1089,9 +1117,9 @@ textarea::placeholder {
 }
 
 .post img {
-    width: 50px; 
-    height:100%;
-    border-radius:50px;
+    width: 50px;
+    height: 100%;
+    border-radius: 50px;
 }
 
 .full-width {

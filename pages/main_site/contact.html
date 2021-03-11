@@ -45,38 +45,12 @@
                 </ul>
             </nav>
 
-            <!-- <div class="signup">
-                <button class="btn btn-outline-secondary">Login / Signup</button>
-            </div> -->
-            <ul class="">
-                <li>
-                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
-                </li>
-                <li>
-                    <a href="../user/profile.html" class="profile flex dropdown-toggle">
-                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
-                        <p id="profileName" class="profileName"></p>
-                        <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
-                    </a>
-                    <!-- <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">
-                                Drop Item 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Drop Item 2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Drop Item 3
-                            </a>
-                        </li>
-                    </ul> -->
-                </li>
-            </ul>
+            <div class="signup">
+                <a href="../login/signup.html">
+                    <button class="btn btn-outline-accent text-accent">Login / Signup</button>
+                </a>
+            </div>
+            
         </div>
     </div>
 
@@ -92,21 +66,23 @@
     <!-- Contact Form -->
     <div class="container">
         <div class="card">
-            <h3>Contact us</h3>
-            <div class="flex-left" style="justify-content: space-around;">
-                <div style="width: 100%;">
-                    <input type="text" name="firstName" id="" placeholder="First name">
-                    <input type="text" name="country" id="" placeholder="Country">
-                    <input type="text" name="phone" id="" placeholder="Phone">
+            <form action="mailto:no-reply@wanderlust.axm0503.uta.cloud" method="POST">
+                <h3>Contact us</h3>
+                <div class="flex-left" style="justify-content: space-around;">
+                    <div style="width: 100%;">
+                        <input type="text" name="firstName" id="" placeholder="First name">
+                        <input type="text" name="country" id="" placeholder="Country">
+                        <input type="text" name="phone" id="" placeholder="Phone">
+                    </div>
+                    <div style="width: 100%;">
+                        <input type="text" name="lastName" id="" placeholder="Last name">
+                        <input type="text" name="email" id="" placeholder="Email">
+                        <input type="text" name="userType" id="" placeholder="Immigrant/Visitor">
+                    </div>
                 </div>
-                <div style="width: 100%;">
-                    <input type="text" name="lastName" id="" placeholder="Last name">
-                    <input type="text" name="email" id="" placeholder="Email">
-                    <input type="text" name="userType" id="" placeholder="Immigrant/Visitor">
-                </div>
-            </div>
-            <textarea placeholder="Query" id="" name="query" rows="6" cols="30"></textarea>
-            <button class="btn">SUBMIT</button>
+                <textarea placeholder="Query" id="" name="query" rows="6" cols="30"></textarea>
+                <button type="submit" class="btn btn-submit">SUBMIT</button>
+            </form>
         </div>
     </div>
 

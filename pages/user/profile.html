@@ -40,8 +40,10 @@
                     <li class="dropdown"><a href="#" class="">Services <i class="fas fa-angle-down"
                                 style="margin-left: 5px;"></i></a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="../main_site/immigrant_services.html">Immigrant Services</a></li>
-                            <li><a class="dropdown-item" href="../main_site/visitor_service.html">Visitor Services</a></li>
+                            <li><a class="dropdown-item" href="../main_site/immigrant_services.html">Immigrant
+                                    Services</a></li>
+                            <li><a class="dropdown-item" href="../main_site/visitor_service.html">Visitor Services</a>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="#">Blog</a></li>
@@ -56,30 +58,42 @@
                 <li>
                     <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
                 </li>
-                <li>
-                    <a href="#" class="profile flex dropdown-toggle"
-                        style="border-bottom: 3px var(--accent-color) solid; color: var(--accent-color)">
+                <li class="dropdown">
+                    <a href="#" class="profile flex">
                         <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
                         <p id="profileName" class="profileName"></p>
-                        <!-- <i class="fas fa-angle-down" style="margin-left: 8px;"></i> -->
+                        <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
                     </a>
-                    <!-- <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">
-                                Drop Item 1
+                    <ul class="dropdown-content" style="top:50px">
+                        <li class="dropdown-item">
+                            <a href="../user/profile.html">
+                                <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                My Profile
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                Drop Item 2
+                        <!-- ! If Role == Admin -->
+                        <li class="dropdown-item">
+                            <a href="../admin/country_admin.html">
+                                <i class="fas fa-tools" style="margin-right: 8px;"></i>
+                                Admin Console
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                Drop Item 3
+                        <!-- ! Endif -->
+                        <!-- ! If Role == SuperAdmin -->
+                        <li class="dropdown-item">
+                            <a href="../admin/super_admin.html">
+                                <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                                Super Admin Console
                             </a>
                         </li>
-                    </ul> -->
+                        <!-- ! Endif -->
+                        <li class="dropdown-item">
+                            <a href="../login/login.html">
+                                <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -95,16 +109,19 @@
             <!-- <div class="card"> -->
             <div class="flex-left">
                 <div class="flex-center">
-                    <div class="card" style="height: fit-content; width:100%; border-top: 4px var(--accent-color) solid;">
+                    <div class="card"
+                        style="height: fit-content; width:100%; border-top: 4px var(--accent-color) solid;">
                         <div class="flex-center">
                             <img id="profileIMG" src="" alt="profile" class="profileIMG"
                                 style="width: 200px; border-radius: 100px;">
                             <h2 id="profileName" class="profileName"></h2>
                             <div class="flex-left space-between">
                                 <!-- ! IF User.role has Admin -->
-                                <a href="../admin/country_admin.html" class="btn btn-outline-secondary text-secondary">Admin</a>
+                                <a href="../admin/country_admin.html"
+                                    class="btn btn-outline-secondary text-secondary">Admin</a>
                                 <!-- ! ENDIF -->
-                                <a href="../login/login.html" class="btn btn-outline-secondary text-secondary">Logout</a>
+                                <a href="../login/login.html"
+                                    class="btn btn-outline-secondary text-secondary">Logout</a>
                             </div>
                         </div>
                     </div>

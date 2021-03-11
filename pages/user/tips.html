@@ -56,26 +56,37 @@
                     <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
                 </li>
                 <li class="dropdown">
-                    <a href="../user/profile.html" class="profile flex">
+                    <a href="#" class="profile flex">
                         <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
                         <p id="profileName" class="profileName"></p>
                         <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
                     </a>
-                    <ul class="dropdown-content">
+                    <ul class="dropdown-content" style="top:50px">
+                        <li class="dropdown-item">
+                            <a href="../user/profile.html">
+                                <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                My Profile
+                            </a>
+                        </li>
                         <!-- ! If Role == Admin -->
                         <li class="dropdown-item">
                             <a href="../admin/country_admin.html">
+                                <i class="fas fa-tools" style="margin-right: 8px;"></i>
                                 Admin Console
                             </a>
                         </li>
                         <!-- ! Endif -->
+                        <!-- ! If Role == SuperAdmin -->
                         <li class="dropdown-item">
-                            <a href="#">
-                                Profile
+                            <a href="../admin/super_admin.html">
+                                <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                                Super Admin Console
                             </a>
                         </li>
+                        <!-- ! Endif -->
                         <li class="dropdown-item">
-                            <a href="#">
+                            <a href="../login/login.html">
+                                <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
                                 Logout
                             </a>
                         </li>

@@ -98,7 +98,7 @@ jQuery(document).ready(function ($) {
     });
 
     $("#currentLocation").on('click', function () {
-        $(".modal-container").css("display", "block");
+        $("#location-select-modal-container").css("display", "block");
         $("#location-select-modal").css("display", "block");
     });
 
@@ -107,5 +107,23 @@ jQuery(document).ready(function ($) {
         $("#location-select-modal").fadeOut();
     });
 
+    $("#btnEditProfile").on('click', function() {
+        $("#profile-edit-modal-container").css("display", "block");
+        $("#profile-edit-modal").css("display", "block");
+    })
+
+    $("#btnUploadPhoto").on('click', function () {
+        $("#uploadPhotoInput").click();
+    });
     
+    $("#btnUploadVideo").on('click', function () {
+        $("#uploadVideoInput").click();
+    });
+
+    $("#changeDP").on('click', function () {
+        $("#inputChangeDP").click();
+    });
+
+    // TODO Add Video & Photo on input onchange listeners
+
 });

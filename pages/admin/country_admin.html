@@ -52,30 +52,38 @@
 
             <!-- ! If user in session -->
             <ul>
-                <li>
-                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
-                </li>
                 <li class="dropdown">
-                    <a href="./pages/user/profile.html" class="profile flex">
+                    <a href="#" class="profile flex">
                         <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
                         <p id="profileName" class="profileName"></p>
                         <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
                     </a>
-                    <ul class="dropdown-content">
+                    <ul class="dropdown-content" style="top:50px">
+                        <li class="dropdown-item">
+                            <a href="../user/profile.html">
+                                <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                My Profile
+                            </a>
+                        </li>
                         <!-- ! If Role == Admin -->
                         <li class="dropdown-item">
-                            <a href="./pages/admin/country_admin.html">
+                            <a href="#">
+                                <i class="fas fa-tools" style="margin-right: 8px;"></i>
                                 Admin Console
                             </a>
                         </li>
                         <!-- ! Endif -->
+                        <!-- ! If Role == SuperAdmin -->
                         <li class="dropdown-item">
-                            <a href="#">
-                                Profile
+                            <a href="./super_admin.html">
+                                <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                                Super Admin Console
                             </a>
                         </li>
+                        <!-- ! Endif -->
                         <li class="dropdown-item">
-                            <a href="#">
+                            <a href="../login/login.html">
+                                <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
                                 Logout
                             </a>
                         </li>
@@ -173,9 +181,8 @@
                     <div class="flex-left space-between">
                         <div class="card" style="height: 50%;">
                             <h3>Statistic 2</h3>
-                        </div>
-                        <div class="card" style="height: 50%;">
-                            <h3>Statistic 3</h3>
+                            <canvas id="chart2"></canvas>
+
                         </div>
                     </div>
                 </div>
@@ -192,6 +199,7 @@
                             <th>#</th>
                             <th>City</th>
                             <th>Place Name</th>
+                            <th>Category</th>
                             <th>Place Description</th>
                             <th>Actions</th>
                         </tr>
@@ -201,6 +209,7 @@
                             <td>1</td>
                             <td>Arlington</td>
                             <td>Old School Pizza Tavern</td>
+                            <td>Restaurant</td>
                             <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur voluptas, perspiciatis
                                 illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae
                                 recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
@@ -213,7 +222,8 @@
                         <tr>
                             <td>2</td>
                             <td>New York</td>
-                            <td>Angad Manjunath</td>
+                            <td>Walmart</td>
+                            <td>Shopping</td>
                             <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cum odit quam
                                 iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos
                                 placeat, ad expedita reiciendis voluptatibus.</td>

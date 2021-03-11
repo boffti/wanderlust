@@ -634,9 +634,7 @@ img {
     text-align: center;
     margin-right: 8px;
     border-radius: 100%;
-    -webkit-transition: all .2s linear;
-    -o-transition: all .2s linear;
-    transition: all .2s linear
+
 }
 
 .browse-card {
@@ -1182,6 +1180,43 @@ textarea::placeholder {
     color: var(--accent-color);
 }
 
+.profile-img-container {
+    position: relative;
+	display: inline-block;
+}
+
+.icon-change-image {
+    padding-top: 7px;	
+	padding-right: 7px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: none;
+}
+
+.profile-img-container:hover .icon-change-image {
+    display: block;
+}
+
+.bt-secondary {
+    border-top: 4px var(--secondary-color) solid;
+}
+
+.modal input {
+    border: 2px #e7e7e7 solid;
+    border-radius: 50px;
+    padding: 15px 15px;
+    margin: 10px 5px;
+    display: block;
+    width: 100%;
+}
+
+.modal input:focus {
+    outline: none;
+    border: 3px #E07A5F solid;
+    border-radius: 50px;
+}
+
 @media (-webkit-device-pixel-ratio: 1.5) { 
     body {
         zoom: 0.63;
@@ -1193,7 +1228,6 @@ textarea::placeholder {
         zoom: 0.78;
     }
 }
-
 
 /* 
 The following references were used while designing the styles

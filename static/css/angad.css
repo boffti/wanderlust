@@ -43,8 +43,6 @@
 }
 
 .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
@@ -145,12 +143,6 @@
 .img-fluid {
   max-width: 100%;
   height: auto;
-}
-
-.align-items-center {
-  -webkit-box-align: center !important;
-  -ms-flex-align: center !important;
-  align-items: center !important;
 }
 
 .text-muted {
@@ -297,4 +289,16 @@ h3::before {
 
 p {
   font-size: 0.9rem;
+}
+
+.br-green {
+  border-right: 4px #81B29A solid;
+}
+
+.bl-green {
+  border-left: 4px #81B29A solid;
+}
+
+.bb-green {
+  border-bottom: 4px #81B29A solid;
 }

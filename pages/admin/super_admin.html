@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>WL | Super Admin </title>
+    <link rel="shortcut icon" href="../../static/favicon.ico" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
@@ -16,17 +17,6 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="../../static/css/style.css">
     <link rel="stylesheet" href="../../static/css/gabriel.css">
-    <link rel="shortcut icon" href="../../static/favicon.ico" />
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
-        integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
-        crossorigin="anonymous"></script>
-    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
-    <script src="../../static/js/admin.js"></script>
-    <script src="../../static/js/app.js"></script>
-    <script src="ajax.js"></script>
 
 <body>
     <!--[if lt IE 7]>
@@ -62,30 +52,38 @@
 
             <!-- ! If user in session -->
             <ul>
-                <li>
-                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
-                </li>
                 <li class="dropdown">
-                    <a href="./pages/user/profile.html" class="profile flex">
+                    <a href="#" class="profile flex">
                         <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
                         <p id="profileName" class="profileName"></p>
                         <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
                     </a>
-                    <ul class="dropdown-content">
+                    <ul class="dropdown-content" style="top:50px">
+                        <li class="dropdown-item">
+                            <a href="../user/profile.html">
+                                <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                My Profile
+                            </a>
+                        </li>
                         <!-- ! If Role == Admin -->
                         <li class="dropdown-item">
-                            <a href="./pages/admin/country_admin.html">
+                            <a href="./country_admin.html">
+                                <i class="fas fa-tools" style="margin-right: 8px;"></i>
                                 Admin Console
                             </a>
                         </li>
                         <!-- ! Endif -->
+                        <!-- ! If Role == SuperAdmin -->
                         <li class="dropdown-item">
                             <a href="#">
-                                Profile
+                                <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                                Super Admin Console
                             </a>
                         </li>
+                        <!-- ! Endif -->
                         <li class="dropdown-item">
-                            <a href="#">
+                            <a href="../login/login.html">
+                                <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
                                 Logout
                             </a>
                         </li>
@@ -130,7 +128,7 @@
             <div class="flex-left">
                 <div style="flex-grow: 1;">
                     <div class="card">
-                        <canvas id="myChart"> </canvas>
+                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
                 <div>
@@ -508,7 +506,6 @@
         crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="../../static/js/admin.js"></script>
-    <script src="../../static/js/app.js"></script>
 </body>
 
 </html>

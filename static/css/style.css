@@ -127,13 +127,24 @@ img {
 }
 
 @media (max-width: 1200px) {
-    .navbar ul {
+    /* .navbar ul {
         display: none;
-    }
+    } */
 
-    .navbar .menu-icon {
+    /* .navbar .menu-icon {
         float: right;
         display: block !important;
+    } */
+
+    .navbar {
+        height: fit-content;
+        flex-wrap: wrap;
+    }
+
+    .navbar ul {
+        gap: 10px;
+        flex-wrap: wrap;
+
     }
 }
 
@@ -180,11 +191,6 @@ img {
         display: none;
     }
 
-    .navbar .menu-icon {
-        float: right;
-        display: block !important;
-    }
-
     .grid-2 {
         grid-template-columns: repeat(1, 1fr);
     }
@@ -195,6 +201,13 @@ img {
 
     .grid-4 {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -252,18 +265,22 @@ img {
     .rating ul {
         flex-direction: row;
     }
+
+    .navbar {
+        height: fit-content;
+        flex-wrap: wrap;
+    }
+
+    .navbar ul {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
 }
 
 @media (max-width: 1200px) {
     .flex-wrap {
         flex-wrap: wrap;
     }
-}
-
-@media (min-width: 768px) {
-    /* .container {
-        width: 750px;
-    } */
 }
 
 @media (min-width: 992px) {
@@ -383,6 +400,16 @@ img {
 
 .btn-outline-secondary:hover {
     background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.btn-outline-accent {
+    background-color: transparent;
+    border: 2px var(--accent-color) solid;
+}
+
+.btn-outline-accent:hover {
+    background-color: var(--accent-color);
     color: #fff;
 }
 
@@ -689,7 +716,7 @@ img {
     display: block;
     float: right;
     margin-top: 5px;
-    width: 200px;
+    width: fit-content;
     position: absolute;
     overflow: visible;
     z-index: 99999;
@@ -718,6 +745,23 @@ img {
 }
 
 .signup-form input:focus {
+    outline: none;
+    border: 3px #E07A5F solid;
+    border-radius: 50px;
+}
+
+.signup-form select {
+    font-family: inherit;
+    border: 2px #e7e7e7 solid;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 20px;
+    margin: 10px 5px;
+    display: block;
+    width: 100%;
+}
+
+.signup-form select:focus {
     outline: none;
     border: 3px #E07A5F solid;
     border-radius: 50px;
@@ -942,10 +986,6 @@ img {
     border-left: 4px var(--other-color-2) solid;
 }
 
-@media (-webkit-device-pixel-ratio: 1.5) {}
-
-@media (-webkit-device-pixel-ratio: 1.25) {}
-
 .rating-count {
     font-size: 1.1rem;
     font-weight: bold;
@@ -1142,10 +1182,20 @@ textarea::placeholder {
     color: var(--accent-color);
 }
 
+@media (-webkit-device-pixel-ratio: 1.5) { 
+    body {
+        zoom: 0.63;
+    }
+}
+
+@media (-webkit-device-pixel-ratio: 1.25) { 
+    body {
+        zoom: 0.78;
+    }
+}
+
 
 /* 
-Design inspired by Yelp and Zomato 
-
 The following references were used while designing the styles
 1. MDN - https://developer.mozilla.org/en-US/
 2. Stackoverflow - https://stackoverflow.com/questions/tagged/css

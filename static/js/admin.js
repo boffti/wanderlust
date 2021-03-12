@@ -83,7 +83,7 @@ jQuery(document).ready(function ($) {
     });
 
     $("#btnAddCity").on('click', function () {
-        $(".modal-container").css("display", "block");
+        $("#add-city-modal-container").css("display", "block");
         $("#add-city-modal").css("display", "block");
     });
 
@@ -93,7 +93,7 @@ jQuery(document).ready(function ($) {
     });
 
     $('#btnAddPlaceOfInterest').on('click', function () {
-        $(".modal-container").css("display", "block");
+        $("#add-poi-modal-container").css("display", "block");
         $("#add-poi-modal").css("display", "block");
     });
 

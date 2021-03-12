@@ -150,28 +150,28 @@
                                     <td>1</td>
                                     <td>New York</td>
                                     <td>
-                                        <i class="fas fa-trash-alt"></i>
+                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>Arlington</td>
                                     <td>
-                                        <i class="fas fa-trash-alt"></i>
+                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
                                     <td>San Fransico</td>
                                     <td>
-                                        <i class="fas fa-trash-alt"></i>
+                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
                                     <td>Miami</td>
                                     <td>
-                                        <i class="fas fa-trash-alt"></i>
+                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                                 
@@ -214,9 +214,7 @@
                                 illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae
                                 recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
                             <td>
-                                <button class="btn btn-outline-secondary text-secondary">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
+                                <a href="#"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -228,9 +226,7 @@
                                 iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos
                                 placeat, ad expedita reiciendis voluptatibus.</td>
                             <td>
-                                <button class="btn btn-outline-secondary text-secondary">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
+                                <a href="#"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -260,9 +256,7 @@
                                 recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
                             <td>12:16 12/43/4342</td>
                             <td>
-                                <button class="btn btn-outline-secondary text-secondary">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
+                                <a href="#"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -274,9 +268,7 @@
                                 placeat, ad expedita reiciendis voluptatibus.</td>
                             <td>12:16 12/43/4342</td>
                             <td>
-                                <button class="btn btn-outline-secondary text-secondary">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
+                                <a href="#"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -306,9 +298,7 @@
                                 recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
                             <td>12:16 12/43/4342</td>
                             <td>
-                                <button class="btn btn-outline-secondary text-secondary">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
+                                <a href="#"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -320,9 +310,7 @@
                                 placeat, ad expedita reiciendis voluptatibus.</td>
                             <td>12:16 12/43/4342</td>
                             <td>
-                                <button class="btn btn-outline-secondary text-secondary">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
+                                <a href="#"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -332,7 +320,7 @@
     </div>
 
     <!-- Add City Modal -->
-    <div class="modal-container">
+    <div id="add-city-modal-container" class="modal-container">
         <div class="modal" id="add-city-modal">
             <div class="modal-header flex-left space-between" style="align-items: center;">
                 <p style="margin-left: 12px;">Add City</p>
@@ -351,14 +339,14 @@
     </div>
 
     <!-- Add POI Modal -->
-    <div class="modal-container">
+    <div id="add-poi-modal-container" class="modal-container">
         <div class="modal" id="add-poi-modal">
             <div class="modal-header flex-left space-between" style="align-items: center;">
                 <p style="margin-left: 12px;">Add Place of Interest</p>
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form class="flex-column" style="gap: 12px;">
                     <div class="form-control"> <select id="location-select" name="location" id="location">
                         <option value="choose" disabled selected>Select City</option>
                         <option value="arlington">Arlington</option>
@@ -369,7 +357,7 @@
                         <option value="dubai">Dubai</option>
                     </select></div>
                     <input type="text" name="businessName" id="businessName" placeholder="Place Name">
-                    <textarea name="businessDesc" id="businessDesc" cols="30" rows="3" placeholder="Place Descriuption" style="width: 400px;"></textarea>
+                    <textarea name="businessDesc" id="businessDesc" cols="30" rows="3" placeholder="Place Description" style="width: 400px;"></textarea>
                     <div class="form-control"> <select id="location-select" name="location" id="location">
                         <option value="choose" disabled selected>Choose a Category</option>
                         <option value="restaurants">Restaurants</option>

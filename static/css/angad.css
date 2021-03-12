@@ -54,6 +54,7 @@ ID: 1001718335
   margin-left: -15px;
 }
 
+/* Col styles referred from Bootstrap CSS Source Docs */
 .col-lg-auto {
   flex: 0 0 auto;
   width: auto;

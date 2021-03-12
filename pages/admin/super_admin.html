@@ -186,7 +186,7 @@ ID: 1001774881
                     <div class="card" style="width: 500px; height:46%">
                         <div class="flex-left space-between">
                             <h3>Countries</h3>
-                            <a href="#" class="strong"><i class="fas fa-plus-circle"></i> ADD</a>
+                            <a id="btnAddCountry" href="#" class="strong"><i class="fas fa-plus-circle"></i> ADD</a>
                         </div>
                         <table>
                             <thead>
@@ -237,7 +237,8 @@ ID: 1001774881
             <div class="card">
                 <table>
                     <caption>Manage Continents
-                        <a href="#" class="strong" style="float: right;"><i class="fas fa-plus-circle"></i> ADD</a>
+                        <a id="btnAddContinent" href="#" class="strong" style="float: right;"><i
+                                class="fas fa-plus-circle"></i> ADD</a>
                     </caption>
                     <thead>
                         <tr>
@@ -281,7 +282,7 @@ ID: 1001774881
             <div class="card">
                 <table>
                     <caption>Manage Admin
-                        <a href="#" class="strong" style="float: right;"><i class="fas fa-plus-circle"></i> ADD</a>
+                        <a id="btnAddAdmin" href="#" class="strong" style="float: right;"><i class="fas fa-plus-circle"></i> ADD</a>
                     </caption>
                     <thead>
                         <tr>
@@ -322,7 +323,7 @@ ID: 1001774881
             <div class="card">
                 <table>
                     <caption>Manage Places of Interest
-                        <a href="#" class="strong" style="float: right;"><i class="fas fa-plus-circle"></i> ADD</a>
+                        <a id="btnAddPlaceOfInterest" href="#" class="strong" style="float: right;"><i class="fas fa-plus-circle"></i> ADD</a>
                     </caption>
                     <thead>
                         <tr>
@@ -520,7 +521,7 @@ ID: 1001774881
     <div id="add-continent-modal-container" class="modal-container">
         <div class="modal" id="add-continent-modal">
             <div class="modal-header flex-left space-between" style="align-items: center;">
-                <p style="margin-left: 12px;">Add Country</p>
+                <p style="margin-left: 12px;">Add Continent</p>
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
@@ -535,8 +536,36 @@ ID: 1001774881
         </div>
     </div>
 
+    <!-- Add Admin Modal -->
+    <div id="add-admin-modal-container" class="modal-container">
+        <div class="modal" id="add-admin-modal">
+            <div class="modal-header flex-left space-between" style="align-items: center;">
+                <p style="margin-left: 12px;">Add Admin</p>
+                <a href="#" class="cancel" style="float: right;">x</a>
+            </div>
+            <div class="modal-content" style="align-items:center;">
+                <form class="flex-center" style="gap: 12px;">
+                    <input type="text" name="continent" id="add-continent-text" placeholder="Admin Name">
+                    <input type="text" name="continent" id="add-continent-text" placeholder="Admin Phone">
+                    <input type="text" name="continent" id="add-continent-text" placeholder="Admin Email">
+                    <div class="form-control"> <select id="location-select" name="location" id="location">
+                            <option value="choose" disabled selected>Select City</option>
+                            <option value="usa">USA</option>
+                            <option value="india">India</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="bangalore">Thailand</option>
+                        </select></div>
+                    <div>
+                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
+                        <button class="btn" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Add POI Modal -->
-    <div class="modal-container">
+    <div id="add-poi-modal-container" class="modal-container">
         <div class="modal" id="add-poi-modal">
             <div class="modal-header flex-left space-between" style="align-items: center;">
                 <p style="margin-left: 12px;">Add Place of Interest</p>

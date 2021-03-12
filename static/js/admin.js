@@ -24,6 +24,35 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $("#btnAddCity").on('click', function () {
+        $("#add-city-modal-container").css("display", "block");
+        $("#add-city-modal").css("display", "block");
+    });
+
+    $("#btnAddCountry").on('click', function () {
+        $("#add-country-modal-container").css("display", "block");
+        $("#add-country-modal").css("display", "block");
+    });
+
+    $("#btnAddContinent").on('click', function () {
+        $("#add-continent-modal-container").css("display", "block");
+        $("#add-continent-modal").css("display", "block");
+    });
+
+    $("#btnAddAdmin").on('click', function () {
+        $("#add-admin-modal-container").css("display", "block");
+        $("#add-admin-modal").css("display", "block");
+    });
+
+    $(".cancel").click(function () {
+        $(".modal-container").fadeOut();
+        $(".modal").fadeOut();
+    });
+
+    $('#btnAddPlaceOfInterest').on('click', function () {
+        $("#add-poi-modal-container").css("display", "block");
+        $("#add-poi-modal").css("display", "block");
+    });
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -61,40 +90,6 @@ jQuery(document).ready(function ($) {
                 }]
             }
         }
-    });
-
-    var ctx2 = document.getElementById('chart2').getContext('2d');
-    var myDoughnutChart = new Chart(ctx2, {
-        type: 'doughnut',
-        data: {
-            datasets: [{
-                backgroundColor: [
-                    "#2ecc71",
-                    "#3498db",
-                    "#95a5a6",
-                    "#9b59b6",
-                    "#f1c40f",
-                    "#e74c3c",
-                    "#34495e"
-                ],
-                data: [12, 19, 3, 17, 28, 24, 7]
-            }]
-        }
-    });
-
-    $("#btnAddCity").on('click', function () {
-        $("#add-city-modal-container").css("display", "block");
-        $("#add-city-modal").css("display", "block");
-    });
-
-    $(".cancel").click(function () {
-        $(".modal-container").fadeOut();
-        $(".modal").fadeOut();
-    });
-
-    $('#btnAddPlaceOfInterest').on('click', function () {
-        $("#add-poi-modal-container").css("display", "block");
-        $("#add-poi-modal").css("display", "block");
     });
 
 });

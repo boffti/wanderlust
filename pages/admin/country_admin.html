@@ -139,7 +139,7 @@ ID: 1001774881
                     <div class="card" style="width: 500px; height:50%">
                         <div class="flex-left space-between">
                             <h3>Cities</h3>
-                            <button id="btnAddCity" class="btn">+ ADD</button>
+                            <a id="btnAddCity" href="#" class="strong"><i class="fas fa-plus-circle"></i> ADD</a>
                         </div>
                         <table>
                             <thead>
@@ -178,15 +178,14 @@ ID: 1001774881
                                         <a href="#"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                     </div>
                     <div class="flex-left space-between">
-                        <div class="card" style="height: 50%;">
+                        <div class="card">
                             <h3>Statistic 2</h3>
                             <canvas id="chart2"></canvas>
-
                         </div>
                     </div>
                 </div>
@@ -196,7 +195,8 @@ ID: 1001774881
             <div class="card">
                 <table>
                     <caption>Manage Places of Interest
-                        <button id="btnAddPlaceOfInterest" class="btn" style="float: right;">+ ADD</button>
+                        <a id="btnAddPlaceOfInterest" href="#" class="strong" style="float: right;"><i
+                                class="fas fa-plus-circle"></i> ADD</a>
                     </caption>
                     <thead>
                         <tr>
@@ -354,30 +354,31 @@ ID: 1001774881
             <div class="modal-content" style="align-items:center;">
                 <form class="flex-column" style="gap: 12px;">
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                        <option value="choose" disabled selected>Select City</option>
-                        <option value="arlington">Arlington</option>
-                        <option value="newyork">New York</option>
-                        <option value="hongkong">Hong Kong</option>
-                        <option value="bangalore">Bangalore</option>
-                        <option value="london">London</option>
-                        <option value="dubai">Dubai</option>
-                    </select></div>
+                            <option value="choose" disabled selected>Select City</option>
+                            <option value="arlington">Arlington</option>
+                            <option value="newyork">New York</option>
+                            <option value="hongkong">Hong Kong</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="london">London</option>
+                            <option value="dubai">Dubai</option>
+                        </select></div>
                     <input type="text" name="businessName" id="businessName" placeholder="Place Name">
-                    <textarea name="businessDesc" id="businessDesc" cols="30" rows="3" placeholder="Place Description" style="width: 400px;"></textarea>
+                    <textarea name="businessDesc" id="businessDesc" cols="30" rows="3" placeholder="Place Description"
+                        style="width: 400px;"></textarea>
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                        <option value="choose" disabled selected>Choose a Category</option>
-                        <option value="restaurants">Restaurants</option>
-                        <option value="shopping">Shopping</option>
-                        <option value="education">Education</option>
-                        <option value="worship">Religion & Worship</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="health">Health & Medical</option>
-                    </select></div>
+                            <option value="choose" disabled selected>Choose a Category</option>
+                            <option value="restaurants">Restaurants</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="education">Education</option>
+                            <option value="worship">Religion & Worship</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="health">Health & Medical</option>
+                        </select></div>
                     <div>
-                    <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
-                        <button class="btn" type="submit">Add</button>
-                    </div>
+                        <div>
+                            <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
+                            <button class="btn" type="submit">Add</button>
+                        </div>
                 </form>
             </div>
         </div>
@@ -389,6 +390,26 @@ ID: 1001774881
         crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="../../static/js/admin.js"></script>
+    <script>
+        var ctx2 = document.getElementById('chart2').getContext('2d');
+        var myDoughnutChart = new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    backgroundColor: [
+                        "#2ecc71",
+                        "#3498db",
+                        "#95a5a6",
+                        "#9b59b6",
+                        "#f1c40f",
+                        "#e74c3c",
+                        "#34495e"
+                    ],
+                    data: [12, 19, 3, 17, 28, 24, 7]
+                }]
+            }
+        });
+    </script>
 </body>
 
 </html>

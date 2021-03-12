@@ -124,6 +124,11 @@ jQuery(document).ready(function ($) {
         $("#inputChangeDP").click();
     });
 
+    $("#btnMenu").on('click', function() {
+        $(".navbar ul").toggleClass("hidden");
+        $(".navbar ul").toggleClass("visible");
+    })
+
     // TODO Add Video & Photo on input onchange listeners
 
 });

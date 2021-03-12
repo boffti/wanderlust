@@ -330,6 +330,33 @@
         </div>
     </footer>
 
+    <!-- ! If user in session -->
+    <div id="location-select-modal-container" class="modal-container">
+        <div class="modal" id="location-select-modal">
+            <div class="modal-header flex-left space-between" style="align-items: center;">
+                <p style="margin-left: 12px;">Select Location</p>
+                <a href="#" class="cancel" style="float: right;">x</a>
+            </div>
+            <div class="modal-content" style="align-items:center;">
+                <form class="flex-center" style="gap: 12px;">
+                    <div class="form-control"> <select id="location-select" name="location" id="location">
+                            <option value="choose" disabled selected>Change your location</option>
+                            <option value="arlington">Arlington</option>
+                            <option value="newyork">New York</option>
+                            <option value="hongkong">Hong Kong</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="london">London</option>
+                            <option value="dubai">Dubai</option>
+                        </select></div>
+                    <div>
+                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
+                        <button class="btn" type="submit">Change</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
         integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
         crossorigin="anonymous"></script>

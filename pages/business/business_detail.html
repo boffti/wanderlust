@@ -148,10 +148,12 @@
                     </div>
                     <br>
                     <div>
-                        <button class="btn" style="font-size: large;"><i class="far fa-star"
+                        <button id="btnWriteReview" class="btn" style="font-size: large;"><i class="far fa-star"
                                 style="margin-right: 10px;"></i> Write a Review</button>
-                        <button class="btn btn-outline-secondary text-secondary" style="font-size: large;"><i
-                                class="fas fa-camera" style="margin-right: 10px;"></i> Add Photo</button>
+                        <button id="btnUploadBusinessPhoto" class="btn btn-outline-secondary text-secondary"
+                            style="font-size: large;"><i class="fas fa-camera" style="margin-right: 10px;"></i> Add
+                            Photo</button>
+                        <input id="fileBusinessPhoto" type="file" name="" id="" style="display: none;">
                         <button class="btn btn-outline-secondary text-secondary" style="font-size: large;"><i
                                 class="fas fa-star" style="margin-right: 10px;"></i> Share</button>
                     </div>
@@ -434,7 +436,7 @@
         <br> -->
 
         <!-- Reviews Section -->
-        <section>
+        <section id="review-section">
             <div>
                 <div class="flex-left" style="justify-content: space-between;">
                     <h2>Reviews</h2>
@@ -632,7 +634,7 @@
             </div>
         </div>
     </div>
-    
+
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0_dAAs1OTudl40Hb_CZZYqqSl-01V2fs&callback=initMap">
     </script>

@@ -4,19 +4,19 @@ $.noConflict();
 jQuery(document).ready(function ($) {
 
     // Sticky Navbar
-/*     window.onscroll = function () {
-        stickNav()
-    };
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
+    /*     window.onscroll = function () {
+            stickNav()
+        };
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
 
-    function stickNav() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
-        }
-    } */
+        function stickNav() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        } */
 
     // Fake Placeholder names and Images
     let firstName = faker.name.firstName();
@@ -43,19 +43,19 @@ jQuery(document).ready(function ($) {
     });
 
     // Fake Post Names
-    $('.post .profileName').each(function(){
+    $('.post .profileName').each(function () {
         $(this).text(`${faker.name.firstName()} ${faker.name.lastName()}`);
     });
 
-    $('.post .post-content').each(function(){
+    $('.post .post-content').each(function () {
         $(this).text(`${faker.lorem.sentences()}`);
     });
 
-    $('.tips .tip-author').each(function(){
+    $('.tips .tip-author').each(function () {
         $(this).text(`${faker.name.firstName()} ${faker.name.lastName()}`);
     });
 
-    $('.post .postIMG').each(function() {
+    $('.post .postIMG').each(function () {
         var $img = $(this);
         $.ajax({
             url: 'https://randomuser.me/api/',
@@ -107,7 +107,7 @@ jQuery(document).ready(function ($) {
         $("#location-select-modal").fadeOut();
     });
 
-    $("#btnEditProfile").on('click', function() {
+    $("#btnEditProfile").on('click', function () {
         $("#profile-edit-modal-container").css("display", "block");
         $("#profile-edit-modal").css("display", "block");
     })
@@ -115,7 +115,7 @@ jQuery(document).ready(function ($) {
     $("#btnUploadPhoto").on('click', function () {
         $("#uploadPhotoInput").click();
     });
-    
+
     $("#btnUploadVideo").on('click', function () {
         $("#uploadVideoInput").click();
     });
@@ -124,10 +124,21 @@ jQuery(document).ready(function ($) {
         $("#inputChangeDP").click();
     });
 
-    $("#btnMenu").on('click', function() {
+    $("#btnMenu").on('click', function () {
         $(".navbar ul").toggleClass("hidden");
         $(".navbar ul").toggleClass("visible");
     })
+
+    $("#btnWriteReview").on('click', function () {
+        $('html,body').animate({
+                scrollTop: $("#review-section").offset().top
+            },
+            'slow');
+    });
+
+    $("#btnUploadBusinessPhoto").on('click', function () {
+        $("#fileBusinessPhoto").click();
+    });
 
     // TODO Add Video & Photo on input onchange listeners
 

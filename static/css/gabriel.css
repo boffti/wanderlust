@@ -1,5 +1,9 @@
+/* 
+Author: Sundalkar, Gabriel Anand
+ID: 1001774881
+*/
+
 .sidenav {
-    /* grid-area: sidenav; */
     display: flex;
     flex-direction: column;
     height: 100%;

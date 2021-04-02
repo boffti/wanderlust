@@ -9,6 +9,13 @@ ID: 1001774881
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+include '../../php/functions.php';
+// If the user is not logged in redirect to the login page...
+?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,20 +39,20 @@ ID: 1001774881
             <h1>Wanderlust</h1>
             <nav>
                 <ul>
-                    <li><a href="../../index.html">Home</a></li>
-                    <li><a href="../main_site/about.html">About</a></li>
+                    <li><a href="../../index.php">Home</a></li>
+                    <li><a href="../main_site/about.php">About</a></li>
                     <li class="dropdown">
                         <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="../main_site/immigrant_services.html">Immigrant
+                            <li><a class="dropdown-item" href="../main_site/immigrant_services.php">Immigrant
                                     Services</a></li>
-                            <li><a class="dropdown-item" href="../main_site/visitor_service.html">Visitor
+                            <li><a class="dropdown-item" href="../main_site/visitor_service.php">Visitor
                                     Services</a></li>
                         </ul>
                     </li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="../main_site/contact.html">Contact</a></li>
+                    <li><a href="../main_site/contact.php">Contact</a></li>
                 </ul>
             </nav>
 
@@ -55,45 +62,77 @@ ID: 1001774881
                 </div> -->
 
             <!-- ! If user in session -->
-            <ul>
-                <li class="dropdown">
-                    <a href="#" class="profile flex">
-                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
-                        <p id="profileName" class="profileName"></p>
-                        <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
-                    </a>
-                    <ul class="dropdown-content" style="top:50px">
-                        <li class="dropdown-item">
-                            <a href="../user/profile.html">
-                                <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                My Profile
+            <?php 
+
+                if(in_array('3', $_SESSION['user_roles'])) {
+                    $admin_markup = <<<am
+                    <!-- ! If Role == Admin -->
+                    <li class="dropdown-item">
+                        <a href="./country_admin.php">
+                            <i class="fas fa-tools" style="margin-right: 8px;"></i>
+                            Admin Console
+                        </a>
+                    </li>
+                    am;
+                } else {
+                    $admin_markup = "";
+                }
+
+                if(in_array('4', $_SESSION['user_roles'])) {
+                    $super_admin_markup = <<<sam
+                    <!-- ! If Role == SuperAdmin -->
+                    <li class="dropdown-item">
+                        <a href="./admin/super_admin.php">
+                            <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                            Super Admin Console
+                        </a>
+                    </li>
+                    <!-- ! Endif -->
+                    sam;
+                } else {
+                    $super_admin_markup = "";
+                }
+                            
+            if(isset($_SESSION['user'])) {
+                echo <<<heredoc
+                <!-- ! If user in session -->
+                <ul class="hidden">
+                    
+                    <li class="dropdown">
+                        <a href="#" class="profile flex">
+                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <p id="" class="">
+                                {$_SESSION['user']['full_name']}
+                            </p>
+                            <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                        </a>
+                        <ul class="dropdown-content" style="top:50px">
+                            <li class="dropdown-item">
+                                <a href="../user/profile.php">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    My Profile
+                                </a>
+                            </li>
+                            {$admin_markup}
+                            {$super_admin_markup}
+                            <li class="dropdown-item">
+                                <a href="../../php/logout.php">
+                                    <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> 
+                heredoc;
+            } else {
+                echo '<div class="signup">
+                            <a href="../login/login.php">
+                                <button class="btn btn-outline-accent text-accent">Login / Signup</button>
                             </a>
-                        </li>
-                        <!-- ! If Role == Admin -->
-                        <li class="dropdown-item">
-                            <a href="./country_admin.html">
-                                <i class="fas fa-tools" style="margin-right: 8px;"></i>
-                                Admin Console
-                            </a>
-                        </li>
-                        <!-- ! Endif -->
-                        <!-- ! If Role == SuperAdmin -->
-                        <li class="dropdown-item">
-                            <a href="#">
-                                <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
-                                Super Admin Console
-                            </a>
-                        </li>
-                        <!-- ! Endif -->
-                        <li class="dropdown-item">
-                            <a href="../login/login.html">
-                                <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                        </div>';
+            }
+            ?>
             <a href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
         </div>
     </div>
@@ -136,7 +175,7 @@ ID: 1001774881
                     </div>
                 </div>
                 <div>
-                    <div class="card" style="width: 500px; height:46%">
+                    <div class="card" style="width: 500px; height:'fit_content'">
                         <div class="flex-left space-between">
                             <h3>Cities</h3>
                             <a id="btnAddCity" href="#" class="strong"><i class="fas fa-plus-circle"></i> ADD</a>
@@ -150,40 +189,30 @@ ID: 1001774881
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>New York</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Arlington</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>San Fransico</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Miami</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-
+                            <?php 
+                                $conn = get_db_conn();
+                                $sql_get_cities = "SELECT city_id, city_name from cities";
+                                $cities = $conn->query($sql_get_cities);
+                                if($cities->num_rows > 0) {                          
+                                    $html_template = "";
+                                    while($item = $cities->fetch_assoc()) {
+                                        echo <<<cities
+                                        <tr>
+                                            <td>{$item['city_id']}</td>
+                                            <td>{$item['city_name']}</td>
+                                            <td>
+                                                <a href="#"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                        cities;
+                                    }
+                                }
+                            ?>
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="card" style="width: 500px; height:46%">
+                    <div class="card" style="width: 500px; height:'fit_content'">
                         <div class="flex-left space-between">
                             <h3>Countries</h3>
                             <a id="btnAddCountry" href="#" class="strong"><i class="fas fa-plus-circle"></i> ADD</a>
@@ -197,35 +226,25 @@ ID: 1001774881
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>USA</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>INDIA</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>United Kingdom</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Thailand</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-
+                            <?php 
+                                $conn = get_db_conn();
+                                $sql_get_countries = "SELECT country_id, country_name from countries";
+                                $countries = $conn->query($sql_get_countries);
+                                if($countries->num_rows > 0) {                          
+                                    $html_template = "";
+                                    while($item = $countries->fetch_assoc()) {
+                                        echo <<<countries
+                                        <tr>
+                                            <td>{$item['country_id']}</td>
+                                            <td>{$item['country_name']}</td>
+                                            <td>
+                                                <a href="#"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                        countries;
+                                    }
+                                }
+                            ?>
                             </tbody>
                         </table>
                     </div>
@@ -248,34 +267,25 @@ ID: 1001774881
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Asia</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>America</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Europe</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Australia</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
+                    <?php 
+                                $conn = get_db_conn();
+                                $sql_get_continents = "SELECT continent_id, continent_name from continents";
+                                $continents = $conn->query($sql_get_continents);
+                                if($continents->num_rows > 0) {                          
+                                    $html_template = "";
+                                    while($item = $continents->fetch_assoc()) {
+                                        echo <<<continents
+                                        <tr>
+                                            <td>{$item['continent_id']}</td>
+                                            <td>{$item['continent_name']}</td>
+                                            <td>
+                                                <a href="#"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                        continents;
+                                    }
+                                }
+                            ?>
                     </tbody>
                 </table>
             </div>

@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="../../static/favicon.ico"/>
-    <title>Wanderlust | Login</title>
+    <title>Wanderlust | Signup</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
@@ -29,7 +29,7 @@
 
     <div class="signup-page">
         <div class="grid grid-2">
-            <a href="../../index.html">
+            <a href="../../index.php">
                 <img class="signup-img" src="../../static/img/suitcases.jpg" alt="">
             </a>
             <div class="signup-form flex-vertical">
@@ -41,34 +41,44 @@
                             <p>Welcome to your new home</p>
                             <p>Welcome to Wanderlust.</p>
                         </div>
-                        <p class="login-heading">Login to continue.</p>
+                        <p class="login-heading mb-4">Create an account to get started.</p>
                     </div>
-                    <form role="form" action="../../index.html" method="get">
-                        <div class="form-label-group">
-                            <input name="email" type="email" id="email" class="form-control" placeholder="E-mail"
+                    <form role="form" action="signup_handler.php" method="post">
+                        <div class="">
+                            <input name="name" type="name" id="name" class="" placeholder="Full Name"
+                                required autofocus>
+                            <!-- <label for="name">Full Name</label> -->
+                        </div>
+                        <div class="">
+                            <input name="email" type="email" id="email" class="" placeholder="E-mail"
                                 required>
                             <!-- <label for="email">E-Mail</label> -->
                         </div>
-                        <div class="form-label-group">
-                            <input name="password" type="password" id="inputPassword" class="form-control"
+                        <div class="">
+                            <input name="password" type="password" id="inputPassword" class=""
                                 placeholder="Password" required>
                             <!-- <label for="inputPassword">Password</label> -->
                         </div>
+                        <div class="">
+                            <input name="reenter-password" type="password" id="inputPasswordReenter"
+                                class="" placeholder="Re-enter Password" required>
+                            <!-- <label for="inputPasswordReenter">Re-enter Password</label> -->
+                        </div>
                         <br>
                         <button
-                            class="btn btn-lg btn-primary-w btn-block btn-login text-uppercase font-weight-bold mb-2"
-                            type="submit">SIGN IN</button>
+                            class="btn btn-lg"
+                            type="submit">SIGN UP</button>
                         <br>
                         <div class="flex flex-vertical">
-                            <p>Not registered yet? No problem!
-                                Let's get you started.</p>
-                            <a class="text-accent" href="./signup.html">Create Account</a>
+                            <p>Already have an account?</p>
+                            <a class="text-accent" href="./login.php">Sign In</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="../../static/js/typed.js"></script>

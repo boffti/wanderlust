@@ -9,6 +9,13 @@
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+include '../../php/functions.php';
+// If the user is not logged in redirect to the login page...
+?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,72 +37,106 @@
     <!-- Navbar -->
     <div id="navbar" class="navbar" style="overflow: visible; background-color: white;">
         <div class="container flex">
-            <a href="../../index.html">
+            <a href="../../index.php">
                 <h1 style="margin: 0; padding:0;">Wanderlust</h1>
             </a>
             <nav>
                 <ul class="hidden">
-                    <li><a href="../../index.html">Home</a></li>
-                    <li><a href="../main_site/about.html">About</a></li>
+                    <li><a href="../../index.php">Home</a></li>
+                    <li><a href="../main_site/about.php">About</a></li>
                     <li class="dropdown"><a href="#" class="">Services <i class="fas fa-angle-down"
                                 style="margin-left: 5px;"></i></a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="../main_site/immigrant_services.html">Immigrant
+                            <li><a class="dropdown-item" href="../main_site/immigrant_services.php">Immigrant
                                     Services</a></li>
-                            <li><a class="dropdown-item" href="../main_site/visitor_service.html">Visitor Services</a>
+                            <li><a class="dropdown-item" href="../main_site/visitor_service.php">Visitor Services</a>
                             </li>
                         </ul>
                     </li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="../main_site/contact.html">Contact</a></li>
+                    <li><a href="../main_site/contact.php">Contact</a></li>
                 </ul>
             </nav>
 
             <!-- <div class="signup">
                 <button class="btn btn-outline-secondary">Login / Signup</button>
             </div> -->
-            <ul class="hidden">
-                <li>
-                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="profile flex">
-                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
-                        <p id="profileName" class="profileName"></p>
-                        <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
-                    </a>
-                    <ul class="dropdown-content" style="top:50px">
-                        <li class="dropdown-item">
-                            <a href="../user/profile.html">
-                                <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                My Profile
+            <?php 
+
+                if(in_array('3', $_SESSION['user_roles'])) {
+                    $admin_markup = <<<am
+                    <!-- ! If Role == Admin -->
+                    <li class="dropdown-item">
+                        <a href="../admin/country_admin.php">
+                            <i class="fas fa-tools" style="margin-right: 8px;"></i>
+                            Admin Console
+                        </a>
+                    </li>
+                    am;
+                } else {
+                    $admin_markup = "";
+                }
+
+                if(in_array('4', $_SESSION['user_roles'])) {
+                    $super_admin_markup = <<<sam
+                    <!-- ! If Role == SuperAdmin -->
+                    <li class="dropdown-item">
+                        <a href="../admin/super_admin.php">
+                            <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                            Super Admin Console
+                        </a>
+                    </li>
+                    <!-- ! Endif -->
+                    sam;
+                } else {
+                    $super_admin_markup = "";
+                }
+            
+            if(isset($_SESSION['user'])) {
+                echo <<<heredoc
+                <!-- ! If user in session -->
+                <ul class="hidden">
+                    <li>
+                        <a id="currentLocation" href="#" class="navbar-location flex">
+                        <i class="fas fa-map-marker-alt loc-icon"></i>
+                            {$_SESSION['user_loc']['city_name']}
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="profile flex">
+                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <p id="" class="">
+                                {$_SESSION['user']['full_name']}
+                            </p>
+                            <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                        </a>
+                        <ul class="dropdown-content" style="top:50px">
+                            <li class="dropdown-item">
+                                <a href="../user/profile.php">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    My Profile
+                                </a>
+                            </li>
+                            {$admin_markup}
+                            {$super_admin_markup}
+                            <li class="dropdown-item">
+                                <a href="../../php/logout.php">
+                                    <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> 
+                heredoc;
+            } else {
+                echo '<div class="signup">
+                            <a href="../login/login.php">
+                                <button class="btn btn-outline-accent text-accent">Login / Signup</button>
                             </a>
-                        </li>
-                        <!-- ! If Role == Admin -->
-                        <li class="dropdown-item">
-                            <a href="../admin/country_admin.html">
-                                <i class="fas fa-tools" style="margin-right: 8px;"></i>
-                                Admin Console
-                            </a>
-                        </li>
-                        <!-- ! Endif -->
-                        <!-- ! If Role == SuperAdmin -->
-                        <li class="dropdown-item">
-                            <a href="../admin/super_admin.html">
-                                <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
-                                Super Admin Console
-                            </a>
-                        </li>
-                        <!-- ! Endif -->
-                        <li class="dropdown-item">
-                            <a href="../login/login.html">
-                                <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                        </div>';
+            }
+            ?>
             <a id="btnMenu" href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
         </div>
     </div>
@@ -122,11 +163,11 @@
                                     </a>
                                 </div>
                             </div>
-                            <h2 id="profileName" class="profileName"></h2>
+                            <h2 id="" class=""><?php echo $_SESSION['user']['full_name']?></h2>
                             <!-- <div class="flex-left space-between">
-                                <a href="../admin/country_admin.html"
+                                <a href="../admin/country_admin.php"
                                     class="btn btn-outline-secondary text-secondary">Admin</a>
-                                <a href="../login/login.html"
+                                <a href="../login/login.php"
                                     class="btn btn-outline-secondary text-secondary">Logout</a>
                             </div> -->
                             <input type="file" name="dp" id="inputChangeDP" style="display: none;">
@@ -140,22 +181,22 @@
                         <br>
                         <div class="flex-column" style="align-items: flex-start;">
                             <span class="flex"><i class="fas fa-user" style="margin-right: 12px;"></i>
-                                <p class="profileName strong"></p>
+                                <p class="strong"><?php echo $_SESSION['user']['full_name']?></p>
                             </span>
                             <span class="flex"><i class="fas fa-map-marker-alt" style="margin-right: 12px;"></i>
-                                <p class="profileAddress strong"></p>
+                                <p class=" strong"><?php echo $_SESSION['user']['address']?></p>
                             </span>
                             <span class="flex"><i class="fas fa-birthday-cake" style="margin-right: 12px;"></i>
-                                <p class="strong">12/17/1992</p>
+                                <p class="strong"><?php echo $_SESSION['user']['dob']?></p>
                             </span>
                             <span class="flex"><i class="fas fa-suitcase" style="margin-right: 12px;"></i>
-                                <p class="strong">Professional Moonwalker</p>
+                                <p class="strong"><?php echo $_SESSION['user']['profession']?></p>
                             </span>
-                            <span class="flex"><i class="fas fa-globe-americas" style="margin-right: 12px;"></i>
-                                <p class="strong">Martian</p>
-                            </span>
+                            <!-- <span class="flex"><i class="fas fa-globe-americas" style="margin-right: 12px;"></i>
+                                <p class="strong"><?php echo $_SESSION['user']['nationality']?></p>
+                            </span> -->
                             <span class="flex"><i class="fas fa-phone-alt" style="margin-right: 12px;"></i>
-                                <p class="strong">217 904 2873</p>
+                                <p class="strong"><?php echo $_SESSION['user']['mobile']?></p>
                             </span>
                         </div>
                     </div>
@@ -175,73 +216,28 @@
                             <div class="tab-content-container">
                                 <div class="flex">
                                     <h2 class="">Your photos - <span>10</span></h2>
-                                    <form action="#">
-                                        <button id="btnUploadPhoto" class="btn">ADD</button>
-                                        <input type="file" id="uploadPhotoInput" style="display: none;" />
-                                    </form>
+                                    <button id="btnUploadPhoto" class="btn">ADD</button>
+                                    <input type="file" name="user_photo" id="uploadPhotoInput" style="display: none;" />
                                 </div>
                                 <div class="gallery-container">
                                     <!-- Define all of the tiles: -->
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1614038276039-667c23bc32fa?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1614059632169-522876ce04c8?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1613977257421-010b50211cd3?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1614036102254-b5a105bc3537?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1614022995184-0347cdc53871?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2l0eXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1543872084-c7bd3822856f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8N3x8Y2l0eXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1512864733469-8c0d7cc3ccf5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjR8fGNpdHl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8cmVzdGF1cmFudHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <div class="img-box">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTd8fHJlc3RhdXJhbnR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                                        </div>
-                                    </div>
+                                    <?php 
+                                        $conn = get_db_conn();
+                                        $sql_user_photos = "SELECT photo_id, photo_uri, user_id from user_photos where user_id='{$_SESSION['user']['user_id']}'";
+                                        $user_photos = $conn->query($sql_user_photos);
+                                        if($user_photos->num_rows > 0) {                          
+                                            while($item = $user_photos->fetch_assoc()) {
+                                                echo <<<photos
+                                                <div class="box">
+                                                    <div class="img-box">
+                                                        <img
+                                                            src="../../static/upload/user_photos/{$item['photo_uri']}" />
+                                                    </div>
+                                                </div>
+                                                photos;
+                                            }
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </li>
@@ -252,42 +248,28 @@
                                 <div class="flex">
                                     <h2 class="">Your Videos - <span>4</span></h2>
                                     <button id="btnUploadVideo" class="btn">ADD</button>
-                                    <input type="file" id="uploadVideoInput" style="display: none;" />
+                                    <input name="user_video" type="file" id="uploadVideoInput" style="display: none;" />
                                 </div>
 
-                                <div class="video-gallery">
-                                    <div class="video-container">
-                                        <div class="responsive-video">
-                                            <iframe width="560" height="315"
-                                                src="https://www.youtube.com/embed/h_73QmnwHaQ" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                    <div class="video-container">
-                                        <div class="responsive-video">
-                                            <iframe width="560" height="315"
-                                                src="https://www.youtube.com/embed/EAP2zOYtE1M" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                    <div class="video-container">
-                                        <div class="responsive-video">
-                                            <iframe width="560" height="315"
-                                                src="https://www.youtube.com/embed/a1aCwrR_DNU" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                    <div class="video-container">
-                                        <div class="responsive-video">
-                                            <iframe width="560" height="315"
-                                                src="https://www.youtube.com/embed/H9NTn9B_fBg" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                        </div>
-                                    </div>
+                                <div>
+                                    <?php 
+                                        $conn = get_db_conn();
+                                        $sql_user_videos = "SELECT video_id, video_uri, user_id from user_videos where user_id='{$_SESSION['user']['user_id']}'";
+                                        $user_videos = $conn->query($sql_user_videos);
+                                        if($user_videos->num_rows > 0) {                          
+                                            while($item = $user_videos->fetch_assoc()) {
+                                                echo <<<photos
+                                                <div class="video-container">
+                                                    <div class="">
+                                                        <video  width="500" height="315"
+                                                            src="../../static/upload/user_videos/{$item['video_uri']}" frameborder="0"
+                                                            allowfullscreen controls></video >
+                                                    </div>
+                                                </div>
+                                                photos;
+                                            }
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </li>
@@ -362,52 +344,29 @@
                         <li>
                             <div class="tab-content-container">
                                 <h2 class="">Your Tips - 3</h2>
-                                <div class="tips">
-                                    <div class="card border-l-yellow">
-                                        <div class="flex flex-column align-items-left">
-                                            <div>
-                                                <span class="quotes">"</span><strong>
-                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci
-                                                    quibusdam
-                                                    accusantium, fugiat debitis dolorem iure soluta cum consequuntur
-                                                    dignissimos animi
-                                                    tenetur magnam sit, perferendis illo, quidem quis. Facere, nostrum
-                                                    sit.
-                                                </strong><span class="quotes">"</span>
+                                <?php
+                                    $conn = get_db_conn();
+                                    $sql_user_tips = "SELECT tips.tip_id, tips.tip_content from tips where tips.user_id='{$_SESSION['user']['user_id']}'";
+                                    $user_tips = $conn->query($sql_user_tips);
+                                    if($user_tips->num_rows > 0) {                          
+                                        while($item = $user_tips->fetch_assoc()) {
+                                            echo <<<explore
+                                            <div class="card border-l-yellow">
+                                                <div class="flex flex-column align-items-left">
+                                                    <div>
+                                                        <span class="quotes">"</span><strong>
+                                                            {$item['tip_content']}
+                                                        </strong><span class="quotes">"</span>
+                                                    </div>
+                                                    <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                                                        <a href="../../php/delete_tip.php?tip_id={$item['tip_id']}" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="flex ml-auto tip-footer" style="gap: 10px; ">
-                                                <a href="#" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card border-l-yellow">
-                                        <div class="flex flex-column align-items-left">
-                                            <div>
-                                                <span class="quotes">"</span><strong>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime a
-                                                    aliquid iure, voluptas reiciendis quae odio quis aut perferendis
-                                                    fugit quos atque ipsam dolor voluptatibus repellat labore nemo modi
-                                                    officiis!
-                                                </strong><span class="quotes">"</span>
-                                            </div>
-                                            <div class="flex ml-auto tip-footer" style="gap: 10px; ">
-                                                <a href="#" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card border-l-yellow">
-                                        <div class="flex flex-column align-items-left">
-                                            <div>
-                                                <span class="quotes">"</span><strong>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-                                                    minima officiis sequi.
-                                                </strong><span class="quotes">"</span>
-                                            </div>
-                                            <div class="flex ml-auto tip-footer" style="gap: 10px; ">
-                                                <a href="#" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            explore;
+                                        }
+                                    }
+                                ?>
                                 </div>
 
                             </div>
@@ -447,12 +406,12 @@
                 <div class="">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
-                        <li><a href="../main_site/about.html">About</a></li>
-                        <li><a href="../main_site/immigrant_services.html">Immigrant Services</a></li>
-                        <li><a href="../main_site/visitor_service.html">Visitor Services</a></li>
+                        <li><a href="../main_site/about.php">About</a></li>
+                        <li><a href="../main_site/immigrant_services.php">Immigrant Services</a></li>
+                        <li><a href="../main_site/visitor_service.php">Visitor Services</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="../main_site/contact.html">Contact</a></li>
-                        <li><a href="../login/login.html">Login</a></li>
+                        <li><a href="../main_site/contact.php">Contact</a></li>
+                        <li><a href="../login/login.php">Login</a></li>
                     </ul>
                 </div>
             </div>

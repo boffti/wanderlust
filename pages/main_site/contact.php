@@ -9,6 +9,12 @@ ID: 1001872904
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,26 +40,97 @@ ID: 1001872904
             <h1>Wanderlust</h1>
             <nav>
                 <ul class="hidden">
-                    <li><a href="../../index.html">Home</a></li>
-                    <li><a href="./about.html">About</a></li>
+                    <li><a href="../../index.php">Home</a></li>
+                    <li><a href="./about.php">About</a></li>
                     <li class="dropdown">
                         <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="./immigrant_services.html">Immigrant Services</a></li>
-                            <li><a class="dropdown-item" href="./visitor_service.html">Visitor Services</a></li>
+                            <li><a class="dropdown-item" href="./immigrant_services.php">Immigrant Services</a></li>
+                            <li><a class="dropdown-item" href="./visitor_service.php">Visitor Services</a></li>
                         </ul>
                     </li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="./contact.html" active>Contact</a></li>
+                    <li><a href="./contact.php" active>Contact</a></li>
                 </ul>
             </nav>
 
-            <div class="signup">
-                <a href="../login/signup.html">
-                    <button class="btn btn-outline-accent text-accent">Login / Signup</button>
-                </a>
-            </div>
+            <?php 
+
+                if(in_array('3', $_SESSION['user_roles'])) {
+                    $admin_markup = <<<am
+                    <!-- ! If Role == Admin -->
+                    <li class="dropdown-item">
+                        <a href="../admin/country_admin.php">
+                            <i class="fas fa-tools" style="margin-right: 8px;"></i>
+                            Admin Console
+                        </a>
+                    </li>
+                    am;
+                } else {
+                    $admin_markup = "";
+                }
+
+                if(in_array('4', $_SESSION['user_roles'])) {
+                    $super_admin_markup = <<<sam
+                    <!-- ! If Role == SuperAdmin -->
+                    <li class="dropdown-item">
+                        <a href="../admin/super_admin.php">
+                            <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                            Super Admin Console
+                        </a>
+                    </li>
+                    <!-- ! Endif -->
+                    sam;
+                } else {
+                    $super_admin_markup = "";
+                }
+            
+            if(isset($_SESSION['user'])) {
+                echo <<<heredoc
+                <!-- ! If user in session -->
+                <ul class="hidden">
+                    <li>
+                        <a id="currentLocation" href="#" class="navbar-location flex">
+                        <i class="fas fa-map-marker-alt loc-icon"></i>
+                            {$_SESSION['user_loc']['city_name']}
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="profile flex">
+                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <p id="" class="">
+                                {$_SESSION['user']['full_name']}
+                            </p>
+                            <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                        </a>
+                        <ul class="dropdown-content" style="top:50px">
+                            <li class="dropdown-item">
+                                <a href="../user/profile.php">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    My Profile
+                                </a>
+                            </li>
+                            {$admin_markup}
+                            {$super_admin_markup}
+                            <li class="dropdown-item">
+                                <a href="../../php/logout.php">
+                                    <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> 
+                heredoc;
+            } else {
+                echo '<div class="signup">
+                            <a href="../login/login.php">
+                                <button class="btn btn-outline-accent text-accent">Login / Signup</button>
+                            </a>
+                        </div>';
+            }
+            ?>
             <a id="btnMenu" href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
         </div>
     </div>
@@ -126,12 +203,12 @@ ID: 1001872904
                 <div class="">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
-                        <li><a href="./about.html">About</a></li>
-                        <li><a href="./immigrant_services.html">Immigrant Services</a></li>
-                        <li><a href="./visitor_service.html">Visitor Services</a></li>
+                        <li><a href="./about.php">About</a></li>
+                        <li><a href="./immigrant_services.php">Immigrant Services</a></li>
+                        <li><a href="./visitor_service.php">Visitor Services</a></li>
                         <li><a href="/blog">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
-                        <li><a href="../login/login.html">Login</a></li>
+                        <li><a href="./contact.php">Contact</a></li>
+                        <li><a href="../login/login.php">Login</a></li>
                     </ul>
                 </div>
             </div>

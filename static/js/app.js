@@ -51,10 +51,6 @@ jQuery(document).ready(function ($) {
         $(this).text(`${faker.lorem.sentences()}`);
     });
 
-    $('.tips .tip-author').each(function () {
-        $(this).text(`${faker.name.firstName()} ${faker.name.lastName()}`);
-    });
-
     $('.post .postIMG').each(function () {
         var $img = $(this);
         $.ajax({
@@ -140,6 +136,90 @@ jQuery(document).ready(function ($) {
         $("#fileBusinessPhoto").click();
     });
 
-    // TODO Add Video & Photo on input onchange listeners
+    $("input[name=dp]").on('change',function(){
+        // alert(this.files[0].name); 
+        var fd = new FormData();
+        var files = $('#inputChangeDP')[0].files;
+        
+        // Check file selected or not
+        if(files.length > 0 ){
+           fd.append('file',files[0]);
+
+           $.ajax({
+              url: '../../php/upload_dp.php',
+              type: 'post',
+              data: fd,
+              contentType: false,
+              processData: false,
+              success: function(response){
+                 if(response != 0){
+                    alert("Success");
+                 }else{
+                    alert('file not uploaded');
+                 }
+              },
+           });
+        }else{
+           alert("Please select a file.");
+        }  
+    });
+
+    $("input[name=user_photo]").on('change',function(){
+        // alert(this.files[0].name); 
+        var fd = new FormData();
+        var files = $('#uploadPhotoInput')[0].files;
+        
+        // Check file selected or not
+        if(files.length > 0 ){
+           fd.append('file',files[0]);
+
+           $.ajax({
+              url: '../../php/upload_photo.php',
+              type: 'post',
+              data: fd,
+              contentType: false,
+              processData: false,
+              success: function(response){
+                 if(response != 0){
+                    location.reload();
+                 }else{
+                    alert('file not uploaded');
+                 }
+              },
+           });
+        }else{
+           alert("Please select a file.");
+        }  
+    });
+
+     $("input[name=user_video]").on('change',function(){
+        // alert(this.files[0].name); 
+        var fd = new FormData();
+        var files = $('#uploadVideoInput')[0].files;
+        
+        // Check file selected or not
+        if(files.length > 0 ){
+           fd.append('file',files[0]);
+
+           $.ajax({
+              url: '../../php/upload_video.php',
+              type: 'post',
+              data: fd,
+              contentType: false,
+              processData: false,
+              success: function(response){
+                 if(response != 0){
+                    location.reload();
+                    // alert(response);
+                 }else{
+                    alert('file not uploaded');
+                 }
+              },
+           });
+        }else{
+           alert("Please select a file.");
+        }  
+    });
+
 
 });

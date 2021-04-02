@@ -1,7 +1,7 @@
 <!-- 
-Author: Natarajan, Karthik
-ID: 1001872904
--->
+Author: Manjunatha, Angad Tarikere
+ID: 1001718335
+ -->
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -9,11 +9,17 @@ ID: 1001872904
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="../../static/favicon.ico" />
-    <title>Wanderlust | Visitor Services</title>
+    <title>Wanderlust | Immigrant Services</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
@@ -33,27 +39,97 @@ ID: 1001872904
             <h1>Wanderlust</h1>
             <nav>
                 <ul class="hidden">
-                    <li><a href="../../index.html">Home</a></li>
-                    <li><a href="./about.html">About</a></li>
-                    <li class="dropdown"><a href="#" active>Services <i class="fas fa-angle-down"
-                                style="margin-left: 5px;"></i></a>
+                    <li><a href="../../index.php">Home</a></li>
+                    <li><a href="./about.php">About</a></li>
+                    <li class="dropdown">
+                        <a href="#" active>Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i></a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="./immigrant_services.html">Immigrant Services</a></li>
-                            <li><a class="dropdown-item" href="./visitor_service.html">Visitor Services</a></li>
+                            <li><a class="dropdown-item" href="./immigrant_services.php">Immigrant Services</a></li>
+                            <li><a class="dropdown-item" href="./visitor_service.php">Visitor Services</a></li>
                         </ul>
                     </li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="./contact.php">Contact</a></li>
                 </ul>
             </nav>
 
-            <div class="signup">
-                <a href="../login/signup.html">
-                    <button class="btn btn-outline-accent text-accent">Login / Signup</button>
-                </a>
-            </div>
-            <a id="btnMenu" href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
+            <?php 
+
+                if(in_array('3', $_SESSION['user_roles'])) {
+                    $admin_markup = <<<am
+                    <!-- ! If Role == Admin -->
+                    <li class="dropdown-item">
+                        <a href="../admin/country_admin.php">
+                            <i class="fas fa-tools" style="margin-right: 8px;"></i>
+                            Admin Console
+                        </a>
+                    </li>
+                    am;
+                } else {
+                    $admin_markup = "";
+                }
+
+                if(in_array('4', $_SESSION['user_roles'])) {
+                    $super_admin_markup = <<<sam
+                    <!-- ! If Role == SuperAdmin -->
+                    <li class="dropdown-item">
+                        <a href="../admin/super_admin.php">
+                            <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                            Super Admin Console
+                        </a>
+                    </li>
+                    <!-- ! Endif -->
+                    sam;
+                } else {
+                    $super_admin_markup = "";
+                }
             
+            if(isset($_SESSION['user'])) {
+                echo <<<heredoc
+                <!-- ! If user in session -->
+                <ul class="hidden">
+                    <li>
+                        <a id="currentLocation" href="#" class="navbar-location flex">
+                        <i class="fas fa-map-marker-alt loc-icon"></i>
+                            {$_SESSION['user_loc']['city_name']}
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="profile flex">
+                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <p id="" class="">
+                                {$_SESSION['user']['full_name']}
+                            </p>
+                            <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                        </a>
+                        <ul class="dropdown-content" style="top:50px">
+                            <li class="dropdown-item">
+                                <a href="../user/profile.php">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    My Profile
+                                </a>
+                            </li>
+                            {$admin_markup}
+                            {$super_admin_markup}
+                            <li class="dropdown-item">
+                                <a href="../../php/logout.php">
+                                    <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> 
+                heredoc;
+            } else {
+                echo '<div class="signup">
+                            <a href="../login/login.php">
+                                <button class="btn btn-outline-accent text-accent">Login / Signup</button>
+                            </a>
+                        </div>';
+            }
+            ?>
+            <a id="btnMenu" href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
         </div>
     </div>
 
@@ -61,9 +137,9 @@ ID: 1001872904
         <div class="container">
             <div class="flex-left" style="justify-content: space-between; align-items:center;">
                 <div class="col-lg-6">
-                    <h2 class="display-4">Visitor Services</h2>
+                    <h2 class="display-4">Immigrant Services</h2>
                 </div>
-                <img src="../../static/img/visitor.png" alt="hero-img" style="padding: 50px 0px; width:300px;" />
+                <img src="../../static/img/passport.png" alt="hero-img" style="padding: 50px 0px; width:300px;" />
             </div>
         </div>
     </section>
@@ -74,13 +150,13 @@ ID: 1001872904
         <ul class="c-services">
             <div class="card bb-green">
                 <li class="c-services__item">
-                    <h3><i class="fas fa-list fa-1x mb-2 text-success"></i>&nbsp Find things to do</h3>
+                    <h3><i class="fas fa-list fa-1x mb-2 text-success"></i>&nbsp Search categories</h3>
                     <p>We provide you with the latest and established categories of businesses in the selected locality,
                         personalized for you, to match your requirements.</p>
                 </li>
             </div>
             <div class="card bb-green">
-                <li>
+                <li class="c-services__item">
                     <h3><i class="fas fa-blog fa-1x mb-3 text-success"></i>&nbsp Blogs</h3>
                     <p>It’s time for you to write your best blog. We provide you with the access/feature to write about
                         your opinions and feelings about the businesses or attractions you recently visited or already
@@ -93,10 +169,10 @@ ID: 1001872904
                 </li>
             </div>
             <div class="card bb-green">
-                <li>
+                <li class="c-services__item">
                     <h3><i class="fas fa-book-open a-1x mb-3 text-success"></i>&nbsp Review and Tips</h3>
-                    <p>Give and, Receive too. Leave Reviews and Tips for places you visit. Help users across the globe
-                        get familiar
+                    <p>Give and, Receive too. Leave Reviews and Tips on Wanderlust. Help users across the globe get
+                        familiar
                         with the place they are located in.
                         Providing reviews and giving tips about a certain location or the businesses attached to it will
                         be
@@ -113,6 +189,25 @@ ID: 1001872904
                         those seeking .
                         Provides an interface where users can chat one- to- one or many -to- many. Helps in bringing our
                         Wanderlust community together .</p>
+                </li>
+            </div>
+            <div class="card bb-green">
+                <li class="c-services__item">
+                    <h3><i class="fas fa-photo-video fa-1x mb-3 text-success"></i>&nbsp Upload pictures & videos</h3>
+                    <p>Make your space all the more colorful. Wanderlust provides you with the access to upload photos
+                        and
+                        videos of the city,
+                        local area or the businesses involved that will be of great assist to all the wanderers
+                        navigating
+                        through our site.</p>
+                </li>
+            </div>
+            <div class="card bb-green">
+                <li class="c-services__item">
+                    <h3><i class="fas fa-map-marker-alt fa-1x mb-3 text-success"></i>&nbsp Local businesses &
+                        attractions
+                    </h3>
+                    <p>Find businesses and attractions around you. Check out their ratings and reviews and see their location and oprationg hours. Phone numbers are listed too.</p>
                 </li>
             </div>
         </ul>
@@ -146,12 +241,12 @@ ID: 1001872904
                 <div class="">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
-                        <li><a href="./about.html">About</a></li>
-                        <li><a href="./immigrant_services.html">Immigrant Services</a></li>
-                        <li><a href="./visitor_service.html">Visitor Services</a></li>
+                        <li><a href="./about.php">About</a></li>
+                        <li><a href="./immigrant_services.php">Immigrant Services</a></li>
+                        <li><a href="./visitor_service.php">Visitor Services</a></li>
                         <li><a href="/blog">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
-                        <li><a href="../login/login.html">Login</a></li>
+                        <li><a href="./contact.php">Contact</a></li>
+                        <li><a href="./contact.php">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -201,6 +296,7 @@ ID: 1001872904
                 </form>
             </div>
         </div>
+    </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"

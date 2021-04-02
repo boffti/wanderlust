@@ -9,6 +9,12 @@ ID: 1001774881
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,20 +38,20 @@ ID: 1001774881
             <h1>Wanderlust</h1>
             <nav>
                 <ul>
-                    <li><a href="../../index.html">Home</a></li>
-                    <li><a href="../main_site/about.html">About</a></li>
+                    <li><a href="../../index.php">Home</a></li>
+                    <li><a href="../main_site/about.php">About</a></li>
                     <li class="dropdown">
                         <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="../main_site/immigrant_services.html">Immigrant
+                            <li><a class="dropdown-item" href="../main_site/immigrant_services.php">Immigrant
                                     Services</a></li>
-                            <li><a class="dropdown-item" href="../main_site/visitor_service.html">Visitor
+                            <li><a class="dropdown-item" href="../main_site/visitor_service.php">Visitor
                                     Services</a></li>
                         </ul>
                     </li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="../main_site/contact.html">Contact</a></li>
+                    <li><a href="../main_site/contact.php">Contact</a></li>
                 </ul>
             </nav>
 
@@ -55,45 +61,77 @@ ID: 1001774881
                 </div> -->
 
             <!-- ! If user in session -->
-            <ul>
-                <li class="dropdown">
-                    <a href="#" class="profile flex">
-                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
-                        <p id="profileName" class="profileName"></p>
-                        <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
-                    </a>
-                    <ul class="dropdown-content" style="top:50px">
-                        <li class="dropdown-item">
-                            <a href="../user/profile.html">
-                                <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                My Profile
+            <?php 
+
+                if(in_array('3', $_SESSION['user_roles'])) {
+                    $admin_markup = <<<am
+                    <!-- ! If Role == Admin -->
+                    <li class="dropdown-item">
+                        <a href="./country_admin.php">
+                            <i class="fas fa-tools" style="margin-right: 8px;"></i>
+                            Admin Console
+                        </a>
+                    </li>
+                    am;
+                } else {
+                    $admin_markup = "";
+                }
+
+                if(in_array('4', $_SESSION['user_roles'])) {
+                    $super_admin_markup = <<<sam
+                    <!-- ! If Role == SuperAdmin -->
+                    <li class="dropdown-item">
+                        <a href="./super_admin.php">
+                            <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                            Super Admin Console
+                        </a>
+                    </li>
+                    <!-- ! Endif -->
+                    sam;
+                } else {
+                    $super_admin_markup = "";
+                }
+                            
+                if(isset($_SESSION['user'])) {
+                echo <<<heredoc
+                <!-- ! If user in session -->
+                <ul class="hidden">
+                    
+                    <li class="dropdown">
+                        <a href="#" class="profile flex">
+                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <p id="" class="">
+                                {$_SESSION['user']['full_name']}
+                            </p>
+                            <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                        </a>
+                        <ul class="dropdown-content" style="top:50px">
+                            <li class="dropdown-item">
+                                <a href="../user/profile.php">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    My Profile
+                                </a>
+                            </li>
+                            {$admin_markup}
+                            {$super_admin_markup}
+                            <li class="dropdown-item">
+                                <a href="../../php/logout.php">
+                                    <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> 
+                heredoc;
+                } else {
+                echo '<div class="signup">
+                            <a href="../login/login.php">
+                                <button class="btn btn-outline-accent text-accent">Login / Signup</button>
                             </a>
-                        </li>
-                        <!-- ! If Role == Admin -->
-                        <li class="dropdown-item">
-                            <a href="#">
-                                <i class="fas fa-tools" style="margin-right: 8px;"></i>
-                                Admin Console
-                            </a>
-                        </li>
-                        <!-- ! Endif -->
-                        <!-- ! If Role == SuperAdmin -->
-                        <li class="dropdown-item">
-                            <a href="./super_admin.html">
-                                <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
-                                Super Admin Console
-                            </a>
-                        </li>
-                        <!-- ! Endif -->
-                        <li class="dropdown-item">
-                            <a href="../login/login.html">
-                                <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                        </div>';
+                }
+                ?>
             <a href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
         </div>
     </div>

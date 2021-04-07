@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!-- 
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
@@ -8,12 +9,6 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-?>
 
 <head>
     <meta charset="utf-8">
@@ -62,6 +57,8 @@ session_start();
             <!-- ! If user in session -->
             <?php 
 
+            if(isset($_SESSION['user'])) {
+
                 if(in_array('3', $_SESSION['user_roles'])) {
                     $admin_markup = <<<am
                     <!-- ! If Role == Admin -->
@@ -90,8 +87,9 @@ session_start();
                 } else {
                     $super_admin_markup = "";
                 }
+
+                $dp = $_SESSION['user']['dp'];
             
-            if(isset($_SESSION['user'])) {
                 echo <<<heredoc
                 <!-- ! If user in session -->
                 <ul class="hidden">
@@ -103,7 +101,7 @@ session_start();
                     </li>
                     <li class="dropdown">
                         <a href="#" class="profile flex">
-                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <img id="avatarIMG" src="../../static/upload/user_dp/{$dp}" alt="profile" class="">
                             <p id="" class="">
                                 {$_SESSION['user']['full_name']}
                             </p>
@@ -480,18 +478,24 @@ session_start();
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form action="../../php/change_loc_handler.php" class="flex-center" style="gap: 12px;" method='POST'>
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Change your location</option>
-                            <option value="arlington">Arlington</option>
-                            <option value="newyork">New York</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="london">London</option>
-                            <option value="dubai">Dubai</option>
+                    <option value="choose" disabled selected>Change your location</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_city_options= "SELECT city_id, city_name from cities";
+                                    $cities = $conn->query($sql_city_options);
+                                    if($cities->num_rows > 0) {                          
+                                        while($item = $cities->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Change</button>
                     </div>
                 </form>

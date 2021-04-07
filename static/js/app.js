@@ -153,7 +153,8 @@ jQuery(document).ready(function ($) {
               processData: false,
               success: function(response){
                  if(response != 0){
-                    alert("Success");
+                    location.reload();
+                    // alert(response);
                  }else{
                     alert('file not uploaded');
                  }

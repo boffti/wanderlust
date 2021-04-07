@@ -1,3 +1,6 @@
+<?php session_start();
+include '../../php/functions.php';
+?>
 <!-- 
 Author: Sundalkar, Gabriel Anand
 ID: 1001774881
@@ -8,12 +11,6 @@ ID: 1001774881
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-?>
 
 <head>
     <meta charset="utf-8">
@@ -63,6 +60,7 @@ session_start();
             <!-- ! If user in session -->
             <?php 
 
+            if(isset($_SESSION['user'])) {
                 if(in_array('3', $_SESSION['user_roles'])) {
                     $admin_markup = <<<am
                     <!-- ! If Role == Admin -->
@@ -91,15 +89,16 @@ session_start();
                 } else {
                     $super_admin_markup = "";
                 }
+
+                $dp = $_SESSION['user']['dp'];
                             
-                if(isset($_SESSION['user'])) {
                 echo <<<heredoc
                 <!-- ! If user in session -->
                 <ul class="hidden">
                     
                     <li class="dropdown">
                         <a href="#" class="profile flex">
-                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <img id="avatarIMG" src="../../static/upload/user_dp/{$dp}" alt="profile" class="">
                             <p id="" class="">
                                 {$_SESSION['user']['full_name']}
                             </p>
@@ -146,27 +145,48 @@ session_start();
         </ul>
     </nav>
 
+    <?php
+        if(isset($_SESSION['user'])){
+            $conn = get_db_conn();
+            $sql_user_count= "SELECT COUNT(*) from users";
+            $users = $conn->query($sql_user_count);
+            $user_count = $users->fetch_row();
+
+            $sql_posts_count= "SELECT COUNT(*) from posts";
+            $posts = $conn->query($sql_posts_count);
+            $post_count = $posts->fetch_row();
+
+            $sql_poi_count= "SELECT COUNT(*) from business";
+            $poi = $conn->query($sql_poi_count);
+            $poi_count = $poi->fetch_row();
+
+            $sql_tips_count= "SELECT COUNT(*) from tips";
+            $tips = $conn->query($sql_tips_count);
+            $tips_count = $tips->fetch_row();
+        }
+    ?>
+
     <div class="wrapper">
         <div class="flex-left space-between">
             <div class="card info-card">
-                <h2><i class="fas fa-users" style="margin-right: 6px;"></i> 2508</h2>
+                <h2><i class="fas fa-users" style="margin-right: 6px;"></i> <?php echo $user_count[0] ?></h2>
                 <p class="text-muted">Number of users</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i> 232452</h2>
+                <h2><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i> <?php echo $post_count[0] ?></h2>
                 <p class="text-muted">Number of posts</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-images" style="margin-right: 6px;"></i> 1164</h2>
-                <p class="text-muted">Number of images uploaded</p>
+                <h2><i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i> <?php echo $poi_count[0] ?></h2>
+                <p class="text-muted">Places of Interest</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-video" style="margin-right: 6px;"></i> 345</h2>
-                <p class="text-muted">Number of videos uploaded</p>
+                <h2><i class="fas fa-info" style="margin-right: 6px;"></i> <?php echo $tips_count[0] ?></h2>
+                <p class="text-muted">Number of tips written</p>
             </div>
         </div>
         <div>
-            <h1 class="ml-10">Manage USA</h1>
+            <h1 class="ml-10">Manage <?php echo $_SESSION['country_admin']['country_name']?></h1>
             <div class="flex-left">
                 <div style="flex-grow: 1;">
                     <div class="card">
@@ -174,7 +194,7 @@ session_start();
                     </div>
                 </div>
                 <div>
-                    <div class="card" style="width: 500px; height:50%">
+                    <div class="card" style="width: 500px; height:'fit_content'">
                         <div class="flex-left space-between">
                             <h3>Cities</h3>
                             <a id="btnAddCity" href="#" class="strong"><i class="fas fa-plus-circle"></i> ADD</a>
@@ -182,41 +202,29 @@ session_start();
                         <table>
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>New York</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Arlington</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>San Fransico</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Miami</td>
-                                    <td>
-                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-
+                            <?php 
+                                $conn = get_db_conn();
+                                $sql_get_cities = "SELECT city_id, city_name from cities where country_id={$_SESSION['country_admin']['country_id']}";
+                                $cities = $conn->query($sql_get_cities);
+                                if($cities->num_rows > 0) {                          
+                                    $html_template = "";
+                                    while($item = $cities->fetch_assoc()) {
+                                        echo <<<cities
+                                        <tr>
+                                            <td>{$item['city_name']}</td>
+                                            <td>
+                                                <a href="../../php/delete_city.php?id={$item['city_id']}"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                        cities;
+                                    }
+                                }
+                            ?>
                             </tbody>
                         </table>
                     </div>
@@ -231,132 +239,114 @@ session_start();
             </div>
 
             <div class="card">
-                <table>
+            <table>
                     <caption>Manage Places of Interest
-                        <a id="btnAddPlaceOfInterest" href="#" class="strong" style="float: right;"><i
-                                class="fas fa-plus-circle"></i> ADD</a>
+                        <a id="btnAddPlaceOfInterest" href="#" class="strong" style="float: right;"><i class="fas fa-plus-circle"></i> ADD</a>
                     </caption>
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
                             <th>City</th>
-                            <th>Place Name</th>
                             <th>Category</th>
-                            <th>Place Description</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Arlington</td>
-                            <td>Old School Pizza Tavern</td>
-                            <td>Restaurant</td>
-                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur voluptas, perspiciatis
-                                illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae
-                                recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
-                            <td>
-                                <a href="#"><i class="fas fa-pen"></i></a>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>New York</td>
-                            <td>Walmart</td>
-                            <td>Shopping</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cum odit quam
-                                iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos
-                                placeat, ad expedita reiciendis voluptatibus.</td>
-                            <td>
-                                <a href="#"><i class="fas fa-pen"></i></a>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
+                        <?php 
+                            $conn = get_db_conn();
+                            $sql_get_poi = "SELECT b.business_id, b.business_name, b.business_website, b.business_desc, b.business_phone, b.business_address, b.photo_uri, c.city_id, c.city_name, cat.category_id, cat.category_name from business as b, cities as c, categories as cat where b.city_id=c.city_id and b.category=cat.category_id and c.country_id={$_SESSION['country_admin']['country_id']}";
+                            $pois = $conn->query($sql_get_poi);
+                            if($pois->num_rows > 0) {                          
+                                while($item = $pois->fetch_assoc()) {
+                                    echo <<<pois
+                                    <tr>
+                                        <td>{$item['business_name']}</td>
+                                        <td>{$item['business_phone']}</td>
+                                        <td>{$item['business_address']}</td>
+                                        <td>{$item['city_name']}</td>
+                                        <td>{$item['category_name']}</td>
+                                        <td>
+                                            <a href="#"><i class="fas fa-pen"></i></a>
+                                            <a href="../../php/delete_poi.php?id={$item['business_id']}"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    pois;
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
 
             <div class="card">
-                <table>
+            <table>
                     <caption>Manage Posts</caption>
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>City</th>
-                            <th>User Name</th>
+                            <th>User</th>
                             <th>Post Content</th>
                             <th>Timestamp</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Arlington</td>
-                            <td>Aneesh Melkot</td>
-                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur voluptas, perspiciatis
-                                illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae
-                                recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
-                            <td>12:16 12/43/4342</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>New York</td>
-                            <td>Angad Manjunath</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cum odit quam
-                                iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos
-                                placeat, ad expedita reiciendis voluptatibus.</td>
-                            <td>12:16 12/43/4342</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
+                        <?php 
+                            $conn = get_db_conn();
+                            $sql_get_posts = "SELECT p.post_id, p.post_content, p.created_at, u.full_name, c.city_name from posts as p, users as u, cities as c where p.user_id=u.user_id and p.city_id=c.city_id and c.country_id={$_SESSION['country_admin']['country_id']}";
+                            $posts = $conn->query($sql_get_posts);
+                            if($posts->num_rows > 0) {                          
+                                while($item = $posts->fetch_assoc()) {
+                                    echo <<<users
+                                    <tr>
+                                        <td>{$item['city_name']}</td>
+                                        <td>{$item['full_name']}</td>
+                                        <td>{$item['post_content']}</td>
+                                        <td>{$item['created_at']}</td>
+                                        <td>
+                                            <a href="../../php/delete_post.php?id={$item['post_id']}"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    users;
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
 
             <div class="card">
-                <table>
+            <table>
                     <caption>Manage Tips</caption>
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>City</th>
-                            <th>User Name</th>
-                            <th>Post Content</th>
-                            <th>Timestamp</th>
+                            <th>User</th>
+                            <th>Tip</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Arlington</td>
-                            <td>Aneesh Melkot</td>
-                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur voluptas, perspiciatis
-                                illo voluptatum corporis placeat repellat beatae minus officia rem repudiandae
-                                recusandae cupiditate explicabo fugiat aspernatur labore ut harum assumenda?</td>
-                            <td>12:16 12/43/4342</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>New York</td>
-                            <td>Angad Manjunath</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cum odit quam
-                                iusto, magni nulla in vitae rem doloremque ut, quae sequi culpa perspiciatis dignissimos
-                                placeat, ad expedita reiciendis voluptatibus.</td>
-                            <td>12:16 12/43/4342</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
+                    <?php 
+                            $conn = get_db_conn();
+                            $sql_get_tips = "SELECT t.tip_id, t.tip_content, u.full_name, c.city_name from tips as t, users as u, cities as c where t.user_id=u.user_id and t.city_id=c.city_id and c.country_id={$_SESSION['country_admin']['country_id']}";
+                            $tips = $conn->query($sql_get_tips);
+                            if($tips->num_rows > 0) {                          
+                                while($item = $tips->fetch_assoc()) {
+                                    echo <<<users
+                                    <tr>
+                                        <td>{$item['city_name']}</td>
+                                        <td>{$item['full_name']}</td>
+                                        <td>{$item['tip_content']}</td>
+                                        <td>
+                                            <a href="../../php/delete_tip.php?tip_id={$item['tip_id']}"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    users;
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -371,10 +361,25 @@ session_start();
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form action="../../php/add_city.php" method="post" class="flex-center" style="gap: 12px;">
                     <input type="text" name="city" id="add-city-text" placeholder="City Name">
+                    <div class="form-control"> <select id="location-select" name="country_id" id="country_select">
+                    <option value="choose" disabled selected>Select Country</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_country_options= "SELECT country_id, country_name from countries";
+                                    $countries = $conn->query($sql_country_options);
+                                    if($countries->num_rows > 0) {                          
+                                        while($item = $countries->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['country_id']}">{$item['country_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
+                        </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Add</button>
                     </div>
                 </form>

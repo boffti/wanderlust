@@ -50,13 +50,18 @@
                             <!-- <label for="name">Full Name</label> -->
                         </div>
                         <div class="">
-                            <input name="email" type="email" id="email" class="" placeholder="E-mail"
+                            <input name="email" type="email" id="email" class="" placeholder="E-mail" 
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                title="xxx@xxx.xxx"
                                 required>
                             <!-- <label for="email">E-Mail</label> -->
                         </div>
                         <div class="">
                             <input name="password" type="password" id="inputPassword" class=""
-                                placeholder="Password" required>
+                                placeholder="Password"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+                                title="8-12 letters, Atleast 1 uppercase, lowercase, symbol and number."
+                                required>
                             <!-- <label for="inputPassword">Password</label> -->
                         </div>
                         <div class="">
@@ -64,6 +69,15 @@
                                 class="" placeholder="Re-enter Password" required>
                             <!-- <label for="inputPasswordReenter">Re-enter Password</label> -->
                         </div>
+                        <?php 
+                            if(isset($_GET['msg'])) {
+                                echo <<<msg
+                                <div class="flex flex-vertical">
+                                    <p class="wander-green">{$_GET['msg']}</p>
+                                </div>
+                                msg;
+                            }
+                        ?>
                         <br>
                         <button
                             class="btn btn-lg"

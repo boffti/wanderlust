@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!-- 
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
@@ -8,12 +9,6 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-?>
 
 <head>
     <meta charset="utf-8">
@@ -62,37 +57,39 @@ session_start();
             </div> -->
 
             <?php 
-
-            if(in_array('3', $_SESSION['user_roles'])) {
-                $admin_markup = <<<am
-                <!-- ! If Role == Admin -->
-                <li class="dropdown-item">
-                    <a href="./pages/admin/country_admin.php">
-                        <i class="fas fa-tools" style="margin-right: 8px;"></i>
-                        Admin Console
-                    </a>
-                </li>
-                am;
-            } else {
-                $admin_markup = "";
-            }
-
-            if(in_array('4', $_SESSION['user_roles'])) {
-                $super_admin_markup = <<<sam
-                <!-- ! If Role == SuperAdmin -->
-                <li class="dropdown-item">
-                    <a href="./pages/admin/super_admin.php">
-                        <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
-                        Super Admin Console
-                    </a>
-                </li>
-                <!-- ! Endif -->
-                sam;
-            } else {
-                $super_admin_markup = "";
-            }
-            
             if(isset($_SESSION['user'])) {
+
+                if(in_array('3', $_SESSION['user_roles'])) {
+                    $admin_markup = <<<am
+                    <!-- ! If Role == Admin -->
+                    <li class="dropdown-item">
+                        <a href="./pages/admin/country_admin.php">
+                            <i class="fas fa-tools" style="margin-right: 8px;"></i>
+                            Admin Console
+                        </a>
+                    </li>
+                    am;
+                } else {
+                    $admin_markup = "";
+                }
+
+                if(in_array('4', $_SESSION['user_roles'])) {
+                    $super_admin_markup = <<<sam
+                    <!-- ! If Role == SuperAdmin -->
+                    <li class="dropdown-item">
+                        <a href="./pages/admin/super_admin.php">
+                            <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                            Super Admin Console
+                        </a>
+                    </li>
+                    <!-- ! Endif -->
+                    sam;
+                } else {
+                    $super_admin_markup = "";
+                }
+
+                $dp = $_SESSION['user']['dp'];
+            
                 echo <<<heredoc
                 <!-- ! If user in session -->
                 <ul class="hidden">
@@ -104,7 +101,7 @@ session_start();
                     </li>
                     <li class="dropdown">
                         <a href="#" class="profile flex">
-                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <img id="avatarIMG" src="./static/upload/user_dp/{$dp}" alt="profile" class="{}">
                             <p id="" class="">
                                 {$_SESSION['user']['full_name']}
                             </p>
@@ -196,7 +193,8 @@ session_start();
                 <div>
                     <div class="flex" style="gap:12px">
                     <?php 
-                        include './php/functions.php';
+                        if(isset($_SESSION['user'])) {
+                            include './php/functions.php';
                         $conn = get_db_conn();
                         $sql_explore_nearby = "SELECT business.business_id, business.business_name, business.business_website, business.business_desc, business.business_phone, business.business_address, business.photo_uri, cities.city_id, cities.city_name, categories.category_name from business, cities, categories where business.city_id=cities.city_id and categories.category_id=business.category and cities.city_name='{$_SESSION['user_loc']['city_name']}' limit 3";
                         $explore_places = $conn->query($sql_explore_nearby);
@@ -227,6 +225,7 @@ session_start();
                                 explore;
                             }
                         }
+                        }
                     ?>
                     </div>
                 </div>
@@ -255,14 +254,15 @@ session_start();
                 <!-- ! ENDIF -->
                 <div class="posts">
                 <?php
-                    $sql_city_posts = "SELECT posts.post_id, posts.post_content, posts.created_at, users.user_id, users.full_name, cities.city_id, cities.city_name from posts, cities, users where posts.user_id=users.user_id and posts.city_id=cities.city_id and cities.city_name='{$_SESSION['user_loc']['city_name']}' limit 5";
+                    if(isset($_SESSION['user'])) {
+                    $sql_city_posts = "SELECT posts.post_id, posts.post_content, posts.created_at, users.user_id, users.full_name, users.dp, cities.city_id, cities.city_name from posts, cities, users where posts.user_id=users.user_id and posts.city_id=cities.city_id and cities.city_name='{$_SESSION['user_loc']['city_name']}' limit 5";
                     $city_posts = $conn->query($sql_city_posts);
                     if($city_posts->num_rows > 0) {                          
                         while($item = $city_posts->fetch_assoc()) {
                             echo <<<posts
                             <div class="card post">
                                 <div class="flex-left">
-                                    <img class="postIMG" src="" alt="">
+                                    <img class="" src="./static/upload/user_dp/{$item['dp']}" alt="">
                                     <div class="full-width">
                                         <div class="flex-left space-between align-items-center">
                                             <a href="#">
@@ -277,6 +277,7 @@ session_start();
                             posts;
                         }
                     }
+                    }
                 ?>
                 </div>
                 <a href="./pages/user/posts.php" style="margin-left: 12px;">See all</a>
@@ -288,6 +289,7 @@ session_start();
                 <h2>Word to the Wise</h2>
                 <div class="tips">
                 <?php
+                   if(isset($_SESSION['user'])){
                     $sql_city_tips = "SELECT tips.tip_id, tips.tip_content, users.user_id, users.full_name, cities.city_id, cities.city_name from tips, cities, users where tips.user_id=users.user_id and tips.city_id=cities.city_id and cities.city_name='{$_SESSION['user_loc']['city_name']}' limit 3";
                     $city_tips = $conn->query($sql_city_tips);
                     if($city_tips->num_rows > 0) {                          
@@ -308,11 +310,22 @@ session_start();
                             explore;
                         }
                     }
+                   }
                 ?>
                 </div>
                 <div class="flex" style="justify-content: space-between; padding: 0 15px">
-                    <a href="./pages/user/tips.php?city_id=<?php echo $_SESSION['user_loc']['city_id'];?>" class="">See more tips</a>
-                    <a href="./pages/user/tips.php?city_id=<?php echo $_SESSION['user_loc']['city_id'];?>" class="strong">+ ADD TIP</a>
+                    <a href="./pages/user/tips.php?city_id=<?php if(isset($_SESSION['user'])) {echo $_SESSION['user_loc']['city_id'];} else echo "#" ?>" class="">See more tips</a>
+                    <?php
+                    if(isset($_SESSION['user'])) {
+                        if(in_array('2', $_SESSION['user_roles'])) {
+                            echo "";
+                        } else {
+                            echo <<<buttonmarkup
+                            <a href="./pages/user/tips.php?city_id={$_SESSION['user_loc']['city_id']}" class="strong">+ ADD TIP</a>
+                            buttonmarkup;
+                        }
+                    }
+                    ?>
                 </div>
             </section>
 
@@ -438,18 +451,24 @@ session_start();
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form action="./php/change_loc_handler.php" class="flex-center" style="gap: 12px;">
+                <form action="./php/change_loc_handler.php" class="flex-center" style="gap: 12px;" method='POST'>
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Change your location</option>
-                            <option value="arlington">Arlington</option>
-                            <option value="newyork">New York</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="london">London</option>
-                            <option value="dubai">Dubai</option>
+                    <option value="choose" disabled selected>Change your location</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_city_options= "SELECT city_id, city_name from cities";
+                                    $cities = $conn->query($sql_city_options);
+                                    if($cities->num_rows > 0) {                          
+                                        while($item = $cities->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Change</button>
                     </div>
                 </form>

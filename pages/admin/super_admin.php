@@ -1,3 +1,6 @@
+<?php session_start(); 
+include '../../php/functions.php';
+?>
 <!-- 
 Author: Sundalkar, Gabriel Anand
 ID: 1001774881
@@ -9,13 +12,6 @@ ID: 1001774881
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-include '../../php/functions.php';
-// If the user is not logged in redirect to the login page...
-?>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,6 +22,7 @@ include '../../php/functions.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
+
     <link rel="stylesheet" href="../../static/css/style.css">
     <link rel="stylesheet" href="../../static/css/gabriel.css">
 
@@ -63,7 +60,7 @@ include '../../php/functions.php';
 
             <!-- ! If user in session -->
             <?php 
-
+            if(isset($_SESSION['user'])) {
                 if(in_array('3', $_SESSION['user_roles'])) {
                     $admin_markup = <<<am
                     <!-- ! If Role == Admin -->
@@ -82,7 +79,7 @@ include '../../php/functions.php';
                     $super_admin_markup = <<<sam
                     <!-- ! If Role == SuperAdmin -->
                     <li class="dropdown-item">
-                        <a href="./admin/super_admin.php">
+                        <a href="./super_admin.php">
                             <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
                             Super Admin Console
                         </a>
@@ -92,15 +89,16 @@ include '../../php/functions.php';
                 } else {
                     $super_admin_markup = "";
                 }
+
+                $dp = $_SESSION['user']['dp'];
                             
-            if(isset($_SESSION['user'])) {
                 echo <<<heredoc
                 <!-- ! If user in session -->
                 <ul class="hidden">
                     
                     <li class="dropdown">
                         <a href="#" class="profile flex">
-                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <img id="avatarIMG" src="../../static/upload/user_dp/{$dp}" alt="profile" class="">
                             <p id="" class="">
                                 {$_SESSION['user']['full_name']}
                             </p>
@@ -147,22 +145,43 @@ include '../../php/functions.php';
         </ul>
     </nav>
 
+    <?php
+        if(isset($_SESSION['user'])){
+            $conn = get_db_conn();
+            $sql_user_count= "SELECT COUNT(*) from users";
+            $users = $conn->query($sql_user_count);
+            $user_count = $users->fetch_row();
+
+            $sql_posts_count= "SELECT COUNT(*) from posts";
+            $posts = $conn->query($sql_posts_count);
+            $post_count = $posts->fetch_row();
+
+            $sql_poi_count= "SELECT COUNT(*) from business";
+            $poi = $conn->query($sql_poi_count);
+            $poi_count = $poi->fetch_row();
+
+            $sql_tips_count= "SELECT COUNT(*) from tips";
+            $tips = $conn->query($sql_tips_count);
+            $tips_count = $tips->fetch_row();
+        }
+    ?>
+
     <div class="wrapper">
         <div class="flex-left space-between">
             <div class="card info-card">
-                <h2><i class="fas fa-users" style="margin-right: 6px;"></i> 2508</h2>
+                <h2><i class="fas fa-users" style="margin-right: 6px;"></i> <?php echo $user_count[0] ?></h2>
                 <p class="text-muted">Number of users</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i> 232452</h2>
+                <h2><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i> <?php echo $post_count[0] ?></h2>
                 <p class="text-muted">Number of posts</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i> 1164</h2>
+                <h2><i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i> <?php echo $poi_count[0] ?></h2>
                 <p class="text-muted">Places of Interest</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-info" style="margin-right: 6px;"></i> 345</h2>
+                <h2><i class="fas fa-info" style="margin-right: 6px;"></i> <?php echo $tips_count[0] ?></h2>
                 <p class="text-muted">Number of tips written</p>
             </div>
         </div>
@@ -183,7 +202,6 @@ include '../../php/functions.php';
                         <table>
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Actions</th>
                                 </tr>
@@ -198,10 +216,9 @@ include '../../php/functions.php';
                                     while($item = $cities->fetch_assoc()) {
                                         echo <<<cities
                                         <tr>
-                                            <td>{$item['city_id']}</td>
                                             <td>{$item['city_name']}</td>
                                             <td>
-                                                <a href="#"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="../../php/delete_city.php?id={$item['city_id']}&loc=1"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                         cities;
@@ -238,7 +255,7 @@ include '../../php/functions.php';
                                             <td>{$item['country_id']}</td>
                                             <td>{$item['country_name']}</td>
                                             <td>
-                                                <a href="#"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="../../php/delete_country.php?id={$item['country_id']}"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                         countries;
@@ -267,66 +284,63 @@ include '../../php/functions.php';
                         </tr>
                     </thead>
                     <tbody>
-                    <?php 
-                                $conn = get_db_conn();
-                                $sql_get_continents = "SELECT continent_id, continent_name from continents";
-                                $continents = $conn->query($sql_get_continents);
-                                if($continents->num_rows > 0) {                          
-                                    $html_template = "";
-                                    while($item = $continents->fetch_assoc()) {
-                                        echo <<<continents
-                                        <tr>
-                                            <td>{$item['continent_id']}</td>
-                                            <td>{$item['continent_name']}</td>
-                                            <td>
-                                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                            </td>
-                                        </tr>
-                                        continents;
-                                    }
+                        <?php 
+                            $conn = get_db_conn();
+                            $sql_get_continents = "SELECT continent_id, continent_name from continents";
+                            $continents = $conn->query($sql_get_continents);
+                            if($continents->num_rows > 0) {                          
+                                $html_template = "";
+                                while($item = $continents->fetch_assoc()) {
+                                    echo <<<continents
+                                    <tr>
+                                        <td>{$item['continent_id']}</td>
+                                        <td>{$item['continent_name']}</td>
+                                        <td>
+                                            <a href="../../php/delete_continent.php?id={$item['continent_id']}"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    continents;
                                 }
-                            ?>
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
             <div class="card">
                 <table>
-                    <caption>Manage Admin
+                    <caption>Manage Admins
                         <a id="btnAddAdmin" href="#" class="strong" style="float: right;"><i class="fas fa-plus-circle"></i> ADD</a>
                     </caption>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Number</th>
                             <th>Email</th>
                             <th>Country</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Gabriel Sundalkar</td>
-                            <td>98456893456</td>
-                            <td>angadmanjunath@gmail.com</td>
-                            <td>U.S.A</td>
-                            <td>
-                                <a href="#"><i class="fas fa-pen"></i></a>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Karthik Natarajan</td>
-                            <td>6789875678</td>
-                            <td>arlington@gmail.com</td>
-                            <td>INDIA</td>
-                            <td>
-                                <a href="#"><i class="fas fa-pen"></i></a>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
+                        <?php 
+                            $conn = get_db_conn();
+                            $sql_get_admins = "SELECT users.user_id, users.full_name, users.email, countries.country_id, countries.country_name from users, country_admins, countries where users.user_id=country_admins.user_id and country_admins.country_id=countries.country_id";
+                            $admins = $conn->query($sql_get_admins);
+                            if($admins->num_rows > 0) {                          
+                                while($item = $admins->fetch_assoc()) {
+                                    echo <<<admins
+                                    <tr>
+                                        <td>{$item['user_id']}</td>
+                                        <td>{$item['full_name']}</td>
+                                        <td>{$item['email']}</td>
+                                        <td>{$item['country_name']}</td>
+                                        <td>
+                                            <a href="../../php/delete_admin.php?id={$item['user_id']}"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    admins;
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -345,80 +359,67 @@ include '../../php/functions.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Gabriel Sundalkar</td>
-                            <td>98456893456</td>
-                            <td>angadmanjunath@gmail.com</td>
-                            <td>U.S.A</td>
-                            <td>
-                                <a href="#"><i class="fas fa-pen"></i></a>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Karthik Natarajan</td>
-                            <td>6789875678</td>
-                            <td>arlington@gmail.com</td>
-                            <td>INDIA</td>
-                            <td>
-                                <a href="#"><i class="fas fa-pen"></i></a>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
+                        <?php 
+                            $conn = get_db_conn();
+                            $sql_get_users = "SELECT users.user_id, users.full_name, users.email, cities.city_id, cities.city_name, countries.country_id, countries.country_name from users, cities, countries where users.city=cities.city_id and cities.country_id=countries.country_id";
+                            $users = $conn->query($sql_get_users);
+                            if($users->num_rows > 0) {                          
+                                while($item = $users->fetch_assoc()) {
+                                    echo <<<users
+                                    <tr>
+                                        <td>{$item['user_id']}</td>
+                                        <td>{$item['full_name']}</td>
+                                        <td>{$item['email']}</td>
+                                        <td>{$item['city_name']}</td>
+                                        <td>{$item['country_name']}</td>
+                                        <td>
+                                            <a href="../../php/delete_user.php?id={$item['user_id']}"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    users;
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
-            <div class="card">
+            <div class="card" style="width:'auto'">
                 <table>
                     <caption>Manage Places of Interest
                         <a id="btnAddPlaceOfInterest" href="#" class="strong" style="float: right;"><i class="fas fa-plus-circle"></i> ADD</a>
                     </caption>
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
                             <th>City</th>
-                            <th>Place Name</th>
-                            <th>Place Description</th>
-                            <th>Actions</th>
+                            <th>Category</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Arlington</td>
-                            <td>Old School Pizza Tavern</td>
-                            <td>
-                                <p class="disp-cont">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-                                    voluptas, </p>
-                                <p class="more-cont" style="display:none;">perspiciatis illo voluptatum corporis placeat
-                                    repellat beatae minus officia rem repudiandae recusandae cupiditate explicabo fugiat
-                                    aspernatur labore ut harum assumenda?</p>
-                                <a href="" class="readmore">Read more</a>
-                            </td>
-                            <td>
-                                <a href="#"><i class="fas fa-pen"></i></a>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>New York</td>
-                            <td>Angad Manjunath</td>
-                            <td>
-                                <p class="disp-cont">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-                                    voluptas, </p>
-                                <p class="more-cont" style="display:none;">perspiciatis illo voluptatum corporis placeat
-                                    repellat beatae minus officia rem repudiandae recusandae cupiditate explicabo fugiat
-                                    aspernatur labore ut harum assumenda?</p>
-                                <a href="" class="readmore">Read more</a>
-                            </td>
-                            <td>
-                                <a href="#"><i class="fas fa-pen"></i></a>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
+                        <?php 
+                            $conn = get_db_conn();
+                            $sql_get_poi = "SELECT b.business_id, b.business_name, b.business_website, b.business_desc, b.business_phone, b.business_address, b.photo_uri, c.city_id, c.city_name, cat.category_id, cat.category_name from business as b, cities as c, categories as cat where b.city_id=c.city_id and b.category=cat.category_id";
+                            $pois = $conn->query($sql_get_poi);
+                            if($pois->num_rows > 0) {                          
+                                while($item = $pois->fetch_assoc()) {
+                                    echo <<<pois
+                                    <tr>
+                                        <td>{$item['business_name']}</td>
+                                        <td>{$item['business_phone']}</td>
+                                        <td>{$item['business_address']}</td>
+                                        <td>{$item['city_name']}</td>
+                                        <td>{$item['category_name']}</td>
+                                        <td>
+                                            <a href="#"><i class="fas fa-pen"></i></a>
+                                            <a href="../../php/delete_poi.php?id={$item['business_id']}&loc=1"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    pois;
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -428,49 +429,34 @@ include '../../php/functions.php';
                     <caption>Manage Posts</caption>
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>City</th>
-                            <th>User Name</th>
+                            <th>User</th>
                             <th>Post Content</th>
                             <th>Timestamp</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Arlington</td>
-                            <td>Aneesh Melkot</td>
-                            <td>
-                                <p class="disp-cont">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-                                </p>
-                                <p class="more-cont" style="display:none;">voluptas,perspiciatis illo voluptatum
-                                    corporis placeat repellat beatae minus officia rem repudiandae recusandae cupiditate
-                                    explicabo fugiat aspernatur labore ut harum assumenda?</p>
-                                <a href="" class="readmore">Read more</a>
-                            </td>
-                            <td>12:16 12/43/4342</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>New York</td>
-                            <td>Angad Manjunath</td>
-                            <td>
-                                <p class="disp-cont">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-                                </p>
-                                <p class="more-cont" style="display:none;">voluptas,perspiciatis illo voluptatum
-                                    corporis placeat repellat beatae minus officia rem repudiandae recusandae cupiditate
-                                    explicabo fugiat aspernatur labore ut harum assumenda?</p>
-                                <a href="" class="readmore">Read more</a>
-                            </td>
-                            <td>12:16 12/43/4342</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
+                        <?php 
+                            $conn = get_db_conn();
+                            $sql_get_posts = "SELECT p.post_id, p.post_content, p.created_at, u.full_name, c.city_name from posts as p, users as u, cities as c where p.user_id=u.user_id and p.city_id=c.city_id";
+                            $posts = $conn->query($sql_get_posts);
+                            if($posts->num_rows > 0) {                          
+                                while($item = $posts->fetch_assoc()) {
+                                    echo <<<users
+                                    <tr>
+                                        <td>{$item['city_name']}</td>
+                                        <td>{$item['full_name']}</td>
+                                        <td>{$item['post_content']}</td>
+                                        <td>{$item['created_at']}</td>
+                                        <td>
+                                            <a href="../../php/delete_post.php?id={$item['post_id']}&loc=2"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    users;
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -480,49 +466,72 @@ include '../../php/functions.php';
                     <caption>Manage Tips</caption>
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>City</th>
-                            <th>User Name</th>
-                            <th>Post Content</th>
-                            <th>Timestamp</th>
+                            <th>User</th>
+                            <th>Tip</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                    <?php 
+                            $conn = get_db_conn();
+                            $sql_get_tips = "SELECT t.tip_id, t.tip_content, u.full_name, c.city_name from tips as t, users as u, cities as c where t.user_id=u.user_id and t.city_id=c.city_id";
+                            $tips = $conn->query($sql_get_tips);
+                            if($tips->num_rows > 0) {                          
+                                while($item = $tips->fetch_assoc()) {
+                                    echo <<<users
+                                    <tr>
+                                        <td>{$item['city_name']}</td>
+                                        <td>{$item['full_name']}</td>
+                                        <td>{$item['tip_content']}</td>
+                                        <td>
+                                            <a href="../../php/delete_tip.php?tip_id={$item['tip_id']}&loc=1"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    users;
+                                }
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Queries -->
+            <div class="card">
+                <table>
+                    <caption>Manage Queries</caption>
+                    <thead>
                         <tr>
-                            <td>1</td>
-                            <td>Arlington</td>
-                            <td>Aneesh Melkot</td>
-                            <td>
-                                <p class="disp-cont">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-                                </p>
-                                <p class="more-cont" style="display:none;">voluptas,perspiciatis illo voluptatum
-                                    corporis placeat repellat beatae minus officia rem repudiandae recusandae cupiditate
-                                    explicabo fugiat aspernatur labore ut harum assumenda?</p>
-                                <a href="" class="readmore">Read more</a>
-                            </td>
-                            <td>12:16 12/43/4342</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Country</th>
+                            <th>Phone</th>
+                            <th>Type</th>
+                            <th>Query</th>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>New York</td>
-                            <td>Angad Manjunath</td>
-                            <td>
-                                <p class="disp-cont">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-                                </p>
-                                <p class="more-cont" style="display:none;">voluptas,perspiciatis illo voluptatum
-                                    corporis placeat repellat beatae minus officia rem repudiandae recusandae cupiditate
-                                    explicabo fugiat aspernatur labore ut harum assumenda?</p>
-                                <a href="" class="readmore">Read more</a>
-                            </td>
-                            <td>12:16 12/43/4342</td>
-                            <td>
-                                <a href="#"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                            $conn = get_db_conn();
+                            $sql_get_queries = "SELECT query_id, first_name, last_name, country, email, phone, type, query from contact_form";
+                            $queries = $conn->query($sql_get_queries);
+                            if($queries->num_rows > 0) {                          
+                                while($item = $queries->fetch_assoc()) {
+                                    echo <<<users
+                                    <tr>
+                                        <td>{$item['first_name']}</td>
+                                        <td>{$item['email']}</td>
+                                        <td>{$item['country']}</td>
+                                        <td>{$item['phone']}</td>
+                                        <td>{$item['type']}</td>
+                                        <td>{$item['query']}</td>
+                                        <td>
+                                            <a href="../../php/delete_query.php?id={$item['query_id']}&loc=1"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    users;
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -537,10 +546,25 @@ include '../../php/functions.php';
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form action="../../php/add_city.php?loc=1" method="post" class="flex-center" style="gap: 12px;">
                     <input type="text" name="city" id="add-city-text" placeholder="City Name">
+                    <div class="form-control"> <select id="location-select" name="country_id" id="country_select">
+                    <option value="choose" disabled selected>Select Country</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_country_options= "SELECT country_id, country_name from countries";
+                                    $countries = $conn->query($sql_country_options);
+                                    if($countries->num_rows > 0) {                          
+                                        while($item = $countries->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['country_id']}">{$item['country_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
+                        </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Add</button>
                     </div>
                 </form>
@@ -556,8 +580,24 @@ include '../../php/functions.php';
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
-                    <input type="text" name="Country" id="add--text" placeholder="Country Name">
+                <form action="../../php/add_country.php" method="post" class="flex-center" style="gap: 12px;">
+                    <input type="text" name="country" id="add--text" placeholder="Country Name">
+                    <div class="form-control"> <select id="location-select" name="continent_id" id="location">
+                    <option value="choose" disabled selected>Select Continent</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_cont_options= "SELECT continent_id, continent_name from continents";
+                                    $conts = $conn->query($sql_cont_options);
+                                    if($conts->num_rows > 0) {                          
+                                        while($item = $conts->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['continent_id']}">{$item['continent_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
+                        </select></div>
                     <div>
                         <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Add</button>
@@ -575,10 +615,9 @@ include '../../php/functions.php';
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form action="../../php/add_continent.php" method="post" class="flex-center" style="gap: 12px;">
                     <input type="text" name="continent" id="add-continent-text" placeholder="Continent Name">
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Add</button>
                     </div>
                 </form>
@@ -594,19 +633,25 @@ include '../../php/functions.php';
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
-                    <input type="text" name="continent" id="add-continent-text" placeholder="Admin Name">
-                    <input type="text" name="continent" id="add-continent-text" placeholder="Admin Phone">
-                    <input type="text" name="continent" id="add-continent-text" placeholder="Admin Email">
-                    <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Select City</option>
-                            <option value="usa">USA</option>
-                            <option value="india">India</option>
-                            <option value="uk">United Kingdom</option>
-                            <option value="bangalore">Thailand</option>
+                <form action="../../php/add_admin.php" method="post" class="flex-center" style="gap: 12px;">
+                    <input type="text" name="admin_email" id="add-continent-text" placeholder="Admin Email">
+                    <div class="form-control"> <select id="location-select" name="country_id" id="country_select">
+                    <option value="choose" disabled selected>Select Country</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_country_options= "SELECT country_id, country_name from countries";
+                                    $countries = $conn->query($sql_country_options);
+                                    if($countries->num_rows > 0) {                          
+                                        while($item = $countries->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['country_id']}">{$item['country_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Add</button>
                     </div>
                 </form>
@@ -622,37 +667,123 @@ include '../../php/functions.php';
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
-                    <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Select City</option>
-                            <option value="arlington">Arlington</option>
-                            <option value="newyork">New York</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="london">London</option>
-                            <option value="dubai">Dubai</option>
+                <form action="../../php/add_business.php" method="post" class="flex-center" style="gap: 12px;">
+                <div class="form-control"> <select id="city_select" name="city_id">
+                    <option value="choose" disabled selected>Select City</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_city= "SELECT city_id, city_name from cities";
+                                    $cities = $conn->query($sql_city);
+                                    if($cities->num_rows > 0) {                          
+                                        while($item = $cities->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <input type="text" name="businessName" id="businessName" placeholder="Place Name">
-                    <textarea name="businessDesc" id="businessDesc" cols="30" rows="3" placeholder="Place Descriuption"
+                    <textarea name="businessDesc" id="businessDesc" cols="30" rows="3" placeholder="Place Description"
                         style="width: 400px;"></textarea>
-                    <div class="form-control"> <select id="location-select" name="location" id="location">
+                    <input type="text" name="businessWebsite" id="businessWebsite" placeholder="Website Link">
+                    <input type="text" name="businessPhone" id="businessPhone" placeholder="Phone">
+                    <input type="text" name="businessAddress" id="businessAddress" placeholder="Address">
+                    <input type="text" name="photoURI" id="photoURI" placeholder="Photo Link">
+                                
+                    <div class="form-control"> <select name="category_id" id="category_id">
                             <option value="choose" disabled selected>Choose a Category</option>
-                            <option value="restaurants">Restaurants</option>
-                            <option value="shopping">Shopping</option>
-                            <option value="education">Education</option>
-                            <option value="worship">Religion & Worship</option>
-                            <option value="entertainment">Entertainment</option>
-                            <option value="health">Health & Medical</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_cat= "SELECT category_id, category_name from categories";
+                                    $categories = $conn->query($sql_cat);
+                                    if($categories->num_rows > 0) {                          
+                                        while($item = $categories->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['category_id']}">{$item['category_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <div>
                         <div>
-                            <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                             <button class="btn" type="submit">Add</button>
                         </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <?php
+        $conn = get_db_conn();
+
+        $city_options = "";
+        $category_options = "";
+
+        $sql_city= "SELECT city_id, city_name from cities";
+        $cities = $conn->query($sql_city);
+        if($cities->num_rows > 0) {                          
+            while($item = $cities->fetch_assoc()) {
+                $city_options .= <<<explore
+                <option value="{$item['city_id']}">{$item['city_name']}</option>
+                explore;
+            }
+        }
+
+        $sql_cat= "SELECT category_id, category_name from categories";
+        $categories = $conn->query($sql_cat);
+        if($categories->num_rows > 0) {                          
+            while($item = $categories->fetch_assoc()) {
+                $category_options .= <<<explore
+                <option value="{$item['category_id']}">{$item['category_name']}</option>
+                explore;
+            }
+        }
+
+        $sql_get_poi = "SELECT b.business_id, b.business_name, b.business_website, b.business_desc, b.business_phone, b.business_address, b.photo_uri, c.city_id, c.city_name, cat.category_id, cat.category_name from business as b, cities as c, categories as cat where b.city_id=c.city_id and b.category=cat.category_id";
+        $pois = $conn->query($sql_get_poi);
+        if($pois->num_rows > 0) {                          
+            while($item = $pois->fetch_assoc()) {
+                echo <<<pois
+                <div id="add-poi-modal-container" class="modal-container">
+                <div class="modal" id="poi_{$item['business_id']}">
+                    <div class="modal-header flex-left space-between" style="align-items: center;">
+                        <p style="margin-left: 12px;">Add Place of Interest</p>
+                        <a href="#" class="cancel" style="float: right;">x</a>
+                    </div>
+                    <div class="modal-content" style="align-items:center;">
+                        <form action="../../php/add_business.php" method="post" class="flex-center" style="gap: 12px;">
+                        <div class="form-control"> <select id="city_select" name="city_id">
+                            <option value="choose" disabled selected>Select City</option>
+                                    {$city_options}
+                                </select></div>
+                            <input type="text" name="businessName" id="businessName" value="{$item['business_name']}">
+                            <textarea name="businessDesc" id="businessDesc" cols="30" rows="3" value="{$item['business_desc']}"
+                                style="width: 400px;"></textarea>
+                            <input type="text" name="businessWebsite" id="businessWebsite" value="{$item['business_website']}">
+                            <input type="text" name="businessPhone" id="businessPhone" value="{$item['business_phone']}">
+                            <input type="text" name="businessAddress" id="businessAddress" value="{$item['business_address']}">
+                            <input type="text" name="photoURI" id="photoURI" value="{$item['photo_uri']}">
+                                        
+                            <div class="form-control"> <select name="category_id" id="category_id">
+                                    <option value="choose" disabled selected>Choose a Category</option>
+                                    {$category_options}
+                                        </select></div>
+                                    <div>
+                                        <div>
+                                            <button class="btn" type="submit">Update</button>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                pois;
+            }
+        }
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"

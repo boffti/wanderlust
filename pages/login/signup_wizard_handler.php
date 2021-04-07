@@ -1,13 +1,7 @@
 <?php
 session_start();
+include '../../php/functions.php';
 if (isset($_POST['phone']) && isset($_POST["profession"]) && isset($_POST["dob"]) && isset($_POST["nationality"]) && isset($_POST["nationality"]) && isset($_POST["city"])) {
-    function validate($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
     $phone = validate($_POST['phone']);
     $profession = validate($_POST['profession']);
     $dob = validate($_POST['dob']);

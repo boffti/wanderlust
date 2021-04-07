@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!-- 
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
@@ -8,12 +9,6 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-?>
 
 <head>
     <meta charset="utf-8">
@@ -69,7 +64,7 @@ session_start();
                 <button class="btn btn-outline-secondary">Login / Signup</button>
             </div> -->
             <?php 
-
+            if(isset($_SESSION['user'])) {
                 if(in_array('3', $_SESSION['user_roles'])) {
                     $admin_markup = <<<am
                     <!-- ! If Role == Admin -->
@@ -98,8 +93,9 @@ session_start();
                 } else {
                     $super_admin_markup = "";
                 }
+
+                $dp = $_SESSION['user']['dp'];
             
-            if(isset($_SESSION['user'])) {
                 echo <<<heredoc
                 <!-- ! If user in session -->
                 <ul class="hidden">
@@ -111,7 +107,7 @@ session_start();
                     </li>
                     <li class="dropdown">
                         <a href="#" class="profile flex">
-                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <img id="avatarIMG" src="../../static/upload/user_dp/{$dp}" alt="profile" class="">
                             <p id="" class="">
                                 {$_SESSION['user']['full_name']}
                             </p>
@@ -160,38 +156,40 @@ session_start();
                         <h2 class="">You might like</h2>
                         <div class="flex-left">
                         <?php 
-                        include '../../php/functions.php';
-                        $conn = get_db_conn();
-                        $sql_explore_nearby = "SELECT business.business_id, business.business_name, business.business_website, business.business_desc, business.business_phone, business.business_address, business.photo_uri, cities.city_id, cities.city_name, categories.category_name from business, cities, categories where business.city_id=cities.city_id and categories.category_id=business.category and cities.city_name='{$_SESSION['user_loc']['city_name']}' limit 3";
-                        $explore_places = $conn->query($sql_explore_nearby);
-                        if($explore_places->num_rows > 0) {                          
-                            $html_template = "";
-                            while($item = $explore_places->fetch_assoc()) {
-                                echo <<<explore
-                                <div class="browse-card">
-                                    <div class="card-header">
-                                        <img class="card-img"
-                                            src="{$item['photo_uri']}"
-                                            alt="">
-                                    </div>
-                                    <div class="card-body">
-                                        <h1><a href="./pages/business/business_detail.php">{$item['business_name']}</a></h1>
-                                        <p>{$item['city_name']}</p>
-                                        <div class="rating">
-                                            <ul>
-                                                <li><i class="fas fa-star"></i></li>
-                                                <li><i class="fas fa-star"></i></li>
-                                                <li><i class="fas fa-star"></i></li>
-                                                <li><i class="fas fa-star"></i></li>
-                                                <li><i class="fas fa-star"></i></li>
-                                            </ul>
+                        if(isset($_SESSION['user'])) {
+                            include '../../php/functions.php';
+                            $conn = get_db_conn();
+                            $sql_explore_nearby = "SELECT business.business_id, business.business_name, business.business_website, business.business_desc, business.business_phone, business.business_address, business.photo_uri, cities.city_id, cities.city_name, categories.category_name from business, cities, categories where business.city_id=cities.city_id and categories.category_id=business.category and cities.city_name='{$_SESSION['user_loc']['city_name']}' limit 3";
+                            $explore_places = $conn->query($sql_explore_nearby);
+                            if($explore_places->num_rows > 0) {                          
+                                $html_template = "";
+                                while($item = $explore_places->fetch_assoc()) {
+                                    echo <<<explore
+                                    <div class="browse-card">
+                                        <div class="card-header">
+                                            <img class="card-img"
+                                                src="{$item['photo_uri']}"
+                                                alt="">
+                                        </div>
+                                        <div class="card-body">
+                                            <h1><a href="../business/business_detail.php?business_id={$item['business_id']}">{$item['business_name']}</a></h1>
+                                            <p>{$item['city_name']}</p>
+                                            <div class="rating">
+                                                <ul>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    <li><i class="fas fa-star"></i></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                explore;
+                                    explore;
+                                }
                             }
                         }
-                    ?>
+                        ?>
                         </div>
                     </section>
 
@@ -200,39 +198,41 @@ session_start();
 
                         <div class="grid grid-2">
                             <?php 
-                            $sql_explore_nearby = "SELECT business.business_id, business.business_name, business.business_website, business.business_desc, business.business_phone, business.business_address, business.photo_uri, cities.city_id, cities.city_name, categories.category_name from business, cities, categories where business.city_id=cities.city_id and categories.category_id=business.category and cities.city_name='{$_SESSION['user_loc']['city_name']}'";
-                            $explore_places = $conn->query($sql_explore_nearby);
-                            if($explore_places->num_rows > 0) {                          
-                                $html_template = "";
-                                while($item = $explore_places->fetch_assoc()) {
-                                    $short_desc = substr($item['business_desc'], 0, 50);
-                                    echo <<<explore
-                                    <div class="card flex-left">
-                                        <img src="{$item['photo_uri']}"
-                                            alt="" style="width: 150px; height: 150px; object-fit: cover;">
-                                        <div class="flex-column" style="justify-content: space-between;">
-                                            <div>
-                                                <div class="flex-left space-between" style="align-items: center;">
-                                                    <a href="../business/business_detail.php?business_id={$item['business_id']}"><h3>{$item['business_name']}</h3></a>
-                                                    <p class="wander-green" style="margin: 0; font-size:14px;"> {$item['city_name']}</p>
+                                if(isset($_SESSION['user'])) {
+                                    $sql_explore_nearby = "SELECT business.business_id, business.business_name, business.business_website, business.business_desc, business.business_phone, business.business_address, business.photo_uri, cities.city_id, cities.city_name, categories.category_name from business, cities, categories where business.city_id=cities.city_id and categories.category_id=business.category and cities.city_name='{$_SESSION['user_loc']['city_name']}'";
+                                    $explore_places = $conn->query($sql_explore_nearby);
+                                    if($explore_places->num_rows > 0) {                          
+                                        $html_template = "";
+                                        while($item = $explore_places->fetch_assoc()) {
+                                            $short_desc = substr($item['business_desc'], 0, 50);
+                                            echo <<<explore
+                                            <div class="card flex-left">
+                                                <img src="{$item['photo_uri']}"
+                                                    alt="" style="width: 150px; height: 150px; object-fit: cover;">
+                                                <div class="flex-column" style="justify-content: space-between;">
+                                                    <div>
+                                                        <div class="flex-left space-between" style="align-items: center;">
+                                                            <a href="../business/business_detail.php?business_id={$item['business_id']}"><h3>{$item['business_name']}</h3></a>
+                                                            <p class="wander-green" style="margin: 0; font-size:14px;"> {$item['city_name']}</p>
+                                                        </div>
+                                                        <div class="rating">
+                                                            <ul class="flex" style="padding:0; justify-content:flex-start">
+                                                                <li><i class="fas fa-star"></i></li>
+                                                                <li><i class="fas fa-star"></i></li>
+                                                                <li><i class="fas fa-star"></i></li>
+                                                                <li><i class="fas fa-star"></i></li>
+                                                                <li><i class="far fa-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <p class="strong" style="font-size: 14px;">{$item['category_name']}</p>
+                                                    </div>
+                                                    <p>"{$short_desc}"</p>
                                                 </div>
-                                                <div class="rating">
-                                                    <ul class="flex" style="padding:0; justify-content:flex-start">
-                                                        <li><i class="fas fa-star"></i></li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                        <li><i class="fas fa-star"></i></li>
-                                                        <li><i class="far fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <p class="strong" style="font-size: 14px;">{$item['category_name']}</p>
                                             </div>
-                                            <p>"{$short_desc}"</p>
-                                        </div>
-                                    </div>
-                                    explore;
+                                            explore;
+                                        }
+                                    }
                                 }
-                            }
                             ?>
                         </div>
 
@@ -320,18 +320,24 @@ session_start();
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form action="../../php/change_loc_handler.php" class="flex-center" style="gap: 12px;" method='POST'>
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Change your location</option>
-                            <option value="arlington">Arlington</option>
-                            <option value="newyork">New York</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="london">London</option>
-                            <option value="dubai">Dubai</option>
+                    <option value="choose" disabled selected>Change your location</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_city_options= "SELECT city_id, city_name from cities";
+                                    $cities = $conn->query($sql_city_options);
+                                    if($cities->num_rows > 0) {                          
+                                        while($item = $cities->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Change</button>
                     </div>
                 </form>

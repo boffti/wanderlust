@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!-- 
 Author: Natarajan, Karthik
 ID: 1001872904
@@ -8,12 +9,6 @@ ID: 1001872904
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-?>
 
 <head>
     <meta charset="utf-8">
@@ -56,7 +51,7 @@ session_start();
             </nav>
 
             <?php 
-
+            if(isset($_SESSION['user'])) {
                 if(in_array('3', $_SESSION['user_roles'])) {
                     $admin_markup = <<<am
                     <!-- ! If Role == Admin -->
@@ -85,8 +80,8 @@ session_start();
                 } else {
                     $super_admin_markup = "";
                 }
+                $dp = $_SESSION['user']['dp'];
             
-            if(isset($_SESSION['user'])) {
                 echo <<<heredoc
                 <!-- ! If user in session -->
                 <ul class="hidden">
@@ -98,7 +93,7 @@ session_start();
                     </li>
                     <li class="dropdown">
                         <a href="#" class="profile flex">
-                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <img id="avatarIMG" src="../../static/upload/user_dp/{$dp}" alt="profile" class="">
                             <p id="" class="">
                                 {$_SESSION['user']['full_name']}
                             </p>
@@ -147,21 +142,21 @@ session_start();
     <!-- Contact Form -->
     <div class="container">
         <div class="card">
-            <form action="mailto:no-reply@wanderlust.axm0503.uta.cloud" method="POST">
+            <form action="../../php/send_query.php" method="POST">
                 <h3>Contact us</h3>
                 <div class="flex-left" style="justify-content: space-around;">
                     <div style="width: 100%;">
-                        <input type="text" name="firstName" id="" placeholder="First name">
-                        <input type="text" name="country" id="" placeholder="Country">
-                        <input type="text" name="phone" id="" placeholder="Phone">
+                        <input type="text" name="firstName" id="" placeholder="First name" required>
+                        <input type="text" name="country" id="" placeholder="Country" required>
+                        <input type="text" name="phone" id="" placeholder="Phone" pattern=[0-9]{10}>
                     </div>
                     <div style="width: 100%;">
-                        <input type="text" name="lastName" id="" placeholder="Last name">
-                        <input type="text" name="email" id="" placeholder="Email">
+                        <input type="text" name="lastName" id="" placeholder="Last name" required>
+                        <input type="text" name="email" id="" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                         <input type="text" name="userType" id="" placeholder="Immigrant/Visitor">
                     </div>
                 </div>
-                <textarea placeholder="Query" id="" name="query" rows="6" cols="30"></textarea>
+                <textarea placeholder="Query" id="" name="query" rows="6" cols="30" required></textarea>
                 <button type="submit" class="btn btn-submit">SUBMIT</button>
             </form>
         </div>
@@ -241,18 +236,24 @@ session_start();
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form action="../../php/change_loc_handler.php" class="flex-center" style="gap: 12px;" method='POST'>
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Change your location</option>
-                            <option value="arlington">Arlington</option>
-                            <option value="newyork">New York</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="london">London</option>
-                            <option value="dubai">Dubai</option>
+                    <option value="choose" disabled selected>Change your location</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_city_options= "SELECT city_id, city_name from cities";
+                                    $cities = $conn->query($sql_city_options);
+                                    if($cities->num_rows > 0) {                          
+                                        while($item = $cities->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Change</button>
                     </div>
                 </form>

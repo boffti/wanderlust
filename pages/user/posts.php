@@ -1,3 +1,6 @@
+<?php session_start();
+include '../../php/functions.php';
+?>
 <!-- 
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
@@ -9,12 +12,6 @@
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-include '../../php/functions.php';
-// If the user is not logged in redirect to the login page...
-?>
 
 <head>
     <meta charset="utf-8">
@@ -62,7 +59,7 @@ include '../../php/functions.php';
 
             <!-- ! If user in session -->
             <?php 
-
+            if(isset($_SESSION['user'])) {
                 if(in_array('3', $_SESSION['user_roles'])) {
                     $admin_markup = <<<am
                     <!-- ! If Role == Admin -->
@@ -92,7 +89,8 @@ include '../../php/functions.php';
                     $super_admin_markup = "";
                 }
                             
-            if(isset($_SESSION['user'])) {
+                $dp = $_SESSION['user']['dp'];
+
                 echo <<<heredoc
                 <!-- ! If user in session -->
                 <ul class="hidden">
@@ -104,7 +102,7 @@ include '../../php/functions.php';
                     </li>
                     <li class="dropdown">
                         <a href="#" class="profile flex">
-                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <img id="avatarIMG" src="../../static/upload/user_dp/{$dp}" alt="profile" class="">
                             <p id="" class="">
                                 {$_SESSION['user']['full_name']}
                             </p>
@@ -185,14 +183,14 @@ include '../../php/functions.php';
         <div class="posts">
             <?php
                 $conn = get_db_conn();
-                $sql_city_posts = "SELECT posts.post_id, posts.post_content, posts.created_at, users.user_id, users.full_name, cities.city_id, cities.city_name from posts, cities, users where posts.user_id=users.user_id and posts.city_id=cities.city_id and cities.city_name='{$_SESSION['user_loc']['city_name']}' limit 5";
+                $sql_city_posts = "SELECT posts.post_id, posts.post_content, posts.created_at, users.user_id, users.full_name, users.dp, cities.city_id, cities.city_name from posts, cities, users where posts.user_id=users.user_id and posts.city_id=cities.city_id and cities.city_name='{$_SESSION['user_loc']['city_name']}' limit 5";
                 $city_posts = $conn->query($sql_city_posts);
                 if($city_posts->num_rows > 0) {                          
                     while($item = $city_posts->fetch_assoc()) {
                         echo <<<posts
                         <div class="card post">
                             <div class="flex-left">
-                                <img class="postIMG" src="" alt="">
+                                <img class="" src="../../static/upload/user_dp/{$item['dp']}" alt="">
                                 <div class="full-width">
                                     <div class="flex-left space-between align-items-center">
                                         <a href="#">
@@ -276,18 +274,24 @@ include '../../php/functions.php';
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form action="../../php/change_loc_handler.php" class="flex-center" style="gap: 12px;" method='POST'>
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Change your location</option>
-                            <option value="arlington">Arlington</option>
-                            <option value="newyork">New York</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="london">London</option>
-                            <option value="dubai">Dubai</option>
+                    <option value="choose" disabled selected>Change your location</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_city_options= "SELECT city_id, city_name from cities";
+                                    $cities = $conn->query($sql_city_options);
+                                    if($cities->num_rows > 0) {                          
+                                        while($item = $cities->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Change</button>
                     </div>
                 </form>

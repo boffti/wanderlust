@@ -1,3 +1,6 @@
+<?php session_start(); 
+include '../../php/functions.php';
+?>
 <!-- 
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
@@ -8,13 +11,6 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-include '../../php/functions.php';
-// If the user is not logged in redirect to the login page...
-?>
 
 <head>
     <meta charset="utf-8">
@@ -61,7 +57,20 @@ include '../../php/functions.php';
             <!-- <div class="signup">
                 <button class="btn btn-outline-secondary">Login / Signup</button>
             </div> -->
+
             <?php 
+            if(isset($_SESSION['user'])) {
+                if(in_array('1', $_SESSION['user_roles'])) {
+                    $isDisplay = '';
+                    $isImm = "active";
+                    $isVis = "";
+                }
+
+                if(in_array('2', $_SESSION['user_roles'])) {
+                    $isDisplay = 'none';
+                    $isImm = "";
+                    $isVis = "active";
+                }
 
                 if(in_array('3', $_SESSION['user_roles'])) {
                     $admin_markup = <<<am
@@ -91,8 +100,9 @@ include '../../php/functions.php';
                 } else {
                     $super_admin_markup = "";
                 }
+
+                $dp = $_SESSION['user']['dp'];
             
-            if(isset($_SESSION['user'])) {
                 echo <<<heredoc
                 <!-- ! If user in session -->
                 <ul class="hidden">
@@ -104,7 +114,7 @@ include '../../php/functions.php';
                     </li>
                     <li class="dropdown">
                         <a href="#" class="profile flex">
-                            <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                            <img id="avatarIMG" src="../../static/upload/user_dp/{$dp}" alt="profile" class="">
                             <p id="" class="">
                                 {$_SESSION['user']['full_name']}
                             </p>
@@ -155,7 +165,7 @@ include '../../php/functions.php';
                         style="height: fit-content; width:100%; border-top: 4px var(--accent-color) solid;">
                         <div class="flex-center">
                             <div class="profile-img-container">
-                                <img id="profileIMG" src="" alt="profile" class="profileIMG"
+                                <img id="profileIMG" src="../../static/upload/user_dp/<?php echo $dp?>" alt="profile" class=""
                                     style="width: 200px; border-radius: 100px;">
                                 <div class="icon-change-image">
                                     <a id="changeDP" href="#">
@@ -204,19 +214,19 @@ include '../../php/functions.php';
 
                 <div class="card">
                     <ul class="tabs">
-                        <li class="active">PHOTOS</li>
-                        <li>VIDEOS</li>
-                        <li>REVIEWS</li>
-                        <li>TIPS</li>
+                        <li class="<?php echo $isImm ?>" style="display:<?php echo $isDisplay?>">PHOTOS</li>
+                        <li style="display:<?php echo $isDisplay?>">VIDEOS</li>
+                        <li class="<?php echo $isVis ?>">REVIEWS</li>
+                        <li style="display:<?php echo $isDisplay?>">TIPS</li>
                     </ul>
 
                     <ul class="tab-content">
                         <!-- Photos Tab -->
-                        <li class="active">
+                        <li class="<?php echo $isImm ?>">
                             <div class="tab-content-container">
                                 <div class="flex">
-                                    <h2 class="">Your photos - <span>10</span></h2>
-                                    <button id="btnUploadPhoto" class="btn">ADD</button>
+                                    <h2 class="">Your photos - <span></span></h2>
+                                    <button id="btnUploadPhoto" class="btn" style="display:<?php echo $isDisplay?>">ADD</button>
                                     <input type="file" name="user_photo" id="uploadPhotoInput" style="display: none;" />
                                 </div>
                                 <div class="gallery-container">
@@ -243,11 +253,11 @@ include '../../php/functions.php';
                         </li>
 
                         <!-- Videos Tab -->
-                        <li>
+                        <li style="display:<?php echo $isDisplay?>">
                             <div class="tab-content-container">
                                 <div class="flex">
-                                    <h2 class="">Your Videos - <span>4</span></h2>
-                                    <button id="btnUploadVideo" class="btn">ADD</button>
+                                    <h2 class="">Your Videos - <span></span></h2>
+                                    <button id="btnUploadVideo" class="btn" style="display:<?php echo $isDisplay?>">ADD</button>
                                     <input name="user_video" type="file" id="uploadVideoInput" style="display: none;" />
                                 </div>
 
@@ -275,7 +285,7 @@ include '../../php/functions.php';
                         </li>
 
                         <!-- Reviews Tab -->
-                        <li>
+                        <li class="<?php echo $isVis ?>">
                             <div class="tab-content-container">
                                 <h2 class="">Your Reviews - 2</h2>
                                 <div class="card bt-secondary">
@@ -341,7 +351,7 @@ include '../../php/functions.php';
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li style="display:<?php echo $isDisplay?>">
                             <div class="tab-content-container">
                                 <h2 class="">Your Tips - 3</h2>
                                 <?php
@@ -444,18 +454,24 @@ include '../../php/functions.php';
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form action="../../php/change_loc_handler.php" class="flex-center" style="gap: 12px;" method='POST'>
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Change your location</option>
-                            <option value="arlington">Arlington</option>
-                            <option value="newyork">New York</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="london">London</option>
-                            <option value="dubai">Dubai</option>
+                    <option value="choose" disabled selected>Change your location</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_city_options= "SELECT city_id, city_name from cities";
+                                    $cities = $conn->query($sql_city_options);
+                                    if($cities->num_rows > 0) {                          
+                                        while($item = $cities->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Change</button>
                     </div>
                 </form>

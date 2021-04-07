@@ -3,13 +3,6 @@
 
     include './functions.php';
     if (isset($_POST['post_content'])) { 
-        function validate($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
-    
         $post_content = validate($_POST['post_content']);
         if(empty($post_content)) {
             header("Location: ../pages/user/posts.php?error_msg=Cannot leave post content blank");

@@ -1,13 +1,6 @@
 <?php
 include '../../php/functions.php';
 if (isset($_POST['email']) && isset($_POST["password"])) {
-    function validate($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
     $email = validate($_POST['email']);
     $pass = validate($_POST['password']);
     $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
@@ -26,7 +19,7 @@ if (isset($_POST['email']) && isset($_POST["password"])) {
             $row = $result->fetch_assoc();
             if(password_verify($pass, $row["password"])) {
                 session_start();
-                $sql_get_user_deets = "SELECT user_id, full_name, email, password, mobile, profession, dob, city, address FROM users where email='{$email}'";
+                $sql_get_user_deets = "SELECT user_id, full_name, email, password, mobile, profession, dob, city, address, dp FROM users where email='{$email}'";
                 $user_deets = $conn->query($sql_get_user_deets);
                 if($user_deets->num_rows > 0) {
                     $user_row = $user_deets->fetch_assoc();
@@ -39,6 +32,12 @@ if (isset($_POST['email']) && isset($_POST["password"])) {
                             array_push($user_roles, $item['role_id']);
                         }
                         $_SESSION["user_roles"] = $user_roles;
+                    }
+                    $sql_country_admin = "SELECT u.user_id, c.country_id, c.country_name FROM users as u, country_admins as ca, countries as c where u.user_id=ca.user_id and ca.country_id=c.country_id";
+                    $admin_result = $conn->query($sql_country_admin);
+                    if($admin_result->num_rows > 0) {
+                        $admin_row = $admin_result->fetch_assoc();
+                        $_SESSION['country_admin'] = $admin_row;
                     }
                     $sql_get_user_city = "SELECT cities.city_id, cities.city_name, countries.country_name FROM cities, countries WHERE cities.country_id=countries.country_id AND cities.city_id='{$user_row['city']}'";
                     $city_result = $conn->query($sql_get_user_city);
@@ -59,5 +58,4 @@ if (isset($_POST['email']) && isset($_POST["password"])) {
 
 } else {
     header("Location: ../pages/login/login.php?error=Something went wrong");
-    // echo("Invalid");
 }

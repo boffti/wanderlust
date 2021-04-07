@@ -1,9 +1,5 @@
-<!-- 
-    Author: Melkot, Aaneesh Naagaraj
-    ID : 1001750503
--->
-<?php
-session_start();
+<?php session_start(); 
+include '../../php/functions.php';
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -11,7 +7,6 @@ session_start();
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
 
 <head>
     <meta charset="utf-8">
@@ -46,25 +41,37 @@ session_start();
                     </div>
                     <form role="form" action="signup_wizard_handler.php" method="post">
                         <div class="">
-                            <input name="phone" type="text" id="profession" class="" placeholder="Phone Number" autofocus>
+                            <input name="phone" type="text" id="profession" class="" placeholder="Phone Number"
+                            pattern="[0-9]{10}"
+                            title="10 digits"
+                            autofocus>
                         </div>
                         <div class="">
                             <input name="profession" type="text" id="profession" class="" placeholder="Profession" required>
                         </div>
                         <div class="">
-                            <input name="dob" type="text" id="dob" class="" placeholder="Date of birth : mm/dd/yy" required pattern="[0-1][0-9]/[0-3][0-9]/[0-9][0-9]">
+                            <input name="dob" type="text" id="dob" class="" placeholder="Date of birth"
+                            required
+                            pattern="[0-1][0-9]/[0-3][0-9]/[0-9][0-9]"
+                            title="mm/dd/yy">
                         </div>
                         <div class="">
                             <input name="nationality" type="text" id="nationality" class="" placeholder="Nationality*" required>
                         </div>
                         <div class="form-control"> <select name="city" id="city">
                                 <option value="choose" disabled selected>Where are you moving to?</option>
-                                <option value="1">Arlington</option>
-                                <option value="2">New York</option>
-                                <option value="3">San Fransisco</option>
-                                <option value="4">Bangalore</option>
-                                <option value="5">Mumbai</option>
-                                <option value="6">Hong Kong</option>
+                                <?php
+                                    $conn = get_db_conn();
+                                    $sql_city_options= "SELECT city_id, city_name from cities";
+                                    $cities = $conn->query($sql_city_options);
+                                    if($cities->num_rows > 0) {                          
+                                        while($item = $cities->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                ?>
                             </select>
                         </div>
                         <div class="">

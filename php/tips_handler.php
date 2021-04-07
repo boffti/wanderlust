@@ -2,14 +2,7 @@
     session_start();
 
     include './functions.php';
-    if (isset($_POST['tip_content'])) { 
-        function validate($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
-    
+    if (isset($_POST['tip_content'])) {   
         $tip_content = validate($_POST['tip_content']);
         if(empty($tip_content)) {
             header("Location: ../pages/user/tips.php?error_msg=Cannot leave tip content blank");

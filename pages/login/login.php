@@ -59,6 +59,13 @@
                             class="btn btn-lg btn-primary-w btn-block btn-login text-uppercase font-weight-bold mb-2"
                             type="submit">SIGN IN</button>
                         <br>
+                        <?php
+                            if(isset($_GET['error_msg'])) {
+                                echo <<<text
+                                <p>{$_GET['error_msg']}</p><br>
+                                text;
+                            }
+                        ?>
                         <div class="flex flex-vertical">
                             <p>Not registered yet? No problem!
                                 Let's get you started.</p>

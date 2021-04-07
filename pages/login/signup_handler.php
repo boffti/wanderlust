@@ -3,13 +3,6 @@ include '../../php/functions.php';
 
 session_start();
 if (isset($_POST['name']) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["reenter-password"])) {
-    function validate($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
     $name = validate($_POST['name']);
     $email = validate($_POST['email']);
     $pass = validate($_POST['password']);
@@ -54,10 +47,10 @@ if (isset($_POST['name']) && isset($_POST["email"]) && isset($_POST["password"])
                 $_SESSION["pass_hash"] = $pass_hash;
                 header("Location: signup_wizard.php");
             } else {
-                echo("You already have an account with us. Please sign in instead.");
+                header("Location: signup.php?msg=You already have an account with us. Please sign in instead.");
             }
         } else {
-            echo("Passwords don't match!");
+            header("Location: signup.php?msg=Passwords don't match!");
         }
     }
 

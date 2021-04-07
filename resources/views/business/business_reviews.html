@@ -1,0 +1,367 @@
+<!-- 
+    Author: Melkot, Aaneesh Naagaraj
+    ID : 1001750503
+-->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../../static/favicon.ico" />
+    <title>WL | Reviews</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link href="../../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="navbar" class="navbar">
+        <div class="container flex">
+            <h1>Wanderlust</h1>
+            <nav>
+                <ul class="hidden">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../main_site/about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
+                        </a>
+                        <ul class="dropdown-content">
+                            <li><a class="dropdown-item" href="../main_site/immigrant_services.html">Immigrant
+                                    Services</a></li>
+                            <li><a class="dropdown-item" href="../main_site/visitor_service.html">Visitor
+                                    Services</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="../main_site/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- ! If user not in session -->
+            <!-- <div class="signup">
+                    <button class="btn btn-outline-secondary">Login / Signup</button>
+                </div> -->
+
+            <!-- ! If user in session -->
+            <ul class="hidden">
+                <li>
+                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
+                </li>
+                <li class="dropdown">
+                    <a href="../user/profile.html" class="profile flex">
+                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
+                        <p id="profileName" class="profileName"></p>
+                        <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                    </a>
+                    <ul class="dropdown-content">
+                        <!-- ! If Role == Admin -->
+                        <li class="dropdown-item">
+                            <a href="../admin/country_admin.html">
+                                Admin Console
+                            </a>
+                        </li>
+                        <!-- ! Endif -->
+                        <li class="dropdown-item">
+                            <a href="#">
+                                Profile
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="#">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <!-- Search Bar -->
+        <section class="flex">
+            <form class="hero-form card flex" action="#">
+                <div class="form-control">
+                    <input type="text" name="search-term" id="search-term"
+                        placeholder="Keywords eg: food, salons, shopping etc">
+                </div>
+                <div class="form-control"> <select name="categories" id="categories">
+                        <option value="choose" disabled selected>Choose a Category</option>
+                        <option value="restaurants">Restaurants</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="education">Education</option>
+                        <option value="worship">Religion & Worship</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="health">Health & Medical</option>
+                    </select>
+                </div>
+                <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH
+                    NOW</button>
+            </form>
+        </section>
+        <br>
+
+        <!-- Busness Header -->
+        <section>
+            <div class="flex-left" style="justify-content: space-between;">
+                <div>
+                    <h1 class="strong business-name" style="font-size: 45px; margin-bottom:0;"></h1>
+                    <div class="rating flex-left" style="font-size: 40px; align-items:center;">
+                        <ul style="padding-left:0;">
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="far fa-star"></i></li>
+                        </ul>
+                        <span class="rating-count">24 reviews</span>
+                    </div>
+                    <p class="business-category"></p>
+                    <div class="business-timings">
+                        <span style="color: var(--other-color-1); font-weight:bold; margin-right:10px;">Open</span> Open
+                        24
+                        hours
+                    </div>
+                    <br>
+                    <!-- <div>
+                        <button class="btn" style="font-size: large;"><i class="far fa-star"
+                                style="margin-right: 10px;"></i> Write a Review</button>
+                        <button class="btn btn-outline-secondary text-secondary" style="font-size: large;"><i
+                                class="fas fa-camera" style="margin-right: 10px;"></i> Add Photo</button>
+                        <button class="btn btn-outline-secondary text-secondary" style="font-size: large;"><i
+                                class="fas fa-star" style="margin-right: 10px;"></i> Share</button>
+                    </div> -->
+                </div>
+
+                <div style="margin-top:1.2em;">
+                    <span><i class="fas fa-external-link-alt" style="margin-right:8px;"></i><a href="#"
+                            class="text-accent" style="margin-bottom:12px;">www.businessname.com</a></span>
+                    <p><i class="fas fa-phone-alt" style="margin-right:8px;"></i> (217) 904-2873</p>
+                </div>
+            </div>
+        </section>
+        <br>
+        <hr>
+        <br>
+
+        <!-- Reviews Section -->
+        <section>
+            <div>
+                <div class="flex-left" style="justify-content: space-between;">
+                    <h2>Reviews</h2>
+                </div>
+                <div class="card">
+                    <h3>Leave a review</h3>
+                    <div class="rating flex-left" style="font-size: 20px; justify-content:space-between;">
+                        <ul>
+                            <li><i class="fas fa-star review-form-star"></i></li>
+                            <li><i class="fas fa-star review-form-star"></i></li>
+                            <li><i class="fas fa-star review-form-star"></i></li>
+                            <li><i class="fas fa-star review-form-star"></i></li>
+                            <li><i class="fas fa-star review-form-star"></i></li>
+                        </ul>
+                    </div>
+                    <textarea placeholder="Remember, be nice!" id="w3review" name="w3review" rows="6" cols="30"
+                        style="width: 100%;"></textarea>
+                    <button class="btn">SUBMIT</button>
+                </div>
+                <div class="card">
+                    <div class="review-card-header flex-left">
+                        <img id=""
+                            src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/danish-sait-35531-07-11-2016-01-48-14.jpg"
+                            alt="profile" class="review-card-user-img">
+                        <div>
+                            <h3>Danish Sait</h3>
+                            <p class="wander-green">Arlington, TX</p>
+                        </div>
+                    </div>
+                    <div class="rating flex-left" style="font-size: 20px; align-items:center;">
+                        <ul>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="far fa-star"></i></li>
+                        </ul>
+                        <p style="font-size: 14px;">02/12/2021</p>
+                    </div>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis debitis molestias alias
+                        libero
+                        repellendus autem sunt! Quaerat possimus, repellendus eaque ab ducimus distinctio magni
+                        inventore
+                        rerum repudiandae error id eveniet. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+                        nulla debitis nobis quaerat minima vero id provident numquam, voluptatum voluptate ipsam
+                        possimus
+                        ducimus! Sit, necessitatibus accusamus labore nam voluptatem assumenda!
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="review-card-header flex-left">
+                        <img id=""
+                            src="https://www.biography.com/.image/t_share/MTE5NDg0MDU0ODE5MzQxODM5/tina-fey-365284-1-402.jpg"
+                            alt="profile" class="review-card-user-img">
+                        <div>
+                            <h3>Tina Fey</h3>
+                            <p class="wander-green">Arlington, TX</p>
+                        </div>
+                    </div>
+                    <div class="rating flex-left" style="font-size: 20px; align-items:center;">
+                        <ul>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                        </ul>
+                        <p style="font-size: 14px;">02/12/2021</p>
+                    </div>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis debitis molestias alias
+                        libero
+                        repellendus autem sunt! Quaerat possimus, Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit.
+                        Consequuntur, doloremque fuga! Molestias soluta dolore quasi quia reprehenderit ab tempore,
+                        eius,
+                        architecto est officiis illo minima vel. Corrupti corporis itaque maxime.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="review-card-header flex-left">
+                        <img id=""
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqj-OkFV55geNPyjWSwPmeSkeipmC4uOcZjg&usqp=CAU"
+                            alt="profile" class="review-card-user-img">
+                        <div>
+                            <h3>Kenny Sebastian</h3>
+                            <p class="wander-green">Arlington, TX</p>
+                        </div>
+                    </div>
+                    <div class="rating flex-left" style="font-size: 20px; align-items:center;">
+                        <ul>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="far fa-star"></i></li>
+                            <li><i class="far fa-star"></i></li>
+                        </ul>
+                        <p style="font-size: 14px;">02/12/2021</p>
+                    </div>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis debitis molestias alias
+                        libero
+                        repellendus autem sunt! Quaerat possimus, repellendus eaque ab ducimus distinctio magni
+                        inventore
+                        rerum repudiandae error id eveniet. Lorem ipsum dolor sit amet.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <br>
+
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="">
+                    <h6>About</h6>
+                    <p class="text-justify"><i>WANDERLUST</i> is a portal for immigrants who have just moved to a new
+                        location. They can use the provided services to find places of interest around them. They can
+                        rate and review businesses and upload photos and videos to their profile.</p>
+                </div>
+
+                <div class="">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">Religion & Worship</a></li>
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Health & Medical</a></li>
+                    </ul>
+                </div>
+
+                <div class="">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="../main_site/about.html">About</a></li>
+                        <li><a href="../main_site/immigrant_services.html">Immigrant Services</a></li>
+                        <li><a href="../main_site/visitor_service.html">Visitor Services</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="../main_site/contact.html">Contact</a></li>
+                        <li><a href="../login/login.html">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="">
+                    <p class="copyright-text">Wanderlust &copy; 2021. All Rights Reserved.
+                    </p>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ! If user in session -->
+    <div id="location-select-modal-container" class="modal-container">
+        <div class="modal" id="location-select-modal">
+            <div class="modal-header flex-left space-between" style="align-items: center;">
+                <p style="margin-left: 12px;">Select Location</p>
+                <a href="#" class="cancel" style="float: right;">x</a>
+            </div>
+            <div class="modal-content" style="align-items:center;">
+                <form class="flex-center" style="gap: 12px;">
+                    <div class="form-control"> <select id="location-select" name="location" id="location">
+                            <option value="choose" disabled selected>Change your location</option>
+                            <option value="arlington">Arlington</option>
+                            <option value="newyork">New York</option>
+                            <option value="hongkong">Hong Kong</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="london">London</option>
+                            <option value="dubai">Dubai</option>
+                        </select></div>
+                    <div>
+                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
+                        <button class="btn" type="submit">Change</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
+        integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+        crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../../static/js/app.js"></script>
+</body>
+
+</html>

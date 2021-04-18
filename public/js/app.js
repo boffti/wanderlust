@@ -141,6 +141,13 @@ jQuery(document).ready(function ($) {
         $("#fileBusinessPhoto").click();
     });
 
+    $.ajax({
+        url: '/getPageData',
+        dataType: 'json',
+        success: function (data) {
+            // Populate UI with Data.
+        }
+    });
     // TODO Add Video & Photo on input onchange listeners
 
 });

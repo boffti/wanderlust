@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="../../static/favicon.ico"/>
-    <title>Wanderlust | Signup Wizard</title>
+    <title>Wanderlust | Signup</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
@@ -29,7 +29,7 @@
 
     <div class="signup-page">
         <div class="grid grid-2">
-            <a href="../../index.html">
+            <a href="../../index.php">
                 <img class="signup-img" src="../../static/img/suitcases.jpg" alt="">
             </a>
             <div class="signup-form flex-vertical">
@@ -43,20 +43,25 @@
                         </div>
                         <p class="login-heading mb-4">Create an account to get started.</p>
                     </div>
-                    <form role="form" action="./signup_wizard.html" method="get">
+                    <form role="form" action="signup_handler.php" method="post">
                         <div class="">
                             <input name="name" type="name" id="name" class="" placeholder="Full Name"
                                 required autofocus>
                             <!-- <label for="name">Full Name</label> -->
                         </div>
                         <div class="">
-                            <input name="email" type="email" id="email" class="" placeholder="E-mail"
+                            <input name="email" type="email" id="email" class="" placeholder="E-mail" 
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                title="xxx@xxx.xxx"
                                 required>
                             <!-- <label for="email">E-Mail</label> -->
                         </div>
                         <div class="">
                             <input name="password" type="password" id="inputPassword" class=""
-                                placeholder="Password" required>
+                                placeholder="Password"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+                                title="8-12 letters, Atleast 1 uppercase, lowercase, symbol and number."
+                                required>
                             <!-- <label for="inputPassword">Password</label> -->
                         </div>
                         <div class="">
@@ -64,6 +69,15 @@
                                 class="" placeholder="Re-enter Password" required>
                             <!-- <label for="inputPasswordReenter">Re-enter Password</label> -->
                         </div>
+                        <?php 
+                            if(isset($_GET['msg'])) {
+                                echo <<<msg
+                                <div class="flex flex-vertical">
+                                    <p class="wander-green">{$_GET['msg']}</p>
+                                </div>
+                                msg;
+                            }
+                        ?>
                         <br>
                         <button
                             class="btn btn-lg"
@@ -71,7 +85,7 @@
                         <br>
                         <div class="flex flex-vertical">
                             <p>Already have an account?</p>
-                            <a class="text-accent" href="./login.html">Sign In</a>
+                            <a class="text-accent" href="./login.php">Sign In</a>
                         </div>
                     </form>
                 </div>

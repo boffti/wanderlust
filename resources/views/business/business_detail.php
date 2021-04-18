@@ -1,3 +1,11 @@
+<?php
+session_start();
+include '../../php/functions.php';
+$conn = get_db_conn();
+$sql_get_business = "SELECT business.business_id, business.business_name, business.business_website, business.business_desc, business.business_phone, business.business_address, business.photo_uri, cities.city_id, cities.city_name, categories.category_name from business, cities, categories where business.city_id=cities.city_id and categories.category_id=business.category and business.business_id='{$_GET['business_id']}'";
+$business_result = $conn->query($sql_get_business);
+$business = $business_result->fetch_assoc();
+?>
 <!-- 
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
@@ -12,7 +20,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>WL | Business Name</title>
+    <title>WL | <?php echo $business['business_name'];?></title>
     <link rel="icon" href="../../static/favicon.ico" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,74 +38,109 @@
     <!-- Navbar -->
     <div id="navbar" class="navbar" style="height: 100%;">
         <div class="container flex">
-            <a href="../../index.html">
+            <a href="../../index.php">
                 <h1>Wanderlust</h1>
             </a>
 
             <nav>
                 <ul class="hidden">
-                    <li><a href="../../index.html">Home</a></li>
-                    <li><a href="../main_site/about.html">About</a></li>
+                    <li><a href="../../index.php">Home</a></li>
+                    <li><a href="../main_site/about.php">About</a></li>
                     <li class="dropdown">
                         <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="../main_site/immigrant_services.html">Immigrant
+                            <li><a class="dropdown-item" href="../main_site/immigrant_services.php">Immigrant
                                     Services</a></li>
-                            <li><a class="dropdown-item" href="../main_site/visitor_service.html">Visitor
+                            <li><a class="dropdown-item" href="../main_site/visitor_service.php">Visitor
                                     Services</a></li>
                         </ul>
                     </li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="../main_site/contact.html">Contact</a></li>
+                    <li><a href="../main_site/contact.php">Contact</a></li>
                 </ul>
             </nav>
 
             <!-- <div class="signup">
                 <button class="btn btn-outline-secondary">Login / Signup</button>
             </div> -->
-            <ul class="hidden">
-                <li>
-                    <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="profile flex">
-                        <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
-                        <p id="profileName" class="profileName"></p>
-                        <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
-                    </a>
-                    <ul class="dropdown-content" style="top:50px">
-                        <li class="dropdown-item">
-                            <a href="../user/profile.html">
-                                <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                My Profile
+            <?php 
+            if(isset($_SESSION['user'])) {
+                if(in_array('3', $_SESSION['user_roles'])) {
+                    $admin_markup = <<<am
+                    <!-- ! If Role == Admin -->
+                    <li class="dropdown-item">
+                        <a href="../admin/country_admin.php">
+                            <i class="fas fa-tools" style="margin-right: 8px;"></i>
+                            Admin Console
+                        </a>
+                    </li>
+                    am;
+                } else {
+                    $admin_markup = "";
+                }
+
+                if(in_array('4', $_SESSION['user_roles'])) {
+                    $super_admin_markup = <<<sam
+                    <!-- ! If Role == SuperAdmin -->
+                    <li class="dropdown-item">
+                        <a href="../admin/super_admin.php">
+                            <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                            Super Admin Console
+                        </a>
+                    </li>
+                    <!-- ! Endif -->
+                    sam;
+                } else {
+                    $super_admin_markup = "";
+                }
+            
+                $dp = $_SESSION['user']['dp'];
+
+                echo <<<heredoc
+                <!-- ! If user in session -->
+                <ul class="hidden">
+                    <li>
+                        <a id="currentLocation" href="#" class="navbar-location flex">
+                        <i class="fas fa-map-marker-alt loc-icon"></i>
+                            {$_SESSION['user_loc']['city_name']}
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="profile flex">
+                            <img id="avatarIMG" src="../../static/upload/user_dp/{$dp}" alt="profile" class="">
+                            <p id="" class="">
+                                {$_SESSION['user']['full_name']}
+                            </p>
+                            <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                        </a>
+                        <ul class="dropdown-content" style="top:50px">
+                            <li class="dropdown-item">
+                                <a href="../user/profile.php">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    My Profile
+                                </a>
+                            </li>
+                            {$admin_markup}
+                            {$super_admin_markup}
+                            <li class="dropdown-item">
+                                <a href="../../php/logout.php">
+                                    <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> 
+                heredoc;
+            } else {
+                echo '<div class="signup">
+                            <a href="../login/login.php">
+                                <button class="btn btn-outline-accent text-accent">Login / Signup</button>
                             </a>
-                        </li>
-                        <!-- ! If Role == Admin -->
-                        <li class="dropdown-item">
-                            <a href="../admin/country_admin.html">
-                                <i class="fas fa-tools" style="margin-right: 8px;"></i>
-                                Admin Console
-                            </a>
-                        </li>
-                        <!-- ! Endif -->
-                        <!-- ! If Role == SuperAdmin -->
-                        <li class="dropdown-item">
-                            <a href="../admin/super_admin.html">
-                                <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
-                                Super Admin Console
-                            </a>
-                        </li>
-                        <!-- ! Endif -->
-                        <li class="dropdown-item">
-                            <a href="../login/login.html">
-                                <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                        </div>';
+            }
+            ?>
         </div>
     </div>
 
@@ -126,10 +169,13 @@
         </section>
         <br>
         <!-- Business Header -->
+
         <section>
             <div class="flex-left" style="justify-content: space-between;">
                 <div>
-                    <h1 class="strong business-name" style="font-size: 45px; margin-bottom:0;"></h1>
+                    <h1 class="strong" style="font-size: 45px; margin-bottom:0;">
+                        <?php echo $business['business_name']; ?>
+                    </h1>
                     <div class="rating flex-left" style="font-size: 40px; align-items:center;">
                         <ul style="padding-left:0;">
                             <li><i class="fas fa-star"></i></li>
@@ -161,8 +207,8 @@
 
                 <div style="margin-top:1.2em;">
                     <span><i class="fas fa-external-link-alt" style="margin-right:8px;"></i><a href="#"
-                            class="text-accent" style="margin-bottom:12px;">www.businessname.com</a></span>
-                    <p><i class="fas fa-phone-alt" style="margin-right:8px;"></i> (217) 904-2873</p>
+                            class="text-accent" style="margin-bottom:12px;"><?php echo $business['business_website']; ?></a></span>
+                    <p><i class="fas fa-phone-alt" style="margin-right:8px;"></i> <?php echo $business['business_phone']; ?></p>
                 </div>
             </div>
         </section>
@@ -198,27 +244,7 @@
             <div>
                 <h2>About the Business</h2>
                 <div class="card">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis exercitationem unde quos
-                        minima
-                        beatae
-                        laborum voluptatum dolores eos, ducimus tempore repellendus voluptatibus accusamus in officiis
-                        sit porro
-                        quisquam dicta culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt adipisci,
-                        facilis
-                        quisquam temporibus amet vel. Perspiciatis, excepturi. Architecto deleniti veniam cupiditate
-                        suscipit
-                        beatae
-                        cumque commodi hic quod atque, est totam. Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit.
-                        Necessitatibus dicta provident deleniti, recusandae voluptates dignissimos repellat earum! Neque
-                        unde
-                        iure repellendus similique in consequatur magni nesciunt. Veritatis voluptatum enim nam. Lorem
-                        ipsum
-                        dolor sit amet consectetur adipisicing elit. Blanditiis eligendi ullam itaque labore expedita
-                        ipsum
-                        placeat, sunt temporibus numquam fuga officiis modi iste autem optio repellendus doloribus!
-                        Quas, fugiat
-                        qui.</p>
+                    <p><?php echo $business['business_desc']; ?></p>
                 </div>
             </div>
         </section>
@@ -278,7 +304,7 @@
         <section>
             <div class="flex-left" style="justify-content: space-between;">
                 <h2>Word to the Wise</h2>
-                <a href="./business_tips.html">See more</a>
+                <a href="./business_tips.php">See more</a>
             </div>
             <div class="tips">
                 <div class="card border-l-yellow">
@@ -329,7 +355,7 @@
 
             </div>
             <div class="flex" style="justify-content: space-between; padding: 0 15px">
-                <a href="./business_tips.html" class="strong">Write Tip +</a>
+                <a href="./business_tips.php" class="strong">Write Tip +</a>
             </div>
         </section>
 
@@ -347,8 +373,8 @@
                                 style="border:0; width:100%; height:100%;"
                                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:EntLYW5ha2FwdXJhIFJkLCBKUCBOYWdhciA2dGggUGhhc2UsIEtyaXNobmEgRGV2YXJheWEgTmFnYXIsIFllbGFjaGVuYWhhbGxsaSwgS3VtYXJhc3dhbXkgTGF5b3V0LCBCZW5nYWx1cnUsIEthcm5hdGFrYSwgSW5kaWEiLiosChQKEglTQD7jdxWuOxHVyhgiZUBnDxIUChIJuczhjGcVrjsR8l2WW9YHnZw&key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU"
                                 allowfullscreen=""></iframe></div>
-                        <p class="strong" style="margin-bottom: 0;">823 UTA Blvd</p>
-                        <p style="margin-top: 0;">Arlington, TX</p>
+                        <p class="strong" style="margin-bottom: 0;"><?php echo $business['business_address']; ?></p>
+                        <p style="margin-top: 0;"><?php echo $business['city_name']; ?></p>
                     </div>
                     <div>
                         <table>
@@ -546,7 +572,7 @@
                     </p>
                 </div>
             </div>
-            <a href="./business_reviews.html" class="flex-center">See All</a>
+            <a href="./business_reviews.php" class="flex-center">See All</a>
         </section>
     </div>
 
@@ -578,12 +604,12 @@
                 <div class="">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
-                        <li><a href="../main_site/about.html">About</a></li>
-                        <li><a href="../main_site/immigrant_services.html">Immigrant Services</a></li>
-                        <li><a href="../main_site/visitor_service.html">Visitor Services</a></li>
+                        <li><a href="../main_site/about.php">About</a></li>
+                        <li><a href="../main_site/immigrant_services.php">Immigrant Services</a></li>
+                        <li><a href="../main_site/visitor_service.php">Visitor Services</a></li>
                         <li><a href="/blog">Blog</a></li>
-                        <li><a href="../main_site/contact.html">Contact</a></li>
-                        <li><a href="../login/login.html">Login</a></li>
+                        <li><a href="../main_site/contact.php">Contact</a></li>
+                        <li><a href="../login/login.php">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -616,18 +642,24 @@
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form action="../../php/change_loc_handler.php" class="flex-center" style="gap: 12px;" method='POST'>
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Change your location</option>
-                            <option value="arlington">Arlington</option>
-                            <option value="newyork">New York</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="london">London</option>
-                            <option value="dubai">Dubai</option>
+                    <option value="choose" disabled selected>Change your location</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_city_options= "SELECT city_id, city_name from cities";
+                                    $cities = $conn->query($sql_city_options);
+                                    if($cities->num_rows > 0) {                          
+                                        while($item = $cities->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Change</button>
                     </div>
                 </form>

@@ -29,7 +29,7 @@
 
     <div class="signup-page">
         <div class="grid grid-2">
-            <a href="../../index.html">
+            <a href="../../">
                 <img class="signup-img" src="../../static/img/suitcases.jpg" alt="">
             </a>
             <div class="signup-form flex-vertical">
@@ -43,7 +43,7 @@
                         </div>
                         <p class="login-heading">Login to continue.</p>
                     </div>
-                    <form role="form" action="../../index.html" method="get">
+                    <form role="form" action="login_handler.php" method="post">
                         <div class="form-label-group">
                             <input name="email" type="email" id="email" class="form-control" placeholder="E-mail"
                                 required>
@@ -59,10 +59,17 @@
                             class="btn btn-lg btn-primary-w btn-block btn-login text-uppercase font-weight-bold mb-2"
                             type="submit">SIGN IN</button>
                         <br>
+                        <?php
+                            if(isset($_GET['error_msg'])) {
+                                echo <<<text
+                                <p>{$_GET['error_msg']}</p><br>
+                                text;
+                            }
+                        ?>
                         <div class="flex flex-vertical">
                             <p>Not registered yet? No problem!
                                 Let's get you started.</p>
-                            <a class="text-accent" href="./signup.html">Create Account</a>
+                            <a class="text-accent" href="./signup.php">Create Account</a>
                         </div>
                     </form>
                 </div>
@@ -85,3 +92,4 @@
 </body>
 
 </html>
+

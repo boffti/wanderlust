@@ -33,7 +33,7 @@ jQuery(function ($) {
     $(".profileAddress").text(`${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()}, ${faker.address.zipCode().slice(0,5)}`);
 
     $.ajax({
-        url: 'https://randomuser.me/api/',
+        url: '/getPageData',
         dataType: 'json',
         success: function (data) {
             var avatarURL = data.results[0].picture.thumbnail;

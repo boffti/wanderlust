@@ -18,6 +18,20 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/about', function () {
+    return view('main_site/about');
+});
+
+Route::get('/getPageData', function () {
+    // Query DB
+    data = ['',''];
+    return data
+});
+
+
+
+
+
 Route::resource('posts', '\App\Http\Controllers\PostsController');
 Route::resource('tips', '\App\Http\Controllers\TipsController');
 Route::resource('business', '\App\Http\Controllers\BusinessController');

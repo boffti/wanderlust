@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!-- 
 Author: Natarajan, Karthik
 ID: 1001872904
@@ -34,26 +35,97 @@ ID: 1001872904
             <h1>Wanderlust</h1>
             <nav>
                 <ul class="hidden">
-                    <li><a href="../../index.html">Home</a></li>
-                    <li><a href="./about.html">About</a></li>
+                    <li><a href="../../index.php">Home</a></li>
+                    <li><a href="./about.php">About</a></li>
                     <li class="dropdown">
                         <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="./immigrant_services.html">Immigrant Services</a></li>
-                            <li><a class="dropdown-item" href="./visitor_service.html">Visitor Services</a></li>
+                            <li><a class="dropdown-item" href="./immigrant_services.php">Immigrant Services</a></li>
+                            <li><a class="dropdown-item" href="./visitor_service.php">Visitor Services</a></li>
                         </ul>
                     </li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="./contact.html" active>Contact</a></li>
+                    <li><a href="./contact.php" active>Contact</a></li>
                 </ul>
             </nav>
 
-            <div class="signup">
-                <a href="../login/signup.html">
-                    <button class="btn btn-outline-accent text-accent">Login / Signup</button>
-                </a>
-            </div>
+            <?php 
+            if(isset($_SESSION['user'])) {
+                if(in_array('3', $_SESSION['user_roles'])) {
+                    $admin_markup = <<<am
+                    <!-- ! If Role == Admin -->
+                    <li class="dropdown-item">
+                        <a href="../admin/country_admin.php">
+                            <i class="fas fa-tools" style="margin-right: 8px;"></i>
+                            Admin Console
+                        </a>
+                    </li>
+                    am;
+                } else {
+                    $admin_markup = "";
+                }
+
+                if(in_array('4', $_SESSION['user_roles'])) {
+                    $super_admin_markup = <<<sam
+                    <!-- ! If Role == SuperAdmin -->
+                    <li class="dropdown-item">
+                        <a href="../admin/super_admin.php">
+                            <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
+                            Super Admin Console
+                        </a>
+                    </li>
+                    <!-- ! Endif -->
+                    sam;
+                } else {
+                    $super_admin_markup = "";
+                }
+                $dp = $_SESSION['user']['dp'];
+            
+                echo <<<heredoc
+                <!-- ! If user in session -->
+                <ul class="hidden">
+                    <li>
+                        <a id="currentLocation" href="#" class="navbar-location flex">
+                        <i class="fas fa-map-marker-alt loc-icon"></i>
+                            {$_SESSION['user_loc']['city_name']}
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="profile flex">
+                            <img id="avatarIMG" src="../../static/upload/user_dp/{$dp}" alt="profile" class="">
+                            <p id="" class="">
+                                {$_SESSION['user']['full_name']}
+                            </p>
+                            <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
+                        </a>
+                        <ul class="dropdown-content" style="top:50px">
+                            <li class="dropdown-item">
+                                <a href="../user/profile.php">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    My Profile
+                                </a>
+                            </li>
+                            {$admin_markup}
+                            {$super_admin_markup}
+                            <li class="dropdown-item">
+                                <a href="../../php/logout.php">
+                                    <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> 
+                heredoc;
+            } else {
+                echo '<div class="signup">
+                            <a href="../login/login.php">
+                                <button class="btn btn-outline-accent text-accent">Login / Signup</button>
+                            </a>
+                        </div>';
+            }
+            ?>
             <a id="btnMenu" href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
         </div>
     </div>
@@ -70,21 +142,21 @@ ID: 1001872904
     <!-- Contact Form -->
     <div class="container">
         <div class="card">
-            <form action="mailto:no-reply@wanderlust.axm0503.uta.cloud" method="POST">
+            <form action="../../php/send_query.php" method="POST">
                 <h3>Contact us</h3>
                 <div class="flex-left" style="justify-content: space-around;">
                     <div style="width: 100%;">
-                        <input type="text" name="firstName" id="" placeholder="First name">
-                        <input type="text" name="country" id="" placeholder="Country">
-                        <input type="text" name="phone" id="" placeholder="Phone">
+                        <input type="text" name="firstName" id="" placeholder="First name" required>
+                        <input type="text" name="country" id="" placeholder="Country" required>
+                        <input type="text" name="phone" id="" placeholder="Phone" pattern=[0-9]{10}>
                     </div>
                     <div style="width: 100%;">
-                        <input type="text" name="lastName" id="" placeholder="Last name">
-                        <input type="text" name="email" id="" placeholder="Email">
+                        <input type="text" name="lastName" id="" placeholder="Last name" required>
+                        <input type="text" name="email" id="" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                         <input type="text" name="userType" id="" placeholder="Immigrant/Visitor">
                     </div>
                 </div>
-                <textarea placeholder="Query" id="" name="query" rows="6" cols="30"></textarea>
+                <textarea placeholder="Query" id="" name="query" rows="6" cols="30" required></textarea>
                 <button type="submit" class="btn btn-submit">SUBMIT</button>
             </form>
         </div>
@@ -126,12 +198,12 @@ ID: 1001872904
                 <div class="">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
-                        <li><a href="./about.html">About</a></li>
-                        <li><a href="./immigrant_services.html">Immigrant Services</a></li>
-                        <li><a href="./visitor_service.html">Visitor Services</a></li>
+                        <li><a href="./about.php">About</a></li>
+                        <li><a href="./immigrant_services.php">Immigrant Services</a></li>
+                        <li><a href="./visitor_service.php">Visitor Services</a></li>
                         <li><a href="/blog">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
-                        <li><a href="../login/login.html">Login</a></li>
+                        <li><a href="./contact.php">Contact</a></li>
+                        <li><a href="../login/login.php">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -164,18 +236,24 @@ ID: 1001872904
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
+                <form action="../../php/change_loc_handler.php" class="flex-center" style="gap: 12px;" method='POST'>
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Change your location</option>
-                            <option value="arlington">Arlington</option>
-                            <option value="newyork">New York</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="london">London</option>
-                            <option value="dubai">Dubai</option>
+                    <option value="choose" disabled selected>Change your location</option>
+                            <?php
+                                if(isset($_SESSION['user'])){
+                                    $sql_city_options= "SELECT city_id, city_name from cities";
+                                    $cities = $conn->query($sql_city_options);
+                                    if($cities->num_rows > 0) {                          
+                                        while($item = $cities->fetch_assoc()) {
+                                            echo <<<explore
+                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
+                                            explore;
+                                        }
+                                    }
+                                   }
+                            ?>
                         </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
                         <button class="btn" type="submit">Change</button>
                     </div>
                 </form>

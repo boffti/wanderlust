@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
             <nav>
                 <ul class="hidden">
                     <li><a href="#" active>Home</a></li>
-                    <li><a href="./pages/main_site/about.html">About</a></li>
+                    <li><a href="/about">About</a></li>
                     <li class="dropdown">
                         <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
@@ -152,72 +152,30 @@
             <!-- Explore Nearby -->
             <section>
                 <h2>Explore nearby</h2>
-                <div>
-                    <div class="flex" style="gap:12px">
-                        <div class="browse-card">
-                            <div class="card-header">
-                                <img class="card-img"
-                                    src="https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/150605079_4199887670040734_6183778369989458211_n.jpg?_nc_cat=102&ccb=3&_nc_sid=8bfeb9&_nc_ohc=vnCwvru6eyEAX92zPAL&_nc_ht=scontent-dfw5-2.xx&oh=950fdeba8f4ea2b0346e7f53ca73ef38&oe=60592731"
-                                    alt="">
-                            </div>
-                            <div class="card-body">
-                                <h1><a href="./pages/business/business_detail.html">Old School Pizza Tavern</a></h1>
-                                <p>Arlington, TX</p>
-                                <div class="rating">
-                                    <ul>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
+                {{ for item in data }}
+                <div class="flex" style="gap:12px">
+                    <div class="browse-card">
+                        <div class="card-header">
+                            <img class="card-img"
+                                src="{{ item.photo_uri }}"
+                                alt="">
                         </div>
-
-                        <div class="browse-card">
-                            <div class="card-header">
-                                <img class="card-img"
-                                    src="https://d2s94cyhu2tzlj.cloudfront.net/assets/photos/2020/home-depot-announces-changes/_articlePhotoFull/df.jpg?mtime=20200401142201"
-                                    alt="">
-                            </div>
-                            <div class="card-body">
-                                <h1><a href="./pages/business/business_detail.html">The Home Depot</a></h1>
-                                <p>Fort Worth, TX</p>
-                                <div class="rating">
-                                    <ul>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="far fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="browse-card">
-                            <div class="card-header">
-                                <img class="card-img" src="https://media.timeout.com/images/102766174/750/422/image.jpg"
-                                    alt="">
-                            </div>
-                            <div class="card-body">
-                                <h1><a href="./pages/business/business_detail.html">Epic Waters Indoor Waterpark</a>
-                                </h1>
-                                <p>Grand Prairie, TX</p>
-                                <div class="rating">
-                                    <ul>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="far fa-star"></i></li>
-                                        <li><i class="far fa-star"></i></li>
-                                        <li><i class="far fa-star"></i></li>
-                                    </ul>
-                                </div>
+                        <div class="card-body">
+                            <h1><a href="./pages/business/business_detail.html">{{ item.business_name }}</a></h1>
+                            <p>{{ item.business_location }}</p>
+                            <div class="rating">
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
+                {{ endfor }}
+
                 <div class="" style="margin-top: 10px;">
                     <a href="./pages/user/search_page.html">See more</a>
                 </div>
@@ -532,7 +490,7 @@
         });
 
     </script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
 </body>
 
 </html>

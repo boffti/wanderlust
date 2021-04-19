@@ -22,13 +22,11 @@ Route::get('/about', function () {
     return view('main_site/about');
 });
 
-Route::get('/getPageData', function () {
-    // Query DB
-    data = ['',''];
-    return data
+Route::get('/signup-handler', function () {
+
+    
+    return view('main_site/about');
 });
-
-
 
 
 

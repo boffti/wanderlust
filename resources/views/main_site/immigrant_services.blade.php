@@ -1,8 +1,8 @@
 <?php session_start(); ?>
 <!-- 
-Author: Natarajan, Karthik
-ID: 1001872904
--->
+Author: Manjunatha, Angad Tarikere
+ID: 1001718335
+ -->
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -13,15 +13,15 @@ ID: 1001872904
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="../../static/favicon.ico" />
-    <title>Wanderlust | Visitor Services</title>
+    <link rel="icon" href="{{ URL::asset('favicon.ico') }}" />
+    <title>Wanderlust | Immigrant Services</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="../../static/css/angad.css">
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ URL::asset('css/angad.css') }}">
 </head>
 
 <body>
@@ -34,17 +34,17 @@ ID: 1001872904
             <h1>Wanderlust</h1>
             <nav>
                 <ul class="hidden">
-                    <li><a href="../../index.php">Home</a></li>
-                    <li><a href="./about.php">About</a></li>
-                    <li class="dropdown"><a href="#" active>Services <i class="fas fa-angle-down"
-                                style="margin-left: 5px;"></i></a>
+                    <li><a href="../../">Home</a></li>
+                    <li><a href="{{url('/about')}}">About</a></li>
+                    <li class="dropdown">
+                        <a href="#" active>Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i></a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="./immigrant_services.php">Immigrant Services</a></li>
-                            <li><a class="dropdown-item" href="./visitor_service.php">Visitor Services</a></li>
+                            <li><a class="dropdown-item" href="{{url('/immigrant-services')}}">Immigrant Services</a></li>
+                            <li><a class="dropdown-item" href="{{url('/visitor-services')}}">Visitor Services</a></li>
                         </ul>
                     </li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="./contact.php">Contact</a></li>
+                    <li><a href="{{url('/contact')}}">Contact</a></li>
                 </ul>
             </nav>
 
@@ -126,7 +126,6 @@ ID: 1001872904
             }
             ?>
             <a id="btnMenu" href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
-            
         </div>
     </div>
 
@@ -134,9 +133,9 @@ ID: 1001872904
         <div class="container">
             <div class="flex-left" style="justify-content: space-between; align-items:center;">
                 <div class="col-lg-6">
-                    <h2 class="display-4">Visitor Services</h2>
+                    <h2 class="display-4">Immigrant Services</h2>
                 </div>
-                <img src="../../static/img/visitor.png" alt="hero-img" style="padding: 50px 0px; width:300px;" />
+                <img src="../../static/img/passport.png" alt="hero-img" style="padding: 50px 0px; width:300px;" />
             </div>
         </div>
     </section>
@@ -147,13 +146,13 @@ ID: 1001872904
         <ul class="c-services">
             <div class="card bb-green">
                 <li class="c-services__item">
-                    <h3><i class="fas fa-list fa-1x mb-2 text-success"></i>&nbsp Find things to do</h3>
+                    <h3><i class="fas fa-list fa-1x mb-2 text-success"></i>&nbsp Search categories</h3>
                     <p>We provide you with the latest and established categories of businesses in the selected locality,
                         personalized for you, to match your requirements.</p>
                 </li>
             </div>
             <div class="card bb-green">
-                <li>
+                <li class="c-services__item">
                     <h3><i class="fas fa-blog fa-1x mb-3 text-success"></i>&nbsp Blogs</h3>
                     <p>It’s time for you to write your best blog. We provide you with the access/feature to write about
                         your opinions and feelings about the businesses or attractions you recently visited or already
@@ -166,10 +165,10 @@ ID: 1001872904
                 </li>
             </div>
             <div class="card bb-green">
-                <li>
+                <li class="c-services__item">
                     <h3><i class="fas fa-book-open a-1x mb-3 text-success"></i>&nbsp Review and Tips</h3>
-                    <p>Give and, Receive too. Leave Reviews and Tips for places you visit. Help users across the globe
-                        get familiar
+                    <p>Give and, Receive too. Leave Reviews and Tips on Wanderlust. Help users across the globe get
+                        familiar
                         with the place they are located in.
                         Providing reviews and giving tips about a certain location or the businesses attached to it will
                         be
@@ -186,6 +185,25 @@ ID: 1001872904
                         those seeking .
                         Provides an interface where users can chat one- to- one or many -to- many. Helps in bringing our
                         Wanderlust community together .</p>
+                </li>
+            </div>
+            <div class="card bb-green">
+                <li class="c-services__item">
+                    <h3><i class="fas fa-photo-video fa-1x mb-3 text-success"></i>&nbsp Upload pictures & videos</h3>
+                    <p>Make your space all the more colorful. Wanderlust provides you with the access to upload photos
+                        and
+                        videos of the city,
+                        local area or the businesses involved that will be of great assist to all the wanderers
+                        navigating
+                        through our site.</p>
+                </li>
+            </div>
+            <div class="card bb-green">
+                <li class="c-services__item">
+                    <h3><i class="fas fa-map-marker-alt fa-1x mb-3 text-success"></i>&nbsp Local businesses &
+                        attractions
+                    </h3>
+                    <p>Find businesses and attractions around you. Check out their ratings and reviews and see their location and oprationg hours. Phone numbers are listed too.</p>
                 </li>
             </div>
         </ul>
@@ -219,12 +237,12 @@ ID: 1001872904
                 <div class="">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
-                        <li><a href="./about.php">About</a></li>
-                        <li><a href="./immigrant_services.php">Immigrant Services</a></li>
-                        <li><a href="./visitor_service.php">Visitor Services</a></li>
+                        <li><a href="{{url('/about')}}">About</a></li>
+                        <li><a href="{{url('/immigrant-services')}}">Immigrant Services</a></li>
+                        <li><a href="{{url('/visitor-services')}}">Visitor Services</a></li>
                         <li><a href="/blog">Blog</a></li>
-                        <li><a href="./contact.php">Contact</a></li>
-                        <li><a href="../login/login.php">Login</a></li>
+                        <li><a href="{{url('/contact')}}">Contact</a></li>
+                        <li><a href="{{url('/login')}}">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -249,8 +267,8 @@ ID: 1001872904
         </div>
     </footer>
 
-    <!-- ! If user in session -->
-    <div id="location-select-modal-container" class="modal-container">
+<!-- ! If user in session -->
+<div id="location-select-modal-container" class="modal-container">
         <div class="modal" id="location-select-modal">
             <div class="modal-header flex-left space-between" style="align-items: center;">
                 <p style="margin-left: 12px;">Select Location</p>
@@ -286,7 +304,7 @@ ID: 1001872904
         integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
         crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="../../static/js/app.js"></script>
+    <script src="{{ URL::asset('js/app.js') }}"></script>
 </body>
 
 </html>

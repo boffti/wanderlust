@@ -43,7 +43,7 @@
                         </div>
                         <p class="login-heading mb-4">Create an account to get started.</p>
                     </div>
-                    <form role="form" action="signup_handler.php" method="post">
+                    <form role="form" action={{url('/login-handler')}} method="post">
                         <div class="">
                             <input name="name" type="name" id="name" class="" placeholder="Full Name"
                                 required autofocus>
@@ -85,7 +85,7 @@
                         <br>
                         <div class="flex flex-vertical">
                             <p>Already have an account?</p>
-                            <a class="text-accent" href="./login.php">Sign In</a>
+                            <a class="text-accent" href="{{url('/login/login')}}">Sign In</a>
                         </div>
                     </form>
                 </div>
@@ -95,7 +95,7 @@
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="../../static/js/typed.js"></script>
+    <script src="{{ URL::asset('js/typed.js') }}"></script>
     <script>
         var typed = new Typed('.login-heading', {
             stringsElement: '#typed',

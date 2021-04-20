@@ -13,7 +13,7 @@ ID: 1001718335
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="../../static/favicon.ico" />
+    <link rel="icon" href="{{ URL::asset('favicon.ico') }}" />
     <title>Wanderlust | About</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,17 +36,17 @@ ID: 1001718335
             <nav>
                 <ul class="hidden">
                     <li><a href="../../">Home</a></li>
-                    <li><a href="./about.php" active>About</a></li>
+                    <li><a href="{{url('/about')}}" active>About</a></li>
                     <li class="dropdown">
                         <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="./immigrant_services.php">Immigrant Services</a></li>
-                            <li><a class="dropdown-item" href="./visitor_service.php">Visitor Services</a></li>
+                            <li><a class="dropdown-item" href="{{url('/immigrant-services')}}">Immigrant Services</a></li>
+                            <li><a class="dropdown-item" href="{{url('/visitor-services')}}">Visitor Services</a></li>
                         </ul>
                     </li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="./contact.php">Contact</a></li>
+                    <li><a href="{{url('/contact')}}">Contact</a></li>
                 </ul>
             </nav>
 
@@ -243,12 +243,12 @@ ID: 1001718335
                 <div class="">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
-                        <li><a href="./about.php">About</a></li>
-                        <li><a href="./immigrant_services.php">Immigrant Services</a></li>
-                        <li><a href="./visitor_service.php">Visitor Services</a></li>
+                        <li><a href="{{url('/about')}}">About</a></li>
+                        <li><a href="{{url('/immigrant-services')}}">Immigrant Services</a></li>
+                        <li><a href="{{url('/visitor-services')}}">Visitor Services</a></li>
                         <li><a href="/blog">Blog</a></li>
-                        <li><a href="./contact.php">Contact</a></li>
-                        <li><a href="../login/login.php">Login</a></li>
+                        <li><a href="{{url('/contact')}}">Contact</a></li>
+                        <li><a href="{{url('/login')}}">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -310,7 +310,7 @@ ID: 1001718335
         integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
         crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="../../static/js/app.js"></script>
+    <script src="{{ URL::asset('js/app.js') }}"></script>
 </body>
 
 </html>

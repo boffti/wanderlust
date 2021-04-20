@@ -1,6 +1,3 @@
-<?php session_start();
-include '../../php/functions.php';
-?>
 <!-- 
 Author: Sundalkar, Gabriel Anand
 ID: 1001774881
@@ -21,8 +18,8 @@ ID: 1001774881
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="../../static/css/gabriel.css">
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ URL::asset('css/gabriel.css') }}">
 </head>
 
 <body>
@@ -35,8 +32,8 @@ ID: 1001774881
             <h1>Wanderlust</h1>
             <nav>
                 <ul>
-                    <li><a href="../../index.php">Home</a></li>
-                    <li><a href="../main_site/about.php">About</a></li>
+                    <li><a href="../../">Home</a></li>
+                    <li><a href="{{url('/main_site/about')}}">About</a></li>
                     <li class="dropdown">
                         <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>

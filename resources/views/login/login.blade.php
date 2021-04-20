@@ -13,12 +13,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="../../static/favicon.ico"/>
+    <link rel="icon" href="{{ URL::asset('favicon.ico') }}"/>
     <title>Wanderlust | Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="shortcut icon" href="">
 </head>
 
@@ -43,7 +43,7 @@
                         </div>
                         <p class="login-heading">Login to continue.</p>
                     </div>
-                    <form role="form" action="login_handler.php" method="post">
+                    <form role="form" action={{url('/login-handler')}} method="post">
                         <div class="form-label-group">
                             <input name="email" type="email" id="email" class="form-control" placeholder="E-mail"
                                 required>
@@ -69,7 +69,7 @@
                         <div class="flex flex-vertical">
                             <p>Not registered yet? No problem!
                                 Let's get you started.</p>
-                            <a class="text-accent" href="./signup.php">Create Account</a>
+                            <a class="text-accent" href="{{url('/signup')}}">Create Account</a>
                         </div>
                     </form>
                 </div>
@@ -78,7 +78,7 @@
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="../../static/js/typed.js"></script>
+    <script src="{{ URL::asset('js/typed.js') }}"></script>
     <script>
         var typed = new Typed('.login-heading', {
             stringsElement: '#typed',

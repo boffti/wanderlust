@@ -22,7 +22,7 @@ include '../../php/functions.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-    <link href="../../static/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 </head>
 
 <body>
@@ -39,18 +39,18 @@ include '../../php/functions.php';
             <nav>
                 <ul class="hidden">
                     <li><a href="../../index.php">Home</a></li>
-                    <li><a href="../main_site/about.php">About</a></li>
+                    <li><a href="{{url('main_site/about')}}">About</a></li>
                     <li class="dropdown"><a href="#" class="">Services <i class="fas fa-angle-down"
                                 style="margin-left: 5px;"></i></a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="../main_site/immigrant_services.php">Immigrant
+                            <li><a class="dropdown-item" href="{{url('main_site/immigrant-services')}}">Immigrant
                                     Services</a></li>
-                            <li><a class="dropdown-item" href="../main_site/visitor_service.php">Visitor Services</a>
+                            <li><a class="dropdown-item" href="{{url('main_site/visitor-services')}}">Visitor Services</a>
                             </li>
                         </ul>
                     </li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="../main_site/contact.php">Contact</a></li>
+                    <li><a href="{{url('main_site/contact')}}">Contact</a></li>
                 </ul>
             </nav>
 
@@ -512,8 +512,8 @@ include '../../php/functions.php';
         integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
         crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="../../static/js/typed.js"></script>
-    <script src="../../static/js/app.js"></script>
+    <script src="{{ URL::asset('js/typed.js') }}"></script>
+    <script src="{{ URL::asset('js/app.js') }}"></script>
 </body>
 
 </html>

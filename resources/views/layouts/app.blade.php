@@ -70,14 +70,14 @@
                                 </a>
                                 <ul class="dropdown-content" style="top:50px">
                                     <li class="dropdown-item">
-                                        <a href="./pages/user/profile.html">
+                                        <a href="{{url('/profile')}}">
                                             <i class="fas fa-user" style="margin-right: 8px;"></i>
                                             My Profile
                                         </a>
                                     </li>
                                     <!-- ! If Role == Admin -->
                                     <li class="dropdown-item">
-                                        <a href="./pages/admin/country_admin.html">
+                                        <a href="/country-admin">
                                             <i class="fas fa-tools" style="margin-right: 8px;"></i>
                                             Admin Console
                                         </a>
@@ -85,7 +85,7 @@
                                     <!-- ! Endif -->
                                     <!-- ! If Role == SuperAdmin -->
                                     <li class="dropdown-item">
-                                        <a href="./pages/admin/super_admin.html">
+                                        <a href="/super-admin">
                                             <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
                                             Super Admin Console
                                         </a>

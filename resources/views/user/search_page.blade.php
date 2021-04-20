@@ -13,14 +13,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="../../static/favicon.ico" />
+    <link rel="icon" href="{{ URL::asset('favicon.ico') }}" />
     <title>Wanderlust | Search Results</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-    <link href="../../static/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 </head>
 
 <body>
@@ -282,12 +282,12 @@
                 <div class="">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
-                        <li><a href="./pages/main_site/about.php">About</a></li>
-                        <li><a href="./pages/main_site/immigrant_services.php">Immigrant Services</a></li>
-                        <li><a href="./pages/main_site/visitor_service.php">Visitor Services</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="./pages/main_site/contact.php">Contact</a></li>
-                        <li><a href="./pages/login/login.php">Login</a></li>
+                        <li><a href="{{url('/about')}}">About</a></li>
+                        <li><a href="{{url('/immigrant-services')}}">Immigrant Services</a></li>
+                        <li><a href="{{url('/visitor-services')}}">Visitor Services</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="{{url('/contact')}}">Contact</a></li>
+                        <li><a href="{{url('/login/login')}}">Login</a></li>
                     </ul>
                 </div>
             </div>

@@ -26,7 +26,7 @@ ID : 1001750503 --}}
             </div>
             <p class="flex-vertical">Find nearby attractions. Connect with people. Contribute to your neighborhood.</p>
             <div class="">
-                <form class="hero-form card" action="./pages/user/search_page.html" style="overflow: hidden;">
+                <form class="hero-form card" action="{{url('/search-page')}}" style="overflow: hidden;">
                     <div class="flex-left flex-wrap" style="justify-content: space-between;">
                         <div class="form-control">
                             <input type="text" name="search-term" id="search-term"
@@ -63,7 +63,7 @@ ID : 1001750503 --}}
                                 alt="">
                         </div>
                         <div class="card-body">
-                            <h1><a href="./pages/business/business_detail.html"></a></h1>
+                            <h1><a href="{{url('/business-detail')}}"></a></h1>
                             <p></p>
                             <div class="rating">
                                 <ul>
@@ -78,7 +78,7 @@ ID : 1001750503 --}}
                     </div>
 
                 <div class="" style="margin-top: 10px;">
-                    <a href="./pages/user/search_page.html">See more</a>
+                    <a href="{{url('/search-page')}}">See more</a>
                 </div>
             </section>
 
@@ -171,7 +171,7 @@ ID : 1001750503 --}}
                         </div>
                     </div>
                 </div>
-                <a href="./pages/user/posts.html" style="margin-left: 12px;">See all</a>
+                <a href="{{url('/posts')}}" style="margin-left: 12px;">See all</a>
             </section>
 
             <br>
@@ -239,21 +239,21 @@ ID : 1001750503 --}}
                 <h2>Browse by Category</h2>
                 <div class="flex" style="gap: 12px;">
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="{{url('/search-page')}}" class="card-link"></a>
                         <i class="fas fa-hamburger fa-5x"></i>
                         <div class="content">
                             <h2>Restaurant</h2>
                         </div>
                     </div>
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="{{url('/search-page')}}" class="card-link"></a>
                         <i class="fas fa-shopping-cart fa-5x"></i>
                         <div class="content">
                             <h2>Shopping</h2>
                         </div>
                     </div>
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="{{url('/search-page')}}" class="card-link"></a>
                         <i class="fas fa-book-open fa-5x"></i>
                         <div class="content">
                             <h2>Education</h2>
@@ -262,21 +262,21 @@ ID : 1001750503 --}}
                 </div>
                 <div class="flex" style="gap: 12px; margin-top:12px">
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="{{url('/search-page')}}" class="card-link"></a>
                         <i class="fas fa-praying-hands fa-5x"></i>
                         <div class="content">
                             <h2>Religion & Worship</h2>
                         </div>
                     </div>
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="{{url('/search-page')}}" class="card-link"></a>
                         <i class="fas fa-ticket-alt fa-5x"></i>
                         <div class="content">
                             <h2>Entertainment</h2>
                         </div>
                     </div>
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="{{url('/search-page')}}" class="card-link"></a>
                         <i class="fas fa-syringe fa-5x"></i>
                         <div class="content">
                             <h2>Health & Medical</h2>

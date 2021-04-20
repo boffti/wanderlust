@@ -1,8 +1,8 @@
-require('./bootstrap');
+// require('./bootstrap');
 /* Author : Melkot, Aaneesh Naagaraj
 ID : 1001750503 */
 $.noConflict();
-jQuery(document).ready(function ($) {
+jQuery(function ($) {
 
     // Sticky Navbar
     /*     window.onscroll = function () {
@@ -33,7 +33,7 @@ jQuery(document).ready(function ($) {
     $(".profileAddress").text(`${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()}, ${faker.address.zipCode().slice(0,5)}`);
 
     $.ajax({
-        url: 'https://randomuser.me/api/',
+        url: '/getPageData',
         dataType: 'json',
         success: function (data) {
             var avatarURL = data.results[0].picture.thumbnail;
@@ -141,13 +141,6 @@ jQuery(document).ready(function ($) {
         $("#fileBusinessPhoto").click();
     });
 
-    $.ajax({
-        url: '/getPageData',
-        dataType: 'json',
-        success: function (data) {
-            // Populate UI with Data.
-        }
-    });
     // TODO Add Video & Photo on input onchange listeners
 
 });

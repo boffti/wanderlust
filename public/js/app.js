@@ -1,4 +1,4 @@
-require('./bootstrap');
+// require('./bootstrap');
 /* Author : Melkot, Aaneesh Naagaraj
 ID : 1001750503 */
 $.noConflict();
@@ -26,22 +26,22 @@ jQuery(document).ready(function ($) {
     let cityName = faker.address.city();
     let stateAbbr = faker.address.stateAbbr();
 
-    $(".profileName").text(`${firstName} ${lastName}`);
+    // $(".profileName").text(`${firstName} ${lastName}`);
     $(".currentLocation").html(`<i class="fas fa-map-marker-alt loc-icon"></i> ${cityName}, ${stateAbbr}`)
     $(".business-name").text(`${faker.company.companyName()}`);
     $(".business-category").text(`${faker.company.catchPhrase()}`);
     $(".profileAddress").text(`${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()}, ${faker.address.zipCode().slice(0,5)}`);
 
-    $.ajax({
-        url: 'https://randomuser.me/api/',
-        dataType: 'json',
-        success: function (data) {
-            var avatarURL = data.results[0].picture.thumbnail;
-            var profileIMGURL = data.results[0].picture.large;
-            $(".avatarIMG").attr('src', avatarURL);
-            $(".profileIMG").attr('src', profileIMGURL);
-        }
-    });
+    // $.ajax({
+    //     url: 'https://randomuser.me/api/',
+    //     dataType: 'json',
+    //     success: function (data) {
+    //         var avatarURL = data.results[0].picture.thumbnail;
+    //         var profileIMGURL = data.results[0].picture.large;
+    //         $(".avatarIMG").attr('src', avatarURL);
+    //         $(".profileIMG").attr('src', profileIMGURL);
+    //     }
+    // });
 
     // Fake Post Names
     $('.post .profileName').each(function () {

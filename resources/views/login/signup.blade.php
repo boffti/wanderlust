@@ -13,12 +13,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="../../static/favicon.ico"/>
+    <link rel="icon" href="{{ URL::asset('favicon.ico') }}"/>
     <title>Wanderlust | Signup</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="shortcut icon" href="">
 </head>
 
@@ -30,7 +30,7 @@
     <div class="signup-page">
         <div class="grid grid-2">
             <a href="../../index.php">
-                <img class="signup-img" src="../../static/img/suitcases.jpg" alt="">
+                <img class="signup-img" src="{{ URL::asset('img/suitcases.jpg') }}" alt="">
             </a>
             <div class="signup-form flex-vertical">
                 <img src="../../static/img/destination.png" alt="" style="width: 100px;" class="">
@@ -85,7 +85,7 @@
                         <br>
                         <div class="flex flex-vertical">
                             <p>Already have an account?</p>
-                            <a class="text-accent" href="./login.php">Sign In</a>
+                            <a class="text-accent" href="/login">Sign In</a>
                         </div>
                     </form>
                 </div>
@@ -95,7 +95,7 @@
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="../../static/js/typed.js"></script>
+    <script src="{{ URL::asset('js/typed.js') }}"></script>
     <script>
         var typed = new Typed('.login-heading', {
             stringsElement: '#typed',
@@ -105,7 +105,7 @@
             backDelay: 5000,
         });
     </script>
-    <script src="./static/js/app.js"></script>
+    <script src="{{ URL::asset('js/app.js') }}"></script>
 </body>
 
 </html>

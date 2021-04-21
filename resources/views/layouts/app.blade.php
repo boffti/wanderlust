@@ -20,6 +20,7 @@
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
+    @yield('css-imports')
 </head>
 
 
@@ -52,11 +53,9 @@
                 <button class="btn btn-outline-secondary">Login / Signup</button>
             </div> -->
             @if(session()->has('user'))
-                @if(in_array('3', session()->get('user_roles')))
-                @endif
-            @endif
-
-            {{-- Drop Down as per user roles --}}
+                {{-- @if(in_array('3', session()->get('user_roles')))
+                @endif --}}
+                {{-- Drop Down as per user roles --}}
                         <!-- ! If user in session -->
                         <ul class="hidden">
                             <li>
@@ -64,20 +63,20 @@
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="profile flex">
-                                    <img id="avatarIMG" src="" alt="profile" class="avatarIMG">
-                                    <p id="profileName" class="profileName"></p>
+                                    <img id="avatarIMG" src="{{ URL::asset("upload/user_dp/") }}/{{ session('user')['dp'] }}" alt="profile" class="avatarIMG">
+                                    <p id="profileName" class="profileName">{{ session('user')['full_name'] }}</p>
                                     <i class="fas fa-angle-down" style="margin-left: 8px;"></i>
                                 </a>
                                 <ul class="dropdown-content" style="top:50px">
                                     <li class="dropdown-item">
-                                        <a href="./pages/user/profile.html">
+                                        <a href="/profile">
                                             <i class="fas fa-user" style="margin-right: 8px;"></i>
                                             My Profile
                                         </a>
                                     </li>
                                     <!-- ! If Role == Admin -->
                                     <li class="dropdown-item">
-                                        <a href="./pages/admin/country_admin.html">
+                                        <a href="/country-admin">
                                             <i class="fas fa-tools" style="margin-right: 8px;"></i>
                                             Admin Console
                                         </a>
@@ -85,14 +84,14 @@
                                     <!-- ! Endif -->
                                     <!-- ! If Role == SuperAdmin -->
                                     <li class="dropdown-item">
-                                        <a href="./pages/admin/super_admin.html">
+                                        <a href="/super-admin">
                                             <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
                                             Super Admin Console
                                         </a>
                                     </li>
                                     <!-- ! Endif -->
                                     <li class="dropdown-item">
-                                        <a href="./pages/login/login.html">
+                                        <a href="/logout">
                                             <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
                                             Logout
                                         </a>
@@ -100,7 +99,13 @@
                                 </ul>
                             </li>
                         </ul>
-
+                        @else
+                        <div class="signup">
+                            <a href="/login">
+                                <button class="btn btn-outline-accent text-accent">Login / Signup</button>
+                            </a>
+                        </div>
+            @endif
 
             <a id="btnMenu" href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
         </div>

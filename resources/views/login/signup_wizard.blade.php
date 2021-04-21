@@ -11,12 +11,12 @@ include '../../php/functions.php';
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="../../static/favicon.ico" />
+    <link rel="icon" href="{{ URL::asset('favicon.ico') }}" />
     <title>Wanderlust | Signup Wizard</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="shortcut icon" href="">
 </head>
 
@@ -28,7 +28,7 @@ include '../../php/functions.php';
     <div class="signup-page">
         <div class="grid grid-2">
             <a href="../../">
-                <img class="signup-img" src="../../static/img/suitcases.jpg" alt="">
+                <img class="signup-img" src="{{URL::asset('img/suitcases.jpg')}}" alt="">
             </a>
             <div class="signup-form flex-vertical">
                 <img src="../../static/img/destination.png" alt="" style="width: 100px;" class="">
@@ -95,7 +95,7 @@ include '../../php/functions.php';
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="./static/js/app.js"></script>
+    <script src="{{ URL::asset('js/app.js') }}"></script>
 </body>
 
 </html>

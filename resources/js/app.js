@@ -1,4 +1,3 @@
-// require('./bootstrap');
 /* Author : Melkot, Aaneesh Naagaraj
 ID : 1001750503 */
 $.noConflict();

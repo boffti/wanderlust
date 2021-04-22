@@ -5,10 +5,10 @@ ID: 1001718335
 
  @extends('layouts.app')
 
- @section('title', 'Wanderlust Home')
+ @section('title', 'Wanderlust About')
 
  @section('css-imports')
- <link href="{{ URL::asset('css/angad.css') }}">
+ <link href="{{ URL::asset('css/angad.css') }}" rel="stylesheet">
  @endsection
  
  @section('content')
@@ -96,40 +96,6 @@ ID: 1001718335
         </section>
         <br>
 
-    </div>
-
-
-    <!-- ! If user in session -->
-    <div id="location-select-modal-container" class="modal-container">
-        <div class="modal" id="location-select-modal">
-            <div class="modal-header flex-left space-between" style="align-items: center;">
-                <p style="margin-left: 12px;">Select Location</p>
-                <a href="#" class="cancel" style="float: right;">x</a>
-            </div>
-            <div class="modal-content" style="align-items:center;">
-                <form action="../../php/change_loc_handler.php" class="flex-center" style="gap: 12px;" method='POST'>
-                    <div class="form-control"> <select id="location-select" name="location" id="location">
-                    <option value="choose" disabled selected>Change your location</option>
-                            <?php
-                                if(isset($_SESSION['user'])){
-                                    $sql_city_options= "SELECT city_id, city_name from cities";
-                                    $cities = $conn->query($sql_city_options);
-                                    if($cities->num_rows > 0) {                          
-                                        while($item = $cities->fetch_assoc()) {
-                                            echo <<<explore
-                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
-                                            explore;
-                                        }
-                                    }
-                                   }
-                            ?>
-                        </select></div>
-                    <div>
-                        <button class="btn" type="submit">Change</button>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 
 @endsection

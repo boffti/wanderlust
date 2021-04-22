@@ -1,6 +1,3 @@
-<?php session_start();
-include '../../php/functions.php';
-?>
 <!-- 
 Author: Sundalkar, Gabriel Anand
 ID: 1001774881

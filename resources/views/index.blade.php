@@ -2,7 +2,7 @@
 ID : 1001750503 --}}
 @extends('layouts.app')
 
-@section('title', 'Wanderlust Home')
+@section('title', 'Wanderlust | Home')
 
 @section('content')
     <!-- hero -->
@@ -56,29 +56,33 @@ ID : 1001750503 --}}
             <section>
                 <h2>Explore nearby</h2>
                 <div class="flex" style="gap:12px">
-                    <div class="browse-card">
-                        <div class="card-header">
-                            <img class="card-img"
-                                src=""
-                                alt="">
-                        </div>
-                        <div class="card-body">
-                            <h1><a href="./pages/business/business_detail.html"></a></h1>
-                            <p></p>
-                            <div class="rating">
-                                <ul>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                </ul>
+                    @if(isset($businesses))
+                        @foreach($businesses as $biz)
+                            <div class="browse-card">
+                                <div class="card-header">
+                                    <img class="card-img"
+                                        src="{{ $biz['photo_uri'] }}"
+                                        alt="">
+                                </div>
+                                <div class="card-body">
+                                    <h1><a href="business/{{ $biz['business_id'] }}">{{ $biz['business_name'] }}</a></h1>
+                                    <p>{{ $biz['city']['city_name'] }}</p>
+                                    <div class="rating">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
+                        @endforeach
+                    @endif
                         </div>
-                    </div>
-
                 <div class="" style="margin-top: 10px;">
-                    <a href="./pages/user/search_page.html">See more</a>
+                    <a href="/search">See more</a>
                 </div>
             </section>
 
@@ -88,7 +92,8 @@ ID : 1001750503 --}}
             <section>
                 <h2>Bulletin Board</h2>
                 <!-- ! IF User.role != visitor -->
-                <form>
+                <form action="/post" method="post">
+                    @csrf
                     <div class="flex-left">
                         <textarea placeholder="What's on your mind? Type here..." name="post" id="bulletin_post"
                             cols="30" rows="3" style="width: 100%; padding:12px; margin: 12px" class="card"></textarea>
@@ -100,78 +105,26 @@ ID : 1001750503 --}}
                 </form>
                 <!-- ! ENDIF -->
                 <div class="posts">
-                    <div class="card post">
-                        <div class="flex-left">
-                            <img class="postIMG" src="" alt="">
-                            <div class="full-width">
-                                <div class="flex-left space-between align-items-center">
-                                    <a href="#">
-                                        <h4 class="profileName"></h4>
-                                    </a>
-                                    <p class="post-date">12/12/2020</p>
+                    @if(isset($posts))
+                        @foreach($posts as $post)
+                            <div class="card post">
+                                <div class="flex-left">
+                                    <img class="postIMG" src="{{ URL::asset("upload/user_dp/") }}/{{ $post['user']['dp'] }}" alt="">
+                                    <div class="full-width">
+                                        <div class="flex-left space-between align-items-center">
+                                            <a href="/user/{{ $post['user']['user_id'] }}">
+                                                <h4 class="">{{ $post['user']['full_name'] }}</h4>
+                                            </a>
+                                            <p class="post-date">{{ $post['created_at'] }}</p>
+                                        </div>
+                                        <p class="post-content">{{ $post['post_content'] }}</p>
+                                    </div>
                                 </div>
-                                <p class="post-content"></p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="card post">
-                        <div class="flex-left">
-                            <img class="postIMG" src="" alt="">
-                            <div class="full-width">
-                                <div class="flex-left space-between align-items-center">
-                                    <a href="#">
-                                        <h4 class="profileName"></h4>
-                                    </a>
-                                    <p class="post-date">12/12/2020</p>
-                                </div>
-                                <p class="post-content"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card post">
-                        <div class="flex-left">
-                            <img class="postIMG" src="" alt="">
-                            <div class="full-width">
-                                <div class="flex-left space-between align-items-center">
-                                    <a href="#">
-                                        <h4 class="profileName"></h4>
-                                    </a>
-                                    <p class="post-date">12/12/2020</p>
-                                </div>
-                                <p class="post-content"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card post">
-                        <div class="flex-left">
-                            <img class="postIMG" src="" alt="">
-                            <div class="full-width">
-                                <div class="flex-left space-between align-items-center">
-                                    <a href="#">
-                                        <h4 class="profileName"></h4>
-                                    </a>
-                                    <p class="post-date">12/12/2020</p>
-                                </div>
-                                <p class="post-content"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card post">
-                        <div class="flex-left">
-                            <img class="postIMG" src="" alt="">
-                            <div class="full-width">
-                                <div class="flex-left space-between align-items-center">
-                                    <a href="#">
-                                        <h4 class="profileName"></h4>
-                                    </a>
-                                    <p class="post-date">12/12/2020</p>
-                                </div>
-                                <p class="post-content"></p>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
-                <a href="./pages/user/posts.html" style="margin-left: 12px;">See all</a>
+                <a href="/more-posts" style="margin-left: 12px;">See all</a>
             </section>
 
             <br>
@@ -179,56 +132,39 @@ ID : 1001750503 --}}
             <section>
                 <h2>Word to the Wise</h2>
                 <div class="tips">
-                    <div class="card border-l-yellow">
-                        <div class="flex flex-column align-items-left">
-                            <div>
-                                <span class="quotes">"</span><strong>
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci quibusdam
-                                    accusantium, fugiat debitis dolorem iure soluta cum consequuntur dignissimos animi
-                                    tenetur magnam sit, perferendis illo, quidem quis. Facere, nostrum sit.
-                                </strong><span class="quotes">"</span>
+                    @if(isset($tips))
+                        @foreach($tips as $tip)
+                            <div class="card border-l-yellow">
+                                <div class="flex flex-column align-items-left">
+                                    <div>
+                                        <span class="quotes">"</span><strong>
+                                            {{ $tip['tip_content'] }}
+                                        </strong><span class="quotes">"</span>
+                                    </div>
+                                    <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                                        <a class="tip-author" href="/user/{{ $tip['user']['user_id'] }}" style="margin: 0;">{{ $tip['user']['full_name'] }}</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex ml-auto tip-footer" style="gap: 10px; ">
-                                <a class="tip-author" href="#" style="margin: 0;">Jagan Das</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card border-l-yellow">
-                        <div class="flex flex-column align-items-left">
-                            <div>
-                                <span class="quotes">"</span><strong>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Facilis harum eius optio. Delectus repellat sunt eveniet neque nesciunt assumenda
-                                    debitis, ullam impedit molestiae tempore deleniti corporis officiis ipsa expedita
-                                    repudiandae.
-                                </strong><span class="quotes">"</span>
-                            </div>
-                            <div class="flex ml-auto tip-footer" style="gap: 10px; ">
-                                <a class="tip-author" href="#" style="margin: 0;">Mark Appleseed</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card border-l-yellow">
-                        <div class="flex flex-column align-items-left">
-                            <div>
-                                <span class="quotes">"</span><strong>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis at blanditiis
-                                    quasi minima eveniet maiores enim praesentium qui dolorum, est perferendis, delectus
-                                    tenetur deserunt ipsam, cumque officia itaque. Temporibus, laborum.
-                                </strong><span class="quotes">"</span>
-                            </div>
-                            <div class="flex ml-auto tip-footer" style="gap: 10px; ">
-                                <a class="tip-author" href="#" style="margin: 0;">Aima Ho</a>
-                            </div>
-                        </div>
-                    </div>
-
+                        @endforeach
+                    @endif
                 </div>
                 <div class="flex" style="justify-content: space-between; padding: 0 15px">
-                    <a href="./pages/user/tips.html" class="">See more tips</a>
-                    <a href="./pages/user/tips.html" class="strong">+ ADD TIP</a>
+                    <a href="/more-tips" class="">See more tips</a>
+                    <a href="/more-tips" class="strong">+ ADD TIP</a>
+                </div>
+            </section>
+
+            <br>
+            
+            <section>
+                <h2>Moments around you</h2>
+                <div class="gallery">
+
+                    <div class="gallery-item">
+                        <img class="gallery-image" src="">
+                    </div>
+
                 </div>
             </section>
 
@@ -290,31 +226,21 @@ ID : 1001750503 --}}
 
     <br>
 
-    <!-- ! If user in session -->
-    <div id="location-select-modal-container" class="modal-container">
-        <div class="modal" id="location-select-modal">
-            <div class="modal-header flex-left space-between" style="align-items: center;">
-                <p style="margin-left: 12px;">Select Location</p>
-                <a href="#" class="cancel" style="float: right;">x</a>
-            </div>
-            <div class="modal-content" style="align-items:center;">
-                <form class="flex-center" style="gap: 12px;">
-                    <div class="form-control"> <select id="location-select" name="location" id="location">
-                            <option value="choose" disabled selected>Change your location</option>
-                            <option value="arlington">Arlington</option>
-                            <option value="newyork">New York</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="london">London</option>
-                            <option value="dubai">Dubai</option>
-                        </select></div>
-                    <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
-                        <button class="btn" type="submit">Change</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
+@endsection
+
+@section('scripts')
+    <script src="{{ URL::asset('js/typed.js') }}"></script>
+    <script>
+        var typed = new Typed('#welcome-string', {
+            stringsElement: '#typed',
+            showCursor: false,
+            cursorChar: '|',
+            typeSpeed: 70,
+            backSpeed: 70,
+            backDelay: 5000,
+            loop: true,
+            loopCount: Infinity,
+        });
+    </script>
 @endsection

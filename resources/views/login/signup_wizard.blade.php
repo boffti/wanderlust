@@ -1,6 +1,3 @@
-<?php session_start(); 
-include '../../php/functions.php';
-?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -31,15 +28,16 @@ include '../../php/functions.php';
                 <img class="signup-img" src="{{URL::asset('img/suitcases.jpg')}}" alt="">
             </a>
             <div class="signup-form flex-vertical">
-                <img src="../../static/img/destination.png" alt="" style="width: 100px;" class="">
+                <img src="{{ URL::asset('img/destination.png') }}" alt="" style="width: 100px;" class="">
                 <div class="card">
                     <div class="flex-vertical">
                         <h1 class="login-heading">You're almost home
-                            <?php echo (explode(" ", $_SESSION['name'])[0]); ?>
+                            {{ session('register_user')['full_name'] }}
                         </h1>
                         <p class="login-heading mb-4">We just need some more info to get you started.</p>
                     </div>
-                    <form role="form" action="signup_wizard_handler.php" method="post">
+                    <form role="form" action="/register-user" method="post">
+                        @csrf
                         <div class="">
                             <input name="phone" type="text" id="profession" class="" placeholder="Phone Number"
                             pattern="[0-9]{10}"
@@ -60,18 +58,11 @@ include '../../php/functions.php';
                         </div>
                         <div class="form-control"> <select name="city" id="city">
                                 <option value="choose" disabled selected>Where are you moving to?</option>
-                                <?php
-                                    $conn = get_db_conn();
-                                    $sql_city_options= "SELECT city_id, city_name from cities";
-                                    $cities = $conn->query($sql_city_options);
-                                    if($cities->num_rows > 0) {                          
-                                        while($item = $cities->fetch_assoc()) {
-                                            echo <<<explore
-                                            <option value="{$item['city_id']}">{$item['city_name']}</option>
-                                            explore;
-                                        }
-                                    }
-                                ?>
+                                @if(isset($cities))
+                                    @foreach ($cities as $city)
+                                    <option value="{{ $city['city_id'] }}">{{ $city['city_name'] }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="">

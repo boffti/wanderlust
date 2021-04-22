@@ -31,17 +31,6 @@ jQuery(function ($) {
     $(".business-category").text(`${faker.company.catchPhrase()}`);
     $(".profileAddress").text(`${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()}, ${faker.address.zipCode().slice(0,5)}`);
 
-    $.ajax({
-        url: '/getPageData',
-        dataType: 'json',
-        success: function (data) {
-            var avatarURL = data.results[0].picture.thumbnail;
-            var profileIMGURL = data.results[0].picture.large;
-            $(".avatarIMG").attr('src', avatarURL);
-            $(".profileIMG").attr('src', profileIMGURL);
-        }
-    });
-
     // Fake Post Names
     $('.post .profileName').each(function () {
         $(this).text(`${faker.name.firstName()} ${faker.name.lastName()}`);

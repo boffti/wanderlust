@@ -11,38 +11,33 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
 
     protected $table = 'users';
     protected $primaryKey = 'user_id';
 
-    // /**
-    //  * The attributes that are mass assignable.
-    //  *
-    //  * @var array
-    //  */
-    // protected $fillable = [
-    //     'name',
-    //     'email',
-    //     'password',
-    // ];
+    public function posts() {
+        return $this->hasMany(Post::class, 'user_id', 'user_id');
+    }
 
-    // /**
-    //  * The attributes that should be hidden for arrays.
-    //  *
-    //  * @var array
-    //  */
-    // protected $hidden = [
-    //     'password',
-    //     'remember_token',
-    // ];
+    public function tips() {
+        return $this->hasMany(Tip::class, 'user_id', 'user_id');
+    }
 
-    // /**
-    //  * The attributes that should be cast to native types.
-    //  *
-    //  * @var array
-    //  */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
+    public function city() {
+        return $this->hasOne(City::class, 'city_id', 'city');
+    }
+
+    public function roles() {
+        return $this->hasMany(UserRoles::class, 'user_id', 'user_id');
+    }
+
+    public function photos() {
+        return $this->hasMany(UserPhoto::class, 'user_id', 'user_id');
+    }
+
+    public function videos() {
+        return $this->hasMany(UserVideo::class, 'user_id', 'user_id');
+    }
+
 }

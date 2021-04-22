@@ -1,4 +1,4 @@
-<!-- 
+<!--
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
 -->
@@ -29,11 +29,11 @@
 
     <div class="signup-page">
         <div class="grid grid-2">
-            <a href="../../index.php">
+            <a href="/">
                 <img class="signup-img" src="{{ URL::asset('img/suitcases.jpg') }}" alt="">
             </a>
             <div class="signup-form flex-vertical">
-                <img src="../../static/img/destination.png" alt="" style="width: 100px;" class="">
+                <img src="{{ URL::asset('img/destination.png') }}" alt="" style="width: 100px;" class="">
                 <div class="card">
                     <div class="flex-vertical">
                         <h1 class="login-heading"></h1>
@@ -43,14 +43,15 @@
                         </div>
                         <p class="login-heading mb-4">Create an account to get started.</p>
                     </div>
-                    <form role="form" action="signup_handler.php" method="post">
+                    <form role="form" action="/signup-handler" method="post">
+                        @csrf
                         <div class="">
                             <input name="name" type="name" id="name" class="" placeholder="Full Name"
                                 required autofocus>
                             <!-- <label for="name">Full Name</label> -->
                         </div>
                         <div class="">
-                            <input name="email" type="email" id="email" class="" placeholder="E-mail" 
+                            <input name="email" type="email" id="email" class="" placeholder="E-mail"
                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                 title="xxx@xxx.xxx"
                                 required>
@@ -69,15 +70,12 @@
                                 class="" placeholder="Re-enter Password" required>
                             <!-- <label for="inputPasswordReenter">Re-enter Password</label> -->
                         </div>
-                        <?php 
-                            if(isset($_GET['msg'])) {
-                                echo <<<msg
+                            @if(isset($msg))
                                 <div class="flex flex-vertical">
-                                    <p class="wander-green">{$_GET['msg']}</p>
+                                    <p class="wander-green">{{ $msg }}</p>
                                 </div>
-                                msg;
-                            }
-                        ?>
+                            @endif
+
                         <br>
                         <button
                             class="btn btn-lg"

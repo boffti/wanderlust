@@ -4,69 +4,20 @@ ID : 1001750503 */
 $.noConflict();
 jQuery(document).ready(function ($) {
 
-    // Sticky Navbar
-    /*     window.onscroll = function () {
-            stickNav()
-        };
-        var navbar = document.getElementById("navbar");
-        var sticky = navbar.offsetTop;
-
-        function stickNav() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        } */
-
-    // Fake Placeholder names and Images
-    let firstName = faker.name.firstName();
-    let lastName = faker.name.lastName();
-
-    let cityName = faker.address.city();
-    let stateAbbr = faker.address.stateAbbr();
-
-    // $(".profileName").text(`${firstName} ${lastName}`);
-    $(".currentLocation").html(`<i class="fas fa-map-marker-alt loc-icon"></i> ${cityName}, ${stateAbbr}`)
-    $(".business-name").text(`${faker.company.companyName()}`);
-    $(".business-category").text(`${faker.company.catchPhrase()}`);
-    $(".profileAddress").text(`${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()}, ${faker.address.zipCode().slice(0,5)}`);
-
-    // $.ajax({
-    //     url: 'https://randomuser.me/api/',
-    //     dataType: 'json',
-    //     success: function (data) {
-    //         var avatarURL = data.results[0].picture.thumbnail;
-    //         var profileIMGURL = data.results[0].picture.large;
-    //         $(".avatarIMG").attr('src', avatarURL);
-    //         $(".profileIMG").attr('src', profileIMGURL);
-    //     }
-    // });
-
-    // Fake Post Names
-    $('.post .profileName').each(function () {
-        $(this).text(`${faker.name.firstName()} ${faker.name.lastName()}`);
+    $.ajax({
+        url: '/city',
+        dataType: 'json',
+        success: function (data) {
+            var cities = data;
+            // console.log(data);
+            var $citySelect = $('#location-select');
+            var cityString = `<option value="choose" disabled selected>Change your location</option>`;
+            cities.forEach(function (city) {
+                cityString += `<option id=${city.city_id} value=${city.city_id}>${city.city_name}</option>`
+            });
+            $citySelect.append(cityString);
+        }
     });
-
-    $('.post .post-content').each(function () {
-        $(this).text(`${faker.lorem.sentences()}`);
-    });
-
-    $('.tips .tip-author').each(function () {
-        $(this).text(`${faker.name.firstName()} ${faker.name.lastName()}`);
-    });
-
-    $('.post .postIMG').each(function () {
-        var $img = $(this);
-        $.ajax({
-            url: 'https://randomuser.me/api/',
-            dataType: 'json',
-            success: function (data) {
-                var avatarURL = data.results[0].picture.thumbnail;
-                $img.attr('src', avatarURL);
-            }
-        });
-    })
 
     // TODO
     $("#btnSearchNow").on('click', function () {});
@@ -141,13 +92,93 @@ jQuery(document).ready(function ($) {
         $("#fileBusinessPhoto").click();
     });
 
-    $.ajax({
-        url: '/getPageData',
-        dataType: 'json',
-        success: function (data) {
-            // Populate UI with Data.
+    $("input[name=dp]").on('change', function () {
+        // alert(this.files[0].name);
+        var fd = new FormData();
+        var files = $('#inputChangeDP')[0].files;
+        console.log(files);
+
+        // Check file selected or not
+        if (files.length > 0) {
+            fd.append('file', files[0]);
+            fd.append('_token', $('[name="csrf-token"]').attr('content'));
+
+            $.ajax({
+                url: '/dp',
+                type: 'POST',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response != 0) {
+                        location.reload();
+                        // alert(response);
+                    } else {
+                        alert('file not uploaded');
+                    }
+                },
+            });
+        } else {
+            alert("Please select a file.");
         }
     });
-    // TODO Add Video & Photo on input onchange listeners
+
+    $("input[name=user_photo]").on('change', function () {
+        // alert(this.files[0].name);
+        var fd = new FormData();
+        var files = $('#uploadPhotoInput')[0].files;
+
+        // Check file selected or not
+        if (files.length > 0) {
+            fd.append('file', files[0]);
+            fd.append('_token', $('[name="csrf-token"]').attr('content'));
+
+            $.ajax({
+                url: '/photo',
+                type: 'post',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response != 0) {
+                        location.reload();
+                    } else {
+                        alert('file not uploaded');
+                    }
+                },
+            });
+        } else {
+            alert("Please select a file.");
+        }
+    });
+
+    $("input[name=user_video]").on('change', function () {
+        // alert(this.files[0].name);
+        var fd = new FormData();
+        var files = $('#uploadVideoInput')[0].files;
+
+        // Check file selected or not
+        if (files.length > 0) {
+            fd.append('file', files[0]);
+
+            $.ajax({
+                url: '/video',
+                type: 'post',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response != 0) {
+                        location.reload();
+                        // alert(response);
+                    } else {
+                        alert('file not uploaded');
+                    }
+                },
+            });
+        } else {
+            alert("Please select a file.");
+        }
+    });
 
 });

@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
     @yield('css-imports')
+    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 
@@ -59,7 +59,10 @@
                         <!-- ! If user in session -->
                         <ul class="hidden">
                             <li>
-                                <a id="currentLocation" href="#" class="navbar-location flex currentLocation"></a>
+                                <a id="currentLocation" href="#" class="navbar-location flex currentLocation">
+                                    <i class="fas fa-map-marker-alt loc-icon"></i>
+                                    {{ session('user_loc')['city_name'] }}
+                                </a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="profile flex">
@@ -105,6 +108,7 @@
                                 <button class="btn btn-outline-accent text-accent">Login / Signup</button>
                             </a>
                         </div>
+                         
             @endif
 
             <a id="btnMenu" href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
@@ -169,23 +173,33 @@
         </div>
     </footer>
 
+    <!-- ! If user in session -->
+    <div id="location-select-modal-container" class="modal-container">
+        <div class="modal" id="location-select-modal">
+            <div class="modal-header flex-left space-between" style="align-items: center;">
+                <p style="margin-left: 12px;">Select Location</p>
+                <a href="#" class="cancel" style="float: right;">x</a>
+            </div>
+            <div class="modal-content" style="align-items:center;">
+                <form action="change-loc" method="post" class="flex-center" style="gap: 12px;">
+                    @csrf
+                    <div class="form-control"> <select id="location-select" name="location" id="location">
+                
+                        </select></div>
+                    <div>
+                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
+                        <button class="btn" type="submit">Change</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
         integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
         crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="{{ URL::asset('js/typed.js') }}"></script>
-    <script>
-        var typed = new Typed('#welcome-string', {
-            stringsElement: '#typed',
-            showCursor: false,
-            cursorChar: '|',
-            typeSpeed: 70,
-            backSpeed: 70,
-            backDelay: 5000,
-            loop: true,
-            loopCount: Infinity,
-        });
-    </script>
+    @yield('scripts')
     <script src="{{ URL::asset('js/app.js') }}"></script>
 <body>
 

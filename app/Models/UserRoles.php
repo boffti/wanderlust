@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tip extends Model
+class UserRoles extends Model
 {
     use HasFactory;
-    protected $table = 'tips';
-    protected $primaryKey = 'tip_id';
+
+    protected $table = 'user_roles';
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
+
 }

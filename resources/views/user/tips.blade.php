@@ -1,4 +1,4 @@
-<!-- 
+<!--
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
 -->
@@ -9,6 +9,7 @@
 @section('content')
 
     <div class="container">
+    <h2>Tips in and around {{ session('user_loc')['city_name'] }}</h2>
         @if(in_array('1', session('user_roles')))
         <form action="/tip" method="POST">
             @csrf

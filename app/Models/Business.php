@@ -16,7 +16,7 @@ class Business extends Model
     }
 
     public function category() {
-        return $this->hasMany(Category::class, 'category_id', 'category');
+        return $this->hasOne(Category::class, 'category_id', 'category');
     }
 
     public function photos() {

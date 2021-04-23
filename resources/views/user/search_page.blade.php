@@ -1,10 +1,10 @@
-<!-- 
+<!--
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
 -->
 @extends('layouts.white')
 
-@section('title', 'WL | ' . session('user')['full_name'])
+@section('title', 'WL | Search Results')
 
 @section('content')
 
@@ -17,26 +17,31 @@
                     <section>
                         <h2 class="">You might like</h2>
                         <div class="flex-left">
-                                    <div class="browse-card">
-                                        <div class="card-header">
-                                            <img class="card-img"
-                                                src="{$item['photo_uri']}"
-                                                alt="">
-                                        </div>
-                                        <div class="card-body">
-                                            <h1><a href="Biz Link">Biz Name</a></h1>
-                                            <p>Category Name</p>
-                                            <div class="rating">
-                                                <ul>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                            @if(isset($similar))
+                            @foreach($similar as $item)
+                            <div class="browse-card">
+                                <div class="card-header">
+                                    <img class="card-img"
+                                        src="{{$item['photo_uri']}}"
+                                        alt="">
+                                </div>
+                                <div class="card-body">
+                                    <h1><a href="Biz Link">{{ $item['business_name'] }}</a></h1>
+                                    <p>{{ substr($item['business_address'], 0, 25) }}</p>
+                                    <div class="rating">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                        </ul>
                                     </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+
 
                         </div>
                     </section>
@@ -45,30 +50,34 @@
                         <h2>All Results</h2>
 
                         <div class="grid grid-2">
-                          
-                                            <div class="card flex-left">
-                                                <img src="{$item['photo_uri']}"
-                                                    alt="" style="width: 150px; height: 150px; object-fit: cover;">
-                                                <div class="flex-column" style="justify-content: space-between;">
-                                                    <div>
-                                                        <div class="flex-left space-between" style="align-items: center;">
-                                                            <a href="biz link"><h3>Biz Name</h3></a>
-                                                            <p class="wander-green" style="margin: 0; font-size:14px;"> city name</p>
-                                                        </div>
-                                                        <div class="rating">
-                                                            <ul class="flex" style="padding:0; justify-content:flex-start">
-                                                                <li><i class="fas fa-star"></i></li>
-                                                                <li><i class="fas fa-star"></i></li>
-                                                                <li><i class="fas fa-star"></i></li>
-                                                                <li><i class="fas fa-star"></i></li>
-                                                                <li><i class="far fa-star"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                        <p class="strong" style="font-size: 14px;">Category</p>
-                                                    </div>
-                                                    <p>"short Desc"</p>
-                                                </div>
-                                            </div>
+                            @if(isset($results))
+                            @foreach($results as $item)
+                            <div class="card flex-left">
+                                <img src="{{ $item['photo_uri'] }}"
+                                    alt="" style="width: 150px; height: 150px; object-fit: cover;">
+                                <div class="flex-column" style="justify-content: space-between;">
+                                    <div>
+                                        <div class="flex-left space-between" style="align-items: center;">
+                                            <a href="biz link"><h3>{{ $item['business_name'] }}</h3></a>
+                                            <p class="wander-green" style="margin: 0; font-size:14px;"> {{ substr($item['business_address'], 0, 25) }}</p>
+                                        </div>
+                                        <div class="rating">
+                                            <ul class="flex" style="padding:0; justify-content:flex-start">
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="far fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <p class="strong" style="font-size: 14px;">{{ $item['category'] }}</p>
+                                    </div>
+                                    <p>"{{ substr($item['business_desc'], 0, 35) }}..."</p>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+
 
                         </div>
 

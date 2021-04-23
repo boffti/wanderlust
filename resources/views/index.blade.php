@@ -26,20 +26,15 @@ ID : 1001750503 --}}
             </div>
             <p class="flex-vertical">Find nearby attractions. Connect with people. Contribute to your neighborhood.</p>
             <div class="">
-                <form class="hero-form card" action="./pages/user/search_page.html" style="overflow: hidden;">
+                <form class="hero-form card" action="/search" method="post" style="overflow: hidden;">
+                    @csrf
                     <div class="flex-left flex-wrap" style="justify-content: space-between;">
                         <div class="form-control">
-                            <input type="text" name="search-term" id="search-term"
+                            <input type="text" name="search_term" id="search_term"
                                 placeholder="Keywords eg: food, salons, shopping etc">
                         </div>
                         <div class="form-control"> <select name="categories" id="categories">
-                                <option value="choose" disabled selected>Choose a Category</option>
-                                <option value="restaurants">Restaurants</option>
-                                <option value="shopping">Shopping</option>
-                                <option value="education">Education</option>
-                                <option value="worship">Religion & Worship</option>
-                                <option value="entertainment">Entertainment</option>
-                                <option value="health">Health & Medical</option>
+
                             </select></div>
                         <button id="btnSearchNow" type="submit" href="#" class="btn">SEARCH
                             NOW</button>
@@ -151,14 +146,16 @@ ID : 1001750503 --}}
                 </div>
                 <div class="flex" style="justify-content: space-between; padding: 0 15px">
                     <a href="/more-tips" class="">See more tips</a>
+                    @if(null !== session('user_roles'))
                     @if(in_array('1', session('user_roles')))
                     <a href="/more-tips" class="strong">+ ADD TIP</a>
+                    @endif
                     @endif
                 </div>
             </section>
 
             <br>
-            
+
             <section>
                 <h2>Moments around you</h2>
                 <div class="gallery">

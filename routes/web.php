@@ -99,25 +99,7 @@ Route::post('/login', function(Request $request) {
                 session([ 'admin' => $results[0]]);
             }
             session(['user_roles' => $user_roles]);
-            $businesses = Business::where('city_id', $city['city_id'])
-            -> with(['city', 'category'])
-            -> get()
-            -> toArray();
-            $business_response = array_slice($businesses, 0, 3);
-            $tips = Tip::where('city_id', $city['city_id'])
-                    -> with(['user'])
-                    -> get()
-                    -> toArray();
-            $tips_response = array_slice($tips, 0, 5);
-            $posts = Post::where('city_id', $city['city_id'])
-                    -> with(['user'])
-                    -> get()
-                    -> toArray();
-            $posts_response = array_slice($posts, 0, 5);
-            return view('index')
-                -> with('businesses', $business_response)
-                -> with('tips', $tips_response)
-                -> with('posts', $posts_response);
+            return redirect()->route('home');
         };
     }
     return view('login/login')->with('msg', 'Invalid Email/Password');
@@ -577,6 +559,44 @@ Route::get('/user/delete/{user_id}', function(Request $request, $user_id) {
     $c -> delete();
     // TODO Delete User data from other tables
     return redirect()->route('super-admin');
+});
+
+Route::get('/category', function() {
+    return Category::all();
+});
+
+Route::post('/search', function(Request $request) {
+    $search_term = $request->get('search_term');
+    $category_id = $request->get('categories');
+
+    if($search_term == ""){
+        $results = Business::where('city_id', session('user_loc')['city_id'])
+        ->with(['category'])
+        -> get();
+        $similar = Business::where('city_id', session('user_loc')['city_id'])
+        -> with(['category'])
+        -> get()
+        -> toArray();
+        $similar = array_slice($similar, 0, 3);
+    } else {
+        $results = Business::where('category', $category_id)
+        ->where('city_id', session('user_loc')['city_id'])
+        ->orWhere('business_name', 'like', '%{$search_term}%')
+        ->orWhere('business_desc', 'like', '%{$search_term}%')
+        ->with(['category'])
+        ->get();
+        $similar = Business::where('city_id', session('user_loc')['city_id'])
+        -> where('category', $category_id)
+        -> with(['category'])
+        -> get()
+        -> toArray();
+    }
+
+    return view('user/search_page')
+        ->with('similar', $similar)
+        ->with('results', $results);
+
+    return $similar;
 });
 
 Route::get('/test/{user_id}', function($user_id) {

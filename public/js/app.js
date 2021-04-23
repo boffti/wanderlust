@@ -19,6 +19,20 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $.ajax({
+        url: '/category',
+        dataType: 'json',
+        success: function (data) {
+            var categories = data;
+            var $catSelect = $('#categories');
+            var catString = `<option value="choose" disabled selected>Choose a category</option>`;
+            categories.forEach(function (cat) {
+                catString += `<option id=${cat.category_id} value=${cat.category_id}>${cat.category_name}</option>`
+            });
+            $catSelect.append(catString);
+        }
+    });
+
     // TODO
     $("#btnSearchNow").on('click', function () {});
 

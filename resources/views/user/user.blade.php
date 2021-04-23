@@ -30,6 +30,10 @@
                                 </div>
                             </div>
                             <h2 id="" class="">{{ $user['full_name'] }}</h2>
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-comment"></i>
+                                Chat
+                            </a>
                         </div>
                     </div>
                     <div class="card" style="width: 100%;">

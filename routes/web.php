@@ -92,11 +92,11 @@ Route::post('/login', function(Request $request) {
                 array_push($user_roles, $role['role_id']);
             }
             if(in_array('3', $user_roles)) {
-                $results = DB::select("select c.country_name from users as u, countries as c, country_admins as ca where u.user_id=ca.user_id and ca.country_id=c.country_id and u.user_id={$user['user_id']}");
+                $results = DB::select("select c.country_id, c.country_name from users as u, countries as c, country_admins as ca where u.user_id=ca.user_id and ca.country_id=c.country_id and u.user_id={$user['user_id']}");
                 $results = array_map(function ($value) {
                     return (array)$value;
                 }, $results);
-                session([ 'admin' => $results[0]['country_name']]);
+                session([ 'admin' => $results[0]]);
             }
             session(['user_roles' => $user_roles]);
             $businesses = Business::where('city_id', $city['city_id'])
@@ -397,7 +397,32 @@ Route::post('business/reviews/{business_id}', function(Request $request, $busine
     return redirect()->route('business-reviews', $business_id);
 });
 
-Route::view('/country-admin', 'admin/country_admin');
+Route::get('/country-admin', function(Request $request) {
+    $country_id =  session('admin')['country_id'];
+    $countries = Country::all();
+    $cities = City::where('country_id', $country_id)->get();
+    $poi = DB::select("SELECT b.business_id, b.business_name, b.business_phone, b.business_address, c.city_name, cat.category_name from business as b, cities as c, categories as cat, countries as cn where b.city_id=c.city_id and b.category=cat.category_id and c.country_id=cn.country_id and cn.country_id={$country_id}");
+    $poi = array_map(function ($value) {
+        return (array)$value;
+    }, $poi);
+    $posts = DB::select("SELECT p.post_id, p.post_content, p.created_at, u.full_name, c.city_name from posts as p, users as u, cities as c, countries as cn where p.user_id=u.user_id and p.city_id=c.city_id and c.country_id=cn.country_id and cn.country_id={$country_id}");
+    $posts = array_map(function ($value) {
+        return (array)$value;
+    }, $posts);
+    $tips = DB::select("SELECT t.tip_id, t.tip_content, u.full_name, c.city_name from tips as t, users as u, cities as c, countries as cn where t.user_id=u.user_id and t.city_id=c.city_id and c.country_id=cn.country_id and cn.country_id={$country_id}");
+    $tips = array_map(function ($value) {
+        return (array)$value;
+    }, $tips);
+    $categories = Category::all();
+    return view('admin/country_admin')
+        ->with('cities', $cities)
+        ->with('countries', $countries)
+        ->with('poi', $poi)
+        ->with('posts', $posts)
+        ->with('tips', $tips)
+        ->with('categories', $categories);
+
+})->name('country-admin');
 
 Route::get('/super-admin', function(Request $request) {
     $cities = City::all();

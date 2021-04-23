@@ -181,4 +181,32 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $("input[name=business_photo]").on('change', function () {
+        // alert(this.files[0].name);
+        var fd = new FormData();
+        var files = $('#fileBusinessPhoto')[0].files;
+        var biz_id = $(this).attr('biz_id');
+        // Check file selected or not
+        if (files.length > 0) {
+            fd.append('file', files[0]);
+            $.ajax({
+                url: '/business/photo/' + biz_id,
+                type: 'post',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response != 0) {
+                        location.reload();
+                        // alert(response);
+                    } else {
+                        alert('file not uploaded');
+                    }
+                },
+            });
+        } else {
+            alert("Please select a file.");
+        }
+    });
+
 });

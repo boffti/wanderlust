@@ -2,13 +2,14 @@
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
 -->
-@extends('layouts.app')
+@extends('layouts.white')
 
 @section('title', 'WL | ' . session('user_loc')['city_name'] . " Tips" )
 
 @section('content')
 
     <div class="container">
+        @if(in_array('1', session('user_roles')))
         <form action="/tip" method="POST">
             @csrf
             <div class="flex-left">
@@ -20,6 +21,7 @@
             </div>
             <button type="submit" class="btn" style="margin:0 12px;">SUBMIT</button>
         </form>
+        @endif
         <br>
         <div class="tips">
             @if(isset($tips))

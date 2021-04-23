@@ -16,16 +16,16 @@ class User extends Model
     protected $table = 'users';
     protected $primaryKey = 'user_id';
 
+    public function city() {
+        return $this->hasOne(City::class, 'city_id', 'city');
+    }
+
     public function posts() {
         return $this->hasMany(Post::class, 'user_id', 'user_id');
     }
 
     public function tips() {
         return $this->hasMany(Tip::class, 'user_id', 'user_id');
-    }
-
-    public function city() {
-        return $this->hasOne(City::class, 'city_id', 'city');
     }
 
     public function roles() {
@@ -38,6 +38,10 @@ class User extends Model
 
     public function videos() {
         return $this->hasMany(UserVideo::class, 'user_id', 'user_id');
+    }
+
+    public function adminOf() {
+        return $this->hasOne(CountryAdmin::class, 'user_id', 'user_id');
     }
 
 }

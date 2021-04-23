@@ -2,7 +2,7 @@
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
 -->
-@extends('layouts.app')
+@extends('layouts.white')
 
 @section('title', "WL | ". $biz['business_name'])
 
@@ -63,7 +63,7 @@
                         <button id="btnUploadBusinessPhoto" class="btn btn-outline-secondary text-secondary"
                             style="font-size: large;"><i class="fas fa-camera" style="margin-right: 10px;"></i> Add
                             Photo</button>
-                        <input id="fileBusinessPhoto" type="file" name="" id="" style="display: none;">
+                                <input id="fileBusinessPhoto" type="file" name="business_photo" biz_id="{{ $biz['business_id'] }}" style="display: none;">
                         <button class="btn btn-outline-secondary text-secondary" style="font-size: large;"><i
                                 class="fas fa-share-alt" style="margin-right: 10px;"></i> Share</button>
                     </div>
@@ -122,41 +122,22 @@
             <div>
                 <div class="flex-left" style="justify-content: space-between;">
                     <h2>Photos</h2>
-                    <a href="#">See more</a>
+                    {{-- <a href="#">See more</a> --}}
                 </div>
                 <div class="flex-left">
-                    <!-- Define all of the tiles: -->
-                    <div class="box">
-                        <div class="img-box">
-                            <img
-                                src="https://images.unsplash.com/photo-1614038276039-667c23bc32fa?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                    
+                    <div class="gallery">
+                        @if(isset($photos))
+                        @foreach($photos as $photo)
+                        <div class="gallery-item">
+                            <img class="gallery-image" src="{{ URL::asset('upload/business_photos/') }}/{{ $photo['photo_uri'] }}">
                         </div>
-                    </div>
-                    <div class="box">
-                        <div class="img-box">
-                            <img
-                                src="https://images.unsplash.com/photo-1614059632169-522876ce04c8?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="img-box">
-                            <img
-                                src="https://images.unsplash.com/photo-1613977257421-010b50211cd3?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="img-box">
-                            <img
-                                src="https://images.unsplash.com/photo-1614036102254-b5a105bc3537?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="img-box">
-                            <img
-                                src="https://images.unsplash.com/photo-1614022995184-0347cdc53871?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
+            </div>
+            <div class="flex" style="justify-content: space-between; padding: 0 15px">
+                <a href="/business/photos/{{ $biz['business_id'] }}" class="strong">See all</a>
             </div>
         </section>
 
@@ -168,58 +149,28 @@
         <section>
             <div class="flex-left" style="justify-content: space-between;">
                 <h2>Word to the Wise</h2>
-                <a href="./business_tips.php">See more</a>
+                {{-- <a href="./business_tips.php">See more</a> --}}
             </div>
             <div class="tips">
-                <div class="card border-l-yellow">
-                    <div class="flex flex-column align-items-left">
-                        <div>
-                            <span class="quotes">"</span><strong>
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci quibusdam
-                                accusantium, fugiat debitis dolorem iure soluta cum consequuntur dignissimos animi
-                                tenetur magnam sit, perferendis illo, quidem quis. Facere, nostrum sit.
-                            </strong><span class="quotes">"</span>
+                @if(isset($tips))
+                    @foreach($tips as $tip)
+                        <div class="card border-l-yellow">
+                            <div class="flex flex-column align-items-left">
+                                <div>
+                                    <span class="quotes">"</span><strong>
+                                        {{ $tip['tip_content'] }}
+                                    </strong><span class="quotes">"</span>
+                                </div>
+                                <div class="flex ml-auto tip-footer" style="gap: 10px; ">
+                                    <a class="tip-author" href="/user/{{ $tip['user']['user_id'] }}" style="margin: 0;">{{ $tip['user']['full_name'] }}</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex ml-auto" style="gap: 10px; ">
-                            <a class="tip-author" href="#" style="margin: 0;">Jagan Das</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card border-l-yellow">
-                    <div class="flex flex-column align-items-left">
-                        <div>
-                            <span class="quotes">"</span><strong>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Facilis harum eius optio. Delectus repellat sunt eveniet neque nesciunt assumenda
-                                debitis, ullam impedit molestiae tempore deleniti corporis officiis ipsa expedita
-                                repudiandae.
-                            </strong><span class="quotes">"</span>
-                        </div>
-                        <div class="flex ml-auto" style="gap: 10px; ">
-                            <a class="tip-author" href="#" style="margin: 0;">Mark Appleseed</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card border-l-yellow">
-                    <div class="flex flex-column align-items-left">
-                        <div>
-                            <span class="quotes">"</span><strong>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis at blanditiis
-                                quasi minima eveniet maiores enim praesentium qui dolorum, est perferendis, delectus
-                                tenetur deserunt ipsam, cumque officia itaque. Temporibus, laborum.
-                            </strong><span class="quotes">"</span>
-                        </div>
-                        <div class="flex ml-auto" style="gap: 10px; ">
-                            <a class="tip-author" href="#" style="margin: 0;">Aima Ho</a>
-                        </div>
-                    </div>
-                </div>
-
+                    @endforeach
+                @endif
             </div>
             <div class="flex" style="justify-content: space-between; padding: 0 15px">
-                <a href="./business_tips.php" class="strong">Write Tip +</a>
+                <a href="/business/tips/{{ $biz['business_id'] }}" class="strong">See all</a>
             </div>
         </section>
 
@@ -342,18 +293,23 @@
                             <li><i class="fas fa-star review-form-star"></i></li>
                         </ul>
                     </div>
-                    <textarea placeholder="Remember, be nice!" id="w3review" name="w3review" rows="6" cols="30"
+                    <form action="/business/reviews/{{ $biz['business_id'] }}" method="post">
+                        @csrf
+                        <textarea placeholder="Remember, be nice!" id="" name="review" rows="6" cols="30"
                         style="width: 100%;"></textarea>
-                    <button class="btn">SUBMIT</button>
+                        <button type="submit" class="btn">SUBMIT</button>
+                    </form>
                 </div>
+                @if(isset($reviews))
+                @foreach($reviews as $review)
                 <div class="card">
                     <div class="review-card-header flex-left">
                         <img id=""
-                            src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/danish-sait-35531-07-11-2016-01-48-14.jpg"
+                            src="{{ URL::asset('upload/user_dp/') }}/{{ $review['user']['dp'] }}"
                             alt="profile" class="review-card-user-img">
                         <div>
-                            <h3>Danish Sait</h3>
-                            <p class="wander-green">Arlington, TX</p>
+                            <h3>{{ $review['user']['full_name'] }}</h3>
+                            <p class="wander-green">{{ $review['user']['profession']  }}</p>
                         </div>
                     </div>
                     <div class="rating flex-left" style="font-size: 20px; align-items:center;">
@@ -364,79 +320,17 @@
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="far fa-star"></i></li>
                         </ul>
-                        <p style="font-size: 14px;">02/12/2021</p>
+                        <p style="font-size: 14px;">{{ $review['created_at'] }}</p>
                     </div>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis debitis molestias alias
-                        libero
-                        repellendus autem sunt! Quaerat possimus, repellendus eaque ab ducimus distinctio magni
-                        inventore
-                        rerum repudiandae error id eveniet. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-                        nulla debitis nobis quaerat minima vero id provident numquam, voluptatum voluptate ipsam
-                        possimus
-                        ducimus! Sit, necessitatibus accusamus labore nam voluptatem assumenda!
+                        {{ $review['review_content'] }}
                     </p>
                 </div>
-                <div class="card">
-                    <div class="review-card-header flex-left">
-                        <img id=""
-                            src="https://www.biography.com/.image/t_share/MTE5NDg0MDU0ODE5MzQxODM5/tina-fey-365284-1-402.jpg"
-                            alt="profile" class="review-card-user-img">
-                        <div>
-                            <h3>Tina Fey</h3>
-                            <p class="wander-green">Arlington, TX</p>
-                        </div>
-                    </div>
-                    <div class="rating flex-left" style="font-size: 20px; align-items:center;">
-                        <ul>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                        </ul>
-                        <p style="font-size: 14px;">02/12/2021</p>
-                    </div>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis debitis molestias alias
-                        libero
-                        repellendus autem sunt! Quaerat possimus, Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit.
-                        Consequuntur, doloremque fuga! Molestias soluta dolore quasi quia reprehenderit ab tempore,
-                        eius,
-                        architecto est officiis illo minima vel. Corrupti corporis itaque maxime.
-                    </p>
-                </div>
-                <div class="card">
-                    <div class="review-card-header flex-left">
-                        <img id=""
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqj-OkFV55geNPyjWSwPmeSkeipmC4uOcZjg&usqp=CAU"
-                            alt="profile" class="review-card-user-img">
-                        <div>
-                            <h3>Kenny Sebastian</h3>
-                            <p class="wander-green">Arlington, TX</p>
-                        </div>
-                    </div>
-                    <div class="rating flex-left" style="font-size: 20px; align-items:center;">
-                        <ul>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="far fa-star"></i></li>
-                            <li><i class="far fa-star"></i></li>
-                        </ul>
-                        <p style="font-size: 14px;">02/12/2021</p>
-                    </div>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis debitis molestias alias
-                        libero
-                        repellendus autem sunt! Quaerat possimus, repellendus eaque ab ducimus distinctio magni
-                        inventore
-                        rerum repudiandae error id eveniet. Lorem ipsum dolor sit amet.
-                    </p>
-                </div>
+                @endforeach
+            @endif
+                
             </div>
-            <a href="./business_reviews.php" class="flex-center">See All</a>
+            <a href="/business/reviews/{{ $biz['business_id'] }}" class="flex-center">See All</a>
         </section>
     </div>
 

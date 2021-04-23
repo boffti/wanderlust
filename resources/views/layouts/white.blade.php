@@ -26,7 +26,7 @@
 
 <body>
     <!-- Navbar -->
-    <div id="navbar" class="navbar navbar-primary flex-wrap">
+    <div id="navbar" class="navbar flex-wrap">
         <div class="container flex mobile-nav">
             <h1>Wanderlust</h1>
             <nav>

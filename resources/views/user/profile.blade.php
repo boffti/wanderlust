@@ -2,7 +2,7 @@
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
 -->
-@extends('layouts.app')
+@extends('layouts.white')
 
 @section('title', 'WL | ' . session('user')['full_name'])
 
@@ -65,13 +65,18 @@
 
                 <div class="card">
                     <ul class="tabs">
+                        @if(in_array('1', session('user_roles')))
                         <li class="active">PHOTOS</li>
                         <li>VIDEOS</li>
                         <li>POSTS</li>
                         <li>TIPS</li>
+                        @else
+                        <li class="active">POSTS</li>
+                        @endif
                     </ul>
 
                     <ul class="tab-content">
+                        @if(in_array('1', session('user_roles')))
                         <!-- Photos Tab -->
                         <li class="active">
                             <div class="tab-content-container">
@@ -121,7 +126,6 @@
                                 </div>
                             </div>
                         </li>
-
                         <!-- Posts Tab -->
                         <li>
                             <div class="tab-content-container">
@@ -174,6 +178,34 @@
 
                             </div>
                         </li>
+                        @else
+                        <li class="active">
+                            <div class="tab-content-container">
+                                <h2 class="">Your Posts</h2>
+                                <div class="posts">
+                                    @if(isset($user['posts']))
+                                    @foreach($user['posts'] as $post)
+                                        <div class="card post">
+                                            <div class="flex-left">
+                                                <div class="full-width">
+                                                    <div class="flex-left space-between align-items-center">
+                                                        <p class="post-date">{{ $post['created_at'] }}</p>
+                                                    </div>
+                                                    <p class="post-content">{{ $post['post_content'] }}</p>
+                                                </div>
+                                                <div class="flex tip-footer" style="gap: 10px; ">
+                                                    <a href="/post/delete/{{ $post['post_id'] }}" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    @endforeach
+                                @endif
+
+                                </div>
+                            </div>
+                        </li>
+                        @endif
                     </ul>
                 </div>
             </div>

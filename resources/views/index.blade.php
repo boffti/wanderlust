@@ -151,7 +151,9 @@ ID : 1001750503 --}}
                 </div>
                 <div class="flex" style="justify-content: space-between; padding: 0 15px">
                     <a href="/more-tips" class="">See more tips</a>
+                    @if(in_array('1', session('user_roles')))
                     <a href="/more-tips" class="strong">+ ADD TIP</a>
+                    @endif
                 </div>
             </section>
 
@@ -160,10 +162,13 @@ ID : 1001750503 --}}
             <section>
                 <h2>Moments around you</h2>
                 <div class="gallery">
-
+                    @if(isset($photos))
+                    @foreach($photos as $photo)
                     <div class="gallery-item">
-                        <img class="gallery-image" src="">
+                        <img class="gallery-image" src="{{ URL::asset('upload/user_photos/') }}/{{ $photo['photo_uri'] }}">
                     </div>
+                    @endforeach
+                @endif
 
                 </div>
             </section>

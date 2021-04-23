@@ -2,7 +2,7 @@
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
 -->
-@extends('layouts.app')
+@extends('layouts.white')
 
 @section('title', 'WL | ' . $user['full_name'])
 
@@ -147,9 +147,6 @@
                                             <span class="quotes">"</span><strong>
                                                 {{ $tip['tip_content'] }}
                                             </strong><span class="quotes">"</span>
-                                        </div>
-                                        <div class="flex ml-auto tip-footer" style="gap: 10px; ">
-                                            <a href="/tip/delete/{{ $tip['tip_id'] }}" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
                                         </div>
                                     </div>
                                 </div>

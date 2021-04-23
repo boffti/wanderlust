@@ -11,11 +11,23 @@ class Business extends Model
     protected $table = 'business';
     protected $primaryKey = 'business_id';
 
+    public function city() {
+        return $this->hasOne(City::class, 'city_id', 'city_id');
+    }
+
     public function category() {
         return $this->hasMany(Category::class, 'category_id', 'category');
     }
 
-    public function city() {
-        return $this->hasOne(City::class, 'city_id', 'city_id');
+    public function photos() {
+        return $this->hasMany(BusinessPhoto::class, 'business_id', 'business_id');
+    }
+
+    public function reviews() {
+        return $this->hasMany(BusinessReview::class, 'business_id', 'business_id');
+    }
+
+    public function tips() {
+        return $this->hasMany(BusinessTip::class, 'business_id', 'business_id');
     }
 }

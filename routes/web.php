@@ -10,6 +10,9 @@ use App\Models\Tip;
 use App\Models\Post;
 use App\Models\UserPhoto;
 use App\Models\UserVideo;
+use App\Models\BusinessPhoto;
+use App\Models\BusinessTip;
+use App\Models\BusinessReview;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +31,6 @@ Route::view('/visitor-services', 'main_site/visitor_service');
 Route::view('/contact', 'main_site/contact');
 Route::view('/login', 'login/login');
 Route::view('/signup', 'login/signup');
-
-Route::view('/country-admin', 'admin/country_admin');
-Route::view('/super-admin', 'admin/super_admin');
 
 Route::get('/', function (Request $request) {
     if($request->session()->has('user')) {
@@ -53,10 +53,17 @@ Route::get('/', function (Request $request) {
                 -> get()
                 -> toArray();
         $posts_response = array_slice($posts, 0, 5);
+        $city_id = session('user_loc')['city_id'];
+        $photos = DB::select("select up.photo_uri from user_photos as up, cities as c, users as u where u.user_id=up.user_id and u.city=c.city_id and c.city_id={$city_id}");
+        $photos = array_map(function ($value) {
+            return (array)$value;
+        }, $photos);
+        $photos_response = array_slice($photos, 0, 9);
         return view('index')
             -> with('businesses', $business_response)
             -> with('tips', $tips_response)
-            -> with('posts', $posts_response);
+            -> with('posts', $posts_response)
+            -> with('photos', $photos_response);
     } else {
         return view('index');
     }
@@ -76,6 +83,13 @@ Route::post('/login', function(Request $request) {
             $user_roles = [];
             foreach($user['roles'] as $role) {
                 array_push($user_roles, $role['role_id']);
+            }
+            if(in_array('3', $user_roles)) {
+                $results = DB::select("select c.country_name from users as u, countries as c, country_admins as ca where u.user_id=ca.user_id and ca.country_id=c.country_id and u.user_id={$user['user_id']}");
+                $results = array_map(function ($value) {
+                    return (array)$value;
+                }, $results);
+                session([ 'admin' => $results[0]['country_name']]);
             }
             session(['user_roles' => $user_roles]);
             $businesses = Business::where('city_id', $city['city_id'])
@@ -282,9 +296,93 @@ Route::post('/video', function(Request $request) {
     return $video;
 });
 
+Route::get('/business/{business_id}', function($business_id) {
+    $results = Business::where('business_id', $business_id)
+        -> first();
+    $photos = BusinessPhoto::where('business_id', $business_id)
+        -> with(['user'])
+        -> get()
+        -> toArray();
+    $photos_response = array_slice($photos, 0, 5);
+    $tips = BusinessTip::where('business_id', $business_id)
+        -> with(['user'])
+        -> get()
+        -> toArray();
+    $tips_response = array_slice($tips, 0, 5);
+    $reviews = BusinessReview::where('business_id', $business_id)
+        -> with(['user'])
+        -> get()
+        -> toArray();
+    $reviews_response = array_slice($reviews, 0, 5);
+    return view('business/business_detail')
+        -> with('biz', $results)
+        -> with('photos', $photos_response)
+        -> with('tips', $tips_response)
+        -> with('reviews', $reviews_response);
+});
+
+Route::post('/business/photo/{business_id}', function(Request $request, $business_id) {
+    try {
+        $photo = $request->file('file');
+        $file_name = $business_id . "_" . $photo->getClientOriginalName();
+        $photo->move(public_path().'/upload/business_photos', $file_name);
+        $b_photo = new BusinessPhoto;
+        $b_photo->photo_uri = $file_name;
+        $b_photo->business_id = $business_id;
+        $b_photo->user_id = session('user')['user_id'];
+        $b_photo->save();
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+    return 'success';
+});
+
+Route::get('/business/tips/{business_id}', function(Request $request, $business_id) {
+    $results = Business::where('business_id', $business_id)
+        -> first();
+    $tips = BusinessTip::where('business_id', $business_id)
+        -> with(['user'])
+        -> get();
+    return view('business/business_tips')
+        -> with('biz', $results)
+        -> with('tips', $tips);
+})->name('business-tips');
+
+Route::post('business/tips/{business_id}', function(Request $request, $business_id) {
+    $b_tip = new BusinessTip;
+    $b_tip->tip_content = $request->get('businessTip');
+    $b_tip->business_id = $business_id;
+    $b_tip->user_id = session('user')['user_id'];
+    $b_tip->save();
+    return redirect()->route('business-tips', $business_id);
+});
+
+Route::get('/business/reviews/{business_id}', function(Request $request, $business_id) {
+    $results = Business::where('business_id', $business_id)
+        -> first();
+    $reviews = BusinessReview::where('business_id', $business_id)
+        -> with(['user'])
+        -> get();
+    return view('business/business_reviews')
+        -> with('biz', $results)
+        -> with('reviews', $reviews);
+})->name('business-reviews');
+
+Route::post('business/reviews/{business_id}', function(Request $request, $business_id) {
+    $b_rev = new BusinessReview;
+    $b_rev->review_content = $request->get('review');
+    $b_rev->rating = '4';
+    $b_rev->business_id = $business_id;
+    $b_rev->user_id = session('user')['user_id'];
+    $b_rev->save();
+    return redirect()->route('business-reviews', $business_id);
+});
+
+Route::view('/country-admin', 'admin/country_admin');
+Route::view('/super-admin', 'admin/super_admin');
+
 Route::get('/test/{user_id}', function($user_id) {
-    // $results = User::find($user_id)->roles()->get();
-    $results = Business::with(['city', 'category'])->get();
+    $results = DB::select("select up.photo_uri from user_photos as up, cities as c, users as u where u.user_id=up.user_id and u.city=c.city_id and c.city_id={$user_id}");
     return $results;
 });
 
@@ -303,14 +401,8 @@ Route::get('/posts/city/{city_id}', function($city_id) {
     return $results;
 });
 
-Route::get('/business/{business_id}', function($business_id) {
-    $results = Business::find($business_id);
-    return view('business/business_detail')
-        -> with('biz', $results);
-});
-
 Route::get('/session', function() {
-    return session('user_loc');
+    return session('admin');
 });
 
 Route::resource('posts', '\App\Http\Controllers\PostsController');

@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BusinessReview extends Model
+class CountryAdmin extends Model
 {
     use HasFactory;
+    
+    protected $table = 'country_admins';
 
-    public function user() {
-        return $this->hasOne(User::class, 'user_id', 'user_id');
-    }
 }

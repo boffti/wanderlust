@@ -8,43 +8,22 @@ ID: 1001774881
 
 @section('content')
 
-    {{-- <?php
-        if(isset($_SESSION['user'])){
-            $conn = get_db_conn();
-            $sql_user_count= "SELECT COUNT(*) from users";
-            $users = $conn->query($sql_user_count);
-            $user_count = $users->fetch_row();
-
-            $sql_posts_count= "SELECT COUNT(*) from posts";
-            $posts = $conn->query($sql_posts_count);
-            $post_count = $posts->fetch_row();
-
-            $sql_poi_count= "SELECT COUNT(*) from business";
-            $poi = $conn->query($sql_poi_count);
-            $poi_count = $poi->fetch_row();
-
-            $sql_tips_count= "SELECT COUNT(*) from tips";
-            $tips = $conn->query($sql_tips_count);
-            $tips_count = $tips->fetch_row();
-        }
-    ?> --}}
-
     <div class="wrapper">
         <div class="flex-left space-between">
             <div class="card info-card">
-                <h2><i class="fas fa-users" style="margin-right: 6px;"></i> </h2>
+                <h2><i class="fas fa-users" style="margin-right: 6px;"></i> {{ count($users) }}</h2>
                 <p class="text-muted">Number of users</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i> </h2>
+                <h2><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i> {{ count($posts) }}</h2>
                 <p class="text-muted">Number of posts</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i> </h2>
+                <h2><i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i> {{ count($poi) }}</h2>
                 <p class="text-muted">Places of Interest</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-info" style="margin-right: 6px;"></i> </h2>
+                <h2><i class="fas fa-info" style="margin-right: 6px;"></i> {{ count($tips) }}</h2>
                 <p class="text-muted">Number of tips written</p>
             </div>
         </div>
@@ -233,7 +212,7 @@ ID: 1001774881
                             <td>{{ $p['city_name'] }}</td>
                             <td>{{ $p['category_name'] }}</td>
                             <td>
-                                <a href="#"><i class="fas fa-pen"></i></a>
+                                {{-- <a href="#"><i class="fas fa-pen"></i></a> --}}
                                 <a href="/business/delete/{{ $p['business_id'] }}/1"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
@@ -264,7 +243,7 @@ ID: 1001774881
                             <td>{{ $post['post_content'] }}</td>
                             <td>{{ $post['created_at'] }}</td>
                             <td>
-                                <a href="/posts/delete/{{ $post['post_id'] }}/1"><i class="fas fa-trash-alt"></i></a>
+                                <a href="/post/delete/{{ $post['post_id'] }}/1"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -292,7 +271,7 @@ ID: 1001774881
                             <td>{{ $tip['full_name'] }}</td>
                             <td>{{ $tip['tip_content'] }}</td>
                             <td>
-                                <a href="/tips/delete/{{ $tip['tip_id'] }}&loc=1"><i class="fas fa-trash-alt"></i></a>
+                                <a href="/tip/delete/{{ $tip['tip_id'] }}/1"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -346,12 +325,16 @@ ID: 1001774881
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form action="../../php/add_city.php?loc=1" method="post" class="flex-center" style="gap: 12px;">
+                <form action="/city/1" method="post" class="flex-center" style="gap: 12px;">
+                    @csrf
                     <input type="text" name="city" id="add-city-text" placeholder="City Name">
                     <div class="form-control"> <select id="location-select" name="country_id" id="country_select">
                     <option value="choose" disabled selected>Select Country</option>
-
-                                            <option value="country id">Country Name</option>
+                                @if(isset($countries))
+                                @foreach($countries as $country)
+                                <option value="{{ $country['country_id'] }}">{{ $country['country_name'] }}</option>
+                                @endforeach
+                            @endif
 
                         </select></div>
                     <div>
@@ -370,12 +353,16 @@ ID: 1001774881
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form action="../../php/add_country.php" method="post" class="flex-center" style="gap: 12px;">
+                <form action="/country" method="post" class="flex-center" style="gap: 12px;">
+                    @csrf
                     <input type="text" name="country" id="add--text" placeholder="Country Name">
                     <div class="form-control"> <select id="location-select" name="continent_id" id="location">
                     <option value="choose" disabled selected>Select Continent</option>
-
-                                            <option value="continent id">continent name</option>
+                        @if(isset($continents))
+                            @foreach($continents as $continent)
+                            <option value="{{ $continent['continent_id'] }}">{{ $continent['continent_name'] }}</option>
+                            @endforeach
+                        @endif
 
                         </select></div>
                     <div>
@@ -395,7 +382,8 @@ ID: 1001774881
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form action="../../php/add_continent.php" method="post" class="flex-center" style="gap: 12px;">
+                <form action="/continent" method="post" class="flex-center" style="gap: 12px;">
+                    @csrf
                     <input type="text" name="continent" id="add-continent-text" placeholder="Continent Name">
                     <div>
                         <button class="btn" type="submit">Add</button>
@@ -413,13 +401,16 @@ ID: 1001774881
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form action="../../php/add_admin.php" method="post" class="flex-center" style="gap: 12px;">
+                <form action="/admin/add" method="post" class="flex-center" style="gap: 12px;">
+                    @csrf
                     <input type="text" name="admin_email" id="add-continent-text" placeholder="Admin Email">
                     <div class="form-control"> <select id="location-select" name="country_id" id="country_select">
                     <option value="choose" disabled selected>Select Country</option>
-
-                                            <option value="country id">Country Name</option>
-
+                    @if(isset($countries))
+                        @foreach($countries as $country)
+                            <option option value="{{ $country['country_id'] }}">{{ $country['country_name'] }}</option>
+                        @endforeach
+                    @endif
                         </select></div>
                     <div>
                         <button class="btn" type="submit">Add</button>
@@ -437,12 +428,15 @@ ID: 1001774881
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form action="../../php/add_business.php" method="post" class="flex-center" style="gap: 12px;">
+                <form action="/business/1" method="post" class="flex-center" style="gap: 12px;">
+                    @csrf
                 <div class="form-control"> <select id="city_select" name="city_id">
                     <option value="choose" disabled selected>Select City</option>
-
-                                            <option value="city id">city name</option>
-
+                        @if(isset($cities))
+                        @foreach($cities as $city)
+                            <option value="{{ $city['city_id'] }}">{{ $city['city_name'] }}</option>
+                        @endforeach
+                        @endif
                         </select></div>
                     <input type="text" name="businessName" id="businessName" placeholder="Place Name">
                     <textarea name="businessDesc" id="businessDesc" cols="30" rows="3" placeholder="Place Description"
@@ -454,9 +448,11 @@ ID: 1001774881
 
                     <div class="form-control"> <select name="category_id" id="category_id">
                             <option value="choose" disabled selected>Choose a Category</option>
-
-                                            <option value="cat id">cat name</option>
-
+                            @if(isset($categories))
+                            @foreach($categories as $cat)
+                                <option value="{{ $cat['category_id'] }}">{{ $cat['category_name'] }}</option>
+                            @endforeach
+                            @endif
                         </select></div>
                     <div>
                         <div>

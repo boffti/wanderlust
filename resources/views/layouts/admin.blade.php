@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Author: Sundalkar, Gabriel Anand
 ID: 1001774881
 -->
@@ -104,7 +104,7 @@ ID: 1001774881
                                 <button class="btn btn-outline-accent text-accent">Login / Signup</button>
                             </a>
                         </div>
-                         
+
             @endif
 
             <a id="btnMenu" href="#" class="menu-icon"><i class="fas fa-bars"></i></a>

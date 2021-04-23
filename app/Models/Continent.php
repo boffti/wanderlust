@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Continent extends Model
 {
     use HasFactory;
+
+    protected $table = 'continents';
+    protected $primaryKey = 'continent_id';
 }

@@ -12,11 +12,14 @@ use App\Models\Business;
 use App\Models\Tip;
 use App\Models\Post;
 use App\Models\Query;
+use App\Models\Category;
 use App\Models\UserPhoto;
 use App\Models\UserVideo;
 use App\Models\BusinessPhoto;
 use App\Models\BusinessTip;
 use App\Models\BusinessReview;
+use App\Models\CountryAdmin;
+use App\Models\UserRoles;
 
 /*
 |--------------------------------------------------------------------------
@@ -246,16 +249,28 @@ Route::post('/tip', function(Request $request) {
     return redirect()->route('all-tips');
 });
 
-Route::get('/tip/delete/{tip_id}', function(Request $request, $tip_id) {
-    $tip = Tip::find($tip_id);
+Route::get('/tip/delete/{tip_id}/{loc}', function(Request $request, $tip_id, $loc) {
+    $tip = Tip::where('tip_id', $tip_id)->first();
     $tip -> delete();
-    return redirect()->route('profile');
+    if($loc == '1') {
+        return redirect()->route('super-admin');
+    } elseif($loc == '3') {
+        return redirect()->route('profile');
+    } else {
+        return redirect()->route('country-admin');
+    }
 });
 
-Route::get('/post/delete/{post_id}', function(Request $request, $post_id) {
-    $post = Post::find($post_id);
+Route::get('/post/delete/{post_id}/{loc}', function(Request $request, $post_id, $loc) {
+    $post = Post::where('post_id', $post_id)->first();
     $post -> delete();
-    return redirect()->route('profile');
+    if($loc == '1') {
+        return redirect()->route('super-admin');
+    } elseif($loc == '3') {
+        return redirect()->route('profile');
+    } else {
+        return redirect()->route('country-admin');
+    }
 });
 
 Route::get('/user/{user_id}', function(Request $request, $user_id) {
@@ -409,6 +424,7 @@ Route::get('/super-admin', function(Request $request) {
         return (array)$value;
     }, $tips);
     $queries = Query::all();
+    $categories = Category::all();
 
     return view('admin/super_admin')
         ->with('cities', $cities)
@@ -419,7 +435,123 @@ Route::get('/super-admin', function(Request $request) {
         ->with('poi', $poi)
         ->with('posts', $posts)
         ->with('tips', $tips)
+        ->with('categories', $categories)
         ->with('queries', $queries);
+})->name('super-admin');
+
+Route::post('/continent', function(Request $request) {
+    $c = new Continent;
+    $c -> continent_name = $request->get('continent');
+    $c -> save();
+    return redirect()->route('super-admin');
+});
+
+Route::get('/continent/delete/{continent_id}', function(Request $request, $continent_id) {
+    $c = Continent::find($continent_id);
+    $c -> delete();
+    return redirect()->route('super-admin');
+});
+
+Route::post('/country', function(Request $request) {
+    $c = new Country;
+    $c -> country_name = $request->get('country');
+    $c -> countinent_id = $request->get('continent_id');
+    $c -> save();
+    return redirect()->route('super-admin');
+});
+
+Route::get('/country/delete/{country_id}', function(Request $request, $country_id) {
+    $c = Country::find($country_id);
+    $c -> delete();
+    return redirect()->route('super-admin');
+});
+
+Route::post('/city/{loc}', function(Request $request, $loc) {
+    $c = new City;
+    $c -> city_name = $request->get('city');
+    $c -> country_id = $request->get('country_id');
+    $c -> save();
+    if($loc == '1') {
+        return redirect()->route('super-admin');
+    } else {
+        return redirect()->route('country-admin');
+    }
+});
+
+Route::get('/city/delete/{city_id}/{loc}', function(Request $request, $city_id, $loc) {
+    $c = City::find($city_id);
+    $c -> delete();
+    if($loc == '1') {
+        return redirect()->route('super-admin');
+    } else {
+        return redirect()->route('country-admin');
+    }
+});
+
+Route::post('/admin/add', function(Request $request) {
+    $email = $request->get('admin_email');
+    $country_id = $request->get('country_id');
+    $user = User::where('email', $email)->first();
+    $country = Country::where('country_id', $country_id)->first();
+    $ca = new CountryAdmin;
+    $ca -> user_id = $user -> user_id;
+    $ca -> country_id = $country -> country_id;
+    $ca -> save();
+    $ua = new UserRoles;
+    $ua -> role_id = '3';
+    $ua -> user_id = $user -> user_id;
+    $ua -> save();
+    return redirect()->route('super-admin');
+});
+
+Route::get('/admin/delete/{id}', function(Request $request, $id) {
+    $ca = CountryAdmin::where('id', $id)->first();
+    $ua = UserRoles::where('user_id', $ca->user_id)->where('role_id', '3')->first();
+    $ua -> delete();
+    $ca -> delete();
+    return redirect()->route('super-admin');
+});
+
+Route::post('/business/{loc}', function(Request $request, $loc) {
+    $b = new Business;
+    $b -> business_name = $request->get('businessName');
+    $b -> business_desc = $request->get('businessDesc');
+    $b -> business_phone = $request->get('businessPhone');
+    $b -> business_website = $request->get('businessWebsite');
+    $b -> business_address = $request->get('businessAddress');
+    $b -> city_id = $request->get('city_id');
+    $b -> category = $request->get('category_id');
+    $b -> photo_uri = $request->get('photoURI');
+    $b -> save();
+
+    if($loc == '1') {
+        return redirect()->route('super-admin');
+    } else {
+        return redirect()->route('country-admin');
+    }
+});
+
+Route::get('/business/delete/{business_id}/{loc}', function(Request $request, $business_id, $loc) {
+    $b = Business::where('business_id', $business_id)->first();
+    $b -> delete();
+    if($loc == '1') {
+        return redirect()->route('super-admin');
+    } else {
+        return redirect()->route('country-admin');
+    }
+});
+
+Route::get('/query/delete/{queryid}', function(Request $request, $queryid) {
+    $c = Query::where('query_id', $queryid)->first();
+    $c -> delete();
+    return redirect()->route('super-admin');
+});
+
+Route::get('/user/delete/{user_id}', function(Request $request, $user_id) {
+    $c = User::where('user_id', $user_id)->first();
+    $c -> delete();
+    // TODO Delete User data from other tables
+    return redirect()->route('super-admin');
 });
 
 Route::get('/test/{user_id}', function($user_id) {
@@ -446,7 +578,7 @@ Route::get('/session', function() {
     return session('admin');
 });
 
-Route::resource('posts', '\App\Http\Controllers\PostsController');
-Route::resource('tips', '\App\Http\Controllers\TipsController');
-Route::resource('business', '\App\Http\Controllers\BusinessController');
+// Route::resource('posts', '\App\Http\Controllers\PostsController');
+// Route::resource('tips', '\App\Http\Controllers\TipsController');
+// Route::resource('business', '\App\Http\Controllers\BusinessController');
 Route::resource('city', '\App\Http\Controllers\CityController');

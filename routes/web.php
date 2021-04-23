@@ -6,9 +6,12 @@ use App\Http\Controllers\PostsController;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\City;
+use App\Models\Country;
+use App\Models\Continent;
 use App\Models\Business;
 use App\Models\Tip;
 use App\Models\Post;
+use App\Models\Query;
 use App\Models\UserPhoto;
 use App\Models\UserVideo;
 use App\Models\BusinessPhoto;
@@ -380,11 +383,48 @@ Route::post('business/reviews/{business_id}', function(Request $request, $busine
 });
 
 Route::view('/country-admin', 'admin/country_admin');
-Route::view('/super-admin', 'admin/super_admin');
+
+Route::get('/super-admin', function(Request $request) {
+    $cities = City::all();
+    $countries = Country::all();
+    $continents = Continent::all();
+    $admins = DB::select("select ca.id, u.full_name, u.email, c.country_name from users as u, countries as c, country_admins as ca where ca.user_id=u.user_id and ca.country_id=c.country_id");
+    $admins = array_map(function ($value) {
+        return (array)$value;
+    }, $admins);
+    $users = DB::select("SELECT users.user_id, users.full_name, users.email, cities.city_name from users, cities, countries where users.city=cities.city_id and cities.country_id=countries.country_id");
+    $users = array_map(function ($value) {
+        return (array)$value;
+    }, $users);
+    $poi = DB::select("SELECT b.business_id, b.business_name, b.business_phone, b.business_address, c.city_name, cat.category_name from business as b, cities as c, categories as cat where b.city_id=c.city_id and b.category=cat.category_id");
+    $poi = array_map(function ($value) {
+        return (array)$value;
+    }, $poi);
+    $posts = DB::select("SELECT p.post_id, p.post_content, p.created_at, u.full_name, c.city_name from posts as p, users as u, cities as c where p.user_id=u.user_id and p.city_id=c.city_id");
+    $posts = array_map(function ($value) {
+        return (array)$value;
+    }, $posts);
+    $tips = DB::select("SELECT t.tip_id, t.tip_content, u.full_name, c.city_name from tips as t, users as u, cities as c where t.user_id=u.user_id and t.city_id=c.city_id");
+    $tips = array_map(function ($value) {
+        return (array)$value;
+    }, $tips);
+    $queries = Query::all();
+
+    return view('admin/super_admin')
+        ->with('cities', $cities)
+        ->with('countries', $countries)
+        ->with('continents', $continents)
+        ->with('admins', $admins)
+        ->with('users', $users)
+        ->with('poi', $poi)
+        ->with('posts', $posts)
+        ->with('tips', $tips)
+        ->with('queries', $queries);
+});
 
 Route::get('/test/{user_id}', function($user_id) {
-    $results = DB::select("select up.photo_uri from user_photos as up, cities as c, users as u where u.user_id=up.user_id and u.city=c.city_id and c.city_id={$user_id}");
-    return $results;
+    $poi = Business::with(['city', 'category'])->get();
+    return $poi;
 });
 
 Route::get('/business/city/{city_id}', function($city_id) {

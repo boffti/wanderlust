@@ -15,4 +15,9 @@ class Tip extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
+
+    public function city()
+    {
+        return $this->hasOne(City::class, 'city_id', 'city_id');
+    }
 }

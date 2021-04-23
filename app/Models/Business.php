@@ -12,7 +12,7 @@ class Business extends Model
     protected $primaryKey = 'business_id';
 
     public function city() {
-        return $this->hasOne(City::class, 'city_id', 'city_id');
+        return $this->belongsTo(City::class, 'city_id', 'city_id');
     }
 
     public function category() {

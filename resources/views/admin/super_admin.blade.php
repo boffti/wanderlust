@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Author: Sundalkar, Gabriel Anand
 ID: 1001774881
 -->
@@ -70,15 +70,16 @@ ID: 1001774881
                                 </tr>
                             </thead>
                             <tbody>
-
-                                        {{-- Get City Names --}}
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <a href="/deleteCity&loc=1"><i class="fas fa-trash-alt"></i></a>
-                                            </td>
-                                        </tr>
-
+                            @if(isset($cities))
+                                @foreach($cities as $city)
+                                    <tr>
+                                        <td>{{ $city['city_name'] }}</td>
+                                        <td>
+                                            <a href="/city/delete/{{ $city['city_id'] }} }}/1"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -97,16 +98,17 @@ ID: 1001774881
                                 </tr>
                             </thead>
                             <tbody>
-
-                                {{-- Get Countries --}}
-                                        <tr>
-                                            <td>ID</td>
-                                            <td>Name</td>
-                                            <td>
-                                                <a href="/delete country"><i class="fas fa-trash-alt"></i></a>
-                                            </td>
-                                        </tr>
-
+                            @if(isset($countries))
+                                @foreach($countries as $country)
+                                <tr>
+                                    <td>{{ $country['country_id'] }}</td>
+                                    <td>{{ $country['country_name'] }}</td>
+                                    <td>
+                                        <a href="/country/delete/{{ $country['country_id'] }}"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -129,14 +131,18 @@ ID: 1001774881
                         </tr>
                     </thead>
                     <tbody>
-                                    {{-- Get Continents --}}
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>NAme</td>
-                                        <td>
-                                            <a href="/deleteContinent"><i class="fas fa-trash-alt"></i></a>
-                                        </td>
-                                    </tr>
+                        @if(isset($continents))
+                        @foreach($continents as $continent)
+                        <tr>
+                            <td>{{ $continent['continent_id'] }}</td>
+                            <td>{{ $continent['continent_name'] }}</td>
+                            <td>
+                                <a href="/continent/delete/{{ $continent['continent_id'] }}"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
+
 
                     </tbody>
                 </table>
@@ -156,16 +162,19 @@ ID: 1001774881
                         </tr>
                     </thead>
                     <tbody>
-                                    {{-- Get Admin names --}}
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>Full Name</td>
-                                        <td>email</td>
-                                        <td>country_name</td>
-                                        <td>
-                                            <a href="/deleteAdmin"><i class="fas fa-trash-alt"></i></a>
-                                        </td>
-                                    </tr>
+                        @if(isset($admins))
+                        @foreach($admins as $admin)
+                        <tr>
+                            <td>{{ $admin['id'] }}</td>
+                            <td>{{ $admin['full_name'] }}</td>
+                            <td>{{ $admin['email'] }}</td>
+                            <td>{{ $admin['country_name'] }}</td>
+                            <td>
+                                <a href="/admin/delete/{{ $admin['id'] }}"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
 
                     </tbody>
                 </table>
@@ -178,25 +187,25 @@ ID: 1001774881
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Number</th>
                             <th>Email</th>
-                            <th>Country</th>
+                            <th>City</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a href="/deleteuser"><i class="fas fa-trash-alt"></i></a>
-                                        </td>
-                                    </tr>
-
+                        @if(isset($users))
+                        @foreach($users as $user)
+                        <tr>
+                            <td>{{ $user['user_id'] }}</td>
+                            <td>{{ $user['full_name'] }}</td>
+                            <td>{{ $user['email'] }}</td>
+                            <td>{{ $user['city_name'] }}</td>
+                            <td>
+                                <a href="/user/delete/{{ $user['user_id'] }}"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>
@@ -215,18 +224,21 @@ ID: 1001774881
                         </tr>
                     </thead>
                     <tbody>
-
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a href="#"><i class="fas fa-pen"></i></a>
-                                            <a href="/deletePoi&loc=1"><i class="fas fa-trash-alt"></i></a>
-                                        </td>
-                                    </tr>
+                        @if(isset($poi))
+                        @foreach($poi as $p)
+                        <tr>
+                            <td>{{ $p['business_name'] }}</td>
+                            <td>{{ $p['business_phone'] }}</td>
+                            <td>{{ $p['business_address'] }}</td>
+                            <td>{{ $p['city_name'] }}</td>
+                            <td>{{ $p['category_name'] }}</td>
+                            <td>
+                                <a href="#"><i class="fas fa-pen"></i></a>
+                                <a href="/business/delete/{{ $p['business_id'] }}/1"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>
@@ -244,17 +256,19 @@ ID: 1001774881
                         </tr>
                     </thead>
                     <tbody>
-
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a href="/deletetip&loc=2"><i class="fas fa-trash-alt"></i></a>
-                                        </td>
-                                    </tr>
-
+                        @if(isset($posts))
+                        @foreach($posts as $post)
+                        <tr>
+                            <td>{{ $post['city_name'] }}</td>
+                            <td>{{ $post['full_name'] }}</td>
+                            <td>{{ $post['post_content'] }}</td>
+                            <td>{{ $post['created_at'] }}</td>
+                            <td>
+                                <a href="/posts/delete/{{ $post['post_id'] }}/1"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>
@@ -271,14 +285,18 @@ ID: 1001774881
                         </tr>
                     </thead>
                     <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a href="/deletetip&loc=1"><i class="fas fa-trash-alt"></i></a>
-                                        </td>
-                                    </tr>
+                        @if(isset($tips))
+                        @foreach($tips as $tip)
+                        <tr>
+                            <td>{{ $tip['city_name'] }}</td>
+                            <td>{{ $tip['full_name'] }}</td>
+                            <td>{{ $tip['tip_content'] }}</td>
+                            <td>
+                                <a href="/tips/delete/{{ $tip['tip_id'] }}&loc=1"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>
@@ -297,18 +315,22 @@ ID: 1001774881
                         </tr>
                     </thead>
                     <tbody>
+                        @if(isset($queries))
+                        @foreach($queries as $q)
+                        <tr>
+                            <td>{{ $q['first_name'] }} {{ $q['last_name'] }}</td>
+                            <td>{{ $q['email'] }}</td>
+                            <td>{{ $q['country'] }}</td>
+                            <td>{{ $q['phone'] }}</td>
+                            <td>{{ $q['type'] }}</td>
+                            <td>{{ $q['query'] }}</td>
+                            <td>
+                                <a href="/query/delete/{{ $q['query_id'] }}"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
 
-                                    <tr>
-                                        <td>name</td>
-                                        <td>email</td>
-                                        <td>country</td>
-                                        <td>phone</td>
-                                        <td>type</td>
-                                        <td>query</td>
-                                        <td>
-                                            <a href="/deletequery"><i class="fas fa-trash-alt"></i></a>
-                                        </td>
-                                    </tr>
+                        @endforeach
+                    @endif
 
                     </tbody>
                 </table>
@@ -429,10 +451,10 @@ ID: 1001774881
                     <input type="text" name="businessPhone" id="businessPhone" placeholder="Phone">
                     <input type="text" name="businessAddress" id="businessAddress" placeholder="Address">
                     <input type="text" name="photoURI" id="photoURI" placeholder="Photo Link">
-                                
+
                     <div class="form-control"> <select name="category_id" id="category_id">
                             <option value="choose" disabled selected>Choose a Category</option>
-                            
+
                                             <option value="cat id">cat name</option>
 
                         </select></div>
@@ -445,5 +467,5 @@ ID: 1001774881
         </div>
     </div>
 
-   
+
 @endsection

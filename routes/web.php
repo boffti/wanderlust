@@ -35,7 +35,7 @@ use App\Models\UserRoles;
 Route::view('/about', 'main_site/about');
 Route::view('/immigrant-services', 'main_site/immigrant_services');
 Route::view('/visitor-services', 'main_site/visitor_service');
-Route::view('/contact', 'main_site/contact');
+Route::view('/contact', 'main_site/contact')->name('contact');
 Route::view('/login', 'login/login');
 Route::view('/signup', 'login/signup');
 
@@ -546,6 +546,19 @@ Route::get('/business/delete/{business_id}/{loc}', function(Request $request, $b
     } else {
         return redirect()->route('country-admin');
     }
+});
+
+Route::post('/query', function(Request $request) {
+    $c = new Query;
+    $c -> first_name = $request->get('firstName');
+    $c -> last_name = $request->get('lastName');
+    $c -> country = $request->get('country');
+    $c -> email = $request->get('email');
+    $c -> phone = $request->get('phone');
+    $c -> type = $request->get('userType');
+    $c -> query = $request->get('query');
+    $c -> save();
+    return redirect()->route('contact');
 });
 
 Route::get('/query/delete/{queryid}', function(Request $request, $queryid) {

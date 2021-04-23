@@ -45,7 +45,7 @@ ID: 1001774881
                                     Services</a></li>
                         </ul>
                     </li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="https://wanderlust.axm0503.uta.cloud/blog/">Blog</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </nav>

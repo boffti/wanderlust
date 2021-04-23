@@ -43,7 +43,7 @@
                                     Services</a></li>
                         </ul>
                     </li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="https://wanderlust.axm0503.uta.cloud/blog/">Blog</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </nav>
@@ -108,7 +108,7 @@
                                 <button class="btn btn-outline-accent text-accent">Login / Signup</button>
                             </a>
                         </div>
-                         
+
             @endif
 
             <a id="btnMenu" href="#" class="menu-icon"><i class="fas fa-bars"></i></a>
@@ -184,7 +184,7 @@
                 <form action="change-loc" method="post" class="flex-center" style="gap: 12px;">
                     @csrf
                     <div class="form-control"> <select id="location-select" name="location" id="location">
-                
+
                         </select></div>
                     <div>
                         <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>

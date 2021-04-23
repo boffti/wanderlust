@@ -1,17 +1,17 @@
-<!-- 
+<!--
 Author: Manjunatha, Angad Tarikere
 ID: 1001718335
- -->
+-->
 
- @extends('layouts.app')
+@extends('layouts.app')
 
- @section('title', 'Wanderlust About')
+@section('title', 'Wanderlust | About')
 
- @section('css-imports')
- <link href="{{ URL::asset('css/angad.css') }}" rel="stylesheet">
- @endsection
- 
- @section('content')
+@section('css-imports')
+<link href="{{ URL::asset('css/angad.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
 
     <section style="background-color: var(--primary-color); padding:60px 0;">
         <div class="container">

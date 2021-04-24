@@ -36,7 +36,7 @@
                     <img class="postIMG" src="{{ URL::asset('upload/user_dp/') }}/{{ $chat['user']['dp'] }}" alt="">
                     <div class="full-width">
                         <div class="flex-left space-between align-items-center">
-                            <a href="">
+                            <a target="_blank" href="/user/{{ $chat['user']['user_id'] }}">
                                 <h4 class="">{{ $chat['user']['full_name'] }}</h4>
                             </a>
                             <p class="post-date"></p>

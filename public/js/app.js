@@ -230,13 +230,12 @@ jQuery(document).ready(function ($) {
     const socket = io('ws://localhost:8080');
 
     socket.on('message', text => {
-        console.log(JSON.stringify(text));
         var chat = ` <div class="card post">
         <div class="flex-left">
             <img class="postIMG" src="http://localhost:8000/upload/user_dp/${text['dp']}" alt="">
             <div class="full-width">
                 <div class="flex-left space-between align-items-center">
-                    <a href="">
+                    <a target="_blank" href="http://localhost:8000/user/${text['user_id']}">
                         <h4 class="">${text['full_name']}</h4>
                     </a>
                     <p class="post-date"></p>

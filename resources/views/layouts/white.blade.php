@@ -77,6 +77,12 @@
                                             My Profile
                                         </a>
                                     </li>
+                                    <li class="dropdown-item">
+                                        <a href="/chat">
+                                            <i class="fas fa-comments" style="margin-right: 8px;"></i>
+                                            Chatroom
+                                        </a>
+                                    </li>
                                     @if(in_array('3', session('user_roles')))
                                     <li class="dropdown-item">
                                         <a href="/country-admin">

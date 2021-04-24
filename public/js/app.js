@@ -1,4 +1,7 @@
 // require('./bootstrap');
+
+// const { parse } = require("postcss");
+
 /* Author : Melkot, Aaneesh Naagaraj
 ID : 1001750503 */
 $.noConflict();
@@ -221,6 +224,46 @@ jQuery(document).ready(function ($) {
         } else {
             alert("Please select a file.");
         }
+    });
+
+
+    const socket = io('ws://localhost:8080');
+
+    socket.on('message', text => {
+        console.log(JSON.stringify(text));
+        var chat = ` <div class="card post">
+        <div class="flex-left">
+            <img class="postIMG" src="http://localhost:8000/upload/user_dp/${text['dp']}" alt="">
+            <div class="full-width">
+                <div class="flex-left space-between align-items-center">
+                    <a href="">
+                        <h4 class="">${text['full_name']}</h4>
+                    </a>
+                    <p class="post-date"></p>
+                </div>
+                <p class="post-content">${text['message']}</p>
+            </div>
+        </div>
+    </div>`
+    $('#chats').append(chat);
+
+    });
+
+    $('#sendMessage').on('click', function() {
+        const text = $('#chatMessage').val();
+        $('#chatMessage').val('');
+        var user;
+        $.ajax({
+            url: '/user',
+            type: 'get',
+            success: function (response) {
+                user = response;
+                user['message']=text
+                // write chat message to DB
+                socket.emit('message', user);
+            },
+        });
+
     });
 
 });

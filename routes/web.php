@@ -614,7 +614,14 @@ Route::post('/search', function(Request $request) {
         ->with('similar', $similar)
         ->with('results', $results);
 
-    return $similar;
+});
+
+Route::get('/chat', function() {
+    return view('user/chat');
+});
+
+Route::get('/user', function() {
+    return session('user');
 });
 
 Route::get('/test/{user_id}', function($user_id) {

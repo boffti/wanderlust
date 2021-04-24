@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PostsController;
+use App\Mail\SignupEmail;
+use App\Mail\QueryEmail;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\City;
@@ -142,6 +144,7 @@ Route::post('/register-user', function (Request $request) {
     $user_deets = User::where('email', session('register_user')['email'])->first();
     session(['user' => $user_deets]);
     // $user_type = $request->get('user_type');
+    Mail::to(session('user')['email'])->send(new SignupEmail(session('user')['email']));
     return view('index');
 });
 
@@ -557,7 +560,9 @@ Route::post('/query', function(Request $request) {
     $c -> phone = $request->get('phone');
     $c -> type = $request->get('userType');
     $c -> query = $request->get('query');
+    Mail::to($request->get('email'))->send(new QueryEmail());
     $c -> save();
+
     return redirect()->route('contact');
 });
 
@@ -613,8 +618,8 @@ Route::post('/search', function(Request $request) {
 });
 
 Route::get('/test/{user_id}', function($user_id) {
-    $poi = Business::with(['city', 'category'])->get();
-    return $poi;
+    $email = "boffti@gmail.com";
+    Mail::to($email)->send(new SignupEmail($email));
 });
 
 Route::get('/business/city/{city_id}', function($city_id) {

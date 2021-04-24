@@ -29,6 +29,25 @@
 
         <div id="chats">
 
+            @if(isset($chats))
+            @foreach($chats as $chat)
+            <div class="card post">
+                <div class="flex-left">
+                    <img class="postIMG" src="{{ URL::asset('upload/user_dp/') }}/{{ $chat['user']['dp'] }}" alt="">
+                    <div class="full-width">
+                        <div class="flex-left space-between align-items-center">
+                            <a href="">
+                                <h4 class="">{{ $chat['user']['full_name'] }}</h4>
+                            </a>
+                            <p class="post-date"></p>
+                        </div>
+                        <p class="post-content">{{ $chat['message'] }}</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @endif
+
         </div>
     </div>
 

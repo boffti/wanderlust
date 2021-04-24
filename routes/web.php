@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\Business;
 use App\Models\Query;
 use App\Models\Category;
+use App\Models\Chat;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,10 +111,19 @@ Route::get('/category', function() {
 });
 
 Route::get('/chat', function() {
-    return view('user/chat');
+    $chats = Chat::with('user')
+    ->orderBy('created_at', 'ASC')
+    ->take(20)
+    ->get();
+    return view('user/chat')
+    -> with('chats', $chats);
 });
 
-Route::get('/user', function() {
+Route::get('/send-chat/{msg}', function(Request $request, $msg) {
+    $c = new Chat;
+    $c -> user_id = session('user')['user_id'];
+    $c -> message = $msg;
+    $c->save();
     return session('user');
 });
 
@@ -122,21 +132,6 @@ Route::get('/test', function() {
         ->with(['city', 'category'])
         -> get();
         return $results;
-});
-
-Route::get('/business/city/{city_id}', function($city_id) {
-    $results = DB::select("select * from business where city_id={$city_id}");
-    return $results;
-});
-
-Route::get('/tips/city/{city_id}', function($city_id) {
-    $results = DB::select("select t.tip_id, t.tip_content, u.user_id, u.full_name from tips as t, users as u where t.city_id={$city_id} and t.user_id=u.user_id");
-    return $results;
-});
-
-Route::get('/posts/city/{city_id}', function($city_id) {
-    $results = DB::select("select p.post_id, p.post_content, p.user_id, u.full_name from posts as p, users as u where city_id={$city_id} and p.user_id=u.user_id");
-    return $results;
 });
 
 Route::get('/session', function() {

@@ -254,8 +254,9 @@ jQuery(document).ready(function ($) {
         $('#chatMessage').val('');
         var user;
         $.ajax({
-            url: '/user',
+            url: '/send-chat/' + text,
             type: 'get',
+            data: text,
             success: function (response) {
                 user = response;
                 user['message']=text

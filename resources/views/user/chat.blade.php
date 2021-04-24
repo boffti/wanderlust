@@ -15,18 +15,6 @@
 
     <div class="container">
         <h2>Chatroom</h2>
-        <div class="hero-form card" style="overflow: hidden;">
-            @csrf
-            <div class="flex-left flex-wrap" style="justify-content: space-between;">
-                <div class="form-control">
-                    <input type="text" name="chatMessage" id="chatMessage"
-                        placeholder="Type message">
-                </div>
-                <button id="sendMessage" class="btn">SEND</button>
-            </div>
-
-        </div>
-
         <div id="chats">
 
             @if(isset($chats))
@@ -49,6 +37,24 @@
             @endif
 
         </div>
+        <div class="hero-form card sticky" style="overflow: hidden;">
+            @csrf
+            <div id="chatTextBox" class="flex-left flex-wrap" style="justify-content: space-between;">
+                <div class="form-control">
+                    <input type="text" name="chatMessage" id="chatMessage"
+                        placeholder="Type message" style="width: 800px">
+                </div>
+                <button id="sendMessage" class="btn btn-primary"><i class="fas fa-paper-plane" style="margin-right: 7px"></i> SEND</button>
+            </div>
+        </div>
     </div>
 
+@endsection
+
+@section('scripts')
+<script>
+    jQuery(document).ready(function ($) {
+
+    });
+</script>
 @endsection

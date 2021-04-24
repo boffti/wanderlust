@@ -227,8 +227,10 @@ jQuery(document).ready(function ($) {
     });
 
 
+    // Create Socket Connection
     const socket = io('ws://localhost:8080');
 
+    // Subscribe to messages pushed my Socket Server
     socket.on('message', text => {
         var chat = ` <div class="card post">
         <div class="flex-left">
@@ -248,6 +250,7 @@ jQuery(document).ready(function ($) {
 
     });
 
+    // Emit messages to Socket Server
     $('#sendMessage').on('click', function() {
         const text = $('#chatMessage').val();
         $('#chatMessage').val('');
@@ -265,5 +268,10 @@ jQuery(document).ready(function ($) {
         });
 
     });
+
+    $('html,body').animate({
+        scrollTop: $("#sendMessage").offset().top
+    },
+    1500);
 
 });

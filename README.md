@@ -1,62 +1,304 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# WanderLust
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![HTML](https://img.shields.io/badge/HTML-v5-orange)       ![CSS Verion](https://img.shields.io/badge/CSS-v3-blue) ![JS Verion](https://img.shields.io/badge/JavaScript-ES6-red) ![JQuery Verion](https://img.shields.io/badge/JQuery-v3.5.x-blue)  ![PHP Version](https://img.shields.io/badge/PHP-v8.0.x-green) ![Laravel Version](https://img.shields.io/badge/Laravel-v8.x-red) ![MySQL Version](https://img.shields.io/badge/MySQL-v8.0.x-lightgrey)
 
-## About Laravel
+This project is a full stack web app for Immigrants who move to a new place and want to find out points of interest around them. This was done as part of CSE 5335 at UTA.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Home](https://wanderlust.axm0503.uta.cloud).
+- [About](https://wanderlust.axm0503.uta.cloud/pages/main_site/about.php).
+- Services 
+    - [Immigrant Services](https://wanderlust.axm0503.uta.cloud/pages/main_site/immigrant_services.php).
+    - [Visitor Services](https://wanderlust.axm0503.uta.cloud/pages/main_site/visitor_service.php).
+- [Blog](https://wanderlust.axm0503.uta.cloud/blog/).
+- [Contact](https://wanderlust.axm0503.uta.cloud/pages/main_site/contact.php).
+- [Login](https://wanderlust.axm0503.uta.cloud/pages/login/login.php).
+- [Signup](https://wanderlust.axm0503.uta.cloud/pages/login/signup.php).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Technology & Tool Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- #### Langauages Used 
+    -  PHP
+    -  HTML
+    -  CSS
+    -  JS
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- #### Frameworks Used
+    -   Laravel 8
+    -   Node JS
+    -   Socket IO
 
-## Laravel Sponsors
+- #### Template Engine Used
+    -  Blade
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- #### Databased Used
+    -  MySQL
 
-### Premium Partners
+- #### CSS Used
+    -  Custom styles 1000+ lines
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+- #### Editor or IDE
+    -  VS Code
 
-## Contributing
+- #### Xammp 
+    > XAMPP is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+## Framework Architecture 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Model–view–controller is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements. This is done to separate internal representations of information from the ways information is presented to and accepted from the user.
+<p align="center"><img src="https://i.stack.imgur.com/301fF.png" width="400"></p>
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Installation
 
-## License
+* Install PHP 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* Install Xampp
+
+* Check PHP Version using command 
+  ```bash
+  $ php -v
+  ```
+
+
+* Install composer
+
+* Check composer version using command
+    ```bash
+    $ composer --version
+    ```
+
+* Open the root of the project (i.e wanderlust_dir) and run the following commands:
+    ```bash
+    $ composer update
+    $ composer install
+    ```
+
+* Navigate to the `nodejs` dir inside the root dir and execute the following:
+    ```bash
+    $ npm install
+    ```
+
+* Config Database
+    - Start Apacha Server at port 80
+    - Open phpMyAdmin
+    - Create a new DB with name {database-name}
+    - Search .env file inside Project (i.e wanderlust_dir)
+        and replace line number 13,14 and 15 with below code 
+        ```php
+        DB_DATABASE={database-name}
+        DB_USERNAME={database-username}
+        DB_PASSWORD={database-userpassword}
+        ```
+    - Run the following command in root of project
+        ```bash
+        $ php artisan migrate:fresh
+        ```
+
+* To clean the cache run the following commands.<br/>
+    ```bash
+    $ php artisan cache:clear
+    $ php artisan route:clear
+    $ php artisan config:clear
+    $ php artisan view:clear
+    ```
+
+* After that navigate to `nodejs` dir and run the below command to spin up the Socket Server for the web chat.
+    ```bash
+    $ npm start
+    ```
+
+* Now a application encryption key need to generate. For that run the below command from laravel project root
+    ```bash
+    $ php artisan key:generate
+    ```
+
+* To run the server (in devlopment mode) with the below command
+    ```bash
+    $ php artisan serve
+    ```
+
+    When you execute the above commands then you should see the following
+    ```bash
+    Starting Laravel development server: http://127.0.0.1:8000
+    [Sat Apr 24 16:03:28 2021] PHP 7.4.3 Development Server (http://127.0.0.1:8000) started
+    ```
+
+* To open the web project on default web-browser click on this URL: http://127.0.0.1:8000 or [http:localhost:8000](http:localhost:8000)
+
+
+## File Structure of Project
+    .
+    ├── app/
+    │   ├── Console/
+    │   │   └── Kernel.php
+    │   ├── Exceptions/
+    │   │   └── Handler.php
+    │   ├── Http/
+    │   │   ├── Controllers/
+    │   │   |   ├── AdminController.php
+    │   │   |   ├── BusinessController.php
+    │   │   |   ├── ChatController.php
+    │   │   |   ├── CityController.php
+    │   │   |   ├── Controller.php
+    │   │   |   ├── HomeController.php
+    │   │   |   ├── LoginController.php
+    │   │   |   ├── PostController.php
+    │   │   |   ├── QueryController.php
+    │   │   |   ├── ReportController.php
+    │   │   |   ├── SearchController.php
+    │   │   |   ├── TipController.php
+    │   │   │   └── UserController.php
+    │   │   ├── Kernel.php
+    │   │   └── Middleware/
+    │   │       ├── Authenticate.php
+    │   │       ├── EncryptCookies.php
+    │   │       ├── PreventRequestsDuringMaintenance.php
+    │   │       ├── RedirectIfAuthenticated.php
+    │   │       ├── TrimStrings.php
+    │   │       ├── TrustHosts.php
+    │   │       ├── TrustProxies.php
+    │   │       └── VerifyCsrfToken.php
+    │   ├── Models/
+    │   │   └── User.php
+    │   └── Providers/
+    │       ├── AppServiceProvider.php
+    │       ├── AuthServiceProvider.php
+    │       ├── BroadcastServiceProvider.php
+    │       ├── EventServiceProvider.php
+    │       └── RouteServiceProvider.php
+    ├── artisan/
+    ├── bootstrap/
+    │   ├── app.php
+    │   └── cache
+    ├── composer.json
+    ├── composer.lock
+    ├── config/
+    │   ├── app.php
+    │   ├── auth.php
+    │   ├── broadcasting.php
+    │   ├── cache.php
+    │   ├── cors.php
+    │   ├── database.php
+    │   ├── filesystems.php
+    │   ├── hashing.php
+    │   ├── logging.php
+    │   ├── mail.php
+    │   ├── queue.php
+    │   ├── services.php
+    │   ├── session.php
+    │   └── view.php
+    ├── database/
+    │   ├── factories
+    │   │   └── UserFactory.php
+    │   ├── migrations/
+    │   │   ├── 2014_10_12_000000_create_users_table.php
+    │   │   ├── 2014_10_12_100000_create_password_resets_table.php
+    │   │   └── 2019_08_19_000000_create_failed_jobs_table.php
+    │   └── seeders/
+    │       └── DatabaseSeeder.php
+    ├── nodejs/
+    │   ├── node_modules/
+    │   ├── index.js
+    │   ├── package-lock.json
+    │   └── package.json
+    ├── package.json
+    ├── phpunit.xml
+    ├── public/
+    │   ├── css/
+    │   │   ├── angad.css
+    │   │   ├── app.css
+    │   │   ├── gabriel.css
+    │   │   ├── karthik.css
+    │   │   └── style.css
+    │   ├── favicon.ico
+    │   ├── index.php
+    │   ├── js/
+    │   │   ├── admin.js
+    │   │   ├── app.js
+    │   │   ├── bootstrap.js
+    │   │   └── typed.js
+    │   ├── robots.txt
+    |   ├── upload/
+    │   │   ├── user_dp/
+    │   │   ├── user_photos/
+    │   │   └── user_videos/
+    │   └── web.config
+    ├── README.md
+    ├── resources/
+    │   ├── lang/
+    │   │   └── en/
+    │   │       ├── auth.php
+    │   │       ├── pagination.php
+    │   │       ├── passwords.php
+    │   │       └── validation.php
+    │   └── views/
+    │       ├── admin/
+    │       │   ├── country_admin.blade.php
+    │       │   └── super_admin.blade.php
+    │       ├── business/
+    │       │   ├── business_detail.blade.php
+    │       │   ├── business_reviews.blade.php
+    │       │   └── business_tips.blade.php
+    │       ├── layouts/
+    │       │   ├── admin.blade.php
+    │       │   ├── app.blade.php
+    │       │   └── white.blade.php
+    │       ├── login/
+    │       │   ├── login.blade.php
+    │       │   ├── signup_wizard.blade.php
+    │       │   └── signup.blade.php
+    │       ├── mail/
+    │       │   ├── querymail.blade.php
+    │       │   └── signupmail.blade.php
+    │       ├── main_site/
+    │       │   ├── about.blade.php
+    │       │   ├── contact.blade.php
+    │       │   ├── immigrant_services.blade.php
+    │       │   └── visitor_service.blade.php
+    │       ├── user/
+    │       │   ├── chat.blade.php
+    │       │   ├── posts.blade.php
+    │       │   ├── profile.blade.php
+    │       │   ├── search_page.blade.php
+    │       │   ├── tips.blade.php
+    │       │   └── user.php
+    │       └── index.blade.php
+    ├── routes/
+    │   ├── api.php
+    │   ├── channels.php
+    │   ├── console.php
+    │   └── web.php
+    ├── server.php
+    ├── storage/
+    │   ├── app/
+    │   │   └── public
+    │   ├── framework/
+    │   │   ├── cache/
+    │   │   │   └── data/
+    │   │   ├── sessions/
+    │   │   ├── testing/
+    │   │   └── views/
+    │   └── logs
+    ├── tests/
+    │   ├── CreatesApplication.php
+    │   ├── Feature/
+    │   │   └── ExampleTest.php
+    │   ├── TestCase.php
+    │   └── Unit/
+    │       └── ExampleTest.php
+    └── webpack.mix.js
+
+
+## Authors
+
+#### Aneesh Melkot
+
+#### Karthik Natarajan
+
+#### Angad Manjunatha
+
+#### Gabriel Sundalkar
+

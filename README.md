@@ -16,7 +16,7 @@ This project is a full stack web app for Immigrants who move to a new place and 
 
 
 
-## Technology & Stack
+## Technology Stack
 
 - #### Langauages Used 
     -  PHP
@@ -62,7 +62,6 @@ Model–view–controller is a software design pattern commonly used for develop
   $ php -v
   ```
 
-
 * Install composer
 
 * Check composer version using command
@@ -92,7 +91,7 @@ Model–view–controller is a software design pattern commonly used for develop
         DB_USERNAME={database-username}
         DB_PASSWORD={database-userpassword}
         ```
-    - Run the following command in root of project
+    - Run the following command in root of project to migrate the DB schema
         ```bash
         $ php artisan migrate:fresh
         ```
@@ -110,7 +109,7 @@ Model–view–controller is a software design pattern commonly used for develop
     $ npm start
     ```
 
-* Now a application encryption key need to generate. For that run the below command from laravel project root
+* Now an application encryption key needs to be generated. For that run the below command from laravel project root
     ```bash
     $ php artisan key:generate
     ```

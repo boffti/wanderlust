@@ -32,8 +32,10 @@ class AdminController extends Controller
         $tips = array_map(function ($value) {
             return (array)$value;
         }, $tips);
+        $users = DB::select("SELECT u.user_id from users as u, cities as c, countries as cn where u.city=c.city_id and c.country_id=cn.country_id and cn.country_id={$country_id}");
         $categories = Category::all();
         return view('admin/country_admin')
+            ->with('user_count', count($users))
             ->with('cities', $cities)
             ->with('countries', $countries)
             ->with('poi', $poi)

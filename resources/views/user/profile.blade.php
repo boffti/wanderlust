@@ -142,7 +142,7 @@
                                                     <p class="post-content">{{ $post['post_content'] }}</p>
                                                 </div>
                                                 <div class="flex tip-footer" style="gap: 10px; ">
-                                                    <a href="/post/delete/{{ $post['post_id'] }}" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
+                                                    <a href="/post/delete/{{ $post['post_id'] }}/3" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
                                                 </div>
                                             </div>
 
@@ -166,7 +166,7 @@
                                                 </strong><span class="quotes">"</span>
                                             </div>
                                             <div class="flex ml-auto tip-footer" style="gap: 10px; ">
-                                                <a href="/tip/delete/{{ $tip['tip_id'] }}" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="/tip/delete/{{ $tip['tip_id'] }}/3" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
                                             </div>
                                         </div>
                                     </div>

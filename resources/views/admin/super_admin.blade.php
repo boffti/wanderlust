@@ -34,6 +34,9 @@ ID: 1001774881
                     <div class="card">
                         <canvas id="myChart"></canvas>
                     </div>
+                    <div class="card">
+                        <canvas id="myChart2"></canvas>
+                    </div>
                 </div>
                 <div>
                     <div class="card" style="width: 500px; height:'fit_content'">
@@ -92,40 +95,42 @@ ID: 1001774881
                         </table>
                     </div>
 
+                    <div class="card" style="width: 500px; height:'fit_content'">
+                        <table>
+                            <caption>Manage Continents
+                                <a id="btnAddContinent" href="#" class="strong" style="float: right;"><i
+                                        class="fas fa-plus-circle"></i> ADD</a>
+                            </caption>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(isset($continents))
+                                @foreach($continents as $continent)
+                                <tr>
+                                    <td>{{ $continent['continent_id'] }}</td>
+                                    <td>{{ $continent['continent_name'] }}</td>
+                                    <td>
+                                        <a href="/continent/delete/{{ $continent['continent_id'] }}"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
 
             </div>
 
-            <div class="card">
-                <table>
-                    <caption>Manage Continents
-                        <a id="btnAddContinent" href="#" class="strong" style="float: right;"><i
-                                class="fas fa-plus-circle"></i> ADD</a>
-                    </caption>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if(isset($continents))
-                        @foreach($continents as $continent)
-                        <tr>
-                            <td>{{ $continent['continent_id'] }}</td>
-                            <td>{{ $continent['continent_name'] }}</td>
-                            <td>
-                                <a href="/continent/delete/{{ $continent['continent_id'] }}"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    @endif
 
-
-                    </tbody>
-                </table>
-            </div>
             <div class="card">
                 <table>
                     <caption>Manage Admins

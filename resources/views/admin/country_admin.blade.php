@@ -11,19 +11,19 @@ ID: 1001774881
     <div class="wrapper">
         <div class="flex-left space-between">
             <div class="card info-card">
-                <h2><i class="fas fa-users" style="margin-right: 6px;"></i> </h2>
+                <h2><i class="fas fa-users" style="margin-right: 6px;"></i> {{ $user_count }}</h2>
                 <p class="text-muted">Number of users</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i> </h2>
+                <h2><i class="fas fa-pencil-alt" style="margin-right: 6px;"></i> {{ count($posts) }}</h2>
                 <p class="text-muted">Number of posts</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i> </h2>
+                <h2><i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i> {{ count($poi) }}</h2>
                 <p class="text-muted">Places of Interest</p>
             </div>
             <div class="card info-card">
-                <h2><i class="fas fa-info" style="margin-right: 6px;"></i> </h2>
+                <h2><i class="fas fa-info" style="margin-right: 6px;"></i> {{ count($tips) }}</h2>
                 <p class="text-muted">Number of tips written</p>
             </div>
         </div>
@@ -32,10 +32,16 @@ ID: 1001774881
             <div class="flex-left">
                 <div style="flex-grow: 1;">
                     <div class="card">
-                        <canvas id="myChart"></canvas>
+                        <canvas id="myChart3"></canvas>
                     </div>
                 </div>
                 <div>
+                    <div class="flex-left space-between">
+                        <div class="card" style="width: 100%">
+                            <h3>Statistic 2</h3>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
                     <div class="card" style="width: 500px; height:'fit_content'">
                         <div class="flex-left space-between">
                             <h3>Cities</h3>
@@ -64,12 +70,7 @@ ID: 1001774881
                             </tbody>
                         </table>
                     </div>
-                    <div class="flex-left space-between">
-                        <div class="card">
-                            <h3>Statistic 2</h3>
-                            <canvas id="chart2"></canvas>
-                        </div>
-                    </div>
+
                 </div>
 
             </div>

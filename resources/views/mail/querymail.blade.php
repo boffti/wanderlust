@@ -162,7 +162,7 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 20px 20px;font-family:'Montserrat',sans-serif;" align="left">
 
   <div style="color: #3d3d3d; line-height: 150%; text-align: center; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 150%;">Your response has been recorded! We will reach out to you within 2 business and help you with your query.</p>
+    <p style="font-size: 14px; line-height: 150%;">Your response has been recorded! We will reach out to you within 2 business days and help you with your query.</p>
   </div>
 
       </td>

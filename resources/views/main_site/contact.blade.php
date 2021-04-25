@@ -25,6 +25,7 @@ ID: 1001872904
     <div class="container">
         <div class="card">
             <form action="/query" method="POST">
+                @csrf
                 <h3>Contact us</h3>
                 <div class="flex-left" style="justify-content: space-around;">
                     <div style="width: 100%;">

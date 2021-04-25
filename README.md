@@ -16,7 +16,7 @@ This project is a full stack web app for Immigrants who move to a new place and 
 
 
 
-## Technology & Tool Stack
+## Technology & Stack
 
 - #### Langauages Used 
     -  PHP

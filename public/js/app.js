@@ -226,7 +226,6 @@ jQuery(document).ready(function ($) {
         }
     });
 
-
     // Create Socket Connection
     const socket = io('ws://localhost:8080');
 

@@ -1,4 +1,4 @@
-<!-- 
+<!--
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
 -->
@@ -46,7 +46,7 @@
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="far fa-star"></i></li>
                         </ul>
-                        <span class="rating-count">24 reviews</span>
+                        <span class="rating-count"></span>
                     </div>
                     <p class="business-category"></p>
                     <div class="business-timings">
@@ -105,7 +105,7 @@
                         </div>
                     @endforeach
                 @endif
-                
+
             </div>
         </section>
     </div>

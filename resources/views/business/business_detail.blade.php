@@ -1,4 +1,4 @@
-<!-- 
+<!--
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
 -->
@@ -48,7 +48,7 @@
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="far fa-star"></i></li>
                         </ul>
-                        <span class="rating-count">24 reviews</span>
+                        <span class="rating-count">{{ count($reviews) }} reviews</span>
                     </div>
                     <p class="business-category"></p>
                     <div class="business-timings">
@@ -125,7 +125,7 @@
                     {{-- <a href="#">See more</a> --}}
                 </div>
                 <div class="flex-left">
-                    
+
                     <div class="gallery">
                         @if(isset($photos))
                         @foreach($photos as $photo)
@@ -136,9 +136,9 @@
                     @endif
                 </div>
             </div>
-            <div class="flex" style="justify-content: space-between; padding: 0 15px">
+            {{-- <div class="flex" style="justify-content: space-between; padding: 0 15px">
                 <a href="/business/photos/{{ $biz['business_id'] }}" class="strong">See all</a>
-            </div>
+            </div> --}}
         </section>
 
         <br>
@@ -328,7 +328,7 @@
                 </div>
                 @endforeach
             @endif
-                
+
             </div>
             <a href="/business/reviews/{{ $biz['business_id'] }}" class="flex-center">See All</a>
         </section>

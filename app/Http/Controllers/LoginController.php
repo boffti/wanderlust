@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserRoles;
 use App\Models\City;
 use App\Mail\SignupEmail;
 use Illuminate\Support\Facades\Mail;
@@ -75,11 +76,23 @@ class LoginController extends Controller
         $user->address = $request->get('street_addr');
         $user->dp = "placeholder.png";
         $user->save();
-        $user_deets = User::where('email', session('register_user')['email'])->first();
+        $user_deets = User::where('email', session('register_user')['email'])
+                        ->first();
         session(['user' => $user_deets]);
         $city = City::find(session('user')['city']);
         session(['user_loc' => $city]);
-        // $user_type = $request->get('user_type');
+        $user_role = new UserRoles;
+        $user_role->user_id = session('user')['user_id'];
+        $user_role->role_id = $request->get('user_type');
+        $user_role->save();
+        $user_deets2 = User::where('email', session('register_user')['email'])
+        ->with('roles')
+        ->first();
+        $user_roles = [];
+        foreach($user_deets2['roles'] as $role) {
+            array_push($user_roles, $role['role_id']);
+        }
+        session(['user_roles' => $user_roles]);
         Mail::to(session('user')['email'])->send(new SignupEmail(session('user')['email']));
         return view('index');
     }
@@ -87,6 +100,7 @@ class LoginController extends Controller
     public function logout(Request $request) {
         $val = $request->session()->pull('user');
         $val = $request->session()->pull('user_loc');
+        $val = $request->session()->pull('admin');
         return view('login/login');
     }
 }

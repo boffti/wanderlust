@@ -228,6 +228,21 @@ jQuery(document).ready(function ($) {
 
     // Create Socket Connection
     const socket = io('ws://localhost:8080');
+    var room_id;
+    socket.on('connect', function() {
+        $.ajax({
+            url: '/get-room-id',
+            type: 'get',
+            success: function (response) {
+                room_id = response['city_name'];
+                // console.log(room_id);
+                socket.emit('room_id', room_id);
+            },
+        });
+    });
+
+
+
 
     // Subscribe to messages pushed my Socket Server
     socket.on('message', text => {
@@ -253,16 +268,18 @@ jQuery(document).ready(function ($) {
     $('#sendMessage').on('click', function() {
         const text = $('#chatMessage').val();
         $('#chatMessage').val('');
-        var user;
+        // var user;
         $.ajax({
             url: '/send-chat/' + text,
             type: 'get',
             data: text,
             success: function (response) {
-                user = response;
-                user['message']=text
+                var data = response;
+                data['message']=text;
+                // console.log(data);
+                console.log(room_id);
                 // write chat message to DB
-                socket.emit('message', user);
+                socket.emit('message', room_id, data);
             },
         });
 

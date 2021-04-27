@@ -113,8 +113,9 @@ Route::get('/user/delete/{user_id}', [AdminController::class, 'deleteUser']);
 // -----------------------------------------------------------------------------------------
 
 // Chat Routes
-Route::get('/chat', [ChatController::class, 'getChat']);
+Route::get('/chat/{room_id}', [ChatController::class, 'getChat']);
 Route::get('/send-chat/{msg}', [ChatController::class, 'sendChat']);
+Route::get('/get-room-id', [ChatController::class, 'getRoomId']);
 // -----------------------------------------------------------------------------------------
 
 // Category Route

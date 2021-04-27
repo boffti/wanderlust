@@ -78,7 +78,7 @@
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="/chat">
+                                        <a href="/chat/{{ session('user_loc')['city_id'] }}">
                                             <i class="fas fa-comments" style="margin-right: 8px;"></i>
                                             Chatroom
                                         </a>
@@ -187,7 +187,7 @@
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
-                <form action="change-loc" method="post" class="flex-center" style="gap: 12px;">
+                <form action="/change-loc" method="post" class="flex-center" style="gap: 12px;">
                     @csrf
                     <div class="form-control"> <select id="location-select" name="location" id="location">
 

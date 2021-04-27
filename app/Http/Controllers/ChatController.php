@@ -7,8 +7,9 @@ use App\Models\Chat;
 
 class ChatController extends Controller
 {
-    public function getChat() {
-        $chats = Chat::with('user')
+    public function getChat($room_id) {
+        $chats = Chat::where('room_id', $room_id)
+        ->with('user')
         ->orderBy('created_at', 'ASC')
         ->take(20)
         ->get();
@@ -20,8 +21,13 @@ class ChatController extends Controller
         $c = new Chat;
         $c -> user_id = session('user')['user_id'];
         $c -> message = $msg;
+        $c -> room_id = session('user_loc')['city_id'];
         $c->save();
         return session('user');
+    }
+
+    public function getRoomId() {
+        return session('user_loc');
     }
 
 }

@@ -227,7 +227,8 @@ jQuery(document).ready(function ($) {
     });
 
     // Create Socket Connection
-    const socket = io('ws://localhost:8080');
+    const socket = io('ws://wl-chat.herokuapp.com/');
+
     var room_id;
     socket.on('connect', function() {
         $.ajax({
@@ -240,9 +241,6 @@ jQuery(document).ready(function ($) {
             },
         });
     });
-
-
-
 
     // Subscribe to messages pushed my Socket Server
     socket.on('message', text => {
@@ -261,7 +259,6 @@ jQuery(document).ready(function ($) {
         </div>
     </div>`
     $('#chats').append(chat);
-
     });
 
     // Emit messages to Socket Server

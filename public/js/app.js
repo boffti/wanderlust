@@ -227,7 +227,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Create Socket Connection for Heroku
-    const socket = io('ws://wl-chat.herokuapp.com/');
+    const socket = io('https://wl-chat.herokuapp.com/');
 
     var room_id;
     socket.on('connect', function() {

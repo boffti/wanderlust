@@ -77,7 +77,7 @@ ID : 1001750503 --}}
                     @endif
                         </div>
                 <div class="" style="margin-top: 10px;">
-                    <a href="/search">See more</a>
+                    <a href="#">See more</a>
                 </div>
             </section>
 

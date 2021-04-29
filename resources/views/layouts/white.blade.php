@@ -78,7 +78,7 @@
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="/chat">
+                                        <a href="/chat/{{ session('user_loc')['city_id'] }}">
                                             <i class="fas fa-comments" style="margin-right: 8px;"></i>
                                             Chatroom
                                         </a>

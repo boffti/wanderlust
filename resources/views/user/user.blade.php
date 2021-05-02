@@ -79,7 +79,7 @@
                                 <div class="flex">
                                     <input type="file" name="user_photo" id="uploadPhotoInput" style="display: none;" />
                                 </div>
-                                <div class="gallery-container">
+                                {{-- <div class="gallery-container">
                                     <!-- Define all of the tiles: -->
 
                                     @if(isset($user['photos']))
@@ -93,6 +93,15 @@
                                     @endforeach
                                 @endif
 
+                                </div> --}}
+                                <div class="gallery">
+                                    @if(isset($user['photos']))
+                                    @foreach($user['photos'] as $photo)
+                                    <div class="gallery-item">
+                                        <img class="gallery-image" src="{{ URL::asset('upload/user_photos/') }}/{{ $photo['photo_uri'] }}">
+                                    </div>
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </li>

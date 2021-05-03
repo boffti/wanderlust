@@ -13,6 +13,13 @@ use App\Models\User;
 use App\Models\CountryAdmin;
 use App\Models\UserRoles;
 use App\Models\Business;
+use App\Models\UserPhoto;
+use App\Models\UserVideo;
+use App\Models\Post;
+use App\Models\Tip;
+use App\Models\BusinessReview;
+use App\Models\BusinessTip;
+use App\Models\BusinessPhoto;
 
 class AdminController extends Controller
 {
@@ -193,9 +200,16 @@ class AdminController extends Controller
     }
 
     public function deleteUser(Request $request, $user_id) {
-        $c = User::where('user_id', $user_id)->first();
-        $c -> delete();
-        // TODO Delete User data from other tables
+        $us = UserRoles::where('user_id', $user_id)->delete();
+        $us = Post::where('user_id', $user_id)->delete();
+        $us = Tip::where('user_id', $user_id)->delete();
+        $us = UserPhoto::where('user_id', $user_id)->delete();
+        $us = UserVideo::where('user_id', $user_id)->delete();
+        $us = BusinessTip::where('user_id', $user_id)->delete();
+        $us = BusinessPhoto::where('user_id', $user_id)->delete();
+        $us = BusinessReview::where('user_id', $user_id)->delete();
+        $c = User::where('user_id', $user_id)->delete();
+
         return redirect()->route('super-admin');
     }
 }

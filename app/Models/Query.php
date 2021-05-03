@@ -10,5 +10,6 @@ class Query extends Model
     use HasFactory;
 
     protected $table = 'contact_form';
+    protected $primaryKey = 'query_id';
 
 }

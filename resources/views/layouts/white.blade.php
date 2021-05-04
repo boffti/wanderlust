@@ -189,7 +189,7 @@
             <div class="modal-content" style="align-items:center;">
                 <form action="/change-loc" method="post" class="flex-center" style="gap: 12px;">
                     @csrf
-                    <div class="form-control"> <select id="location-select" name="location" id="location">
+                    <div class="form-control"> <select id="location-select" name="location" id="location" required>
 
                         </select></div>
                     <div>

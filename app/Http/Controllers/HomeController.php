@@ -50,6 +50,10 @@ class HomeController extends Controller
 
     public function changeLoc(Request $request) {
         $city_id = $request->get('location');
+        if($city_id == "") {
+            return redirect()->route('home')
+            ->with('msg', 'City cannot be blank');
+        };
         $city = City::find($city_id);
         session(['user_loc' => $city]);
         return redirect()->route('home');

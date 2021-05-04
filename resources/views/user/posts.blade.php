@@ -14,7 +14,7 @@
             @csrf
             <div class="flex-left">
                 <textarea placeholder="Whats on your mind? Type here..." name="post_content" id="bulletin_post" cols="30" rows="3"
-                    style="width: 100%; padding:12px; margin: 12px" class="card"></textarea>
+                    style="width: 100%; padding:12px; margin: 12px" class="card" required></textarea>
                 <div class="card">
                     <p>See the latest buzz around you. Create your own buzz.</p>
                 </div>

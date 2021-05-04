@@ -1,4 +1,4 @@
-<!-- 
+<!--
     Author: Melkot, Aaneesh Naagaraj
     ID : 1001750503
 -->
@@ -88,7 +88,7 @@
                     <form action="/business/reviews/{{ $biz['business_id'] }}" method="post">
                         @csrf
                         <textarea placeholder="Remember, be nice!" id="" name="review" rows="6" cols="30"
-                        style="width: 100%;"></textarea>
+                        style="width: 100%;" required></textarea>
                         <button type="submit" class="btn">SUBMIT</button>
                     </form>
                 </div>

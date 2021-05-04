@@ -78,7 +78,7 @@
                 @csrf
                 <div class="flex-left">
                     <textarea placeholder="Write a tip about {{ $biz['business_name'] }}. Type here..." name="businessTip" id="bulletin_post" cols="30" rows="3"
-                        style="width: 100%; padding:12px; margin: 12px" class="card"></textarea>
+                        style="width: 100%; padding:12px; margin: 12px" class="card" required></textarea>
                     <div class="card">
                         <p>Write a tip to help other people. It can be about anything you've seen or heard.</p>
                     </div>

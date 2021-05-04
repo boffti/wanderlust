@@ -91,7 +91,7 @@ ID : 1001750503 --}}
                     @csrf
                     <div class="flex-left">
                         <textarea placeholder="What's on your mind? Type here..." name="post" id="bulletin_post"
-                            cols="30" rows="3" style="width: 100%; padding:12px; margin: 12px" class="card"></textarea>
+                            cols="30" rows="3" style="width: 100%; padding:12px; margin: 12px" class="card" required></textarea>
                         <div class="card">
                             <p>See the latest buzz around you. Create your own buzz.</p>
                         </div>
@@ -177,21 +177,21 @@ ID : 1001750503 --}}
                 <h2>Browse by Category</h2>
                 <div class="flex" style="gap: 12px;">
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="#" class="card-link"></a>
                         <i class="fas fa-hamburger fa-5x"></i>
                         <div class="content">
                             <h2>Restaurant</h2>
                         </div>
                     </div>
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="#" class="card-link"></a>
                         <i class="fas fa-shopping-cart fa-5x"></i>
                         <div class="content">
                             <h2>Shopping</h2>
                         </div>
                     </div>
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="#" class="card-link"></a>
                         <i class="fas fa-book-open fa-5x"></i>
                         <div class="content">
                             <h2>Education</h2>
@@ -200,21 +200,21 @@ ID : 1001750503 --}}
                 </div>
                 <div class="flex" style="gap: 12px; margin-top:12px">
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="#" class="card-link"></a>
                         <i class="fas fa-praying-hands fa-5x"></i>
                         <div class="content">
                             <h2>Religion & Worship</h2>
                         </div>
                     </div>
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="#" class="card-link"></a>
                         <i class="fas fa-ticket-alt fa-5x"></i>
                         <div class="content">
                             <h2>Entertainment</h2>
                         </div>
                     </div>
                     <div class="category-card">
-                        <a href="./pages/user/search_page.html" class="card-link"></a>
+                        <a href="#" class="card-link"></a>
                         <i class="fas fa-syringe fa-5x"></i>
                         <div class="content">
                             <h2>Health & Medical</h2>

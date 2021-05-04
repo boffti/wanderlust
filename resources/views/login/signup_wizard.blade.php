@@ -56,7 +56,7 @@
                         <div class="">
                             <input name="nationality" type="text" id="nationality" class="" placeholder="Nationality*" required>
                         </div>
-                        <div class="form-control"> <select name="city" id="city">
+                        <div class="form-control"> <select name="city" id="city" required>
                                 <option value="choose" disabled selected>Where are you moving to?</option>
                                 @if(isset($cities))
                                     @foreach ($cities as $city)
@@ -68,7 +68,7 @@
                         <div class="">
                             <input name="street_addr" type="text" id="street_addr" class="" placeholder="Street Address">
                         </div>
-                        <div class="form-control"> <select name="user_type" id="user_type">
+                        <div class="form-control"> <select name="user_type" id="user_type" required>
                                 <option value="choose" disabled selected>Are you migrating or visiting this city?</option>
                                 <option value="1">I'm migrating!</option>
                                 <option value="2">Just visiting</option>

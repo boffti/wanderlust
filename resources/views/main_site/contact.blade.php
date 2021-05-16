@@ -4,7 +4,7 @@ ID: 1001872904
 -->
 @extends('layouts.app')
 
-@section('title', 'Wanderlust | About')
+@section('title', 'Diaspora | About')
 
 @section('css-imports')
 <link href="{{ URL::asset('css/karthik.css') }}" rel="stylesheet">

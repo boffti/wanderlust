@@ -522,7 +522,7 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 20px;font-family:'Montserrat',sans-serif;" align="left">
 
   <div style="color: #000; line-height: 150%; text-align: center; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 150%;">Find things to do, places to see, food, shopping. Welcome to wanderlust. Welcome home.</p>
+    <p style="font-size: 14px; line-height: 150%;">Find things to do, places to see, food, shopping. Welcome to Diaspora. Welcome home.</p>
   </div>
 
       </td>
@@ -559,7 +559,7 @@ a[x-apple-data-detectors='true'] {
 <div align="center">
   <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:'Montserrat',sans-serif;"><tr><td style="font-family:'Montserrat',sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://wanderlust.axm0503.uta.cloud" style="height:56px; v-text-anchor:middle; width:336px;" arcsize="0%" stroke="f" fillcolor="#707070"><w:anchorlock/><center style="color:#FFF;font-family:'Montserrat',sans-serif;"><![endif]-->
     <a href="https://wanderlust.axm0503.uta.cloud" target="_blank" style="box-sizing: border-box;display: inline-block;font-family:'Montserrat',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFF; background-color: #707070; border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
-      <span style="display:block;padding:10px 30px;line-height:150%;"><span style="font-family: 'times new roman', times; font-size: 24px; line-height: 36px;">EXPLORE WANDERLUST</span></span>
+      <span style="display:block;padding:10px 30px;line-height:150%;"><span style="font-family: 'times new roman', times; font-size: 24px; line-height: 36px;">EXPLORE DIASPORA</span></span>
     </a>
   <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
 </div>

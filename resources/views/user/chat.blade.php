@@ -9,7 +9,7 @@
 <script defer src="{{ URL::asset('js/chat.js') }}"></script>
 @endsection
 
-@section('title', 'WL | Chatroom')
+@section('title', 'DS | Chatroom')
 
 @section('content')
 

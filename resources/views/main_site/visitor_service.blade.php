@@ -4,7 +4,7 @@ ID: 1001872904
 -->
 @extends('layouts.app')
 
-@section('title', 'Wanderlust | About')
+@section('title', 'Diaspora | About')
 
 @section('css-imports')
 <link href="{{ URL::asset('css/angad.css') }}" rel="stylesheet">
@@ -67,7 +67,7 @@ ID: 1001872904
                         information to
                         those seeking .
                         Provides an interface where users can chat one- to- one or many -to- many. Helps in bringing our
-                        Wanderlust community together .</p>
+                        Diaspora community together .</p>
                 </li>
             </div>
         </ul>

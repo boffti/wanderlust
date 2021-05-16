@@ -4,7 +4,7 @@
 -->
 @extends('layouts.white')
 
-@section('title', 'WL | ' . session('user')['full_name'])
+@section('title', 'DS | ' . session('user')['full_name'])
 
 @section('content')
     <br>

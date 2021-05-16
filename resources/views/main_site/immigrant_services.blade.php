@@ -5,7 +5,7 @@ ID: 1001718335
  -->
  @extends('layouts.app')
 
- @section('title', 'Wanderlust | About')
+ @section('title', 'Diaspora | About')
 
  @section('css-imports')
  <link href="{{ URL::asset('css/angad.css') }}" rel="stylesheet">
@@ -51,7 +51,7 @@ ID: 1001718335
             <div class="card bb-green">
                 <li class="c-services__item">
                     <h3><i class="fas fa-book-open a-1x mb-3 text-success"></i>&nbsp Review and Tips</h3>
-                    <p>Give and, Receive too. Leave Reviews and Tips on Wanderlust. Help users across the globe get
+                    <p>Give and, Receive too. Leave Reviews and Tips on Diaspora. Help users across the globe get
                         familiar
                         with the place they are located in.
                         Providing reviews and giving tips about a certain location or the businesses attached to it will
@@ -68,13 +68,13 @@ ID: 1001718335
                         information to
                         those seeking .
                         Provides an interface where users can chat one- to- one or many -to- many. Helps in bringing our
-                        Wanderlust community together .</p>
+                        Diaspora community together .</p>
                 </li>
             </div>
             <div class="card bb-green">
                 <li class="c-services__item">
                     <h3><i class="fas fa-photo-video fa-1x mb-3 text-success"></i>&nbsp Upload pictures & videos</h3>
-                    <p>Make your space all the more colorful. Wanderlust provides you with the access to upload photos
+                    <p>Make your space all the more colorful. Diaspora provides you with the access to upload photos
                         and
                         videos of the city,
                         local area or the businesses involved that will be of great assist to all the wanderers

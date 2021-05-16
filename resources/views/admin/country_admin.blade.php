@@ -4,7 +4,7 @@ ID: 1001774881
 -->
 @extends('layouts.admin')
 
-@section('title', "WL | ". session('admin')['country_name'] ." Admin")
+@section('title', "DS | ". session('admin')['country_name'] ." Admin")
 
 @section('content')
 

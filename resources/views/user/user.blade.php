@@ -4,7 +4,7 @@
 -->
 @extends('layouts.white')
 
-@section('title', 'WL | ' . $user['full_name'])
+@section('title', 'DS | ' . $user['full_name'])
 
 @section('content')
     <br>

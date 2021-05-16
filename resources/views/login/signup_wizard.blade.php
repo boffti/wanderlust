@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="{{ URL::asset('favicon.ico') }}" />
-    <title>Wanderlust | Signup Wizard</title>
+    <title>Diaspora | Signup Wizard</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">

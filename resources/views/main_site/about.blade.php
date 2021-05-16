@@ -5,7 +5,7 @@ ID: 1001718335
 
 @extends('layouts.app')
 
-@section('title', 'Wanderlust | About')
+@section('title', 'Diaspora | About')
 
 @section('css-imports')
 <link href="{{ URL::asset('css/angad.css') }}" rel="stylesheet">
@@ -17,7 +17,7 @@ ID: 1001718335
         <div class="container">
             <div class="flex-left" style="justify-content: space-between; align-items:center;">
                 <div class="flex-column">
-                    <h2 class="display-4">Welcome to Wanderlust</h2>
+                    <h2 class="display-4">Welcome to Diaspora</h2>
                     <h4 class="lead text-muted">Your space, your voice, your home.</h4>
                 </div>
                 <img src="{{ URL::asset('img/route.png') }}" alt="hero-img" style="padding: 50px 0px; width:400px;" />
@@ -46,7 +46,7 @@ ID: 1001718335
                         class="img-fluid mb-4 mb-lg-0"></div>
                 <div class="col-lg-6"> <i class="fas fa-comments fa-2x mb-3 text-success"></i>
                     <h4 class="font-weight-light">Meet new people</h4>
-                    <p class="font-italic text-muted mb-4">Wanderlust is your passport to find some really cool place
+                    <p class="font-italic text-muted mb-4">Diaspora is your passport to find some really cool place
                         and interact with poeple.
                     </p>
                     <a href=""> <button class="btn btn-success text-white">Chat Now</button>

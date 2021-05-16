@@ -28,7 +28,7 @@
     <!-- Navbar -->
     <div id="navbar" class="navbar flex-wrap">
         <div class="container flex mobile-nav">
-            <h1>Wanderlust</h1>
+            <h1>Diaspora</h1>
             <nav>
                 <ul class="hidden">
                     <li><a href="/">Home</a></li>
@@ -129,7 +129,7 @@
             <div class="grid grid-3">
                 <div class="">
                     <h6>About</h6>
-                    <p class="text-justify"><i>WANDERLUST</i> is a portal for immigrants who have just moved to a new
+                    <p class="text-justify"><i>Diaspora</i> is a portal for immigrants who have just moved to a new
                         location. They can use the provided services to find places of interest around them. They can
                         rate and review businesses and upload photos and videos to their profile.</p>
                 </div>
@@ -163,7 +163,7 @@
         <div class="container">
             <div class="grid grid-3">
                 <div class="">
-                    <p class="copyright-text">Wanderlust &copy; 2021. All Rights Reserved.
+                    <p class="copyright-text">Diaspora &copy; 2021. All Rights Reserved.
                     </p>
                 </div>
 

@@ -4,7 +4,7 @@
 -->
 @extends('layouts.white')
 
-@section('title', 'WL | Search Results')
+@section('title', 'DS | Search Results')
 
 @section('content')
 

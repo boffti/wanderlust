@@ -4,7 +4,7 @@ ID: 1001774881
 -->
 @extends('layouts.admin')
 
-@section('title', "WL | Super Admin")
+@section('title', "DS | Super Admin")
 
 @section('content')
 

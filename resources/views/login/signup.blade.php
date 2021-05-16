@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="{{ URL::asset('favicon.ico') }}"/>
-    <title>Wanderlust | Signup</title>
+    <title>Diaspora | Signup</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
@@ -39,7 +39,7 @@
                         <h1 class="login-heading"></h1>
                         <div id="typed">
                             <p>Welcome to your new home</p>
-                            <p>Welcome to Wanderlust.</p>
+                            <p>Welcome to Diaspora.</p>
                         </div>
                         <p class="login-heading mb-4">Create an account to get started.</p>
                     </div>

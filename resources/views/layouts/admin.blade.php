@@ -30,7 +30,7 @@ ID: 1001774881
     <!-- Navbar -->
     <div id="navbar" class="navbar navbar-wander-green flex-wrap">
         <div class="container flex mobile-nav">
-            <h1>Wanderlust</h1>
+            <h1>Diaspora</h1>
             <nav>
                 <ul class="hidden">
                     <li><a href="/">Home</a></li>

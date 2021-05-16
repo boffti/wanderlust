@@ -2,7 +2,7 @@
 ID : 1001750503 --}}
 @extends('layouts.app')
 
-@section('title', 'Wanderlust | Home')
+@section('title', 'Diaspora | Home')
 
 @section('content')
     <!-- hero -->

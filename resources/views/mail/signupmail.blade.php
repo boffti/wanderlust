@@ -141,7 +141,7 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 20px;font-family:'Montserrat',sans-serif;" align="left">
 
   <div style="color: #000; line-height: 120%; text-align: center; word-wrap: break-word;">
-    <p style="line-height: 120%; font-size: 14px;"><span style="--darkreader-inline-color: #bcb7ae; color: #c1bbb3; font-family: tahoma, arial, helvetica, sans-serif; font-size: 14px; line-height: 16.8px;" data-darkreader-inline-color=""><span style="font-size: 72px; line-height: 86.4px;">Welcome to Wanderlust!</span></span></p>
+    <p style="line-height: 120%; font-size: 14px;"><span style="--darkreader-inline-color: #bcb7ae; color: #c1bbb3; font-family: tahoma, arial, helvetica, sans-serif; font-size: 14px; line-height: 16.8px;" data-darkreader-inline-color=""><span style="font-size: 72px; line-height: 86.4px;">Welcome to Diaspora!</span></span></p>
   </div>
 
       </td>
@@ -538,7 +538,7 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 20px;font-family:'Montserrat',sans-serif;" align="left">
 
   <div style="color: #000; line-height: 150%; text-align: center; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 150%;">Find things to do, places to see, food, shopping. Welcome to wanderlust. Welcome home.</p>
+    <p style="font-size: 14px; line-height: 150%;">Find things to do, places to see, food, shopping. Welcome to Diaspora. Welcome home.</p>
   </div>
 
       </td>

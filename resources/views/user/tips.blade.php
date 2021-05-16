@@ -4,7 +4,7 @@
 -->
 @extends('layouts.white')
 
-@section('title', 'WL | ' . session('user_loc')['city_name'] . " Tips" )
+@section('title', 'DS | ' . session('user_loc')['city_name'] . " Tips" )
 
 @section('content')
 

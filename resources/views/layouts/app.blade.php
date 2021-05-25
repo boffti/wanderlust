@@ -20,6 +20,8 @@
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
     @yield('css-imports')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" integrity="sha512-Cv93isQdFwaKBV+Z4X8kaVBYWHST58Xb/jVOcV9aRsGSArZsgAnFIhMpDoMDcFNoUtday1hdjn0nGp3+KZyyFw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> --}}
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 </head>
 
@@ -28,23 +30,21 @@
     <!-- Navbar -->
     <div id="navbar" class="navbar navbar-primary flex-wrap">
         <div class="container flex mobile-nav">
-            <h1>Diaspora</h1>
+            <h1><span class="flag-icon flag-icon-ve"></span> {{ __("Diaspora") }}</h1>
             <nav>
                 <ul class="hidden">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
+                    <li><a href="/">{{ __("Home") }}</a></li>
+                    <li><a href="/about">{{ __("About") }}</a></li>
                     <li class="dropdown">
-                        <a href="#" class="">Services <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
+                        <a href="#" class="">{{ __("Services") }} <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="/immigrant-services">Immigrant
-                                    Services</a></li>
-                            <li><a class="dropdown-item" href="/visitor-services">Visitor
-                                    Services</a></li>
+                            <li><a class="dropdown-item" href="/immigrant-services">{{ __("Immigrant Services") }}</a></li>
+                            <li><a class="dropdown-item" href="/visitor-services">{{ __("Visitor Services") }}</a></li>
                         </ul>
                     </li>
-                    <li><a href="https://wanderlust.axm0503.uta.cloud/blog/">Blog</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="https://wanderlust.axm0503.uta.cloud/blog/">{{ __("Blog") }}</a></li>
+                    <li><a href="/contact">{{ __("Contact") }}</a></li>
                 </ul>
             </nav>
 
@@ -74,20 +74,20 @@
                                     <li class="dropdown-item">
                                         <a href="/profile">
                                             <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                            My Profile
+                                            {{ __("My Profile") }}
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
                                         <a href="/chat/{{ session('user_loc')['city_id'] }}">
                                             <i class="fas fa-comments" style="margin-right: 8px;"></i>
-                                            Chatroom
+                                            {{ __("Chatroom") }}
                                         </a>
                                     </li>
                                     @if(in_array('3', session('user_roles')))
                                     <li class="dropdown-item">
                                         <a href="/country-admin">
                                             <i class="fas fa-tools" style="margin-right: 8px;"></i>
-                                            Admin Console
+                                            {{ __("Admin Console") }}
                                         </a>
                                     </li>
                                     @endif
@@ -95,14 +95,14 @@
                                     <li class="dropdown-item">
                                         <a href="/super-admin">
                                             <i class="fas fa-toolbox" style="margin-right: 8px;"></i>
-                                            Super Admin Console
+                                            {{ __("Super Admin Console") }}
                                         </a>
                                     </li>
                                     @endif
                                     <li class="dropdown-item">
                                         <a href="/logout">
                                             <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
-                                            Logout
+                                            {{ __("Logout") }}
                                         </a>
                                     </li>
                                 </ul>
@@ -111,7 +111,7 @@
                         @else
                         <div class="signup">
                             <a href="/login">
-                                <button class="btn btn-outline-accent text-accent">Login / Signup</button>
+                                <button class="btn btn-outline-accent text-accent">{{ __("Login / Signup") }}</button>
                             </a>
                         </div>
 
@@ -128,33 +128,31 @@
         <div class="container">
             <div class="grid grid-3">
                 <div class="">
-                    <h6>About</h6>
-                    <p class="text-justify"><i>Diaspora</i> is a portal for immigrants who have just moved to a new
-                        location. They can use the provided services to find places of interest around them. They can
-                        rate and review businesses and upload photos and videos to their profile.</p>
+                    <h6>{{ __("About") }}</h6>
+                    <p class="text-justify"><i>{{ __("Diaspora") }}</i> {{ __("is a portal for immigrants who have just moved to a new location. They can use the provided services to find places of interest around them. They can rate and review businesses and upload photos and videos to their profile.") }}</p>
                 </div>
 
                 <div class="">
-                    <h6>Categories</h6>
+                    <h6>{{ __("Categories") }}</h6>
                     <ul class="footer-links">
-                        <li><a href="#">Restaurants</a></li>
-                        <li><a href="#">Shopping</a></li>
-                        <li><a href="#">Education</a></li>
-                        <li><a href="#">Religion & Worship</a></li>
-                        <li><a href="#">Entertainment</a></li>
-                        <li><a href="#">Health & Medical</a></li>
+                        <li><a href="#">{{ __("Restaurants") }}</a></li>
+                        <li><a href="#">{{ __("Shopping") }}</a></li>
+                        <li><a href="#">{{ __("Education") }}</a></li>
+                        <li><a href="#">{{ __("Religion & Worship") }}</a></li>
+                        <li><a href="#">{{ __("Entertainment") }}</a></li>
+                        <li><a href="#">{{ __("Health & Medical") }}</a></li>
                     </ul>
                 </div>
 
                 <div class="">
-                    <h6>Quick Links</h6>
+                    <h6>{{ __("Quick Links") }}</h6>
                     <ul class="footer-links">
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/immigrant-services">Immigrant Services</a></li>
-                        <li><a href="/visitor-services">Visitor Services</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="/about">{{ __("About") }}</a></li>
+                        <li><a href="/immigrant-services">{{ __("Immigrant Services") }}</a></li>
+                        <li><a href="/visitor-services">{{ __("Visitor Services") }}</a></li>
+                        <li><a href="/blog">{{ __("Blog") }}</a></li>
+                        <li><a href="/contact">{{ __("Contact") }}</a></li>
+                        <li><a href="/login">{{ __("Login") }}</a></li>
                     </ul>
                 </div>
             </div>
@@ -163,7 +161,7 @@
         <div class="container">
             <div class="grid grid-3">
                 <div class="">
-                    <p class="copyright-text">Diaspora &copy; 2021. All Rights Reserved.
+                    <p class="copyright-text">{{ __("Diaspora") }} &copy; {{ __("2021. All Rights Reserved.") }}
                     </p>
                 </div>
 
@@ -183,7 +181,7 @@
     <div id="location-select-modal-container" class="modal-container">
         <div class="modal" id="location-select-modal">
             <div class="modal-header flex-left space-between" style="align-items: center;">
-                <p style="margin-left: 12px;">Select Location</p>
+                <p style="margin-left: 12px;">{{ __("Select Location") }}</p>
                 <a href="#" class="cancel" style="float: right;">x</a>
             </div>
             <div class="modal-content" style="align-items:center;">
@@ -193,8 +191,8 @@
 
                         </select></div>
                     <div>
-                        <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
-                        <button class="btn" type="submit">Change</button>
+                        <button class="cancel btn btn-outline-secondary text-secondary">{{ __("Cancel") }}</button>
+                        <button class="btn" type="submit">{{ __("Change") }}</button>
                     </div>
                 </form>
             </div>

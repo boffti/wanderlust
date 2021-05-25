@@ -1,0 +1,67 @@
+{
+
+    "Welcome to Diaspora" : "Bienvenido a la diáspora",
+    "Welcome Home" : "Bienvenido a casa",
+    "Login to continue." : "Inicie sesión para continuar.",
+    "SIGN IN" : "INICIAR SESIÓN",
+    "Not registered yet? No problem! Let's get you started." : "Todavía no estas registrado? ¡No hay problema! Empecemos.",
+    "Create Account" : "Crear una cuenta",
+    "E-mail" : "Correo electrónico",
+    "Password" : "Contraseña",
+
+    "Welcome to your new home" : "Bienvenido a tu nuevo hogar",
+    "Create an account to get started." : "Cree una cuenta para comenzar.",
+    "Full Name" : "Nombre completo",
+    "Re-enter Password" : "Escriba la contraseña otra vez",
+    "SIGN UP" : "INSCRIBIRSE",
+    "Already have an account?" : "¿Ya tienes una cuenta?",
+    "Sign In" : "Iniciar sesión",
+
+    "You're almost home": "Estás casi en casa",
+    "We just need some more info to get you started." : "Solo necesitamos más información para comenzar.",
+    "Phone Number" : "Número de teléfono",
+    "Profession" : "Profesión",
+    "Date of birth": "Fecha de nacimiento",
+    "Nationality" : "Nacionalidad",
+    "Where are you moving to?" : "A dónde te mudas?",
+    "Street Address" : "Dirección",
+    "Are you migrating or visiting this city?" : "¿Está migrando o visitando esta ciudad?",
+    "I'm migrating!" : "¡Estoy migrando!",
+    "Just visiting" : "Solo de visita",
+    "COMPLETE SIGN UP" : "REGÍSTRESE COMPLETO",
+
+    "Diaspora" : "Diáspora",
+    "Home" : "Casa",
+    "About" : "Acerca de",
+    "Services" : "Servicios",
+    "Immigrant Services" : "Servicios para inmigrantes",
+    "Visitor Services" : "Servicios para visitantes",
+    "Blog" : "Blog",
+    "Contact" : "Contacto",
+
+    "My Profile" : "Mi perfil",
+    "Chatroom": "Sala de chat",
+    "Admin Console" : "Consola de administración",
+    "Super Admin Console" : "Super Consola de administración",
+    "Logout" : "Cerrar sesión",
+    "Login / Signup" : "Iniciar sesión / Registrarse",
+
+    "is a portal for immigrants who have just moved to a new location. They can use the provided services to find places of interest around them. They can rate and review businesses and upload photos and videos to their profile." : "es un portal para inmigrantes que se acaban de mudar a una nueva ubicación. Pueden utilizar los servicios prestados para encontrar lugares de interés a su alrededor. Pueden calificar y revisar empresas y cargar fotos y videos en su perfil.",
+
+    "Categories" : "Categorias",
+    "Restaurants" : "Restaurantes",
+    "Shopping" : "Compras",
+    "Education" : "Educación",
+    "Religion & Worship" : "Religión y adoración",
+    "Entertainment" : "Entretenimiento",
+    "Health & Medical" : "Salud y Medicina",
+
+    "Quick Links" : "Enlaces Rápidos",
+
+    "2021. All Rights Reserved." : "2021. Todos los derechos reservados.",
+
+    "Select Location" : "Seleccionar ubicación",
+    "Cancel" : "Cancelar",
+    "Change" : "Cambio"
+
+}

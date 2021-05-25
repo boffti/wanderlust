@@ -1256,6 +1256,11 @@ textarea::placeholder {
     transform: scale(1.15);
 }
 
+.btn-light {
+    background-color: #fdf0ed;
+    color: #ee6c4d;
+}
+
 /* @supports (display: grid) {
 	.gallery {
 		display: grid;

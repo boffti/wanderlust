@@ -31,33 +31,33 @@
                 <img src="{{ URL::asset('img/destination.png') }}" alt="" style="width: 100px;" class="">
                 <div class="card">
                     <div class="flex-vertical">
-                        <h1 class="login-heading">You're almost home
+                        <h1 class="login-heading">{{ __("You're almost home") }}
                             {{ session('register_user')['full_name'] }}
                         </h1>
-                        <p class="login-heading mb-4">We just need some more info to get you started.</p>
+                        <p class="login-heading mb-4">{{ __("We just need some more info to get you started.") }}</p>
                     </div>
                     <form role="form" action="/register-user" method="post">
                         @csrf
                         <div class="">
-                            <input name="phone" type="text" id="profession" class="" placeholder="Phone Number"
+                            <input name="phone" type="text" id="profession" class="" placeholder="{{ __("Phone Number") }}"
                             pattern="[0-9]{10}"
                             title="10 digits"
                             autofocus>
                         </div>
                         <div class="">
-                            <input name="profession" type="text" id="profession" class="" placeholder="Profession" required>
+                            <input name="profession" type="text" id="profession" class="" placeholder="{{ __("Profession") }}" required>
                         </div>
                         <div class="">
-                            <input name="dob" type="text" id="dob" class="" placeholder="Date of birth"
+                            <input name="dob" type="text" id="dob" class="" placeholder="{{ __("Date of birth") }}"
                             required
                             pattern="[0-1][0-9]/[0-3][0-9]/[0-9][0-9]"
                             title="mm/dd/yy">
                         </div>
                         <div class="">
-                            <input name="nationality" type="text" id="nationality" class="" placeholder="Nationality*" required>
+                            <input name="nationality" type="text" id="nationality" class="" placeholder="{{ __("Nationality") }}*" required>
                         </div>
                         <div class="form-control"> <select name="city" id="city" required>
-                                <option value="choose" disabled selected>Where are you moving to?</option>
+                                <option value="choose" disabled selected>{{ __("Where are you moving to?") }}</option>
                                 @if(isset($cities))
                                     @foreach ($cities as $city)
                                     <option value="{{ $city['city_id'] }}">{{ $city['city_name'] }}</option>
@@ -66,17 +66,17 @@
                             </select>
                         </div>
                         <div class="">
-                            <input name="street_addr" type="text" id="street_addr" class="" placeholder="Street Address">
+                            <input name="street_addr" type="text" id="street_addr" class="" placeholder="{{ __("Street Address") }}">
                         </div>
                         <div class="form-control"> <select name="user_type" id="user_type" required>
-                                <option value="choose" disabled selected>Are you migrating or visiting this city?</option>
-                                <option value="1">I'm migrating!</option>
-                                <option value="2">Just visiting</option>
+                                <option value="choose" disabled selected>{{ __("Are you migrating or visiting this city?") }}</option>
+                                <option value="1">{{ __("I'm migrating!") }}</option>
+                                <option value="2">{{ __("Just visiting") }}</option>
 
                             </select>
                         </div>
                         <br>
-                        <button class="btn btn-lg" type="submit">COMPLETE SIGN UP</button>
+                        <button class="btn btn-lg" type="submit">{{ __("COMPLETE SIGN UP") }}</button>
                         <br>
                     </form>
                 </div>

@@ -9,12 +9,15 @@
 <script defer src="{{ URL::asset('js/chat.js') }}"></script>
 @endsection
 
-@section('title', 'DS | Chatroom')
+@section('title', 'Chatroom | '. session('user_loc')['city_name'])
 
 @section('content')
 
     <div class="container">
-        <h2>Chatroom</h2>
+        <div class="flex-left" style="justify-content: space-between;">
+            <h2>Chatroom : {{ session('user_loc')['city_name'] }}</h2>
+            <a class="btn btn-light">General Chatroom</a>
+        </div>
         <div id="chats">
 
             @if(isset($chats))

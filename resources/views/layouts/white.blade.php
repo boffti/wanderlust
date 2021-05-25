@@ -28,7 +28,7 @@
     <!-- Navbar -->
     <div id="navbar" class="navbar flex-wrap">
         <div class="container flex mobile-nav">
-            <h1>Diaspora</h1>
+            <h1><span class="flag-icon flag-icon-ve"></span> Diaspora</h1>
             <nav>
                 <ul class="hidden">
                     <li><a href="/">Home</a></li>

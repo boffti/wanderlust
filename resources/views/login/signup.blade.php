@@ -38,20 +38,20 @@
                     <div class="flex-vertical">
                         <h1 class="login-heading"></h1>
                         <div id="typed">
-                            <p>Welcome to your new home</p>
-                            <p>Welcome to Diaspora.</p>
+                            <p>{{ __("Welcome to your new home") }}</p>
+                            <p>{{ __("Welcome to Diaspora") }}.</p>
                         </div>
-                        <p class="login-heading mb-4">Create an account to get started.</p>
+                        <p class="login-heading mb-4">{{ __("Create an account to get started.") }}</p>
                     </div>
                     <form role="form" action="/signup-handler" method="post">
                         @csrf
                         <div class="">
-                            <input name="name" type="name" id="name" class="" placeholder="Full Name"
+                            <input name="name" type="name" id="name" class="" placeholder="{{ __("Full Name") }}"
                                 required autofocus>
                             <!-- <label for="name">Full Name</label> -->
                         </div>
                         <div class="">
-                            <input name="email" type="email" id="email" class="" placeholder="E-mail"
+                            <input name="email" type="email" id="email" class="" placeholder="{{ __("E-mail") }}"
                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                 title="xxx@xxx.xxx"
                                 required>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="">
                             <input name="password" type="password" id="inputPassword" class=""
-                                placeholder="Password"
+                                placeholder="{{ __("Password") }}"
                                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
                                 title="8-12 letters, Atleast 1 uppercase, lowercase, symbol and number."
                                 required>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="">
                             <input name="reenter-password" type="password" id="inputPasswordReenter"
-                                class="" placeholder="Re-enter Password" required>
+                                class="" placeholder="{{ __("Re-enter Password") }}" required>
                             <!-- <label for="inputPasswordReenter">Re-enter Password</label> -->
                         </div>
                             @if(isset($msg))
@@ -79,11 +79,11 @@
                         <br>
                         <button
                             class="btn btn-lg"
-                            type="submit">SIGN UP</button>
+                            type="submit">{{ __("SIGN UP") }}</button>
                         <br>
                         <div class="flex flex-vertical">
-                            <p>Already have an account?</p>
-                            <a class="text-accent" href="/login">Sign In</a>
+                            <p>{{ __("Already have an account?") }}</p>
+                            <a class="text-accent" href="/login">{{ __("Sign In") }}</a>
                         </div>
                     </form>
                 </div>

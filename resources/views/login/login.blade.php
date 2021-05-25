@@ -38,27 +38,27 @@
                     <div class="flex-vertical">
                         <h1 class="login-heading"></h1>
                         <div id="typed">
-                            <p>Welcome to your new home</p>
-                            <p>Welcome to Diaspora.</p>
+                            <p>{{ __('Welcome to Diaspora') }}</p>
+                            <p>{{ __('Welcome Home') }}</p>
                         </div>
-                        <p class="login-heading">Login to continue.</p>
+                        <p class="login-heading">{{ __('Login to continue.') }}</p>
                     </div>
                     <form role="form" action="/login" method="post">
                         @csrf
                         <div class="form-label-group">
-                            <input name="email" type="email" id="email" class="form-control" placeholder="E-mail"
+                            <input name="email" type="email" id="email" class="form-control" placeholder="{{ __('E-mail') }}"
                                 required>
                             <!-- <label for="email">E-Mail</label> -->
                         </div>
                         <div class="form-label-group">
                             <input name="password" type="password" id="inputPassword" class="form-control"
-                                placeholder="Password" required>
+                                placeholder="{{ __("Password") }}" required>
                             <!-- <label for="inputPassword">Password</label> -->
                         </div>
                         <br>
                         <button
                             class="btn btn-lg btn-primary-w btn-block btn-login text-uppercase font-weight-bold mb-2"
-                            type="submit">SIGN IN</button>
+                            type="submit">{{ __('SIGN IN') }}</button>
                         <br>
                             @if(isset($msg))
                             <div class="flex flex-vertical">
@@ -67,9 +67,8 @@
                             @endif
 
                         <div class="flex flex-vertical">
-                            <p>Not registered yet? No problem!
-                                Let's get you started.</p>
-                            <a class="text-accent" href="/signup">Create Account</a>
+                            <p>{{ __("Not registered yet? No problem! Let's get you started.") }}</p>
+                            <a class="text-accent" href="/signup">{{ __('Create Account') }}</a>
                         </div>
                     </form>
                 </div>

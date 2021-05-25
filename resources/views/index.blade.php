@@ -24,20 +24,19 @@ ID : 1001750503 --}}
                 </div>
                 <h1 id="welcome-string"></h1><span style="visibility:hidden;">|</span>
             </div>
-            <p class="flex-vertical">Find nearby attractions. Connect with people. Contribute to your neighborhood.</p>
+            <p class="flex-vertical">{{ __("Find nearby attractions. Connect with people. Contribute to your neighborhood.") }}</p>
             <div class="">
                 <form class="hero-form card" action="/search" method="post" style="overflow: hidden;">
                     @csrf
                     <div class="flex-left flex-wrap" style="justify-content: space-between;">
                         <div class="form-control">
                             <input type="text" name="search_term" id="search_term"
-                                placeholder="Keywords eg: food, salons, shopping etc">
+                                placeholder="{{ __("Keywords eg: food, salons, shopping etc") }}">
                         </div>
                         <div class="form-control"> <select name="categories" id="categories">
 
                             </select></div>
-                        <button id="btnSearchNow" type="submit" href="#" class="btn">SEARCH
-                            NOW</button>
+                        <button id="btnSearchNow" type="submit" href="#" class="btn">{{ __("SEARCH NOW") }}</button>
                     </div>
                 </form>
             </div>
@@ -49,7 +48,7 @@ ID : 1001750503 --}}
 
             <!-- Explore Nearby -->
             <section>
-                <h2>Explore nearby</h2>
+                <h2>{{ __("Explore nearby") }}</h2>
                 <div class="flex" style="gap:12px">
                     @if(isset($businesses))
                         @foreach($businesses as $biz)
@@ -77,7 +76,7 @@ ID : 1001750503 --}}
                     @endif
                         </div>
                 <div class="" style="margin-top: 10px;">
-                    <a href="#">See more</a>
+                    <a href="#">{{ __("See more") }}</a>
                 </div>
             </section>
 
@@ -85,18 +84,18 @@ ID : 1001750503 --}}
 
             <!-- Bulletin Board -->
             <section>
-                <h2>Bulletin Board</h2>
+                <h2>{{ __("Bulletin Board") }}</h2>
                 <!-- ! IF User.role != visitor -->
                 <form action="/post" method="post">
                     @csrf
                     <div class="flex-left">
-                        <textarea placeholder="What's on your mind? Type here..." name="post" id="bulletin_post"
+                        <textarea placeholder="{{ __("What's on your mind? Type here") }}..." name="post" id="bulletin_post"
                             cols="30" rows="3" style="width: 100%; padding:12px; margin: 12px" class="card" required></textarea>
                         <div class="card">
-                            <p>See the latest buzz around you. Create your own buzz.</p>
+                            <p>{{ __("See the latest buzz around you. Create your own buzz.") }}</p>
                         </div>
                     </div>
-                    <button type="submit" class="btn" style="margin:0 12px;">POST</button>
+                    <button type="submit" class="btn" style="margin:0 12px;">{{ __("POST") }}</button>
                 </form>
                 <!-- ! ENDIF -->
                 <div class="posts">
@@ -119,13 +118,13 @@ ID : 1001750503 --}}
                         @endforeach
                     @endif
                 </div>
-                <a href="/more-posts" style="margin-left: 12px;">See all</a>
+                <a href="/more-posts" style="margin-left: 12px;">{{ __("See all") }}</a>
             </section>
 
             <br>
             <!-- Tips -->
             <section>
-                <h2>Word to the Wise</h2>
+                <h2>{{ __("Word to the Wise") }}</h2>
                 <div class="tips">
                     @if(isset($tips))
                         @foreach($tips as $tip)
@@ -145,10 +144,10 @@ ID : 1001750503 --}}
                     @endif
                 </div>
                 <div class="flex" style="justify-content: space-between; padding: 0 15px">
-                    <a href="/more-tips" class="">See more tips</a>
+                    <a href="/more-tips" class="">{{ __("See more tips") }}</a>
                     @if(null !== session('user_roles'))
                     @if(in_array('1', session('user_roles')))
-                    <a href="/more-tips" class="strong">+ ADD TIP</a>
+                    <a href="/more-tips" class="strong">+ {{ __("ADD TIP") }}</a>
                     @endif
                     @endif
                 </div>
@@ -157,7 +156,7 @@ ID : 1001750503 --}}
             <br>
 
             <section>
-                <h2>Moments around you</h2>
+                <h2>{{ __("Moments around you") }}</h2>
                 <div class="gallery">
                     @if(isset($photos))
                     @foreach($photos as $photo)
@@ -174,27 +173,27 @@ ID : 1001750503 --}}
 
             <!-- Categories -->
             <section class="">
-                <h2>Browse by Category</h2>
+                <h2>{{ __("Browse by Category") }}</h2>
                 <div class="flex" style="gap: 12px;">
                     <div class="category-card">
                         <a href="#" class="card-link"></a>
                         <i class="fas fa-hamburger fa-5x"></i>
                         <div class="content">
-                            <h2>Restaurant</h2>
+                            <h2>{{ __("Restaurant") }}</h2>
                         </div>
                     </div>
                     <div class="category-card">
                         <a href="#" class="card-link"></a>
                         <i class="fas fa-shopping-cart fa-5x"></i>
                         <div class="content">
-                            <h2>Shopping</h2>
+                            <h2>{{ __("Shopping") }}</h2>
                         </div>
                     </div>
                     <div class="category-card">
                         <a href="#" class="card-link"></a>
                         <i class="fas fa-book-open fa-5x"></i>
                         <div class="content">
-                            <h2>Education</h2>
+                            <h2>{{ __("Education") }}</h2>
                         </div>
                     </div>
                 </div>
@@ -203,21 +202,21 @@ ID : 1001750503 --}}
                         <a href="#" class="card-link"></a>
                         <i class="fas fa-praying-hands fa-5x"></i>
                         <div class="content">
-                            <h2>Religion & Worship</h2>
+                            <h2>{{ __("Religion & Worship") }}</h2>
                         </div>
                     </div>
                     <div class="category-card">
                         <a href="#" class="card-link"></a>
                         <i class="fas fa-ticket-alt fa-5x"></i>
                         <div class="content">
-                            <h2>Entertainment</h2>
+                            <h2>{{ __("Entertainment") }}</h2>
                         </div>
                     </div>
                     <div class="category-card">
                         <a href="#" class="card-link"></a>
                         <i class="fas fa-syringe fa-5x"></i>
                         <div class="content">
-                            <h2>Health & Medical</h2>
+                            <h2>{{ __("Health & Medical") }}</h2>
                         </div>
                     </div>
                 </div>

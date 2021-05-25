@@ -62,6 +62,25 @@
 
     "Select Location" : "Seleccionar ubicación",
     "Cancel" : "Cancelar",
-    "Change" : "Cambio"
+    "Change" : "Cambio",
+
+    "Find nearby attractions. Connect with people. Contribute to your neighborhood." : "Encuentra atracciones cercanas. Conéctate con la gente. Contribuya a su vecindario.",
+    "Keywords eg: food, salons, shopping etc" : "Palabras clave, por ejemplo: comida, salones, compras, etc.",
+    "SEARCH NOW" : "BUSCAR AHORA",
+    "Explore nearby" : "Explorar cerca",
+    "See more" : "Ver más",
+    "Bulletin Board" : "Tablón de anuncios",
+    "What's on your mind? Type here" : "¿Qué tienes en mente? Escriba aquí",
+    "See the latest buzz around you. Create your own buzz." : "Vea los últimos rumores a su alrededor. Crea tu propio zumbido.",
+    "POST" : "CORREO",
+    "See all" : "Ver todo",
+
+    "Word to the Wise" : "Palabra al sabio",
+    "See more tips" : "Ver más sugerencias",
+    "ADD TIP" : "AÑADIR SUGERENCIA",
+
+    "Moments around you" : "Momentos a tu alrededor",
+
+    "Browse by Category" : "Buscar por categoría"
 
 }

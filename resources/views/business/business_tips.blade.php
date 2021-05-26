@@ -15,20 +15,12 @@
             <form class="hero-form card flex" action="#">
                 <div class="form-control">
                     <input type="text" name="search-term" id="search-term"
-                        placeholder="Keywords eg: food, salons, shopping etc">
+                        placeholder="{{ __("Keywords eg: food, salons, shopping etc") }}">
                 </div>
                 <div class="form-control"> <select name="categories" id="categories">
-                        <option value="choose" disabled selected>Choose a Category</option>
-                        <option value="restaurants">Restaurants</option>
-                        <option value="shopping">Shopping</option>
-                        <option value="education">Education</option>
-                        <option value="worship">Religion & Worship</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="health">Health & Medical</option>
                     </select>
                 </div>
-                <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH
-                    NOW</button>
+                <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">{{ __("SEARCH NOW") }}</button>
             </form>
         </section>
         <br>
@@ -50,10 +42,7 @@
                     </div>
                     <p class="business-category"></p>
                     <div class="business-timings">
-                        <span style="color: var(--other-color-1); font-weight:bold; margin-right:10px;">Open</span> Open
-                        24
-                        hours
-                    </div>
+                        <span style="color: var(--other-color-1); font-weight:bold; margin-right:10px;">{{ __("Open") }}</span>{{ __("Open 24 hours") }}</div>
                     <br>
                 </div>
 
@@ -71,19 +60,19 @@
         <!-- Tips Section -->
         <section>
             <div class="flex-left" style="justify-content: space-between;">
-                <h2>Word to the Wise</h2>
+                <h2>{{ __("Word to the Wise") }}</h2>
             </div>
             @if(in_array('1', session('user_roles')))
             <form action="/business/tips/{{ $biz['business_id'] }}" method="post">
                 @csrf
                 <div class="flex-left">
-                    <textarea placeholder="Write a tip about {{ $biz['business_name'] }}. Type here..." name="businessTip" id="bulletin_post" cols="30" rows="3"
+                    <textarea placeholder="{{ __("Write a tip about") }} {{ $biz['business_name'] }}. {{ __("Type here") }}..." name="businessTip" id="bulletin_post" cols="30" rows="3"
                         style="width: 100%; padding:12px; margin: 12px" class="card" required></textarea>
                     <div class="card">
-                        <p>Write a tip to help other people. It can be about anything you've seen or heard.</p>
+                        <p>{{ __("Write a tip to help other people. It can be about anything you've seen or heard.") }}</p>
                     </div>
                 </div>
-                <button type="submit" class="btn" style="margin:0 12px;">SUBMIT</button>
+                <button type="submit" class="btn" style="margin:0 12px;">{{ __("SUBMIT") }}</button>
             </form>
             @endif
             <br>

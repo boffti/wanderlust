@@ -120,6 +120,40 @@
     "Local businesses & attractions" : "Negocios y atracciones locales",
     "Find businesses and attractions around you. Check out their ratings and reviews and see their location and oprationg hours. Phone numbers are listed too." : "Encuentra negocios y atracciones a tu alrededor. Verifique sus calificaciones y reseñas y vea su ubicación y horario de operación. También se enumeran los números de teléfono.",
 
-    "Find things to do" : "Encuentra cosas que hacer"
+    "Find things to do" : "Encuentra cosas que hacer",
+
+    "reviews" : "críticas",
+    "Open" : "Abierto",
+    "Open 24 hours" : "Abierto las 24 horas",
+    "Write a Review" : "Escribe una reseña",
+    "Add Photo" : "Añadir foto",
+    "Share" : "Cuota",
+    "COVID-19 Safety Measures" : "Medidas de seguridad COVID-19",
+    "Staff wears masks" : "El personal lleva máscaras",
+    "Sanitized frequently" : "Desinfectado con frecuencia",
+    "Staff wears gloves": "El personal usa guantes",
+    "Staff temperature checks" : "Controles de temperatura del personal",
+    "Contactless payments" : "Pagos sin contacto",
+
+    "About the Business" : "Sobre el negocio",
+    "Photos" : "Fotos",
+    "Location & Hours" : "Ubicación y horario",
+    "Monday" : "Lunes",
+    "Tuesday" : "Martes",
+    "Wednesday" : "Miércoles",
+    "Thursday" : "Jueves",
+    "Friday" : "Viernes",
+    "Saturday" : "Sábado",
+    "Sunday" : "Domingo",
+
+    "Reviews" : "Reseñas",
+    "Leave a review" : "Dejar un comentario",
+    "Remember, be nice!" : "Recuerda, sé amable.",
+
+    "Write a tip to help other people. It can be about anything you've seen or heard." : "Escribe un consejo para ayudar a otras personas. Puede tratarse de cualquier cosa que hayas visto o escuchado.",
+
+    "Write a tip about" : "Escribir un consejo sobre",
+    "Type here" : "Escriba aquí"
+
 
 }

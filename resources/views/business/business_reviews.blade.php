@@ -15,20 +15,12 @@
             <form class="hero-form card flex" action="#">
                 <div class="form-control">
                     <input type="text" name="search-term" id="search-term"
-                        placeholder="Keywords eg: food, salons, shopping etc">
+                        placeholder="{{ __("Keywords eg: food, salons, shopping etc") }}">
                 </div>
                 <div class="form-control"> <select name="categories" id="categories">
-                        <option value="choose" disabled selected>Choose a Category</option>
-                        <option value="restaurants">Restaurants</option>
-                        <option value="shopping">Shopping</option>
-                        <option value="education">Education</option>
-                        <option value="worship">Religion & Worship</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="health">Health & Medical</option>
                     </select>
                 </div>
-                <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH
-                    NOW</button>
+                <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">{{ __("SEARCH NOW") }}</button>
             </form>
         </section>
         <br>
@@ -46,14 +38,11 @@
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="far fa-star"></i></li>
                         </ul>
-                        <span class="rating-count">{{ count($reviews) }} reviews</span>
+                        <span class="rating-count">{{ count($reviews) }} {{ __("reviews") }}</span>
                     </div>
                     <p class="business-category"></p>
                     <div class="business-timings">
-                        <span style="color: var(--other-color-1); font-weight:bold; margin-right:10px;">Open</span> Open
-                        24
-                        hours
-                    </div>
+                        <span style="color: var(--other-color-1); font-weight:bold; margin-right:10px;">{{ __("Open") }}</span> {{ __("Open 24 hours") }}</div>
                     <br>
                 </div>
 
@@ -72,10 +61,10 @@
         <section>
             <div>
                 <div class="flex-left" style="justify-content: space-between;">
-                    <h2>Reviews</h2>
+                    <h2>{{ __("Reviews") }}</h2>
                 </div>
                 <div class="card">
-                    <h3>Leave a review</h3>
+                    <h3>{{ __("Leave a review") }}</h3>
                     <div class="rating flex-left" style="font-size: 20px; justify-content:space-between;">
                         <ul>
                             <li><i class="fas fa-star review-form-star"></i></li>
@@ -87,9 +76,9 @@
                     </div>
                     <form action="/business/reviews/{{ $biz['business_id'] }}" method="post">
                         @csrf
-                        <textarea placeholder="Remember, be nice!" id="" name="review" rows="6" cols="30"
+                        <textarea placeholder="{{ __("Remember, be nice!") }}" id="" name="review" rows="6" cols="30"
                         style="width: 100%;" required></textarea>
-                        <button type="submit" class="btn">SUBMIT</button>
+                        <button type="submit" class="btn">{{ __("SUBMIT") }}</button>
                     </form>
                 </div>
                 @if(isset($reviews))

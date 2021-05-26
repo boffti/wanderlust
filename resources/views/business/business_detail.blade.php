@@ -15,13 +15,12 @@
             <form class="hero-form card flex" action="#">
                 <div class="form-control">
                     <input type="text" name="search-term" id="search-term"
-                        placeholder="Keywords eg: food, salons, shopping etc">
+                        placeholder="{{ __("Keywords eg: food, salons, shopping etc") }}">
                 </div>
                 <div class="form-control"> <select name="categories" id="categories">
                     </select>
                 </div>
-                <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">SEARCH
-                    NOW</button>
+                <button id="btnSearchNow" type="submit" href="#" class="btn" style="margin-left: 25px;">{{ __("SEARCH NOW") }}</button>
             </form>
         </section>
         <br>
@@ -41,24 +40,20 @@
                             <li><i class="fas fa-star"></i></li>
                             <li><i class="far fa-star"></i></li>
                         </ul>
-                        <span class="rating-count">{{ count($reviews) }} reviews</span>
+                        <span class="rating-count">{{ count($reviews) }} {{ __("reviews") }}</span>
                     </div>
                     <p class="business-category"></p>
                     <div class="business-timings">
-                        <span style="color: var(--other-color-1); font-weight:bold; margin-right:10px;">Open</span> Open
-                        24
-                        hours
-                    </div>
+                        <span style="color: var(--other-color-1); font-weight:bold; margin-right:10px;">{{ __("Open") }}</span> {{ __("Open 24 hours") }}</div>
                     <br>
                     <div>
                         <button id="btnWriteReview" class="btn" style="font-size: large;"><i class="far fa-star"
-                                style="margin-right: 10px;"></i> Write a Review</button>
+                                style="margin-right: 10px;"></i> {{ __("Write a Review") }}</button>
                         <button id="btnUploadBusinessPhoto" class="btn btn-outline-secondary text-secondary"
-                            style="font-size: large;"><i class="fas fa-camera" style="margin-right: 10px;"></i> Add
-                            Photo</button>
+                            style="font-size: large;"><i class="fas fa-camera" style="margin-right: 10px;"></i> {{ __("Add Photo") }}</button>
                                 <input id="fileBusinessPhoto" type="file" name="business_photo" biz_id="{{ $biz['business_id'] }}" style="display: none;">
                         <button class="btn btn-outline-secondary text-secondary" style="font-size: large;"><i
-                                class="fas fa-share-alt" style="margin-right: 10px;"></i> Share</button>
+                                class="fas fa-share-alt" style="margin-right: 10px;"></i> {{ __("Share") }}</button>
                     </div>
                 </div>
 
@@ -76,18 +71,13 @@
 
         <section>
             <div>
-                <h2>COVID-19 Safety Measures</h2>
+                <h2>{{ __("COVID-19 Safety Measures") }}</h2>
                 <div class="flex-left" style="justify-content: space-between;">
-                    <span class="strong"><i class="fas fa-check wander-green" style="margin-right:8px"></i>Staff wears
-                        masks</span>
-                    <span class="strong"><i class="fas fa-check wander-green" style="margin-right:8px"></i>Sanitized
-                        frequently</span>
-                    <span class="strong"><i class="fas fa-check wander-green" style="margin-right:8px"></i>Staff wears
-                        gloves</span>
-                    <span class="strong"><i class="fas fa-check wander-green" style="margin-right:8px"></i>Staff
-                        temperature checks</span>
-                    <span class="strong"><i class="fas fa-check wander-green" style="margin-right:8px"></i>Contactless
-                        payments</span>
+                    <span class="strong"><i class="fas fa-check wander-green" style="margin-right:8px"></i>{{ __("Staff wears masks") }}</span>
+                    <span class="strong"><i class="fas fa-check wander-green" style="margin-right:8px"></i>{{ __("Sanitized frequently") }}</span>
+                    <span class="strong"><i class="fas fa-check wander-green" style="margin-right:8px"></i>{{ __("Staff wears gloves") }}</span>
+                    <span class="strong"><i class="fas fa-check wander-green" style="margin-right:8px"></i>{{ __("Staff temperature checks") }}</span>
+                    <span class="strong"><i class="fas fa-check wander-green" style="margin-right:8px"></i>{{ __("Contactless payments") }}</span>
                 </div>
             </div>
         </section>
@@ -99,7 +89,7 @@
         <!-- Business Description Section -->
         <section>
             <div>
-                <h2>About the Business</h2>
+                <h2>{{ __("About the Business") }}</h2>
                 <div class="card">
                     <p>{{ $biz['business_desc'] }}</p>
                 </div>
@@ -114,7 +104,7 @@
         <section>
             <div>
                 <div class="flex-left" style="justify-content: space-between;">
-                    <h2>Photos</h2>
+                    <h2>{{ __("Photos") }}</h2>
                     {{-- <a href="#">See more</a> --}}
                 </div>
                 <div class="flex-left">
@@ -141,7 +131,7 @@
         <!-- Tips Section -->
         <section>
             <div class="flex-left" style="justify-content: space-between;">
-                <h2>Word to the Wise</h2>
+                <h2>{{ __("Word to the Wise") }}</h2>
                 {{-- <a href="./business_tips.php">See more</a> --}}
             </div>
             <div class="tips">
@@ -163,7 +153,7 @@
                 @endif
             </div>
             <div class="flex" style="justify-content: space-between; padding: 0 15px">
-                <a href="/business/tips/{{ $biz['business_id'] }}" class="strong">See all</a>
+                <a href="/business/tips/{{ $biz['business_id'] }}" class="strong">{{ __("See all") }}</a>
             </div>
         </section>
 
@@ -174,7 +164,7 @@
         <!-- Location & Hours section -->
         <section>
             <div>
-                <h2>Location & Hours</h2>
+                <h2>{{ __("Location & Hours") }}</h2>
                 <div class="flex-left" style="gap:20px;">
                     <div>
                         <div class="" style="height: 80%; width:500px; margin-right:20px;"><iframe frameborder="0"
@@ -188,47 +178,47 @@
                         <table>
                             <tr style="padding: 6px;">
                                 <td class="strong">
-                                    Monday
+                                    {{ __("Monday") }}
                                 </td>
                                 <td>
-                                    Open 24 hours
+                                    {{ __("Open 24 hours") }}
                                 </td>
                             </tr>
                             <tr style="padding: 6px;">
                                 <td class="strong">
-                                    Tuesday
+                                    {{ __("Tuesday") }}
                                 </td>
                                 <td>
-                                    Open 24 hours
+                                    {{ __("Open 24 hours") }}
                                 </td>
                             </tr>
                             <tr style="padding: 6px;">
                                 <td class="strong">
-                                    Wednesday
+                                    {{ __("Wednesday") }}
                                 </td>
                                 <td>
-                                    Open 24 hours
+                                    {{ __("Open 24 hours") }}
                                 </td>
                             </tr>
                             <tr style="padding: 6px;">
                                 <td class="strong">
-                                    Thursday
+                                    {{ __("Thursday") }}
                                 </td>
                                 <td>
-                                    Open 24 hours
+                                    {{ __("Open 24 hours") }}
                                 </td>
                             </tr>
                             <tr style="padding: 6px;">
                                 <td class="strong">
-                                    Friday
+                                    {{ __("Friday") }}
                                 </td>
                                 <td>
-                                    Open 24 hours
+                                    {{ __("Open 24 hours") }}
                                 </td>
                             </tr>
                             <tr style="padding: 6px;">
                                 <td class="strong">
-                                    Saturday
+                                    {{ __("Saturday") }}
                                 </td>
                                 <td>
                                     4:00 PM - 11:00 PM
@@ -236,7 +226,7 @@
                             </tr>
                             <tr style="padding: 6px;">
                                 <td class="strong">
-                                    Sunday
+                                    {{ __("Sunday") }}
                                 </td>
                                 <td>
                                     4:00 PM - 11:00 PM
@@ -273,10 +263,10 @@
         <section id="review-section">
             <div>
                 <div class="flex-left" style="justify-content: space-between;">
-                    <h2>Reviews</h2>
+                    <h2>{{ __("Reviews") }}</h2>
                 </div>
                 <div class="card">
-                    <h3>Leave a review</h3>
+                    <h3>{{ __("Leave a review") }}</h3>
                     <div class="rating flex-left" style="font-size: 20px; justify-content:space-between;">
                         <ul>
                             <li><i class="fas fa-star review-form-star"></i></li>
@@ -288,9 +278,9 @@
                     </div>
                     <form action="/business/reviews/{{ $biz['business_id'] }}" method="post">
                         @csrf
-                        <textarea placeholder="Remember, be nice!" id="" name="review" rows="6" cols="30"
+                        <textarea placeholder="{{ __("Remember, be nice!") }}" id="" name="review" rows="6" cols="30"
                         style="width: 100%;" required></textarea>
-                        <button type="submit" class="btn">SUBMIT</button>
+                        <button type="submit" class="btn">{{ __("SUBMIT") }}</button>
                     </form>
                 </div>
                 @if(isset($reviews))
@@ -323,7 +313,7 @@
             @endif
 
             </div>
-            <a href="/business/reviews/{{ $biz['business_id'] }}" class="flex-center">See All</a>
+            <a href="/business/reviews/{{ $biz['business_id'] }}" class="flex-center">{{ __("See all") }}</a>
         </section>
     </div>
 

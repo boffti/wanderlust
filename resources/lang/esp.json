@@ -93,6 +93,15 @@
     "Make a dope profile" : "Crea un perfil genial",
     "Create a profile worth showing off. Add photos and videos of your exploits." : "Crea un perfil que valga la pena lucirse. Agrega fotos y videos de tus hazañas",
     "Made with" : "Hecho con",
-    "by" : "por"
+    "by" : "por",
+
+    "We'd love to hear from you. Please reach out to us with any queries." : "Nos encantaría saber de ti. Comuníquese con nosotros con cualquier consulta.",
+    "First name" : "Nombre propio",
+    "Country" : "País",
+    "Phone" : "Teléfono",
+    "Last name" : "Apellido",
+    "Email" : "Correo electrónico",
+    "Immigrant/Visitor" : "Inmigrante/Visitante",
+    "SUBMIT" : "ENVIAR",
 
 }

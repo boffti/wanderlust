@@ -15,7 +15,7 @@ ID: 1001872904
     <section style="background-color: var(--primary-color); padding:60px 0;">
         <div class="container">
             <div class="flex-center" style="justify-content: space-between; align-items:center;">
-                <h2 class="display-4">We'd love to hear from you. Please reach out to us with any queries.</h2>
+                <h2 class="display-4">{{ __("We'd love to hear from you. Please reach out to us with any queries.") }}</h2>
             </div>
         </div>
     </section>
@@ -29,18 +29,18 @@ ID: 1001872904
                 <h3>Contact us</h3>
                 <div class="flex-left" style="justify-content: space-around;">
                     <div style="width: 100%;">
-                        <input type="text" name="firstName" id="" placeholder="First name" required>
-                        <input type="text" name="country" id="" placeholder="Country" required>
-                        <input type="text" name="phone" id="" placeholder="Phone" pattern=[0-9]{10}>
+                        <input type="text" name="firstName" id="" placeholder="{{ __("First name") }}" required>
+                        <input type="text" name="country" id="" placeholder="{{ __("Country") }}" required>
+                        <input type="text" name="phone" id="" placeholder="{{ __("Phone") }}" pattern=[0-9]{10}>
                     </div>
                     <div style="width: 100%;">
-                        <input type="text" name="lastName" id="" placeholder="Last name" required>
-                        <input type="text" name="email" id="" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-                        <input type="text" name="userType" id="" placeholder="Immigrant/Visitor">
+                        <input type="text" name="lastName" id="" placeholder="{{ __("Last name") }}" required>
+                        <input type="text" name="email" id="" placeholder="{{ __("Email") }}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                        <input type="text" name="userType" id="" placeholder="{{ __("Immigrant/Visitor") }}">
                     </div>
                 </div>
                 <textarea placeholder="Query" id="" name="query" rows="6" cols="30" required></textarea>
-                <button type="submit" class="btn btn-submit">SUBMIT</button>
+                <button type="submit" class="btn btn-submit">{{ __("SUBMIT") }}</button>
             </form>
         </div>
     </div>

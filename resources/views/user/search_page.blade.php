@@ -12,7 +12,7 @@
     <div>
         <div class="container-fluid-left">
 
-            <div class="flex" style="gap: 12px;">
+            <div class="flex" style="gap: 12px; align-items:flex-start;">
                 <section id="left-section" style="flex-grow: 1.5; flex-basis: 0;">
                     <section>
                         <h2 class="">{{ __("You might like") }}</h2>

@@ -12,8 +12,8 @@
     <section class="flex">
         <div class="container">
             <div class="hero-text flex-vertical">
-                <h1 id="" style="font-size: 35px;">This is YOU.</h1>
-                <p class="">What have you been up to lately? Use this page to upload your latest photos and videos.</p>
+                <h1 id="" style="font-size: 35px;">{{ __("This is YOU.") }}</h1>
+                <p class="">{{ __("What have you been up to lately? Use this page to upload your latest photos and videos.") }}</p>
             </div>
             <!-- <div class="card"> -->
             <div class="flex-left">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="card" style="width: 100%;">
                         <div class="flex-left space-between">
-                            <h3>Your Details</h3>
+                            <h3>{{ __("Your Details") }}</h3>
                             <a id="btnEditProfile" href="#"><i class="fas fa-edit"></i></a>
                         </div>
                         <br>
@@ -66,12 +66,12 @@
                 <div class="card">
                     <ul class="tabs">
                         @if(in_array('1', session('user_roles')))
-                        <li class="active">PHOTOS</li>
-                        <li>VIDEOS</li>
-                        <li>POSTS</li>
-                        <li>TIPS</li>
+                        <li class="active">{{ __("PHOTOS") }}</li>
+                        <li>{{ __("VIDEOS") }}</li>
+                        <li>{{ __("POSTS") }}</li>
+                        <li>{{ __("TIPS") }}</li>
                         @else
-                        <li class="active">POSTS</li>
+                        <li class="active">{{ __("POSTS") }}</li>
                         @endif
                     </ul>
 
@@ -81,8 +81,8 @@
                         <li class="active">
                             <div class="tab-content-container">
                                 <div class="flex">
-                                    <h2 class="">Your photos - <span></span></h2>
-                                    <button id="btnUploadPhoto" class="btn">ADD</button>
+                                    <h2 class="">{{ __("Your photos") }} - <span></span></h2>
+                                    <button id="btnUploadPhoto" class="btn">{{ __("ADD") }}</button>
                                     <input type="file" name="user_photo" id="uploadPhotoInput" style="display: none;" />
                                 </div>
                                 {{-- <div class="gallery-container">
@@ -115,8 +115,8 @@
                         <li>
                             <div class="tab-content-container">
                                 <div class="flex">
-                                    <h2 class="">Your Videos - <span></span></h2>
-                                    <button id="btnUploadVideo" class="btn">ADD</button>
+                                    <h2 class="">{{ __("Your Videos") }} - <span></span></h2>
+                                    <button id="btnUploadVideo" class="btn">{{ __("ADD") }}</button>
                                     <input name="user_video" type="file" id="uploadVideoInput" style="display: none;" />
                                 </div>
 
@@ -139,7 +139,7 @@
                         <!-- Posts Tab -->
                         <li>
                             <div class="tab-content-container">
-                                <h2 class="">Your Posts</h2>
+                                <h2 class="">{{ __("Your Posts") }}</h2>
                                 <div class="posts">
                                     @if(isset($user['posts']))
                                     @foreach($user['posts'] as $post)
@@ -165,7 +165,7 @@
                         </li>
                         <li>
                             <div class="tab-content-container">
-                                <h2 class="">Your Tips</h2>
+                                <h2 class="">{{ __("Your Tips") }}</h2>
                                 @if(isset($user['tips']))
                                     @foreach($user['tips'] as $tip)
                                     <div class="card border-l-yellow">
@@ -191,7 +191,7 @@
                         @else
                         <li class="active">
                             <div class="tab-content-container">
-                                <h2 class="">Your Posts</h2>
+                                <h2 class="">{{ __("Your Posts") }}</h2>
                                 <div class="posts">
                                     @if(isset($user['posts']))
                                     @foreach($user['posts'] as $post)
@@ -230,7 +230,7 @@
 <div id="profile-edit-modal-container" class="modal-container">
     <div class="modal" id="profile-edit-modal">
         <div class="modal-header flex-left space-between" style="align-items: center;">
-            <p style="margin-left: 12px;">Edit your deets</p>
+            <p style="margin-left: 12px;">{{ __("Edit your deets") }}</p>
             <a href="#" class="cancel" style="float: right;">x</a>
         </div>
         <div class="modal-content" style="align-items:center;">
@@ -252,8 +252,8 @@
                     <input type="text" name="profession" placeholder="Profession" value="{{ $user['profession'] }}">
                 </div>
                 <div>
-                    <button class="cancel btn btn-outline-secondary text-secondary">Cancel</button>
-                    <button class="btn" type="submit">Change</button>
+                    <button class="cancel btn btn-outline-secondary text-secondary">{{ __("Cancel") }}</button>
+                    <button class="btn" type="submit">{{ __("Change") }}</button>
                 </div>
             </form>
         </div>

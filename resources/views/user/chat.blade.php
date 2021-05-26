@@ -15,8 +15,8 @@
 
     <div class="container">
         <div class="flex-left" style="justify-content: space-between;">
-            <h2>Chatroom : {{ session('user_loc')['city_name'] }}</h2>
-            <a class="btn btn-light">General Chatroom</a>
+            <h2>{{ __("Chatroom") }} : {{ session('user_loc')['city_name'] }}</h2>
+            <a class="btn btn-light">{{ __("General Chatroom") }}</a>
         </div>
         <div id="chats">
 
@@ -47,7 +47,7 @@
                     <input type="text" name="chatMessage" id="chatMessage"
                         placeholder="Type message" style="width: 800px">
                 </div>
-                <button id="sendMessage" class="btn btn-primary"><i class="fas fa-paper-plane" style="margin-right: 7px"></i> SEND</button>
+                <button id="sendMessage" class="btn btn-primary"><i class="fas fa-paper-plane" style="margin-right: 7px"></i> {{ __("SEND") }}</button>
             </div>
         </div>
     </div>

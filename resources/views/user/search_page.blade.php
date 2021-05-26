@@ -15,7 +15,7 @@
             <div class="flex" style="gap: 12px;">
                 <section id="left-section" style="flex-grow: 1.5; flex-basis: 0;">
                     <section>
-                        <h2 class="">You might like</h2>
+                        <h2 class="">{{ __("You might like") }}</h2>
                         <div class="flex-left">
                             @if(isset($similar))
                             @foreach($similar as $item)
@@ -47,7 +47,7 @@
                     </section>
 
                     <section style="padding-top: 15px;">
-                        <h2>All Results</h2>
+                        <h2>{{ __("All Results") }}</h2>
 
                         <div class="grid grid-2">
                             @if(isset($results))

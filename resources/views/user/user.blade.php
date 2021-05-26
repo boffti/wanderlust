@@ -12,7 +12,7 @@
     <section class="flex">
         <div class="container">
             <div class="hero-text flex-vertical">
-                <h1 id="" style="font-size: 35px;">This is {{ $user['full_name'] }}</h1>
+                <h1 id="" style="font-size: 35px;">{{ __("This is") }} {{ $user['full_name'] }}</h1>
             </div>
             <!-- <div class="card"> -->
             <div class="flex-left">
@@ -32,13 +32,13 @@
                             <h2 id="" class="">{{ $user['full_name'] }}</h2>
                             <a href="#" class="btn btn-primary">
                                 <i class="fas fa-comment"></i>
-                                Chat
+                                {{ __("Chat") }}
                             </a>
                         </div>
                     </div>
                     <div class="card" style="width: 100%;">
                         <div class="flex-left space-between">
-                            <h3>Details</h3>
+                            <h3>{{ __("Details") }}</h3>
                         </div>
                         <br>
                         <div class="flex-column" style="align-items: flex-start;">
@@ -66,10 +66,10 @@
 
                 <div class="card">
                     <ul class="tabs">
-                        <li class="active">PHOTOS</li>
-                        <li>VIDEOS</li>
-                        <li>POSTS</li>
-                        <li>TIPS</li>
+                        <li class="active">{{ __("PHOTOS") }}</li>
+                        <li>{{ __("VIDEOS") }}</li>
+                        <li>{{ __("POSTS") }}</li>
+                        <li>{{ __("TIPS") }}</li>
                     </ul>
 
                     <ul class="tab-content">

@@ -9,18 +9,18 @@
 @section('content')
 
     <div class="container">
-        <h2>Posts in and around {{ session('user_loc')['city_name'] }}</h2>
+        <h2>{{ __("Posts in and around") }} {{ session('user_loc')['city_name'] }}</h2>
         <form action="../../php/posts_handler.php" method="post">
             @csrf
             <div class="flex-left">
-                <textarea placeholder="Whats on your mind? Type here..." name="post_content" id="bulletin_post" cols="30" rows="3"
+                <textarea placeholder="{{ __("What's on your mind? Type here") }}..." name="post_content" id="bulletin_post" cols="30" rows="3"
                     style="width: 100%; padding:12px; margin: 12px" class="card" required></textarea>
                 <div class="card">
-                    <p>See the latest buzz around you. Create your own buzz.</p>
+                    <p>{{ __("See the latest buzz around you. Create your own buzz.") }}</p>
                 </div>
                 <input name="loc" value="2" style="display:none;">
             </div>
-            <button type="submit" class="btn" style="margin:0 12px;">POST</button>
+            <button type="submit" class="btn" style="margin:0 12px;">{{ __("POST") }}</button>
         </form>
         <br>
         <div class="posts">

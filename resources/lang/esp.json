@@ -153,7 +153,33 @@
     "Write a tip to help other people. It can be about anything you've seen or heard." : "Escribe un consejo para ayudar a otras personas. Puede tratarse de cualquier cosa que hayas visto o escuchado.",
 
     "Write a tip about" : "Escribir un consejo sobre",
-    "Type here" : "Escriba aquí"
+    "Type here" : "Escriba aquí",
 
+    "General Chatroom" : "Sala de chat general",
+    "SEND" : "ENVIAR",
+
+    "Posts in and around" : "Publicaciones en y alrededor",
+
+    "This is YOU." : "Este Eres tu.",
+    "What have you been up to lately? Use this page to upload your latest photos and videos." : "¿Qué has hecho últimamente? Utilice esta página para cargar sus últimas fotos y videos.",
+    "Your Details" : "Tus detalles",
+    "PHOTOS" : "FOTOS",
+    "VIDEOS" : "VIDEOS",
+    "POSTS" : "PUBLICACIONES",
+    "TIPS" : "CONSEJOS",
+    "Your photos" : "Tus fotos",
+    "ADD" : "AGREGAR",
+    "Your Videos" : "Tus videos",
+    "Your Posts" : "Tus publicaciones",
+    "Your Tips" : "Tus consejos",
+    "Edit your deets" : "Edita tus datos",
+
+    "You might like" : "Te podría gustar",
+    "All Results" : "Todos los resultados",
+
+    "Tips in and around" : "Consejos en y alrededor",
+
+    "This is" : "Esto es",
+    "Details" : "Detalles"
 
 }

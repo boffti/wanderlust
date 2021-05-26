@@ -9,7 +9,7 @@
 @section('content')
 
     <div class="container">
-    <h2>Tips in and around {{ session('user_loc')['city_name'] }}</h2>
+    <h2>{{ __("Tips in and around") }} {{ session('user_loc')['city_name'] }}</h2>
         @if(in_array('1', session('user_roles')))
         <form action="/tip" method="POST">
             @csrf
@@ -17,10 +17,10 @@
                 <textarea placeholder="Write a tip. Type here..." name="tip" id="bulletin_post" cols="30" rows="3"
                     style="width: 100%; padding:12px; margin: 12px" class="card" required></textarea>
                 <div class="card">
-                    <p>Write a tip to help other people. It can be about anything you've seen or heard.</p>
+                    <p>{{ __("Write a tip to help other people. It can be about anything you've seen or heard.") }}</p>
                 </div>
             </div>
-            <button type="submit" class="btn" style="margin:0 12px;">SUBMIT</button>
+            <button type="submit" class="btn" style="margin:0 12px;">{{ __("SUBMIT") }}</button>
         </form>
         @endif
         <br>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Chat;
+use App\Models\GeneralChat;
 
 class ChatController extends Controller
 {
@@ -14,6 +15,15 @@ class ChatController extends Controller
         ->take(20)
         ->get();
         return view('user/chat')
+        -> with('chats', $chats);
+    }
+
+    public function getGeneralChat() {
+        $chats = GeneralChat::with('user')
+        ->orderBy('created_at', 'ASC')
+        ->take(50)
+        ->get();
+        return view('user/general_chat')
         -> with('chats', $chats);
     }
 

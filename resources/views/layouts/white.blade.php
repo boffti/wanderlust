@@ -204,6 +204,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     @yield('scripts')
     <script src="{{ URL::asset('js/app.js') }}"></script>
+    @yield('chat_script')
 <body>
 
 </body>

@@ -10,7 +10,7 @@ ID : 1001750503 --}}
         <div class="container">
             <div class="hero-text flex-vertical">
                 <div id="typed">
-                    <p>Welcome to your new home</p>
+                    <p>{{ __("To the country where you go, do what you see") }}</p>
                     <p>Willkommen in Ihrem neuen Zuhause</p>
                     <p>Bienvenido a tu nuevo hogar</p>
                     <p>आपके नए घर में आपका स्वागत है</p>

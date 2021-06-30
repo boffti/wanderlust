@@ -9,14 +9,13 @@
 <script defer src="{{ URL::asset('js/chat.js') }}"></script>
 @endsection
 
-@section('title', 'Chatroom | '. session('user_loc')['city_name'])
+@section('title', 'Global Chatroom')
 
 @section('content')
 
     <div class="container">
         <div class="flex-left" style="justify-content: space-between;">
-            <h2>{{ __("Chatroom") }} : {{ session('user_loc')['city_name'] }}</h2>
-            <a href="/general-chat" class="btn btn-light">{{ __("General Chatroom") }}</a>
+            <h2>{{ __("Chatroom") }}</h2>
         </div>
         <div id="chats">
 
@@ -55,6 +54,7 @@
 @endsection
 
 @section('chat_script')
+<script src="{{ URL::asset('js/chat.js') }}"></script>
 <script>
     jQuery(document).ready(function ($) {
 

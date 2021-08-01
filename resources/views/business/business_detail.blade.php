@@ -275,7 +275,7 @@
                             <li><i class="fas fa-star review-form-star"></i></li>
                         </ul>
                     </div>
-                    <form action="/business/reviews/{{ $biz['business_id'] }}" method="post">
+                    <form action="{{ route('addBusinessReview', [app()->getLocale(), $biz['business_id']]) }}" method="post">
                         @csrf
                         <textarea placeholder="{{ __("Remember, be nice!") }}" id="" name="review" rows="6" cols="30"
                         style="width: 100%;" required></textarea>

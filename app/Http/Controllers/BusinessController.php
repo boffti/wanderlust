@@ -76,7 +76,7 @@ class BusinessController extends Controller
         return redirect()->route('business-tips', $business_id);
     }
 
-    public function getBusinessReviews(Request $request, $business_id)
+    public function getBusinessReviews(Request $request, $locale, $business_id)
     {
         $results = Business::where('business_id', $business_id)
             ->first();
@@ -95,6 +95,6 @@ class BusinessController extends Controller
         $b_rev->business_id = $business_id;
         $b_rev->user_id = session('user')['user_id'];
         $b_rev->save();
-        return redirect()->route('business-reviews', $business_id);
+        return redirect()->route('business-reviews', [app()->getLocale(), $business_id]);
     }
 }

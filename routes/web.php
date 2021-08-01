@@ -76,7 +76,7 @@ Route::prefix('{language}')->group(function () {
     Route::get('/business/tips/{business_id}', [BusinessController::class, 'getBusinessTips'])->name('business-tips');
     Route::post('business/tips/{business_id}', [BusinessController::class, 'addBusinessTip']);
     Route::get('/business/reviews/{business_id}', [BusinessController::class, 'getBusinessReviews'])->name('business-reviews');
-    Route::post('business/reviews/{business_id}', [BusinessController::class, 'addBusinessReview']);
+    Route::post('/business/reviews/{business_id}', [BusinessController::class, 'addBusinessReview'])->name('addBusinessReview');
     Route::post('/business/{loc}', [AdminController::class, 'addBusiness']);
     Route::get('/business/delete/{business_id}/{loc}', [AdminController::class, 'deleteBusiness']);
     // ------------------------------------------------------------------------------------------

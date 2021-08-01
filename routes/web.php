@@ -58,7 +58,7 @@ Route::prefix('{language}')->group(function () {
     // -----------------------------------------------------------------------------------------
 
     // Change Location Route -------------------------------------------------------------------
-    Route::post('/change-loc', [HomeController::class, 'changeLoc']);
+    Route::post('/change-loc', [HomeController::class, 'changeLoc'])->name('change-loc');
     // -----------------------------------------------------------------------------------------
 
     // User Routes -----------------------------------------------------------------------------
@@ -131,5 +131,4 @@ Route::prefix('{language}')->group(function () {
     // City Resource
     Route::resource('city', '\App\Http\Controllers\CityController');
     // -----------------------------------------------------------------------------------------
-
 });

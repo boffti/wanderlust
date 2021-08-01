@@ -8,7 +8,7 @@ $.noConflict();
 jQuery(document).ready(function ($) {
 
     $.ajax({
-        url: '/city',
+        url: '/en/city',
         dataType: 'json',
         success: function (data) {
             var cities = data;

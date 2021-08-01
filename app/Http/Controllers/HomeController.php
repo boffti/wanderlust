@@ -56,7 +56,7 @@ class HomeController extends Controller
         };
         $city = City::find($city_id);
         session(['user_loc' => $city]);
-        return redirect()->route('home');
+        return redirect()->route('home', app()->getLocale());
     }
 
     public function moreTips(Request $request) {

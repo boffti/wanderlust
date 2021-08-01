@@ -110,7 +110,7 @@ Route::prefix('{language}')->group(function () {
     // -----------------------------------------------------------------------------------------
 
     // Query Routes ----------------------------------------------------------------------------
-    Route::post('/query', [QueryController::class, 'sendQuery']);
+    Route::post('/query', [QueryController::class, 'sendQuery'])->name('sendQuery');
     Route::get('/query/delete/{queryid}', [AdminController::class, 'deleteQuery']);
     Route::get('/user/delete/{user_id}', [AdminController::class, 'deleteUser']);
     // -----------------------------------------------------------------------------------------

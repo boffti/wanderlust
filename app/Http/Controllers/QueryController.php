@@ -20,6 +20,6 @@ class QueryController extends Controller
         $c -> query = $request->get('query');
         Mail::to($request->get('email'))->send(new QueryEmail());
         $c -> save();
-        return redirect()->route('contact');
+        return redirect()->route('contact', app()->getLocale());
         }
 }

@@ -88,7 +88,7 @@ class BusinessController extends Controller
             ->with('reviews', $reviews);
     }
 
-    public function addBusinessReview(Request $request, $business_id) {
+    public function addBusinessReview(Request $request, $locale, $business_id) {
         $b_rev = new BusinessReview;
         $b_rev->review_content = $request->get('review');
         $b_rev->rating = '4';

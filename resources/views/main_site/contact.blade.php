@@ -24,7 +24,7 @@ ID: 1001872904
     <!-- Contact Form -->
     <div class="container">
         <div class="card">
-            <form action="/query" method="POST">
+            <form action="{{ route('sendQuery', app()->getLocale()) }}" method="POST">
                 @csrf
                 <h3>Contact us</h3>
                 <div class="flex-left" style="justify-content: space-around;">

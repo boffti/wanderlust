@@ -59,7 +59,7 @@ ID : 1001750503 --}}
                                         alt="">
                                 </div>
                                 <div class="card-body">
-                                    <h1><a href="{{ app()->getLocale() }}/business/{{ $biz['business_id'] }}">{{ $biz['business_name'] }}</a></h1>
+                                    <h1><a href="{{ route('business', [app()->getLocale(), $biz['business_id']]) }}">{{ $biz['business_name'] }}</a></h1>
                                     <p>{{ $biz['city']['city_name'] }}</p>
                                     <div class="rating">
                                         <ul>
@@ -106,7 +106,7 @@ ID : 1001750503 --}}
                                     <img class="postIMG" src="{{ URL::asset("upload/user_dp/") }}/{{ $post['user']['dp'] }}" alt="">
                                     <div class="full-width">
                                         <div class="flex-left space-between align-items-center">
-                                            <a href="/user/{{ $post['user']['user_id'] }}">
+                                            <a href="{{ route('user', [app()->getLocale(), $post['user']['user_id']]) }}">
                                                 <h4 class="">{{ $post['user']['full_name'] }}</h4>
                                             </a>
                                             <p class="post-date">{{ $post['created_at'] }}</p>
@@ -136,7 +136,7 @@ ID : 1001750503 --}}
                                         </strong><span class="quotes">"</span>
                                     </div>
                                     <div class="flex ml-auto tip-footer" style="gap: 10px; ">
-                                        <a class="tip-author" href="/user/{{ $tip['user']['user_id'] }}" style="margin: 0;">{{ $tip['user']['full_name'] }}</a>
+                                        <a class="tip-author" href="{{ route('user', [app()->getLocale(), $tip['user']['user_id']]) }}" style="margin: 0;">{{ $tip['user']['full_name'] }}</a>
                                     </div>
                                 </div>
                             </div>

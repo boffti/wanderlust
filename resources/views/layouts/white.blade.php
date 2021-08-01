@@ -172,7 +172,13 @@
                     <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
                 </ul>
             </div>
+            @if(isset($biz))
+            <div><a class="wander-green" href="{{ route(Route::currentRouteName(), ['en', $biz['business_id']]) }}">EN</a> | <a class="wander-green" href="{{ route(Route::currentRouteName(), ['esp', $biz['business_id']]) }}">ESP</a></div>
+            @elseif(isset($user))
+            <div><a class="wander-green" href="{{ route(Route::currentRouteName(), ['en', $user['user_id']]) }}">EN</a> | <a class="wander-green" href="{{ route(Route::currentRouteName(), ['esp', $user['user_id']]) }}">ESP</a></div>
+            @else
             <div><a class="wander-green" href="{{ route(Route::currentRouteName(), 'en') }}">EN</a> | <a class="wander-green" href="{{ route(Route::currentRouteName(), 'esp') }}">ESP</a></div>
+            @endif
         </div>
     </div>
 </footer>

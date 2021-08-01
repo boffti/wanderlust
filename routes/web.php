@@ -62,7 +62,7 @@ Route::prefix('{language}')->group(function () {
     // -----------------------------------------------------------------------------------------
 
     // User Routes -----------------------------------------------------------------------------
-    Route::get('/user/{user_id}', [UserController::class, 'getUser']);
+    Route::get('/user/{user_id}', [UserController::class, 'getUser'])->name('user');
     Route::post('/dp', [UserController::class, 'updateDP']);
     Route::post('/photo', [UserController::class, 'addPhoto']);
     Route::post('/video', [UserController::class, 'addVideo']);

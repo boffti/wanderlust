@@ -282,9 +282,9 @@ jQuery(document).ready(function ($) {
 
     // });
 
-    $('html,body').animate({
-        scrollTop: $("#sendMessage").offset().top
-    },
-    1500);
+    // $('html,body').animate({
+    //     scrollTop: $("#sendMessage").offset().top
+    // },
+    // 1500);
 
 });

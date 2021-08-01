@@ -11,7 +11,7 @@ use App\Models\BusinessReview;
 
 class BusinessController extends Controller
 {
-    public function getBusiness($business_id)
+    public function getBusiness($locale, $business_id)
     {
         $results = Business::where('business_id', $business_id)
             ->first();
@@ -30,8 +30,7 @@ class BusinessController extends Controller
             ->get()
             ->toArray();
         $reviews_response = array_slice($reviews, 0, 5);
-        return redirect()
-            ->route('business', app()->getLocale())
+        return view('business/business_detail')
             ->with('biz', $results)
             ->with('photos', $photos_response)
             ->with('tips', $tips_response)

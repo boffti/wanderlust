@@ -72,7 +72,7 @@
                                 </a>
                                 <ul class="dropdown-content" style="top:50px">
                                     <li class="dropdown-item">
-                                        <a href="/profile">
+                                        <a href="{{ route('profile', app()->getLocale()) }}">
                                             <i class="fas fa-user" style="margin-right: 8px;"></i>
                                             {{ __("My Profile") }}
                                         </a>

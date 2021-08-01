@@ -234,7 +234,7 @@
             <a href="#" class="cancel" style="float: right;">x</a>
         </div>
         <div class="modal-content" style="align-items:center;">
-            <form action="/profile/edit/{{ $user['user_id'] }}" method="post" class="flex-center" style="gap: 12px;">
+            <form action="{{ route('editProfile', [app()->getLocale(), $user['user_id']]) }}" method="post" class="flex-center" style="gap: 12px;">
                 @csrf
                 <div class="flex-left">
                     <input type="text" name="name" placeholder="Name" value="{{ $user['full_name'] }}">

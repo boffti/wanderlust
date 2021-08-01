@@ -9,7 +9,7 @@ use App\Models\UserVideo;
 
 class UserController extends Controller
 {
-    public function getProfile(Request $request) {
+    public function getProfile(Request $request, $locale) {
         if($request->session()->has('user')) {
             $user = User::where('user_id', session('user')['user_id'])
                         -> with(['city','photos', 'videos', 'posts', 'tips'])
@@ -19,7 +19,7 @@ class UserController extends Controller
         }
     }
 
-    public function editProfile(Request $request, $user_id) {
+    public function editProfile(Request $request, $locale, $user_id) {
         if($request->session()->has('user')) {
             $user = User::where('user_id', $user_id);
             $user->update([
@@ -31,11 +31,11 @@ class UserController extends Controller
             ]);
             $user = User::where('user_id', $user_id)->first();
             session(['user' => $user]);
-            return redirect()->route('profile');
+            return redirect()->route('profile', app()->getLocale());
         }
     }
 
-    public function getUser(Request $request, $locale,$user_id) {
+    public function getUser(Request $request, $locale, $user_id) {
         $user = User::where('user_id', $user_id)
                 -> with(['photos', 'videos', 'posts', 'tips'])
                 -> first();

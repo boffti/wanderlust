@@ -105,8 +105,8 @@ Route::prefix('{language}')->group(function () {
     Route::post('/post', [PostController::class, 'addPost'])->name('addPost');
     Route::get('/post/delete/{post_id}/{loc}', [PostController::class, 'deletePost'])->name('deletePost');
 
-    Route::post('/tip', [TipController::class, 'addTip']);
-    Route::get('/tip/delete/{tip_id}/{loc}', [TipController::class, 'deleteTip']);
+    Route::post('/tip', [TipController::class, 'addTip'])->name('addTip');
+    Route::get('/tip/delete/{tip_id}/{loc}', [TipController::class, 'deleteTip'])->name('deleteTip');
     // -----------------------------------------------------------------------------------------
 
     // Query Routes ----------------------------------------------------------------------------

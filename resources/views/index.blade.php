@@ -118,7 +118,7 @@ ID : 1001750503 --}}
                         @endforeach
                     @endif
                 </div>
-                <a href="/more-posts" style="margin-left: 12px;">{{ __("See all") }}</a>
+                <a href="{{ route('all-posts', app()->getLocale()) }}" style="margin-left: 12px;">{{ __("See all") }}</a>
             </section>
 
             <br>
@@ -144,10 +144,10 @@ ID : 1001750503 --}}
                     @endif
                 </div>
                 <div class="flex" style="justify-content: space-between; padding: 0 15px">
-                    <a href="/more-tips" class="">{{ __("See more tips") }}</a>
+                    <a href="{{ route('all-tips', app()->getLocale()) }}" class="">{{ __("See more tips") }}</a>
                     @if(null !== session('user_roles'))
                     @if(in_array('1', session('user_roles')))
-                    <a href="/more-tips" class="strong">+ {{ __("ADD TIP") }}</a>
+                    <a href="{{ route('all-tips', app()->getLocale()) }}" class="strong">+ {{ __("ADD TIP") }}</a>
                     @endif
                     @endif
                 </div>

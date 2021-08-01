@@ -11,7 +11,7 @@
     <div class="container">
     <h2>{{ __("Tips in and around") }} {{ session('user_loc')['city_name'] }}</h2>
         @if(in_array('1', session('user_roles')))
-        <form action="/tip" method="POST">
+        <form action="{{ route('addTip', app()->getLocale()) }}" method="POST">
             @csrf
             <div class="flex-left">
                 <textarea placeholder="Write a tip. Type here..." name="tip" id="bulletin_post" cols="30" rows="3"

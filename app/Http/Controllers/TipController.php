@@ -14,18 +14,18 @@ class TipController extends Controller
         $tip->user_id = session('user')['user_id'];
         $tip->city_id = session('user_loc')['city_id'];
         $tip->save();
-        return redirect()->route('all-tips');
+        return redirect()->route('all-tips', app()->getLocale());
     }
 
-    public function deleteTip(Request $request, $tip_id, $loc) {
+    public function deleteTip(Request $request, $locale, $tip_id, $loc) {
         $tip = Tip::where('tip_id', $tip_id)->first();
         $tip -> delete();
         if($loc == '1') {
-            return redirect()->route('super-admin');
+            return redirect()->route('super-admin', app()->getLocale());
         } elseif($loc == '3') {
-            return redirect()->route('profile');
+            return redirect()->route('profile', app()->getLocale());
         } else {
-            return redirect()->route('country-admin');
+            return redirect()->route('country-admin', app()->getLocale());
         }
     }
 }

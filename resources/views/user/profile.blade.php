@@ -176,7 +176,7 @@
                                                 </strong><span class="quotes">"</span>
                                             </div>
                                             <div class="flex ml-auto tip-footer" style="gap: 10px; ">
-                                                <a href="/tip/delete/{{ $tip['tip_id'] }}/3" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('deleteTip', [app()->getLocale(), $tip['tip_id'], 3]) }}" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
                                             </div>
                                         </div>
                                     </div>

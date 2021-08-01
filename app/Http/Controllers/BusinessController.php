@@ -30,7 +30,8 @@ class BusinessController extends Controller
             ->get()
             ->toArray();
         $reviews_response = array_slice($reviews, 0, 5);
-        return view('business/business_detail')
+        return redirect()
+            ->route('business', app()->getLocale())
             ->with('biz', $results)
             ->with('photos', $photos_response)
             ->with('tips', $tips_response)

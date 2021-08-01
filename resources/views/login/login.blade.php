@@ -29,7 +29,7 @@
 
     <div class="signup-page">
         <div class="grid grid-2">
-            <a href="/">
+            <a href="{{ route('home', app()->getLocale()) }}">
                 <img class="signup-img" src="{{ URL::asset('img/suitcases.jpg') }}" alt="">
             </a>
             <div class="signup-form flex-vertical">
@@ -43,7 +43,7 @@
                         </div>
                         <p class="login-heading">{{ __('Login to continue.') }}</p>
                     </div>
-                    <form role="form" action="/login" method="post">
+                    <form role="form" action="{{ route('login_post', app()->getLocale()) }}" method="post">
                         @csrf
                         <div class="form-label-group">
                             <input name="email" type="email" id="email" class="form-control" placeholder="{{ __('E-mail') }}"
@@ -68,10 +68,11 @@
 
                         <div class="flex flex-vertical">
                             <p>{{ __("Not registered yet? No problem! Let's get you started.") }}</p>
-                            <a class="text-accent" href="/signup">{{ __('Create Account') }}</a>
+                            <a class="text-accent" href="{{ route('signup', app()->getLocale()) }}">{{ __('Create Account') }}</a>
                         </div>
                     </form>
                 </div>
+                <div><a class="wander-green" href="{{ route(Route::currentRouteName(), 'en') }}">EN</a> | <a class="wander-green" href="{{ route(Route::currentRouteName(), 'esp') }}">ESP</a></div>
             </div>
         </div>
     </div>

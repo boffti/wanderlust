@@ -32,18 +32,18 @@
             <h1><span class="flag-icon flag-icon-ve"></span> {{ __("Diaspora") }}</h1>
             <nav>
                 <ul class="hidden">
-                    <li><a href="/">{{ __("Home") }}</a></li>
-                    <li><a href="/about">{{ __("About") }}</a></li>
+                    <li><a href="{{ route('home', app()->getLocale()) }}">{{ __("Home") }}</a></li>
+                    <li><a href="{{ route('about', app()->getLocale()) }}">{{ __("About") }}</a></li>
                     <li class="dropdown">
                         <a href="#" class="">{{ __("Services") }} <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="/immigrant-services">{{ __("Immigrant Services") }}</a></li>
-                            <li><a class="dropdown-item" href="/visitor-services">{{ __("Visitor Services") }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('immigrant_services', app()->getLocale()) }}">{{ __("Immigrant Services") }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('visitor_services', app()->getLocale()) }}">{{ __("Visitor Services") }}</a></li>
                         </ul>
                     </li>
                     <li><a href="https://wanderlust.axm0503.uta.cloud/blog/">{{ __("Blog") }}</a></li>
-                    <li><a href="/contact">{{ __("Contact") }}</a></li>
+                    <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __("Contact") }}</a></li>
                 </ul>
             </nav>
 
@@ -109,7 +109,7 @@
                         </ul>
                         @else
                         <div class="signup">
-                            <a href="/login">
+                            <a href="{{ route('login', app()->getLocale()) }}">
                                 <button class="btn btn-outline-accent text-accent">{{ __("Login / Signup") }}</button>
                             </a>
                         </div>
@@ -146,12 +146,12 @@
             <div class="">
                 <h6>{{ __("Quick Links") }}</h6>
                 <ul class="footer-links">
-                    <li><a href="/about">{{ __("About") }}</a></li>
-                    <li><a href="/immigrant-services">{{ __("Immigrant Services") }}</a></li>
-                    <li><a href="/visitor-services">{{ __("Visitor Services") }}</a></li>
+                    <li><a href="{{ route('about', app()->getLocale()) }}">{{ __("About") }}</a></li>
+                    <li><a href="{{ route('immigrant_services', app()->getLocale()) }}">{{ __("Immigrant Services") }}</a></li>
+                    <li><a href="{{ route('visitor_services', app()->getLocale()) }}">{{ __("Visitor Services") }}</a></li>
                     <li><a href="/blog">{{ __("Blog") }}</a></li>
-                    <li><a href="/contact">{{ __("Contact") }}</a></li>
-                    <li><a href="/login">{{ __("Login") }}</a></li>
+                    <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __("Contact") }}</a></li>
+                    <li><a href="{{ route('login', app()->getLocale()) }}">{{ __("Login") }}</a></li>
                 </ul>
             </div>
         </div>
@@ -172,6 +172,7 @@
                     <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
                 </ul>
             </div>
+            <div><a class="wander-green" href="{{ route(Route::currentRouteName(), 'en') }}">EN</a> | <a class="wander-green" href="{{ route(Route::currentRouteName(), 'esp') }}">ESP</a></div>
         </div>
     </div>
 </footer>

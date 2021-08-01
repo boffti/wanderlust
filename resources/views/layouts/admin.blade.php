@@ -100,7 +100,7 @@ ID: 1001774881
                         </ul>
                         @else
                         <div class="signup">
-                            <a href="/login">
+                            <a href="{{ route('login', app()->getLocale()) }}">
                                 <button class="btn btn-outline-accent text-accent">Login / Signup</button>
                             </a>
                         </div>

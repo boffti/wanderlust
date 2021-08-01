@@ -36,7 +36,7 @@ class LoginController extends Controller
                     session([ 'admin' => $results[0]]);
                 }
                 session(['user_roles' => $user_roles]);
-                return redirect()->route('home');
+                return redirect()->route('home', app()->getLocale());
             };
         }
         return view('login/login')->with('msg', 'Invalid Email/Password');
@@ -94,13 +94,13 @@ class LoginController extends Controller
         }
         session(['user_roles' => $user_roles]);
         Mail::to(session('user')['email'])->send(new SignupEmail(session('user')['email']));
-        return view('index');
+        return redirect()->route('home', app()->getLocale());
     }
 
     public function logout(Request $request) {
         $val = $request->session()->pull('user');
         $val = $request->session()->pull('user_loc');
         $val = $request->session()->pull('admin');
-        return view('login/login');
+        return redirect()->route('login', app()->getLocale());
     }
 }

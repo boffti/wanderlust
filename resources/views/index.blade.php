@@ -59,7 +59,7 @@ ID : 1001750503 --}}
                                         alt="">
                                 </div>
                                 <div class="card-body">
-                                    <h1><a href="business/{{ $biz['business_id'] }}">{{ $biz['business_name'] }}</a></h1>
+                                    <h1><a href="{{ app()->getLocale() }}/business/{{ $biz['business_id'] }}">{{ $biz['business_name'] }}</a></h1>
                                     <p>{{ $biz['city']['city_name'] }}</p>
                                     <div class="rating">
                                         <ul>

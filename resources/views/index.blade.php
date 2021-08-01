@@ -86,7 +86,7 @@ ID : 1001750503 --}}
             <section>
                 <h2>{{ __("Bulletin Board") }}</h2>
                 <!-- ! IF User.role != visitor -->
-                <form action="/post" method="post">
+                <form action="{{ route('addPost', app()->getLocale()) }}" method="post">
                     @csrf
                     <div class="flex-left">
                         <textarea placeholder="{{ __("What's on your mind? Type here") }}..." name="post" id="bulletin_post"

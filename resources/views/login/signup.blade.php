@@ -43,7 +43,7 @@
                         </div>
                         <p class="login-heading mb-4">{{ __("Create an account to get started.") }}</p>
                     </div>
-                    <form role="form" action="/signup-handler" method="post">
+                    <form role="form" action="{{ route('signupHandler', app()->getLocale()) }}" method="post">
                         @csrf
                         <div class="">
                             <input name="name" type="name" id="name" class="" placeholder="{{ __("Full Name") }}"

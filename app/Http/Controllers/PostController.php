@@ -14,18 +14,18 @@ class PostController extends Controller
         $post->user_id = session('user')['user_id'];
         $post->city_id = session('user_loc')['city_id'];
         $post->save();
-        return redirect()->route('all-posts');
+        return redirect()->route('all-posts', app()->getLocale());
     }
 
-    public function deletePost(Request $request, $post_id, $loc) {
+    public function deletePost(Request $request, $locale, $post_id, $loc) {
         $post = Post::where('post_id', $post_id)->first();
         $post -> delete();
         if($loc == '1') {
-            return redirect()->route('super-admin');
+            return redirect()->route('super-admin', app()->getLocale());
         } elseif($loc == '3') {
-            return redirect()->route('profile');
+            return redirect()->route('profile', app()->getLocale());
         } else {
-            return redirect()->route('country-admin');
+            return redirect()->route('country-admin', app()->getLocale());
         }
     }
 }

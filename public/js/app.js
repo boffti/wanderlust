@@ -23,7 +23,7 @@ jQuery(document).ready(function ($) {
     });
 
     $.ajax({
-        url: '/category',
+        url: '/en/category',
         dataType: 'json',
         success: function (data) {
             var categories = data;

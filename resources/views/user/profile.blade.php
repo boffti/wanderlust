@@ -152,7 +152,7 @@
                                                     <p class="post-content">{{ $post['post_content'] }}</p>
                                                 </div>
                                                 <div class="flex tip-footer" style="gap: 10px; ">
-                                                    <a href="/post/delete/{{ $post['post_id'] }}/3" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
+                                                    <a href="{{ route('deletePost', [app()->getLocale(), $post['post_id'], 3]) }}" style="margin: 0;"><i class="fas fa-trash-alt"></i></a>
                                                 </div>
                                             </div>
 

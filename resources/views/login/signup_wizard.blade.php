@@ -24,7 +24,7 @@
 
     <div class="signup-page">
         <div class="grid grid-2">
-            <a href="../../">
+            <a href="{{ route('home', app()->getLocale()) }}">
                 <img class="signup-img" src="{{URL::asset('img/suitcases.jpg')}}" alt="">
             </a>
             <div class="signup-form flex-vertical">
@@ -36,7 +36,7 @@
                         </h1>
                         <p class="login-heading mb-4">{{ __("We just need some more info to get you started.") }}</p>
                     </div>
-                    <form role="form" action="/register-user" method="post">
+                    <form role="form" action="{{ route('registerUser', app()->getLocale()) }}" method="post">
                         @csrf
                         <div class="">
                             <input name="phone" type="text" id="profession" class="" placeholder="{{ __("Phone Number") }}"

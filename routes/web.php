@@ -43,8 +43,8 @@ Route::prefix('{language}')->group(function () {
 
     // Login/Register Routes -------------------------------------------------------------------
     Route::post('/login', [LoginController::class, 'login'])->name('login_post');
-    Route::post('/signup-handler', [LoginController::class, 'signupHandler']);
-    Route::post('/register-user', [LoginController::class, 'registerUser']);
+    Route::post('/signup-handler', [LoginController::class, 'signupHandler'])->name('signupHandler');
+    Route::post('/register-user', [LoginController::class, 'registerUser'])->name('registerUser');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     // -----------------------------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ Route::prefix('{language}')->group(function () {
     // -----------------------------------------------------------------------------------------
 
     // Search Route ----------------------------------------------------------------------------
-    Route::post('/search', [SearchController::class, 'search']);
+    Route::post('/search', [SearchController::class, 'search'])->name('search');
     // -----------------------------------------------------------------------------------------
 
     // Change Location Route -------------------------------------------------------------------
@@ -63,11 +63,11 @@ Route::prefix('{language}')->group(function () {
 
     // User Routes -----------------------------------------------------------------------------
     Route::get('/user/{user_id}', [UserController::class, 'getUser'])->name('user');
-    Route::post('/dp', [UserController::class, 'updateDP']);
-    Route::post('/photo', [UserController::class, 'addPhoto']);
-    Route::post('/video', [UserController::class, 'addVideo']);
+    Route::post('/dp', [UserController::class, 'updateDP'])->name('user');
+    Route::post('/photo', [UserController::class, 'addPhoto'])->name('addPhoto');
+    Route::post('/video', [UserController::class, 'addVideo'])->name('addVideo');
     Route::get('/profile', [UserController::class, 'getProfile'])->name('profile');
-    Route::post('/profile/edit/{user_id}', [UserController::class, 'editProfile']);
+    Route::post('/profile/edit/{user_id}', [UserController::class, 'editProfile'])->name('editProfile');
     // -------------------------------------------------------------------------------------------
 
     // Business Routes ---------------------------------------------------------------------------
@@ -102,8 +102,8 @@ Route::prefix('{language}')->group(function () {
     Route::post('/admin/add', [AdminController::class, 'addAdmin']);
     Route::get('/admin/delete/{id}', [AdminController::class, 'deleteAdmin']);
 
-    Route::post('/post', [PostController::class, 'addPost']);
-    Route::get('/post/delete/{post_id}/{loc}', [PostController::class, 'deletePost']);
+    Route::post('/post', [PostController::class, 'addPost'])->name('addPost');
+    Route::get('/post/delete/{post_id}/{loc}', [PostController::class, 'deletePost'])->name('deletePost');
 
     Route::post('/tip', [TipController::class, 'addTip']);
     Route::get('/tip/delete/{tip_id}/{loc}', [TipController::class, 'deleteTip']);

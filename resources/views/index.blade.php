@@ -26,7 +26,7 @@ ID : 1001750503 --}}
             </div>
             <p class="flex-vertical">{{ __("Find nearby attractions. Connect with people. Contribute to your neighborhood.") }}</p>
             <div class="">
-                <form class="hero-form card" action="/search" method="post" style="overflow: hidden;">
+                <form class="hero-form card" action="{{ route('search', app()->getLocale()) }}" method="post" style="overflow: hidden;">
                     @csrf
                     <div class="flex-left flex-wrap" style="justify-content: space-between;">
                         <div class="form-control">

@@ -26,7 +26,7 @@
                                         alt="">
                                 </div>
                                 <div class="card-body">
-                                    <h1><a href="business/{{ $item['business_id'] }}">{{ $item['business_name'] }}</a></h1>
+                                    <h1><a href="{{ route('business', [app()->getLocale(), $item['business_id']]) }}">{{ $item['business_name'] }}</a></h1>
                                     <p>{{ substr($item['business_address'], 0, 25) }}</p>
                                     <div class="rating">
                                         <ul>
@@ -58,7 +58,7 @@
                                 <div class="flex-column" style="justify-content: space-between;">
                                     <div>
                                         <div class="flex-left space-between" style="align-items: center;">
-                                            <a href="business/{{ $item['business_id'] }}"><h3>{{ $item['business_name'] }}</h3></a>
+                                            <a href="{{ route('business', [app()->getLocale(), $item['business_id']]) }}"><h3>{{ $item['business_name'] }}</h3></a>
                                             {{-- <p class="wander-green" style="margin: 0; font-size:14px;"> {{ substr($item['business_address'], 0, 25) }}</p> --}}
                                         </div>
                                         <div class="rating">

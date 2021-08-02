@@ -35,9 +35,9 @@
             <div class="flex" style="overflow: hidden;">
                 <div class="dropdown">
                     <a href="#">
-                        <h1>
-                            <span class="flag-icon {{ app()->getLocale() == 'en' ? 'flag-icon-us' : 'flag-icon-ve' }}"></span>
-                        </h1>
+                            <span style="font-size: 30px" class="flag-icon {{ app()->getLocale() == 'en' ? 'flag-icon-us' : 'flag-icon-ve' }}"></span>
+                        <i class="fas fa-angle-down"
+                                style="margin-left: 4px;"></i>
                     </a>
                     <ul class="dropdown-content" style="top:50px">
                         <li class="dropdown-item">
@@ -54,7 +54,7 @@
                         </li>
                     </ul>
                 </div>
-                <h1> &nbsp; {{ __('Diaspora') }}</h1>
+                <h1>&nbsp;{{ __('Diaspora') }}</h1>
             </div>
             <nav>
                 <ul class="hidden">

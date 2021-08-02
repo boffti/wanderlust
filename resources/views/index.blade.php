@@ -1,6 +1,6 @@
 {{-- Author: Melkot, Aaneesh Naagaraj
 ID : 1001750503 --}}
-@extends('layouts.app')
+@extends('layouts.app', ['page'=> 'home'])
 
 @section('title', 'Diaspora | Home')
 

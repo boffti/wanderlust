@@ -33,18 +33,18 @@
             <h1><span class="flag-icon flag-icon-ve"></span> {{ __("Diaspora") }}</h1>
             <nav>
                 <ul class="hidden">
-                    <li><a href="{{ route('home', app()->getLocale()) }}">{{ __("Home") }}</a></li>
-                    <li><a href="{{ route('about', app()->getLocale()) }}">{{ __("About") }}</a></li>
+                    <li class="{{ $page == 'home' ? 'active-link' : '' }}"><a href="{{ route('home', app()->getLocale()) }}">{{ __("Home") }}</a></li>
+                    <li class="{{ $page == 'about' ? 'active-link' : '' }}"><a href="{{ route('about', app()->getLocale()) }}">{{ __("About") }}</a></li>
                     <li class="dropdown">
                         <a href="#" class="">{{ __("Services") }} <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
                         </a>
                         <ul class="dropdown-content">
-                            <li><a class="dropdown-item" href="{{ route('immigrant_services', app()->getLocale()) }}">{{ __("Immigrant Services") }}</a></li>
-                            <li><a class="dropdown-item" href="{{ route('visitor_services', app()->getLocale()) }}">{{ __("Visitor Services") }}</a></li>
+                            <li><a class="dropdown-item {{ $page == 'immigrant_services' ? 'active-link' : '' }}" href="{{ route('immigrant_services', app()->getLocale()) }}">{{ __("Immigrant Services") }}</a></li>
+                            <li><a class="dropdown-item {{ $page == 'visitor_services' ? 'active-link' : '' }}" href="{{ route('visitor_services', app()->getLocale()) }}">{{ __("Visitor Services") }}</a></li>
                         </ul>
                     </li>
                     <li><a href="https://wanderlust.axm0503.uta.cloud/blog/" target="__blank">{{ __("Blog") }}</a></li>
-                    <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __("Contact") }}</a></li>
+                    <li class="{{ $page == 'contact' ? 'active-link' : '' }}"><a href="{{ route('contact', app()->getLocale()) }}">{{ __("Contact") }}</a></li>
                 </ul>
             </nav>
 

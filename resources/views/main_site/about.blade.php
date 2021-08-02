@@ -3,7 +3,7 @@ Author: Manjunatha, Angad Tarikere
 ID: 1001718335
 -->
 
-@extends('layouts.app')
+@extends('layouts.app', ['page'=> 'about'])
 
 @section('title', 'Diaspora | About')
 

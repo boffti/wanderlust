@@ -1261,6 +1261,10 @@ textarea::placeholder {
     color: #ee6c4d;
 }
 
+.active-link {
+    border-bottom: #ee6c4d 3px solid;
+}
+
 /* @supports (display: grid) {
 	.gallery {
 		display: grid;

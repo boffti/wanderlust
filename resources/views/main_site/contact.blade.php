@@ -2,7 +2,7 @@
 Author: Natarajan, Karthik
 ID: 1001872904
 -->
-@extends('layouts.app')
+@extends('layouts.app', ['page'=> 'contact'])
 
 @section('title', 'Diaspora | About')
 

@@ -41,7 +41,7 @@ jQuery(document).ready(function ($) {
         $('#chatMessage').val('');
         // var user;
         $.ajax({
-            url: '/send-chat/' + text,
+            url: '/en/send-chat/' + text,
             type: 'get',
             data: text,
             success: function (response) {

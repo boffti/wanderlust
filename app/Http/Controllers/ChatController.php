@@ -27,7 +27,7 @@ class ChatController extends Controller
         -> with('chats', $chats);
     }
 
-    public function sendChat(Request $request, $msg) {
+    public function sendChat(Request $request, $locale, $msg) {
         $c = new Chat;
         $c -> user_id = session('user')['user_id'];
         $c -> message = $msg;

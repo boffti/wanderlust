@@ -34,11 +34,10 @@
             <div class="flex" style="overflow: hidden;">
                 <div class="dropdown">
                     <a href="#">
-                        <h1>
-                            <span
-                                class="flag-icon {{ app()->getLocale() == 'en' ? 'flag-icon-us' : 'flag-icon-ve' }}"></span>
-                        </h1>
-                    </a>
+                        <span style="font-size: 30px" class="flag-icon {{ app()->getLocale() == 'en' ? 'flag-icon-us' : 'flag-icon-ve' }}"></span>
+                    <i class="fas fa-angle-down"
+                            style="margin-left: 4px;"></i>
+                </a>
                     <ul class="dropdown-content" style="top:50px">
                         @if (isset($biz))
                         <li class="dropdown-item">
@@ -62,6 +61,19 @@
                         </li>
                         <li class="dropdown-item">
                             <a href="{{ route(Route::currentRouteName(), ['esp', $user['user_id']]) }}">
+                                <span class="flag-icon flag-icon-ve"></span>
+                                &nbsp;Español
+                            </a>
+                        </li>
+                        @elseif(isset($chats))
+                        <li class="dropdown-item">
+                            <a href="{{ route(Route::currentRouteName(), ['en', session('user_loc')['city_id']]) }}">
+                                <span class="flag-icon flag-icon-us"></span>
+                                &nbsp;English
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="{{ route(Route::currentRouteName(), ['esp', session('user_loc')['city_id']]) }}">
                                 <span class="flag-icon flag-icon-ve"></span>
                                 &nbsp;Español
                             </a>
@@ -139,7 +151,7 @@
                                 </a>
                             </li>
                             <li class="dropdown-item">
-                                <a href="/chat/{{ session('user_loc')['city_id'] }}">
+                                <a href="{{ route('chatroom', [app()->getLocale(), session('user_loc')['city_id']]) }}">
                                     <i class="fas fa-comments" style="margin-right: 8px;"></i>
                                     {{ __('Chatroom') }}
                                 </a>
@@ -250,6 +262,11 @@
                             href="{{ route(Route::currentRouteName(), ['en', $user['user_id']]) }}">EN</a> | <a
                             class="wander-green"
                             href="{{ route(Route::currentRouteName(), ['esp', $user['user_id']]) }}">ESP</a></div>
+                @elseif(isset($chats))
+                <div><a class="wander-green"
+                        href="{{ route(Route::currentRouteName(), ['en', session('user_loc')['city_id']]) }}">EN</a> | <a
+                        class="wander-green"
+                        href="{{ route(Route::currentRouteName(), ['esp', session('user_loc')['city_id']]) }}">ESP</a></div>
                 @else
                     <div><a class="wander-green" href="{{ route(Route::currentRouteName(), 'en') }}">EN</a> | <a
                             class="wander-green" href="{{ route(Route::currentRouteName(), 'esp') }}">ESP</a></div>

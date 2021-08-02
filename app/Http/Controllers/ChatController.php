@@ -8,7 +8,7 @@ use App\Models\GeneralChat;
 
 class ChatController extends Controller
 {
-    public function getChat($room_id) {
+    public function getChat($locale, $room_id) {
         $chats = Chat::where('room_id', $room_id)
         ->with('user')
         ->orderBy('created_at', 'ASC')

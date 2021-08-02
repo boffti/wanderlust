@@ -66,26 +66,28 @@ ID: 1001718335
 
         <section>
             <div class="container">
-                <p style=font-size:1.5rem;>{{ __("Made with") }} <i class="fas fa-heart" style="color: var(--accent-color);"></i> {{ __("by") }}
-                </p>
-                <div class="flex-left" style="justify-content:space-between;">
-                    <div class="card flex-center">
-                        <img src="{{ URL::asset('img/aneesh.jpg') }}" alt="aneesh" style="width: 200px; border-radius:100px;">
-                        <p style="font-size:1.3rem;">Aneesh Melkot</p>
-                    </div>
-                    <div class="card flex-center">
-                        <img src="{{ URL::asset('img/angad.jpeg') }}" alt="aneesh" style="width: 200px; border-radius:100px;">
-                        <p style="font-size:1.3rem;">Angad Manjunath</p>
-                    </div>
-                    <div class="card flex-center">
-                        <img src="{{ URL::asset('img/karthik.jpeg') }}" alt="aneesh"
-                            style="width: 200px; border-radius:100px;">
-                        <p style="font-size:1.3rem;">Karthik Natarajan</p>
-                    </div>
-                    <div class="card flex-center">
-                        <img src="{{ URL::asset('img/gabriel.jpeg') }}" alt="aneesh"
-                            style="width: 200px; border-radius:100px;">
-                        <p style="font-size:1.3rem;">Gabriel Sundalkar</p>
+                <div >
+                    <p style=font-size:1.5rem;>{{ __("Made with") }} <i class="fas fa-heart" style="color: var(--accent-color);"></i> {{ __("by") }}
+                    </p>
+                    <div class="flex-left" style="justify-content:space-between;">
+                        <div class="card flex-center">
+                            <img src="{{ URL::asset('img/aneesh.jpg') }}" alt="aneesh" style="width: 200px; border-radius:100px;">
+                            <p style="font-size:1.3rem;">Aneesh Melkot</p>
+                        </div>
+                        {{-- <div class="card flex-center">
+                            <img src="{{ URL::asset('img/angad.jpeg') }}" alt="aneesh" style="width: 200px; border-radius:100px;">
+                            <p style="font-size:1.3rem;">Angad Manjunath</p>
+                        </div>
+                        <div class="card flex-center">
+                            <img src="{{ URL::asset('img/karthik.jpeg') }}" alt="aneesh"
+                                style="width: 200px; border-radius:100px;">
+                            <p style="font-size:1.3rem;">Karthik Natarajan</p>
+                        </div>
+                        <div class="card flex-center">
+                            <img src="{{ URL::asset('img/gabriel.jpeg') }}" alt="aneesh"
+                                style="width: 200px; border-radius:100px;">
+                            <p style="font-size:1.3rem;">Gabriel Sundalkar</p>
+                        </div> --}}
                     </div>
                 </div>
             </div>

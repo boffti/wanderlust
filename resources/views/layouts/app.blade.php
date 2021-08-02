@@ -114,7 +114,7 @@
                                 </a>
                             </li>
                             <li class="dropdown-item">
-                                <a href="/chat/{{ session('user_loc')['city_id'] }}">
+                                <a href="{{ route('chatroom', [app()->getLocale(), session('user_loc')['city_id']]) }}">
                                     <i class="fas fa-comments" style="margin-right: 8px;"></i>
                                     {{ __('Chatroom') }}
                                 </a>

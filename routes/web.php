@@ -116,8 +116,8 @@ Route::prefix('{language}')->group(function () {
     // -----------------------------------------------------------------------------------------
 
     // Chat Routes
-    Route::get('/chat/{room_id}', [ChatController::class, 'getChat']);
-    Route::get('/general-chat', [ChatController::class, 'getGeneralChat']);
+    Route::get('/chat/{room_id}', [ChatController::class, 'getChat'])->name('chatroom');
+    Route::get('/general-chat', [ChatController::class, 'getGeneralChat'])->name('generalChatroom');
     Route::get('/send-chat/{msg}', [ChatController::class, 'sendChat']);
     Route::get('/get-room-id', [ChatController::class, 'getRoomId']);
     // -----------------------------------------------------------------------------------------

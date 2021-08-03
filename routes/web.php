@@ -24,7 +24,7 @@ use App\Models\Category;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::redirect('/', '/en', 301);
+Route::redirect('/', '/esp', 301);
 
 Route::prefix('{language}')->group(function () {
 

@@ -5,7 +5,7 @@ ID: 1001718335
  -->
 @extends('layouts.app', ['page'=> 'immigrant_services'])
 
-@section('title', 'Diaspora | About')
+@section('title', 'Diaspora | Immigrant Services')
 
 @section('css-imports')
     <link href="{{ URL::asset('css/angad.css') }}" rel="stylesheet">

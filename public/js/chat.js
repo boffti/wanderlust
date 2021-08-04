@@ -20,10 +20,10 @@ jQuery(document).ready(function ($) {
     socket.on('message', text => {
         var chat = ` <div class="card post">
     <div class="flex-left">
-        <img class="postIMG" src="https://wanderlust-axm.herokuapp.com/upload/user_dp/${text['dp']}" alt="avatar">
+        <img class="postIMG" src="https://diaspora-axm.herokuapp.com/upload/user_dp/${text['dp']}" alt="avatar">
         <div class="full-width">
             <div class="flex-left space-between align-items-center">
-                <a target="_blank" href="https://wanderlust-axm.herokuapp.com/user/${text['user_id']}">
+                <a target="_blank" href="https://diaspora-axm.herokuapp.com/user/${text['user_id']}">
                     <h4 class="">${text['full_name']}</h4>
                 </a>
                 <p class="post-date"></p>

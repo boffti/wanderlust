@@ -53,7 +53,7 @@ ID: 1001718335
             <div class="row align-items-center mb-5">
                 <div class="col-lg-6 order-2 order-lg-1">
                     <i class="fas fa-list fa-2x mb-3 text-success"></i>
-                    <h4 class="font-weight-light"></h4>
+                    <h4 class="font-weight-light">{{ __("Make a dope profile") }}</h4>
                     <p class="font-italic text-muted mb-4">{{ __("Create a profile worth showing off. Add photos and videos of your exploits.") }}</p>
                 </div>
                 <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="{{ URL::asset('img/profile.png') }}" alt=""

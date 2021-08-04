@@ -43,7 +43,7 @@
                         <li class="dropdown-item">
                             <a href="{{ route(Route::currentRouteName(), ['en', $biz['business_id']]) }}">
                                 <span class="flag-icon flag-icon-us"></span>
-                                &nbsp;English
+                                &nbsp;{{ __("English") }}
                             </a>
                         </li>
                         <li class="dropdown-item">
@@ -56,7 +56,7 @@
                         <li class="dropdown-item">
                             <a href="{{ route(Route::currentRouteName(), ['en', $user['user_id']]) }}">
                                 <span class="flag-icon flag-icon-us"></span>
-                                &nbsp;English
+                                &nbsp;{{ __("English") }}
                             </a>
                         </li>
                         <li class="dropdown-item">
@@ -69,7 +69,7 @@
                         <li class="dropdown-item">
                             <a href="{{ route(Route::currentRouteName(), ['en', session('user_loc')['city_id']]) }}">
                                 <span class="flag-icon flag-icon-us"></span>
-                                &nbsp;English
+                                &nbsp;{{ __("English") }}
                             </a>
                         </li>
                         <li class="dropdown-item">
@@ -82,7 +82,7 @@
                         <li class="dropdown-item">
                             <a href="{{ route(Route::currentRouteName(), 'en') }}">
                                 <span class="flag-icon flag-icon-us"></span>
-                                &nbsp;English
+                                &nbsp;{{ __("English") }}
                             </a>
                         </li>
                         <li class="dropdown-item">
